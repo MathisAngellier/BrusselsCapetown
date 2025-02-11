@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(42, 41, 41);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding-top: 2rem;
+}
+
+.contact {
+  text-align: center;
+  padding-top: 15rem;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  max-height: 300px;
+  margin-bottom: 3rem;
+}
+
+.center:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.contact-form {
+  max-width: 400px;
+  text-align: center;
+}
+
+p {
+  font-size: 40px;
+  margin-top: 2rem;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  padding-bottom: 4px;
+  text-align: center;
+}
+
+button {
+  background-color: rgb(164, 94, 45);
+  border-radius: 6px;
+  border: 0;
+  color: white;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+
+.social {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.social a {
+  text-decoration: none;
+}
+
+i {
+  font-size: 3rem;
+  margin-right: 20px;
+  color: #fff;
+}
+
+@media (min-width: 640px) {
+  .container {
+  }
+
+  .contact {
+    text-align: center;
+  }
+
+  .center {
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    max-height: 600px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
+    margin-top: 2rem;
+  }
+
+  p {
+    font-size: 80px;
+  }
+
+  h3 {
+    font-size: 34px;
+    padding-bottom: 60px;
+  }
+
+  input,
+  button {
+    font-size: 1rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+}
