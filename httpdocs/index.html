@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <script src="js/script.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" defer></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -22,7 +19,7 @@
         <nav>
             <div class="navbar">
                 <div class="logo">
-                    <img src="img/brusselscapetown.png" alt="Brussels CapeTown Logo">
+                    <a href="index.html"><img src="img/Logo (petit format + vélo).jpg" alt="Brussels CapeTown Logo"></a>
                 </div>
                 <div class="nav-links">
                     <a href="#home">HOME</a>
@@ -51,18 +48,19 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Brussels to Cape Town by Bicycle</h1>
-                <p>An extraordinary 15000 km journey across two continents, connecting cultures and raising awareness
+                <p>An extraordinary journey of MINIMUN 13000 km across two continents, connecting cultures and raising
+                    awareness
                     for humanitarian causes</p>
             </div>
         </section>
 
         <section class="journey-stats">
             <div class="stat-card">
-                <div class="stat-number">15 000</div>
+                <div class="stat-number">13 000</div>
                 <div>Kilometers</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">15</div>
+                <div class="stat-number">18</div>
                 <div>Countries</div>
             </div>
             <div class="stat-card">
@@ -78,10 +76,10 @@
         <section class="content-section mission-section">
             <div class="mission-text">
                 <h2>The Mission</h2>
-                <p>From the heart of Europe to the southern tip of Africa, this solo cycling expedition aims to bridge
-                    cultures, raise awareness for humanitarian causes, and inspire others to pursue their dreams.
-                    Through this journey, we're supporting local charities and documenting the diverse communities and
-                    landscapes along the way.</p>
+                <p>From the heart of Europe to the southern tip of Africa, this solo cycling expedition aims to bring
+                    cultures closer together, raise awareness of humanitarian causes, and inspire others to chase their
+                    dreams. Through this journey, I hope to support local charities and highlight the diverse
+                    communities and landscapes along the way.</p>
             </div>
             <div class="mission-image">
                 <img src="img/brusselscapetown.png" alt="Cyclist on a journey" style="max-width: 100%; height: 400px;">
@@ -91,28 +89,35 @@
         <section class="content-section">
             <h2 style="text-align: center; margin-bottom: 2rem;">The Route</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-                Starting from Brussels, Belgium, the route winds through Europe, crosses the Mediterranean, traverses
-                the length of Africa, and finally reaches Cape Town, South Africa. Along the way, we'll pass through
-                diverse landscapes including the Alps, the Sahara Desert, the East African savannah, and everything in
-                between.
+                Starting from Brussels, the road winds through Europe, crosses the Mediterranean, follows the Atlantic
+                Ocean and the African continent, and finally reaches Cape Town, South Africa. Along the way, I will
+                traverse various landscapes and climates, including the Pyrenees, the Sahara and Namib deserts, the
+                humid savannas of West Africa, and much more.
             </p>
         </section>
 
         <section class="content-section">
-            <div class="carousel-container">
-                <div id="client-carousel" class="client-carousel">
-                    <div><img src="logo1.png" alt="Sponsor 1"></div>
-                    <div><img src="logo2.png" alt="Sponsor 2"></div>
-                    <div><img src="logo3.png" alt="Sponsor 3"></div>
-                    <div><img src="logo4.png" alt="Sponsor 4"></div>
-                    <div><img src="logo5.png" alt="Sponsor 5"></div>
+            <div id="client-carousel" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/logos/luxury-african-experiences.png" alt="Sponsor 1"></div>
+                    <div class="swiper-slide"><img src="img/logos/logo-joker.jpg" alt="Sponsor 2"></div>
+                    <div class="swiper-slide"><img src="img/logos/organon-vector-logo.svg" alt="Sponsor 3"></div>
+                    <div class="swiper-slide"><img src="img/logos/logo_vsf-fahrradmanufaktur.jpg" alt="Sponsor 4"></div>
+                    <div class="swiper-slide"><img src="img/logos/sea_to_summit_logo.png" alt="Sponsor 5"></div>
+                    <div class="swiper-slide"><img src="img/logos/extrawheel-logo.jpg" alt="Sponsor 6"></div>
+                    <div class="swiper-slide"><img src="img/logos/msr-logo.png" alt="Sponsor 7"></div>
+                    <div class="swiper-slide"><img src="img/logos/Logos-ortlieb.jpg" alt="Sponsor 8"></div>
                 </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </section>
 
+
         <section class="cta-section">
             <h2>Join the Journey</h2>
-            <p>Follow along on social media and support our mission</p>
+            <p>Follow along on social media and support my mission</p>
             <a href="#contact" class="cta-button">Get Involved</a>
         </section>
     </main>
@@ -133,6 +138,9 @@
                 <a href="mailto:info@brusselscapetown.com" aria-label="Send us an email">
                     <i class="fa-solid fa-square-envelope"></i>
                 </a>
+            </div>
+            <div>
+                <p>Designed by <strong>Mathis Angellier</strong></p>
             </div>
         </div>
     </footer>
