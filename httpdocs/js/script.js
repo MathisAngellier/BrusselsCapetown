@@ -50,4 +50,40 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
+
+  const heroOverlay = document.querySelector(".hero-overlay");
+  const images = [
+    "img/DJI_0517-min-scaled 1.jpg",
+    "img/DJI_0558-min-scaled 1.jpg",
+    "img/IMG_20180128_103822 1.jpg",
+    "img/Namibie.jpg",
+    "img/IMG_20221109_152708 1.jpg",
+  ];
+
+  let currentIndex = 0;
+  let nextIndex = 1;
+
+  heroOverlay.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+  function changeBackground() {
+    const fadingLayer = document.createElement("div");
+    fadingLayer.classList.add("fade-layer");
+    fadingLayer.style.backgroundImage = `url('${images[nextIndex]}')`;
+    heroOverlay.appendChild(fadingLayer);
+
+    // Add the "active" class to trigger the fade-in effect
+    setTimeout(() => {
+      fadingLayer.classList.add("active");
+    }, 50);
+
+    // Remove old background after transition
+    setTimeout(() => {
+      heroOverlay.style.backgroundImage = `url('${images[nextIndex]}')`;
+      heroOverlay.removeChild(fadingLayer);
+      currentIndex = nextIndex;
+      nextIndex = (nextIndex + 1) % images.length;
+    }, 1600);
+  }
+
+  setInterval(changeBackground, 3500);
 });

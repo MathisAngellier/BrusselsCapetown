@@ -18,6 +18,7 @@ nav {
 header {
   position: sticky;
   top: 0;
+  z-index: 2000;
 }
 
 .navbar {
@@ -104,36 +105,60 @@ header {
 }
 
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/sunset.JPG");
+  position: relative;
+  width: 100%;
+  height: 35rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  color: white;
-  padding: 8rem 2rem;
-  text-align: center;
-  background-attachment: fixed;
-  height: 35rem;
+}
+
+/* Fading Layer */
+.fade-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+.fade-layer.active {
+  opacity: 1;
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  text-transform: uppercase;
+  background-color: rgba(33, 31, 31, 0.644);
+  border-radius: 6px;
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-transform: uppercase;
-  font-family: "Raleway", serif;
-  font-weight: 400;
-  letter-spacing: 2px;
-  word-spacing: 5px;
-  padding-top: 2rem;
 }
 
 .hero p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   max-width: 800px;
   margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  line-height: 1.6;
 }
 
 .journey-stats {
@@ -191,8 +216,8 @@ header {
 .cta-section {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: #828282;
-  color: white;
+  background-color: #fff;
+  color: #666;
 }
 
 .cta-section h2 {
@@ -281,7 +306,7 @@ header {
 }
 
 footer {
-  background-color: #f39027;
+  background-color: #54585a;
   color: white;
   padding: 1rem;
   margin-top: auto;
@@ -330,50 +355,8 @@ footer {
   transform: translateY(-3px);
 }
 
-/* Added styles for mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    padding: 0;
-  }
-
-  .logo {
-    padding: 0.5rem;
-    justify-content: center;
-  }
-
-  .dropdown-content {
-    position: static;
-    width: 100%;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .mission-section {
-    grid-template-columns: 1fr;
-  }
-
-  .navbar a,
-  .dropdown .dropbtn {
-    width: 100%;
-    text-align: left;
-  }
-
-  .social {
-    gap: 1.5rem;
-  }
+#designed {
+  font-size: 0.8rem;
 }
 
 /* Animation for dropdown */
