@@ -1,69 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const dropdowns = document.querySelectorAll(".dropdown");
-
-  // Handle keyboard navigation
-  dropdowns.forEach((dropdown) => {
-    const dropbtn = dropdown.querySelector(".dropbtn");
-    const dropdownContent = dropdown.querySelector(".dropdown-content");
-    const links = dropdownContent.querySelectorAll("a");
-    dropbtn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
-      }
-    });
-  });
-
-  var swiper = new Swiper("#client-carousel", {
-    loop: true,
-    speed: 800,
-    slidesPerView: "auto",
-    preventInteractionOnTransition: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      480: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 6,
-        spaceBetween: 20,
-      },
-    },
-  });
-
   const heroOverlay = document.querySelector(".hero-overlay");
   const images = [
     "img/DJI_0517-min-scaled 1.jpg",
     "img/DJI_0558-min-scaled 1.jpg",
     "img/IMG_20180128_103822 1.jpg",
-    "img/Namibie.jpg",
+    "img/Namibie3.jpg",
     "img/IMG_20221109_152708 1.jpg",
   ];
 
-  let currentIndex = 0;
+  let currIndex = 0;
   let nextIndex = 1;
 
-  heroOverlay.style.backgroundImage = `url('${images[currentIndex]}')`;
+  heroOverlay.style.backgroundImage = `url('${images[currIndex]}')`;
 
   function changeBackground() {
     const fadingLayer = document.createElement("div");
@@ -80,10 +28,114 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       heroOverlay.style.backgroundImage = `url('${images[nextIndex]}')`;
       heroOverlay.removeChild(fadingLayer);
-      currentIndex = nextIndex;
+      currIndex = nextIndex;
       nextIndex = (nextIndex + 1) % images.length;
     }, 1600);
   }
 
   setInterval(changeBackground, 3500);
+
+  const trackContainer = document.querySelector(".carousel-track-container");
+  const track = document.getElementById("sponsor-carousel");
+  const slides = Array.from(track.getElementsByClassName("carousel-slide"));
+  const nextButton = document.querySelector(".button-next");
+  const prevButton = document.querySelector(".button-prev");
+  let currentIndex = 0;
+  let slideInterval;
+
+  // Clone only enough slides for continuous scrolling
+  // We need at least 6 more slides to maintain the illusion of infinite scrolling
+  for (let i = 0; i < 6; i++) {
+    const clone = slides[i % slides.length].cloneNode(true);
+    track.appendChild(clone);
+  }
+
+  // Calculate slide width based on container width
+  function getSlideWidth() {
+    const containerWidth = trackContainer.getBoundingClientRect().width;
+    return containerWidth / 6; // 6 slides visible at a time
+  }
+
+  // Set initial position
+  function updateCarousel() {
+    const slideWidth = getSlideWidth();
+    track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+  }
+
+  // Next slide function
+  function nextSlide() {
+    const slideWidth = getSlideWidth();
+    currentIndex++;
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+
+    // If we've reached close to the end of original slides, reset to the beginning after transition
+    if (currentIndex >= slides.length) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        currentIndex = 0;
+        track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+      }, 500);
+    }
+  }
+
+  // Previous slide function
+  function prevSlide() {
+    const slideWidth = getSlideWidth();
+    currentIndex--;
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+
+    // If we're at the beginning, jump to the end
+    if (currentIndex < 0) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        currentIndex = slides.length - 1;
+        track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+      }, 500);
+    }
+  }
+
+  // Initialize auto-scroll
+  function startAutoScroll() {
+    slideInterval = setInterval(nextSlide, 3000);
+  }
+
+  // Stop auto-scroll on user interaction
+  function stopAutoScroll() {
+    clearInterval(slideInterval);
+  }
+
+  // Event listeners
+  nextButton.addEventListener("click", () => {
+    stopAutoScroll();
+    nextSlide();
+    startAutoScroll();
+  });
+
+  prevButton.addEventListener("click", () => {
+    stopAutoScroll();
+    prevSlide();
+    startAutoScroll();
+  });
+
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    // Stop transition during resize
+    track.style.transition = "none";
+    updateCarousel();
+
+    // Resume transition after a short delay
+    setTimeout(() => {
+      track.style.transition = "transform 0.5s ease";
+    }, 50);
+  });
+
+  // Initialize
+  updateCarousel();
+  startAutoScroll();
+
+  // Pause autoplay when hovering
+  track.addEventListener("mouseenter", stopAutoScroll);
+  track.addEventListener("mouseleave", startAutoScroll);
 });

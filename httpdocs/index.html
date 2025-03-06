@@ -13,7 +13,6 @@
     <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
 </head>
 
 <body>
@@ -24,17 +23,17 @@
                     <a href="index.html"><img src="img/Logo (petit format + vélo).jpg" alt="Brussels CapeTown Logo"></a>
                 </div>
                 <div class="nav-links">
-                    <a href="#home">HOME</a>
+                    <a href="index.html">HOME</a>
                     <div class="dropdown">
                         <a href="#project" class="dropbtn">PROJECT</a>
                         <div class="dropdown-content">
                             <a href="#charities" class="sub-menu">CHARITIES</a>
-                            <a href="#why-touring" class="sub-menu">WHY BICYCLE TOURING</a>
+                            <a href="views/bicycle.html" class="sub-menu">WHY BICYCLE TOURING</a>
                         </div>
                     </div>
                     <a href="#about">ABOUT ME</a>
                     <div class="dropdown">
-                        <a href="#itinerary" class="dropbtn">ROUTE</a>
+                        <a href="views/route.html" class="dropbtn">ROUTE</a>
                         <div class="dropdown-content">
                             <a href="#countries" class="sub-menu">COUNTRIES</a>
                         </div>
@@ -51,14 +50,14 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1>Brussels to Cape Town by Bicycle</h1>
-                <p>An extraordinary journey of MINIMUM 13000 km across two continents, connecting cultures and raising
+                <p>An extraordinary journey of MINIMUM 14000 km across two continents, connecting cultures and raising
                     awareness for humanitarian causes</p>
             </div>
         </section>
 
         <section class="journey-stats">
             <div class="stat-card">
-                <div class="stat-number">13 000</div>
+                <div class="stat-number">14 000</div>
                 <div>Kilometers</div>
             </div>
             <div class="stat-card">
@@ -78,14 +77,14 @@
         <section class="content-section mission-section">
             <div class="mission-text">
                 <h2>The Mission</h2>
-                <p>From the heart of Europe to the southern tip of Africa, this solo cycling expedition aims to bring
+                <p>From the capital of Europe to the southern tip of Africa, this solo cycling expedition aims to bring
                     cultures closer together, raise awareness of humanitarian causes, and inspire others to chase their
                     dreams. Through this journey, I hope to support local charities and highlight the diverse
                     communities and landscapes along the way.</p>
             </div>
             <div class="mission-image">
                 <img src="img/brusselscapetown.png" alt="Cyclist on a journey" style="max-width: 100%; height: 400px;">
-                <!-- <video src="video/logo-animation.mp4" controls style="height: 300px;" max-width="100%"></video> -->
+
             </div>
 
         </section>
@@ -99,34 +98,56 @@
                 humid savannas of West Africa, and much more.
             </p>
         </section>
-
-        <section class="content-section">
-            <div id="client-carousel" class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="img/logos/luxury-african-experiences.png" alt="Sponsor 1"></div>
-                    <div class="swiper-slide"><img src="img/logos/Joker.png" alt="Sponsor 2"></div>
-                    <div class="swiper-slide"><img src="img/logos/organon-vector-logo.svg" alt="Sponsor 3"></div>
-                    <div class="swiper-slide"><img src="img/logos/logo_vsf-fahrradmanufaktur.jpg" alt="Sponsor 4"></div>
-                    <div class="swiper-slide"><img src="img/logos/sea_to_summit_logo.png" alt="Sponsor 5"></div>
-                    <div class="swiper-slide"><img src="img/logos/extrawheel-logo.jpg" alt="Sponsor 6"></div>
-                    <div class="swiper-slide"><img src="img/logos/msr-logo.png" alt="Sponsor 7"></div>
-                    <div class="swiper-slide"><img src="img/logos/Logos-ortlieb.jpg" alt="Sponsor 8"></div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-
-        <section class="cta-section">
+        <!-- <section class="cta-section">
             <h2>Join the Journey</h2>
             <p>Follow along on social media and support my mission</p>
             <a href="#contact" class="cta-button">Get Involved</a>
+        </section> -->
+        <section class="sponsor-section">
+            <h2>My partners & supports</h2>
+            <div class="carousel-container">
+                <button class="carousel-button button-prev">&#10094;</button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="sponsor-carousel">
+                        <div class="carousel-slide"><img src="img/logos/logo-joker.png" alt="joker" class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/Organon.png" alt="Organon" class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/LuxuryAfricaExperiences.png"
+                                alt="LuxuryAfricaExperiences" class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/FahrradManufaktur.png" alt="FahrradManufaktur"
+                                class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/SeaToSummit.png" alt="SeaToSummit"
+                                class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/Extrawheel.png" alt="Extrawheel"
+                                class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/msr-logo.png" alt="MSR" class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/Ortlieb.png" alt="Ortlieb" class="logoImg">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button button-next">&#10095;</button>
+            </div>
+
         </section>
+
     </main>
     <footer>
         <div class="footer-content">
+            <div class="newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to receive first-hand information and stories.</p>
+                <form action="https://formspree.io/f/meoqbawg" method="POST">
+                    <div class="form_group">
+                        <input required="" class="" type="email" value="" name="email" placeholder="Email Address">
+                        <input type="submit" class="" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+
             <div class="social">
                 <a href="https://www.instagram.com/brusselscapetown/" target="_blank"
                     aria-label="Follow us on Instagram">
@@ -143,7 +164,7 @@
                     <i class="fa-solid fa-square-envelope"></i>
                 </a>
             </div>
-            <div>
+            <div class="footer-note">
                 <p id="designed">&copy 2025 - Created and designed by <strong>Mathis Angellier</strong> </p>
             </div>
         </div>
