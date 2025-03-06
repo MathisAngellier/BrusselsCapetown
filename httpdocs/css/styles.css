@@ -333,7 +333,7 @@ header {
 footer {
   background-color: #54585a;
   color: white;
-  padding: 2rem 0;
+  padding: 3rem 0;
   margin-top: 3rem;
 }
 
@@ -399,6 +399,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-top: -2rem;
 }
 
 .social a {
