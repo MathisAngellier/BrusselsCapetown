@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../brusselscapetown.png" type="image/icon">
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Route</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/route.css">
+    <link rel="stylesheet" href="../css/about.css">
     <script src="../js/script.js" defer></script>
-    <script src="../js/route.js" defer></script>
+    <script src="../js/about.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 </head>
 
 <body>
@@ -36,9 +38,10 @@
                     </div>
                     <a href="about.html">ABOUT ME</a>
                     <div class="dropdown">
-                        <a href="route.html" class="dropbtn">ROUTE</a>
+                        <a href="countries.html" class="dropbtn">COUNTRIES</a>
                         <div class="dropdown-content">
-                            <a href="countries.html" class="sub-menu">COUNTRIES</a>
+                            <a href="route.html" class="sub-menu">ROUTE</a>
+                            <a href="visa.html" class="sub-menu">VISA</a>
                         </div>
                     </div>
                     <a href="equipment.html">EQUIPMENT</a>
@@ -48,8 +51,69 @@
             </div>
         </nav>
     </header>
-    <main>
 
+    <main class="main-wrapper">
+        <div class="section">
+            <div class="container-medium">
+
+            </div>
+        </div>
+
+        <div class="scroll-section vertical-section section">
+            <div class="wrapper">
+                <div role="list" class="list">
+                    <div role="listitem" class="item">
+                        <div class="item_content">
+
+                            <h2>Wildlife in Action: A Glimpse into Nature’s Daily Drama</h2>
+                            <p class="item_p">
+                                Witness the fascinating lives of animals in their natural
+                                habitats, from playful cubs to stealthy predators.
+                            </p>
+                        </div>
+                        <video src="../video/AboutMe - Part1.mp4" loading="lazy" autoplay muted loop
+                            class="item_media"></video>
+                    </div>
+                    <div role="listitem" class="item">
+                        <div class="item_content">
+
+                            <h2>The Changing Seasons: Nature’s Everlasting Cycle</h2>
+                            <p class="item_p">
+                                Experience the beauty of nature's transitions, from blooming
+                                spring flowers to snowy winter landscapes.
+                            </p>
+                        </div>
+                        <video src="../video/AboutMe - Part1 (2).mp4" loading="lazy" autoplay muted loop
+                            class="item_media"></video>
+                    </div>
+                    <div role="listitem" class="item">
+                        <div class="item_content">
+
+                            <h2>Guardians of Nature: Protecting Our Planet’s Future</h2>
+                            <p class="item_p">
+                                Learn about the importance of conservation and how we can work
+                                together to preserve the beauty of nature for generations to
+                                come.
+                            </p>
+                        </div>
+                        <video src="../video/AboutMe - Part1 (3).mp4" loading="lazy" autoplay muted loop
+                            class="item_media"></video>
+                    </div>
+                    <div role="listitem" class="item">
+                        <div class="item_content">
+
+                            <h2>Astral Aesthetics: Portraits from the Infinite</h2>
+                            <p class="item_p">
+                                Experience the boundless beauty of the cosmos through striking
+                                portraits that capture its infinite aesthetic appeal.
+                            </p>
+                        </div>
+                        <video src="https://videos.pexels.com/video-files/2871916/2871916-hd_1920_1080_30fps.mp4"
+                            loading="lazy" autoplay muted loop class="item_media"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="footer-content">

@@ -1,0 +1,90 @@
+.countries-select-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.countries-select-section h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 60px; /* Added padding for arrows */
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  background-color: #dedede;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%; /* Ensure the track takes up only the available width */
+}
+
+.carousel-slide {
+  flex: 0 0 20%; /* Fixed width for each slide - exactly 1/6 */
+  max-width: 20%; /* Ensure slides don't grow larger */
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  cursor: pointer;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button-prev {
+  left: 0; /* Moved further out */
+}
+
+.button-next {
+  right: 0; /* Moved further out */
+}
+
+/* For placeholder images */
+.flagVideo {
+  width: 150px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 5px;
+}
+
+.selected-country-section {
+  max-width: 1200px;
+  margin: 30px auto;
+  text-align: center;
+}

@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/route.css">
+    <link rel="stylesheet" href="../css/countries.css">
     <script src="../js/script.js" defer></script>
-    <script src="../js/route.js" defer></script>
+    <script src="../js/country.js" defer></script>
 </head>
 
 <body>
@@ -36,9 +36,10 @@
                     </div>
                     <a href="about.html">ABOUT ME</a>
                     <div class="dropdown">
-                        <a href="route.html" class="dropbtn">ROUTE</a>
+                        <a href="countries.html" class="dropbtn">COUNTRIES</a>
                         <div class="dropdown-content">
-                            <a href="countries.html" class="sub-menu">COUNTRIES</a>
+                            <a href="route.html" class="sub-menu">ROUTE</a>
+                            <a href="visa.html" class="sub-menu">VISA</a>
                         </div>
                     </div>
                     <a href="equipment.html">EQUIPMENT</a>
@@ -49,7 +50,77 @@
         </nav>
     </header>
     <main>
+        <section class="hero">
+            <video src="../video/Opener Countries.mp4" autoplay muted loop="false"></video>
+        </section>
 
+        <section class="countries-select-section">
+            <h2>Countries</h2>
+            <div class="carousel-container">
+                <button class="carousel-button button-prev">&#10094;</button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="countries-select-carousel">
+                        <div class="carousel-slide"><a href="/"><video src="../video/Flags/Belgium.mp4"
+                                    class="flagVideo" muted loop="false"></video></a>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/France.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Spain.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Morocco.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Western Sahara.mp4" class="flagVideo"
+                                muted loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Mauritania.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Senegal.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+
+                        <div class="carousel-slide"><video src="../video/Flags/Guinea.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Sierra Leone.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Liberia.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Ivory Coast.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Ghana.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Togo.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/Namibia.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                        <div class="carousel-slide"><video src="../video/Flags/South Africa.mp4" class="flagVideo" muted
+                                loop="false"></video>
+                        </div>
+                    </div>
+                    <button class="carousel-button button-next">&#10095;</button>
+                </div>
+            </div>
+        </section>
+        <section class="selected-country-section">
+
+            <div class="selected-country">
+                <div class="country-info">
+                    <h2 id="country-name">Country Name</h2>
+                    <p id="country-description">Description of the selected country will appear here.</p>
+                </div>
+            </div>
+
+        </section>
     </main>
     <footer>
         <div class="footer-content">
