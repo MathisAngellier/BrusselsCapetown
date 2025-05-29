@@ -7,117 +7,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Selected country section elements
   const countryNameElement = document.getElementById("country-name");
-  const countryDescriptionElement = document.getElementById("country-description");
+  const countryOverviewElement = document.getElementById("country-overview");
+  const countryClimateElement = document.getElementById("country-climate");
+  const countryDocumentsElement = document.getElementById("country-documents");
+  const countryLanguageElement = document.getElementById("country-language-currency");
+  const countryCustomsElement = document.getElementById("country-customs");
+  const countryVaccinationsElement = document.getElementById("country-vaccinations");
+  const countrySourcesElement = document.getElementById("country-sources");
+  const emergencyNumbersList = document.querySelector(".emergency-numbers");
+  const hospitalsList = document.querySelector(".hospitals");
+  const embassiesList = document.querySelector(".embassies");
 
   let currentIndex = 0;
   let selectedCountryIndex = 0; // Belgium is default (index 0)
-  let slideInterval;
   let allSlides = []; // Will include original + cloned slides
+  const countries = []; // Country data array
 
-  // Country data
-  const countries = [
-    {
-      name: "Belgium",
-      video: "../video/Flags/Belgium.mp4",
-      description:
-        "Belgium is the starting point of this incredible journey. Known for its medieval towns, Renaissance architecture, and as headquarters of the European Union and NATO. Famous for chocolate, waffles, and beer.",
-    },
-    {
-      name: "France",
-      video: "../video/Flags/France.mp4",
-      description:
-        "France offers diverse landscapes from the Mediterranean coast to the Pyrenees mountains. Rich in culture, cuisine, and history, it's a cyclist's paradise with varied terrain and excellent infrastructure.",
-    },
-    {
-      name: "Spain",
-      video: "../video/Flags/Spain.mp4",
-      description:
-        "Spain provides warm hospitality and stunning coastlines. From the Camino de Santiago to Andalusian villages, Spain offers rich cultural experiences and delicious cuisine for the traveling cyclist.",
-    },
-    {
-      name: "Morocco",
-      video: "../video/Flags/Morocco.mp4",
-      description:
-        "Morocco marks the entrance into Africa. A land of contrasts with bustling souks, Atlas Mountains, and the Sahara Desert. Experience Berber culture, mint tea, and incredible landscapes.",
-    },
-    {
-      name: "Western Sahara",
-      video: "../video/Flags/Western Sahara.mp4",
-      description:
-        "Western Sahara presents vast desert landscapes and unique challenges. This territory offers solitude and stark beauty as the journey continues deeper into Africa.",
-    },
-    {
-      name: "Mauritania",
-      video: "../video/Flags/Mauritania.mp4",
-      description:
-        "Mauritania bridges Arab and sub-Saharan Africa. Experience nomadic culture, ancient trading cities, and the transition from desert to savanna landscapes.",
-    },
-    {
-      name: "Senegal",
-      video: "../video/Flags/Senegal.mp4",
-      description:
-        "Senegal welcomes with vibrant culture, music, and friendly people. Dakar's energy and the country's rich history make it a memorable stop on the African continent.",
-    },
-    {
-      name: "Guinea",
-      video: "../video/Flags/Guinea.mp4",
-      description:
-        "Guinea features lush highlands and diverse ecosystems. Known as the 'Water Tower of West Africa', it offers beautiful landscapes and rich mineral resources.",
-    },
-    {
-      name: "Sierra Leone",
-      video: "../video/Flags/Sierra Leone.mp4",
-      description:
-        "Sierra Leone boasts beautiful beaches and resilient people. Despite past challenges, the country offers incredible natural beauty and warm hospitality.",
-    },
-    {
-      name: "Liberia",
-      video: "../video/Flags/Liberia.mp4",
-      description:
-        "Liberia, Africa's oldest republic, offers dense rainforests and unique history. Founded by freed American slaves, it provides fascinating cultural perspectives.",
-    },
-    {
-      name: "Ivory Coast",
-      video: "../video/Flags/Ivory Coast.mp4",
-      description:
-        "Ivory Coast (Côte d'Ivoire) is known for cocoa production and diverse landscapes. From coastal lagoons to northern savannas, it offers varied cycling experiences.",
-    },
-    {
-      name: "Ghana",
-      video: "../video/Flags/Ghana.mp4",
-      description:
-        "Ghana, the 'Gateway to Africa', offers rich history and stable democracy. Visit ancient castles, vibrant markets, and experience the warmth of Ghanaian hospitality.",
-    },
-    {
-      name: "Togo",
-      video: "../video/Flags/Togo.mp4",
-      description:
-        "Togo is a narrow country with diverse geography from coast to mountains. Experience voodoo culture, German colonial architecture, and friendly local communities.",
-    },
-    {
-      name: "Namibia",
-      video: "../video/Flags/Namibia.mp4",
-      description:
-        "Namibia offers some of the world's most spectacular desert landscapes. From the Namib Desert to Etosha National Park, it's a photographer's and adventurer's dream.",
-    },
-    {
-      name: "South Africa",
-      video: "../video/Flags/South Africa.mp4",
-      description:
-        "South Africa is the final destination - Cape Town! Experience diverse cultures, stunning landscapes, and the accomplishment of completing this epic journey across Africa.",
-    },
-  ];
+  // Fetch country data and initialize everything
+  fetch("../data/countries_en.json")
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle both array format and object format
+      const countryData = Array.isArray(data) ? data : data.countries || [];
+      countries.push(...countryData);
 
-  // Clone slides for infinite scrolling - add more clones for better infinite effect
-  // We need enough clones to handle the positioning
-  const totalClones = countries.length * 2; // Double the original set
-  for (let i = 0; i < totalClones; i++) {
-    const clone = slides[i % slides.length].cloneNode(true);
-    track.appendChild(clone);
+      // Initialize the carousel with the fetched country data
+      initializeCarousel();
+    })
+    .catch((error) => {
+      console.error("Error fetching country data:", error);
+      // Initialize with empty data to prevent crashes
+      initializeCarousel();
+    });
+
+  // Initialize carousel function
+  function initializeCarousel() {
+    if (countries.length === 0) {
+      console.warn("No country data available");
+      return;
+    }
+
+    // Clone slides for infinite scrolling
+    const totalClones = countries.length * 2;
+    for (let i = 0; i < totalClones; i++) {
+      const clone = slides[i % slides.length].cloneNode(true);
+      track.appendChild(clone);
+    }
+
+    // Update allSlides array to include clones
+    allSlides = Array.from(track.getElementsByClassName("carousel-slide"));
+
+    // Add click event listeners to all slides
+    addClickListeners();
+
+    // Set initial position to center Belgium (first country)
+    currentIndex = countries.length - 2;
+    updateCarousel();
+    selectCountry(0); // Select Belgium/first country as default
   }
-
-  // Update allSlides array to include clones
-  allSlides = Array.from(track.getElementsByClassName("carousel-slide"));
 
   // Add click event listeners to all slides (including clones)
   function addClickListeners() {
@@ -131,20 +78,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Center the clicked slide
         centerSlide(index);
-
-        // Restart auto-scroll after interaction
       });
     });
   }
 
   // Function to select and display country information
   function selectCountry(countryIndex) {
+    if (!countries[countryIndex]) return;
+
     selectedCountryIndex = countryIndex;
     const country = countries[countryIndex];
 
     // Update selected country display
-    countryNameElement.textContent = country.name;
-    countryDescriptionElement.textContent = country.description;
+    if (countryNameElement) countryNameElement.textContent = country.name || "";
+
+    // Handle different data structures
+    if (country.details) {
+      // Detailed structure
+      if (countryOverviewElement) countryOverviewElement.textContent = country.details.overview || "";
+      if (countryClimateElement) countryClimateElement.textContent = country.details.climate?.content || "";
+      if (countryDocumentsElement) countryDocumentsElement.textContent = country.details.documents?.content || "";
+      if (countryLanguageElement) countryLanguageElement.textContent = country.details.language?.content || "";
+      if (countryCustomsElement) countryCustomsElement.textContent = country.details.customs?.content || "";
+      if (countryVaccinationsElement) countryVaccinationsElement.textContent = country.details.health?.content || "";
+      if (countrySourcesElement) countrySourcesElement.textContent = country.details.sources?.content || "";
+
+      // Handle emergency information
+      populateEmergencyInfo(country.details.emergency);
+    } else {
+      // Simple structure (fallback)
+      if (countryOverviewElement) countryOverviewElement.textContent = country.description || "";
+      // Clear other fields if no detailed data
+      clearDetailedFields();
+    }
 
     // Stop all videos first
     stopAllVideos();
@@ -154,6 +120,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add visual selection indicator
     updateVisualSelection(countryIndex);
+  }
+
+  // Function to populate emergency information
+  function populateEmergencyInfo(emergencyData) {
+    if (!emergencyData) {
+      clearEmergencyInfo();
+      return;
+    }
+
+    // Clear existing content
+    if (emergencyNumbersList) emergencyNumbersList.innerHTML = "";
+    if (hospitalsList) hospitalsList.innerHTML = "";
+    if (embassiesList) embassiesList.innerHTML = "";
+
+    // Populate emergency numbers
+    if (emergencyData.emergencyNumbers && emergencyNumbersList) {
+      emergencyData.emergencyNumbers.forEach((item) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${item.service}:</strong> ${item.numbers.join(", ")}`;
+        emergencyNumbersList.appendChild(li);
+      });
+    }
+
+    // Populate hospitals
+    if (emergencyData.hospitals && hospitalsList) {
+      emergencyData.hospitals.forEach((hospital) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${hospital.name}</strong> (${hospital.location})<br>${hospital.description}`;
+        hospitalsList.appendChild(li);
+      });
+    }
+
+    // Populate embassies
+    if (emergencyData.embassiesAndInstitutions && embassiesList) {
+      emergencyData.embassiesAndInstitutions.forEach((institution) => {
+        const li = document.createElement("li");
+        let content = `<strong>${institution.name}</strong> (${institution.type})<br>`;
+
+        if (institution.address) content += `Address: ${institution.address}<br>`;
+        if (institution.addresses) content += `Addresses: ${institution.addresses.join(", ")}<br>`;
+        if (institution.phone) content += `Phone: ${institution.phone.join(", ")}<br>`;
+        if (institution.phones) content += `Phones: ${institution.phones.join(", ")}<br>`;
+        if (institution.emails) content += `Emails: ${institution.emails.join(", ")}`;
+
+        li.innerHTML = content;
+        embassiesList.appendChild(li);
+      });
+    }
+  }
+
+  // Function to clear detailed fields
+  function clearDetailedFields() {
+    if (countryClimateElement) countryClimateElement.textContent = "";
+    if (countryDocumentsElement) countryDocumentsElement.textContent = "";
+    if (countryLanguageElement) countryLanguageElement.textContent = "";
+    if (countryCustomsElement) countryCustomsElement.textContent = "";
+    if (countryVaccinationsElement) countryVaccinationsElement.textContent = "";
+    if (countrySourcesElement) countrySourcesElement.textContent = "";
+    clearEmergencyInfo();
+  }
+
+  // Function to clear emergency information
+  function clearEmergencyInfo() {
+    if (emergencyNumbersList) emergencyNumbersList.innerHTML = "";
+    if (hospitalsList) hospitalsList.innerHTML = "";
+    if (embassiesList) embassiesList.innerHTML = "";
   }
 
   // Function to add visual selection indicators
@@ -192,9 +224,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to get the middle country index based on current carousel position
   function getMiddleCountryIndex() {
-    // Middle slide is at position currentIndex + 2 (since we show 5 slides, middle is the 3rd one)
+    if (countries.length === 0) return 0;
     const middleSlideIndex = currentIndex + 2;
-    // Convert to country index (handle wrap-around)
     return middleSlideIndex % countries.length;
   }
 
@@ -209,6 +240,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to play specific country video
   function playCountryVideo(countryIndex) {
+    if (countries.length === 0) return;
+
     // Find all slides with this country (original + clones)
     const targetVideos = [];
     allSlides.forEach((slide, index) => {
@@ -228,8 +261,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to center a specific slide
   function centerSlide(slideIndex) {
+    if (countries.length === 0) return;
+
     const slideWidth = getSlideWidth();
-    // Calculate position to center the slide (show 2 slides on each side)
     const centerPosition = slideIndex - 2;
 
     currentIndex = centerPosition;
@@ -240,7 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       const totalSlides = allSlides.length;
       if (currentIndex >= totalSlides - 5) {
-        // Near the end
         track.style.transition = "none";
         currentIndex = countries.length + (currentIndex % countries.length);
         track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
@@ -266,12 +299,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set initial position
   function updateCarousel() {
+    if (countries.length === 0) return;
+
     const slideWidth = getSlideWidth();
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
   }
 
-  // Next slide function - UPDATED to auto-select middle country
+  // Next slide function
   function nextSlide() {
+    if (countries.length === 0) return;
+
     const slideWidth = getSlideWidth();
     currentIndex++;
     track.style.transition = "transform 0.5s ease";
@@ -281,17 +318,15 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       const middleCountryIndex = getMiddleCountryIndex();
       selectCountry(middleCountryIndex);
-    }, 250); // Half of transition time for smoother experience
+    }, 250);
 
     // Handle infinite scroll reset
     const totalSlides = allSlides.length;
     if (currentIndex >= totalSlides - 5) {
-      // Near the end
       setTimeout(() => {
         track.style.transition = "none";
         currentIndex = countries.length + (currentIndex % countries.length);
         track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-        // Update selection after reset
         setTimeout(() => {
           const middleCountryIndex = getMiddleCountryIndex();
           selectCountry(middleCountryIndex);
@@ -300,8 +335,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Previous slide function - UPDATED to auto-select middle country
+  // Previous slide function
   function prevSlide() {
+    if (countries.length === 0) return;
+
     const slideWidth = getSlideWidth();
     currentIndex--;
     track.style.transition = "transform 0.5s ease";
@@ -311,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       const middleCountryIndex = getMiddleCountryIndex();
       selectCountry(middleCountryIndex);
-    }, 250); // Half of transition time for smoother experience
+    }, 250);
 
     // Handle infinite scroll reset
     if (currentIndex < 0) {
@@ -319,7 +356,6 @@ document.addEventListener("DOMContentLoaded", function () {
         track.style.transition = "none";
         currentIndex = countries.length + currentIndex;
         track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-        // Update selection after reset
         setTimeout(() => {
           const middleCountryIndex = getMiddleCountryIndex();
           selectCountry(middleCountryIndex);
@@ -329,16 +365,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Event listeners for navigation buttons
-  nextButton.addEventListener("click", () => {
-    nextSlide();
-  });
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      nextSlide();
+    });
+  }
 
-  prevButton.addEventListener("click", () => {
-    prevSlide();
-  });
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      prevSlide();
+    });
+  }
 
   // Handle window resize
   window.addEventListener("resize", () => {
+    if (countries.length === 0) return;
+
     // Stop transition during resize
     track.style.transition = "none";
     updateCarousel();
@@ -347,15 +389,4 @@ document.addEventListener("DOMContentLoaded", function () {
       track.style.transition = "transform 0.5s ease";
     }, 50);
   });
-
-  // Initialize everything
-  addClickListeners();
-
-  // Set initial position to center Belgium with South Africa and Namibia on the left, France and Spain on the right
-  // With our cloning setup, Belgium appears at indices: 0, 15, 30, etc.
-  // We want Belgium (index 15 from the first clone set) in the center
-  // This will show: South Africa(14), Namibia(13), Belgium(15), France(16), Spain(17)
-  currentIndex = countries.length - 2; // This positions Belgium in the center
-  updateCarousel();
-  selectCountry(0); // Select Belgium as default
 });
