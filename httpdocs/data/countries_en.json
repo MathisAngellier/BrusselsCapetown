@@ -2,7 +2,87 @@
   "countries": [
     {
       "name": "Belgium",
-      "video": "../video/Flags/Belgium.mp4"
+      "video": "../video/Flags/Belgium.mp4",
+      "details": {
+        "overview": "Ghana, located in West Africa, is considered a pleasant and welcoming country, known for its political stability. Tourism is a growing industry in Ghana. From tropical forests to picturesque beaches, the country offers numerous opportunities to discover Africa through national parks, nature reserves, and villages. Accra, the largest city and capital of Ghana, is a dynamic city with bustling markets, historical monuments, and a vibrant nightlife. Accra is a rapidly expanding city, equipped with modern hotels, restaurants, and numerous museums.",
+        "climate": {
+          "title": "Climate",
+          "content": "Ghana is a country with many popular tourist destinations, each with its own climatic characteristics. The capital, Accra, enjoys a tropical savanna climate, with temperatures ranging between 25 and 30°C throughout the year. The rainy season extends from April to July, with heavy showers in June and July. Cape Coast, a coastal city, has the same climate as Accra, and its rainy season extends from May to September. Kumasi, the cultural capital of Ghana, has a tropical wet and dry climate with temperatures ranging from 20°C to 30°C, and its rainy season extends from April to October. Tamale, a city in the north of the country, enjoys a tropical wet and dry climate, with temperatures ranging between 25°C and 40°C, and its rainy season extends from May to October."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Passport valid for at least 6 months after the planned departure date from Ghana. Tourist visa required. Yellow fever vaccination certificate required for entry into Ghana. Other vaccines, such as those for hepatitis A and hepatitis B, are also recommended."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "content": "English is the official language of Ghana. However, it is not always the first language spoken. Local languages also include Ga, Twi, and Ewe. The currency of Ghana is the cedi (GHS). There are no restrictions on the import or export of foreign currencies. However, you must declare them upon arrival and convert them into cedis at a bank or exchange office. Upon arrival, you will receive a T-5 exchange control form. Otherwise, you must request it. You must record the amount of foreign currency you possess and log all transactions you make during your stay in the country. The T-5 form must show that the cedis obtained during your stay in Ghana come from an authorized intermediary permitted to operate in the foreign exchange market. It is illegal to conduct currency exchange transactions with private citizens. Keep this form carefully to avoid problems at the time of your departure. It is prohibited to export cedis. Before leaving the country, you must spend the remaining cedis or convert them into foreign currency."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Wearing military clothing or clothing with military elements is prohibited. Ghana is a conservative society. To avoid offending the locals: dress modestly, behave discreetly, respect social and religious traditions. It is forbidden to photograph installations that are of particular sensitivity. This includes, among others: military sites, government buildings, bridges, Accra International Airport. Authorities may ask you to present an ID at any time."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "The WHO recommends the following vaccines for Ghana: Hepatitis A, hepatitis B, typhoid, cholera, yellow fever, rabies, meningitis, polio, measles, mumps and rubella (MMR), tetanus, diphtheria and pertussis (Tdap), chickenpox, shingles, pneumonia, and influenza. Meningitis spreads in the region during the summer months. Vaccination against meningitis is the best form of protection against this potentially deadly disease. Malaria, dengue, and chikungunya are present in Ghana. Be sure to bring antimalarials, mosquito repellents, and mosquito nets to protect yourself during your stay."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["191", "999", "171"] },
+            { "service": "Firefighters", "numbers": ["192"] },
+            { "service": "Emergency Medical Services", "numbers": ["193"] },
+            { "service": "Ambulance", "numbers": ["193", "776111-5"] },
+            { "service": "Universal Emergency Number", "numbers": ["112"] }
+          ],
+          "hospitals": [
+            {
+              "name": "Korle Bu Teaching Hospital",
+              "location": "Accra",
+              "description": "One of the largest and most important hospitals in Ghana, offering a wide range of medical services."
+            },
+            {
+              "name": "Komfo Anokye Teaching Hospital",
+              "location": "Kumasi",
+              "description": "Another large teaching hospital that provides specialized care."
+            },
+            {
+              "name": "37 Military Hospital",
+              "location": "Accra",
+              "description": "A military hospital that also offers services to the public."
+            },
+            {
+              "name": "Cape Coast Teaching Hospital",
+              "location": "Cape Coast",
+              "description": "An important hospital in the central region."
+            }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy in Ghana",
+              "type": "Embassy",
+              "address": "4th Circular Road, Cantonments, Accra, Ghana",
+              "phone": ["+233 30 215 1000"]
+            },
+            {
+              "name": "Alliance Française in Ghana",
+              "type": "Cultural Institution",
+              "address": "Liberation Road, Accra, Ghana",
+              "emails": ["clientservice@afaccra.com", "clientservice2@afaccra.com"]
+            },
+            {
+              "name": "Lycée Français International Jacques Prévert",
+              "type": "School",
+              "addresses": ["6 Bathur Street, East Legon, Accra, Ghana", "PO BOX 1813, Cantonments, Accra, Ghana"],
+              "phones": ["+233 302 544 067", "+233 302 544 156", "+233 303 939 373", "+233 272 701 414"],
+              "emails": ["info@lfacra.com", "secretariaproviseur@lfaccra.com"]
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministry of Europe and Foreign Affairs – WHO – PHAC – ISTM – FPS – ISTM – Kafumel – Embassy of Ghana"
+        }
+      }
     },
     {
       "name": "France",
