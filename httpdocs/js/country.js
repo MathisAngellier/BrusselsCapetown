@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading countries:", error);
     });
 
+  // Replace your generateSlides function with this updated version
   function generateSlides() {
     if (!track || !countries || countries.length === 0) return;
 
@@ -67,10 +68,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set initial position (accounting for clones at start)
     currentIndex = clonesAtStart;
-    updateCarousel(false);
+    setTimeout(() => {
+      updateCarousel(false);
+      // Force autoplay for the initial slide after everything is set up
+      setTimeout(() => {
+        forceInitialAutoplay();
+      }, 200);
+    }, 100);
   }
 
-  function createSlide(country, originalIndex, isClone) {
+  function forceInitialAutoplay() {
+    const activeSlide = allSlides[currentIndex];
+    if (activeSlide) {
+      const activeVideo = activeSlide.querySelector("video");
+      if (activeVideo) {
+        // Set video properties to ensure autoplay works
+        activeVideo.muted = true;
+        activeVideo.loop = true;
+        activeVideo.playsInline = true;
+        activeVideo.currentTime = 0;
+
+        // Force play with multiple attempts
+        const attemptPlay = () => {
+          const playPromise = activeVideo.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                console.log("Initial video autoplay successful");
+              })
+              .catch((error) => {
+                console.log("Initial autoplay failed, retrying:", error);
+                // Retry after a short delay
+                setTimeout(() => {
+                  activeVideo.play().catch(() => {
+                    console.log("Retry also failed");
+                  });
+                }, 100);
+              });
+          }
+        };
+
+        attemptPlay();
+      }
+    }
+  }
+
+  function createSlide(country, originalIndex) {
     const slide = document.createElement("div");
     slide.className = "carousel-slide";
     slide.dataset.originalIndex = originalIndex;
@@ -78,20 +121,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const video = document.createElement("video");
     video.className = "flagVideo";
     video.src = country.video;
-    video.setAttribute("muted", "true");
-    video.setAttribute("loop", "true");
-    video.setAttribute("playsinline", "true");
+    video.muted = true; // Ensure it's muted
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = "auto"; // Preload the video
+
     flagElement = video;
 
     slide.appendChild(flagElement);
     track.appendChild(slide);
 
-    if (!isClone) {
-      slide.addEventListener("click", () => {
-        selectCountry(originalIndex);
-        centerSlide(originalIndex);
-      });
-    }
+    slide.addEventListener("click", () => {
+      selectCountry(originalIndex);
+      centerSlide(originalIndex);
+    });
   }
 
   function updateCarousel(animate = true) {
@@ -132,8 +175,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const activeVideo = activeSlide.querySelector("video");
       if (activeVideo) {
         activeVideo.currentTime = 0; // Reset to start
-        activeVideo.play().catch(() => {}); // Handle autoplay restrictions
+        playVideo(activeVideo);
       }
+    }
+  }
+
+  function playVideo(video) {
+    if (!video) return;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Wait for user gesture
+        document.body.addEventListener(
+          "click",
+          () => {
+            video.play().catch(() => {});
+          },
+          { once: true }
+        );
+      });
     }
   }
 
@@ -195,14 +256,49 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function centerSlide(countryIndex) {
-    // Find the slide with the matching country index that's not a clone
-    const targetSlideIndex = allSlides.findIndex((slide, index) => {
-      return parseInt(slide.dataset.originalIndex) === countryIndex && index >= 2 && index < allSlides.length - 2; // Avoid clones at start/end
+    // Find all slides with the matching country index
+    const matchingSlides = [];
+    allSlides.forEach((slide, index) => {
+      if (parseInt(slide.dataset.originalIndex) === countryIndex) {
+        matchingSlides.push(index);
+      }
     });
 
-    if (targetSlideIndex !== -1) {
-      currentIndex = targetSlideIndex;
-      updateCarousel();
+    if (matchingSlides.length === 0) return;
+
+    // Find the slide index that requires the shortest distance from current position
+    let bestIndex = matchingSlides[0];
+    let shortestDistance = Math.abs(matchingSlides[0] - currentIndex);
+
+    matchingSlides.forEach((slideIndex) => {
+      const distance = Math.abs(slideIndex - currentIndex);
+      if (distance < shortestDistance) {
+        shortestDistance = distance;
+        bestIndex = slideIndex;
+      }
+    });
+
+    currentIndex = bestIndex;
+    updateCarousel();
+
+    // Handle infinite scroll reset if needed
+    const totalSlides = allSlides.length;
+    const clonesAtStart = 2;
+    const clonesAtEnd = 2;
+
+    // If we're in the clone area at the end, reset to beginning
+    if (currentIndex >= totalSlides - clonesAtEnd) {
+      setTimeout(() => {
+        currentIndex = clonesAtStart + (currentIndex - (totalSlides - clonesAtEnd));
+        updateCarousel(false);
+      }, 500);
+    }
+    // If we're in the clone area at the start, reset to end
+    else if (currentIndex < clonesAtStart) {
+      setTimeout(() => {
+        currentIndex = totalSlides - clonesAtEnd - 1 - (clonesAtStart - 1 - currentIndex);
+        updateCarousel(false);
+      }, 500);
     }
   }
 
