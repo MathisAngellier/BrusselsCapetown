@@ -37,6 +37,10 @@
   cursor: pointer;
 }
 
+.carousel-slide.active {
+  transform: scale(1.3);
+}
+
 .carousel-button {
   position: absolute;
   top: 50%;
