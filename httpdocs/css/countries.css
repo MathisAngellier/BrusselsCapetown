@@ -5,11 +5,6 @@
   padding: 30px 0;
 }
 
-.countries-select-section h2 {
-  margin-bottom: 30px;
-  color: #333;
-}
-
 .carousel-container {
   position: relative;
   max-width: 90%;
@@ -72,7 +67,6 @@
   right: 0; /* Moved further out */
 }
 
-/* For placeholder images */
 .flagVideo {
   width: 150px;
   height: 80px;
@@ -83,24 +77,25 @@
   border-radius: 5px;
 }
 
-.selected-country-section {
+.country-details {
   max-width: 1200px;
   margin: 30px auto;
   text-align: center;
 }
 
-#country-name {
+#selected-country-name {
   font-size: 2rem;
   margin-bottom: 3rem;
   color: #333;
+  margin-top: 3rem;
 }
 
-.selected-country-section h2 {
+.country-details h3 {
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-.selected-country-section p {
+.country-details p {
   text-align: left;
   margin-bottom: 4rem;
   color: #666;
@@ -108,7 +103,7 @@
   line-height: 1.6;
 }
 
-.selected-country-section ul {
+.country-details ul {
   list-style: none;
   padding: 0;
   margin: 0 auto;
@@ -120,13 +115,8 @@
   gap: 0.3rem;
 }
 
-.selected-country-section ul li {
-  border-radius: 0.5rem;
-}
-
-.selected-country-section ul li strong {
-  font-weight: 600;
-  color: #222;
+.country-details ul li {
+  margin-bottom: 0.8rem;
 }
 
 .emergency h3 {
@@ -137,7 +127,7 @@
   padding-left: 0.5rem;
 }
 
-.sources {
+#country-sources-section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -147,8 +137,8 @@
   margin-top: 3rem;
 }
 
-.sources h3,
-.sources p {
+.country-sources-section h3,
+#country-sources {
   margin: 0;
   font-size: 0.9rem;
   color: #494646;

@@ -54,117 +54,77 @@
             <video src="../video/Opener Countries.mp4" autoplay muted loop="false"></video>
         </section>
 
-        <section class="countries-select-section">
+
+
+        <div class="countries-select-section">
             <h1>Crossed Countries</h1>
+
             <div class="carousel-container">
                 <button class="carousel-button button-prev">&#10094;</button>
                 <div class="carousel-track-container">
-                    <div class="carousel-track" id="countries-select-carousel">
-                        <div class="carousel-slide"><video src="../video/Flags/Belgium.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/France.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Spain.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Morocco.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Western Sahara.mp4" class="flagVideo"
-                                muted loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Mauritania.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Senegal.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Guinea.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Sierra Leone.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Liberia.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Ivory Coast.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Ghana.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Togo.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/Namibia.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
-                        <div class="carousel-slide"><video src="../video/Flags/South Africa.mp4" class="flagVideo" muted
-                                loop="false"></video>
-                        </div>
+                    <div class="carousel-track" id="countries-select-carousel"></div>
+                </div>
+                <button class="carousel-button button-next">&#10095;</button>
+            </div>
+
+            <div class="country-details" id="country-details">
+                <h2 id="selected-country-name"></h2>
+                <div class="country-section">
+                    <h3>Overview</h3>
+                    <p id="country-overview"></p>
+                </div>
+
+                <div class="country-section">
+                    <h3>Climate</h3>
+                    <p id="country-climate"></p>
+                </div>
+
+                <div class="country-section">
+                    <h3>Documents Required</h3>
+                    <p id="country-documents"></p>
+                </div>
+
+                <div class="country-section">
+                    <h3>Language</h3>
+                    <p id="country-language"></p>
+                </div>
+
+                <div class="country-section">
+                    <h3>Currency</h3>
+                    <p id="country-currency"></p>
+                </div>
+
+                <div class="country-section">
+                    <h3>Customs</h3>
+                    <p id="country-customs"></p>
+                </div>
+
+                <div class="country-section">
+                    <h3>Health & Vaccinations</h3>
+                    <p id="country-health"></p>
+                </div>
+
+                <div class="country-section emergency-section">
+                    <h3>Emergency Information</h3>
+                    <div>
+                        <!-- <h4>Emergency Numbers</h4> -->
+                        <ul class="emergency-numbers"></ul>
+
+                        <!-- <h4>Hospitals</h4> -->
+                        <ul class="hospitals"></ul>
+
+                        <!-- <h4>Embassies & Institutions</h4> -->
+                        <ul class="embassies"></ul>
                     </div>
-                    <button class="carousel-button button-next">&#10095;</button>
+                </div>
+
+                <div class="country-section" id="country-sources-section">
+                    <h3>Sources: </h3>
+                    <p id="country-sources"></p>
                 </div>
             </div>
-        </section>
-        <section class="selected-country-section">
-
-            <div class="selected-country">
-                <div class="country-info">
-                    <h1 id="country-name"></h1>
-                    <div class="overview">
-                        <p id="country-overview"></p>
-                    </div>
-                    <div class="climate">
-                        <h2>Climate</h2>
-                        <p id="country-climate"></p>
-                    </div>
-                    <div class="documents">
-                        <h2>Travel Documents</h2>
-                        <p id="country-documents"></p>
-                    </div>
-                    <div class="language-currency">
-                        <h2>Language & Currency</h2>
-                        <p id="country-language-currency"></p>
-                    </div>
-                    <div class="customs">
-                        <h2>Customs & Traditions</h2>
-                        <p id="country-customs"></p>
-                    </div>
-                    <div class="vaccinations">
-                        <h2>Vaccination & Health Risks</h2>
-                        <p id="country-vaccinations"></p>
-                    </div>
-                    <div class="emergency">
-                        <h2>Emergency Numbers & Useful Addresses</h2>
-                        <h3>Emergency Numbers</h3>
-                        <ul class="emergency-numbers">
-
-                        </ul>
-
-                        <h3>Hospitals</h3>
-                        <ul class="hospitals">
-
-                        </ul>
-
-                        <h3>Embassies & Institutions</h3>
-                        <ul class="embassies">
 
 
-                        </ul>
-
-
-                    </div>
-                    <div class="sources">
-                        <h3>Sources:</h3>
-                        <p id="country-sources"></p>
-                    </div>
-                </div>
-
-        </section>
     </main>
     <footer>
         <div class="footer-content">

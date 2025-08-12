@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const heroOverlay = document.querySelector(".hero-overlay");
+
   const images = [
     "img/DJI_0517-min-scaled 1.jpg",
     "img/DJI_0558-min-scaled 1.jpg",
@@ -139,3 +140,12 @@ document.addEventListener("DOMContentLoaded", function () {
   track.addEventListener("mouseenter", stopAutoScroll);
   track.addEventListener("mouseleave", startAutoScroll);
 });
+
+function closePopup() {
+  document.getElementById("videoPopup").style.display = "none";
+}
+
+// Optional: Show popup only once per session
+window.onload = function () {
+  document.getElementById("videoPopup").style.display = "flex";
+};
