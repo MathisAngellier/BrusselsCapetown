@@ -1,4 +1,13 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  await initializeLanguage();
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      switchLanguage(btn.dataset.lang);
+    });
+  });
+
   const heroOverlay = document.querySelector(".hero-overlay");
 
   const images = [
@@ -149,3 +158,72 @@ function closePopup() {
 window.onload = function () {
   document.getElementById("videoPopup").style.display = "flex";
 };
+
+// Load translations for static content
+async function loadTranslations() {
+  try {
+    // You'll need to create this translations file
+    const response = await fetch("../data/translations.json");
+    translations = await response.json();
+  } catch (error) {
+    console.error("Error loading translations:", error);
+  }
+}
+
+// Update static text elements
+function updateStaticTexts() {
+  const elements = document.querySelectorAll("[data-translate]");
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate");
+    if (translations[currentLanguage] && translations[currentLanguage][key]) {
+      if (element.tagName === "INPUT" && element.type === "submit") {
+        element.value = translations[currentLanguage][key];
+      } else if (element.placeholder !== undefined) {
+        element.placeholder = translations[currentLanguage][key];
+      } else {
+        element.textContent = translations[currentLanguage][key];
+      }
+    }
+  });
+}
+
+// Switch language function
+async function switchLanguage(lang) {
+  if (lang === currentLanguage) return;
+
+  currentLanguage = lang;
+  localStorage.setItem("selectedLanguage", lang);
+
+  // Update static texts
+  updateStaticTexts();
+
+  // Reload country data
+  try {
+    countries = await getCountriesData();
+    generateSlides();
+    selectCountry(0);
+  } catch (error) {
+    console.error("Error loading countries for language:", lang, error);
+  }
+
+  // Update active language button
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+}
+
+// Initialize language on page load
+async function initializeLanguage() {
+  // Check for saved language preference
+  const savedLang = localStorage.getItem("selectedLanguage") || "en";
+  currentLanguage = savedLang;
+
+  // Load translations
+  await loadTranslations();
+
+  // Update UI
+  updateStaticTexts();
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === currentLanguage);
+  });
+}

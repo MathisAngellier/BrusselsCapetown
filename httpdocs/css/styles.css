@@ -25,6 +25,7 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   z-index: 1000;
   padding-right: 2rem; /* Added padding to the right */
@@ -52,6 +53,34 @@ header {
   align-items: center;
   margin-left: auto;
   padding-left: 4rem;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 5px;
+  margin-left: 20px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #333;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: #333;
+  color: white;
+}
+
+.lang-btn.active {
+  background: #333;
+  color: white;
 }
 
 .nav-links a {
