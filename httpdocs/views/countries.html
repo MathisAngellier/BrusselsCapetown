@@ -63,7 +63,7 @@
 
 
         <div class="countries-select-section">
-            <h1>Crossed Countries</h1>
+            <h1 data-translate="crossed_countries">Crossed Countries</h1>
 
             <div class="carousel-container">
                 <button class="carousel-button button-prev">&#10094;</button>
@@ -74,56 +74,49 @@
             </div>
 
             <div class="country-details" id="country-details">
-                <h2 id="selected-country-name"></h2>
+                <h2 id="selected-country-name">Country Name</h2>
                 <div class="country-section">
-                    <h3>Overview</h3>
+                    <h3 data-translate="overview">Overview</h3>
                     <p id="country-overview"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3>Climate</h3>
+                    <h3 data-translate="climate">Climate</h3>
                     <p id="country-climate"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3>Travel Documents</h3>
+                    <h3 data-translate="travel_documents">Travel Documents</h3>
                     <p id="country-documents"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3>Language & Currency</h3>
+                    <h3 data-translate="language_currency">Language & Currency</h3>
                     <p id="country-language"></p>
                     <p id="country-currency"></p>
                 </div>
 
-
-
                 <div class="country-section">
-                    <h3>Customs & Traditions</h3>
+                    <h3 data-translate="customs_traditions">Customs & Traditions</h3>
                     <p id="country-customs"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3>Vaccination & Health Risks</h3>
+                    <h3 data-translate="vaccination">Vaccination & Health Risks</h3>
                     <p id="country-health"></p>
                 </div>
 
                 <div class="country-section emergency-section">
-                    <h3>Emergency Numbers & Useful Addresses</h3>
+                    <h3 data-translate="emergency">Emergency Numbers & Useful Addresses</h3>
                     <div>
-
                         <ul class="emergency-numbers"></ul>
-
-
                         <ul class="hospitals"></ul>
-
-
                         <ul class="embassies"></ul>
                     </div>
                 </div>
 
                 <div class="country-section country-sources-section" id="country-sources-section">
-                    <h3>Sources:</h3>
+                    <h3 data-translate="sources">Sources:</h3>
                     <p id="country-sources"></p>
                 </div>
             </div>
@@ -133,13 +126,14 @@
     <footer>
         <div class="footer-content">
             <div class="newsletter">
-                <h4>Newsletter & social media</h4>
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
                 <br>
-                <p>Subscribe to receive first-hand information and stories.</p>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
                 <form action="https://formspree.io/f/meoqbawg" method="POST">
                     <div class="form_group">
-                        <input required="" class="" type="email" value="" name="email" placeholder="Email Address">
-                        <input type="submit" class="" value="Subscribe">
+                        <input required="" class="" type="email" value="" name="email"
+                            data-translate="email_placeholder" placeholder="Email Address">
+                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
                     </div>
                 </form>
             </div>

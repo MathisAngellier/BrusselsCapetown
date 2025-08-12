@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       switchLanguage(btn.dataset.lang);
+      location.reload();
     });
   });
 

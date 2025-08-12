@@ -1,0 +1,886 @@
+{
+  "countries": [
+    {
+      "name": "Belgique",
+      "video": "../video/Flags/Belgium.mp4",
+      "details": {
+        "overview": "La Belgique est connue pour être un pays à la croisée du médiéval et du moderne. Il n’est pas rare de passer la matinée à visiter le domaine d’un château vieux de plusieurs siècles et l’après-midi à flâner dans un musée d’art contemporain. Elle est divisée en trois régions : la Flandre, la Wallonie et Bruxelles-Capitale, chacune ayant ses propres caractéristiques linguistiques et culturelles. La Belgique est célèbre pour ses délices culinaires, notamment les gaufres, les chocolats et les frites. Elle abrite également des institutions européennes importantes comme le Parlement européen à Bruxelles, la capitale du pays et de l’Union Européenne. ",
+        "climate": {
+          "title": "Climat",
+          "content": "La Belgique a un climat tempéré maritime, caractérisé par des étés doux et des hivers frais. Les précipitations sont fréquentes tout au long de l'année, avec des pluies régulières et un temps souvent nuageux. Les températures moyennes varient généralement entre 0°C et 5°C en hiver et entre 15°C et 25°C en été."
+        },
+        "documents": {
+          "title": "Documents de voyage",
+          "content": "Ni passeport ni visa n'est requis pour les membres de l'Union européenne."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La Belgique a trois langues officielles : le néerlandais, le français et l'allemand. Le néerlandais est principalement parlé en Flandre, le français en Wallonie et à Bruxelles, et l'allemand dans une petite communauté à l'est du pays.",
+          "subtitle2": "Currency",
+          "content2": "La devise de la Belgique est l'euro (EUR), comme dans la plupart des pays de l'Union européenne. La Belgique, en tant que membre de l'Union européenne, utilise l'euro et suit les réglementations de change de l'UE. Il n'y a pas de restrictions sur l'importation ou l'exportation d'euros, mais les montants dépassant 10 000 euros doivent être déclarés à l'arrivée et au départ."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Les autorités peuvent vous demander de présenter une pièce d'identité à tout moment."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Assurez-vous que vos vaccins de routine sont à jour. Ceux-ci peuvent inclure les vaccins contre la rougeole, les oreillons et la rubéole (ROR), la diphtérie, le tétanos, la coqueluche, la polio, la varicelle, les maladies méningococciques, la grippe saisonnière et d'autres maladies."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["101"] },
+            { "service": "Firefighters", "numbers": ["100"] },
+            { "service": "Poison Control Center", "numbers": ["070 245 245"] },
+            { "service": "Universal Emergency Number", "numbers": ["112"] }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "France",
+      "video": "../video/Flags/France.mp4",
+      "details": {
+        "overview": "La France est un pays d'Europe de l'Ouest connu pour son histoire riche, sa culture vibrante et ses paysages diversifiés. Elle est célèbre pour sa capitale, Paris, souvent appelée la 'Ville Lumière', qui abrite des monuments emblématiques comme la Tour Eiffel et le Louvre. La France est également renommée pour sa cuisine raffinée, ses vins mondiaux et sa mode influente. Le pays joue un rôle significatif sur la scène internationale, tant sur le plan politique qu'économique, et est l'un des membres fondateurs de l'Union européenne. La France est aussi reconnue pour ses contributions majeures à la philosophie, la science et les arts.",
+        "climate": {
+          "title": "Climate",
+          "content": "La France métropolitaine présente un climat varié en raison de sa géographie diverse. Plusieurs types de climats peuvent être distingués : climat océanique prédominant dans l'ouest de la France, climat continental à l'est et au centre, climat méditerranéen dans le sud-est, climat montagnard dans les zones montagneuses, et climat semi-continental dans certaines parties du nord et du nord-est."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Ni passeport ni visa n'est requis pour les membres de l'Union européenne."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "Le français est la langue officielle de la France.",
+          "subtitle2": "Currency",
+          "content2": "La devise de la France est l'euro (EUR). La France, en tant que membre de l'Union européenne, utilise l'euro et suit les réglementations de change de l'UE. Il n'y a pas de restrictions sur l'importation ou l'exportation d'euros, mais les montants dépassant 10 000 euros doivent être déclarés à l'arrivée et au départ."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "En France, il est interdit de se couvrir le visage dans les lieux publics, y compris dans les zones d'arrivée internationale des aéroports. Le pilotage de drones de loisir et commerciaux est strictement réglementé. Vous devez enregistrer votre drone pour l'utiliser dans l'Union européenne. Les autorités peuvent vous demander de présenter une pièce d'identité à tout moment."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Assurez-vous que vos vaccins de routine sont à jour. Ceux-ci peuvent inclure les vaccins contre la rougeole, les oreillons et la rubéole (ROR), la diphtérie, le tétanos, la coqueluche, la polio, la varicelle, les maladies méningococciques, la grippe saisonnière et d'autres maladies."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["17"] },
+            { "service": "Firefighters", "numbers": ["18"] },
+            { "service": "SAMU (Emergency Medical Assistance Service)", "numbers": ["15"] },
+            { "service": "Universal Emergency Number", "numbers": ["112"] }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Espagne",
+      "video": "../video/Flags/Spain.mp4",
+      "details": {
+        "overview": "L'Espagne, située au sud-ouest de l'Europe, est un pays connu pour sa riche culture et sa diversité géographique. Elle partage la péninsule Ibérique avec le Portugal et est bordée par la mer Méditerranée et l'océan Atlantique. L'Espagne est célèbre pour ses villes dynamiques comme Madrid, sa capitale, et Barcelone, ainsi que pour ses plages ensoleillées, les îles Baléares et les îles Canaries. Le pays est également renommé pour sa délicieuse cuisine, notamment la paella et les tapas, et pour ses traditions vibrantes comme le flamenco et les festivals locaux colorés. L'Espagne a une histoire complexe marquée par des influences romaines, mauresques et chrétiennes, qui se reflètent dans son architecture et son patrimoine culturel.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le climat de l'Espagne varie selon les régions : la côte méditerranéenne a des étés chauds et secs avec des températures dépassant souvent 30°C et des hivers doux autour de 10-15°C. Les zones intérieures jouissent d'un climat continental avec des étés pouvant atteindre 40°C et des hivers souvent en dessous de zéro. Dans les régions montagneuses, le temps peut changer rapidement, il est donc judicieux d'emporter des vêtements supplémentaires même en été."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Ni passeport ni visa n'est requis pour les membres de l'Union européenne."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "L'Espagne a une langue officielle principale, l'espagnol (ou castillan), mais elle reconnaît également d'autres langues régionales comme co-officielles dans certaines communautés autonomes. Ces langues incluent le catalan, le galicien, le basque et l'aranais.",
+          "subtitle2": "Currency",
+          "content2": "La devise de l'Espagne est l'euro (EUR), comme dans la plupart des pays de l'Union européenne. L'Espagne, en tant que membre de l'Union européenne, utilise l'euro et suit les réglementations de change de l'UE. Il n'y a pas de restrictions sur l'importation ou l'exportation d'euros, mais les montants dépassant 10 000 euros doivent être déclarés à l'arrivée et au départ."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Dans certaines régions, comme la Catalogne, il est interdit de camper sur les plages, de dormir dans les espaces publics, de se laver dans les fontaines ou d'utiliser du savon dans les douches publiques de plage. Ces infractions peuvent entraîner des amendes importantes. Les autorités peuvent vous demander de présenter un document d'identité à tout moment."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Assurez-vous que vos vaccinations de routine sont à jour. Celles-ci peuvent inclure les vaccins contre la rougeole, les oreillons et la rubéole (ROR), la diphtérie, le tétanos, la coqueluche, la polio, la varicelle, les maladies méningococciques, la grippe saisonnière et d'autres maladies. Plusieurs cas de personnes infectées par le virus du Nil occidental ont été signalés dans les provinces de Cadix et Séville."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Emergency call number", "numbers": ["112"] },
+            { "service": "Policia Nacional", "numbers": ["091"] },
+            { "service": "Guardia Civil", "numbers": ["062"] },
+            { "service": "Municipal Police", "numbers": ["092"] },
+            { "service": "Firefighters", "numbers": ["080"] },
+            { "service": "SAMU (Emergency Medical Services)", "numbers": ["061"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "Embassy of France in Spain",
+              "address": "Calle Salustiano Olozaga, 9, 28001 Madrid",
+              "phone": ["+34 91 423 89 00"],
+              "website": "https://es.ambafrance.org"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Maroc",
+      "video": "../video/Flags/Morocco.mp4",
+      "details": {
+        "overview": "Le Maroc, situé en Afrique du Nord, est un pays riche en histoire et en culture. Il est bordé par l'océan Atlantique et la mer Méditerranée et est connu pour ses paysages diversifiés, allant des montagnes de l'Atlas au désert du Sahara. Le Maroc est célèbre pour ses villes impériales comme Marrakech, Fès et sa capitale, Rabat. Le pays est également renommé pour sa cuisine savoureuse, incluant des plats comme le couscous et le tajine, ainsi que pour ses artisanats traditionnels. Le Maroc a une histoire complexe marquée par des influences berbères, arabes, africaines et européennes, qui se reflètent dans son architecture et son patrimoine culturel.",
+        "climate": {
+          "title": "Climate",
+          "content": "La force des marées et des courants au large des côtes rend la baignade en mer dangereuse. La sécheresse et la chaleur dans les régions désertiques nécessitent une bonne préparation. Presque chaque année, des pluies torrentielles provoquent des glissements de terrain et des inondations. À Marrakech, les températures peuvent atteindre 40°C en été et 20°C en hiver. À Casablanca, les températures varient de 15°C en hiver à 25°C en été. À Fès, les températures peuvent atteindre 40°C en été et chuter à 10°C la nuit en hiver."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Aucun visa touristique n'est requis pour des séjours allant jusqu'à 90 jours. Les voyageurs doivent avoir un passeport avec au moins une page blanche."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "Au Maroc, la langue officielle est l'arabe. Cependant, l'amazigh (berbère) est également une langue officielle depuis 2011. Le français est largement utilisé dans les affaires, l'éducation et le gouvernement, et l'espagnol est parlé dans certaines régions du nord du pays.",
+          "subtitle2": "Currency",
+          "content2": "La devise est le dirham (MAD). Les banques et les bureaux de change effectuent les changes d'euros en dirhams. Vous pouvez également retirer des dirhams aux distributeurs automatiques avec les principales cartes de crédit. Les retraits sont limités à 2 000 dirhams par transaction."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Au Maroc, habillez-vous modestement et évitez les démonstrations publiques d'affection. Consommer de l'alcool en public en dehors des hôtels, bars et restaurants disposant d'une licence est illégal. Exporter de la monnaie marocaine n'est pas interdit. L'islam est la religion officielle au Maroc et le prosélytisme est illégal. Évitez de photographier les installations gouvernementales ou de sécurité."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Vaccins recommandés : Hépatite A, Hépatite B, Typhoïde, Rage, Polio. Vaccins de routine : Rougeole, oreillons, rubéole (ROR), DTaP (Tétanos, Diphtérie, Coqueluche), Varicelle, Zona, Pneumonie, Grippe, Méningite."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["19"] },
+            { "service": "Royal Gendarmerie", "numbers": ["177"] },
+            { "service": "Civil Protection", "numbers": ["15"] },
+            { "service": "SAMU (Emergency Medical Assistance Service)", "numbers": ["141"] },
+            { "service": "Fire Department", "numbers": ["17"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy in Morocco",
+              "address": "3, rue Saïda, BP 602, Rabat",
+              "phone": ["+212 (0) 5 37 68 42 00"],
+              "website": "https://ma.ambafrance.org/"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Sahara Occidental",
+      "video": "../video/Flags/Western Sahara.mp4",
+      "details": {
+        "overview": "Le Sahara Occidental est un vaste territoire situé en Afrique du Nord, couvrant environ 266 000 kilomètres carrés. Il est bordé par le Maroc au nord, l'Algérie au nord-est, la Mauritanie à l'est et au sud, et l'océan Atlantique à l'ouest. Ce territoire est principalement caractérisé par un paysage désertique aride composé de vastes étendues de sable, de plateaux rocheux et de plaines pierreuses. La population est principalement composée de Sahraouis, un peuple traditionnellement nomade engagé dans le commerce et l'élevage.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le Sahara Occidental est caractérisé par un climat désertique aride. Les températures diurnes peuvent être très élevées, dépassant souvent 40°C en été, tandis que les nuits peuvent être fraîches, descendant parfois en dessous de 10°C. Les précipitations sont rares et irrégulières, avec une moyenne annuelle inférieure à 100 mm dans la plupart des zones. Les vents peuvent être forts et persistants, contribuant à l'érosion et au déplacement des dunes de sable."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Un passeport valide au moins six mois après la date d'entrée prévue. Les citoyens français n'ont pas besoin de visa pour entrer au Maroc pour des séjours de moins de 90 jours. Cependant, comme le Sahara Occidental est principalement accessible via le Maroc, il est important de vérifier les exigences spécifiques pour cette région."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "Au Sahara Occidental, la langue principale parlée est l'arabe, notamment le dialecte hassaniya. L'espagnol est également parlé par une partie de la population, en particulier parmi les générations plus âgées. Le français est parfois utilisé comme langue secondaire, et le berbère est également présent dans une moindre mesure.",
+          "subtitle2": "Currency",
+          "content2": "La devise utilisée au Sahara Occidental est le dirham marocain (MAD), en raison de l'administration par le Maroc de la majeure partie du territoire et de l'imposition de sa monnaie."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "L'hospitalité est une valeur centrale dans la culture sahraouie. Les visiteurs sont souvent accueillis avec du thé à la menthe, symbole d'hospitalité. Le vêtement traditionnel comprend la 'daraa' pour les hommes et la 'melhfa' pour les femmes. La cuisine sahraouie est simple mais savoureuse, avec des plats tels que le méchoui, le couscous et le riz aux légumes. La musique, la danse et l'artisanat jouent des rôles importants dans les célébrations et l'identité culturelle."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Hépatite A, Hépatite B, Typhoïde, Rage, Polio, ainsi que tous les vaccins de routine (diphtérie, tétanos, coqueluche, rougeole, oreillons, rubéole). Bien que le Sahara Occidental ne soit pas une zone à risque de fièvre jaune, un certificat de vaccination contre la fièvre jaune peut être requis si vous arrivez d'un pays où la maladie est présente."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["19"] },
+            { "service": "Ambulance and medical services", "numbers": ["15"] },
+            { "service": "Fire department", "numbers": ["17"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Consulate",
+              "address": "Laayoune, Western Sahara",
+              "note": "La France a annoncé l'ouverture d'un consulat à Laayoune, au Sahara Occidental."
+            },
+            {
+              "name": "Alliance Française",
+              "address": "Laayoune, Western Sahara",
+              "note": "Une Alliance Française a été ouverte à Laayoune."
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Mauritanie",
+      "video": "../video/Flags/Mauritania.mp4",
+      "details": {
+        "overview": "La Mauritanie, officiellement appelée République islamique de Mauritanie, est un pays situé en Afrique de l'Ouest. Elle est bordée par l'océan Atlantique à l'ouest, le Sahara Occidental au nord-ouest, l'Algérie au nord-est, le Mali à l'est et au sud-est, et le Sénégal au sud-ouest. Le paysage est principalement désertique, avec plus de 75 % de son territoire couvert par le désert du Sahara. La capitale, Nouakchott, est située sur la côte atlantique. La Mauritanie a une population diverse, principalement composée de Maures (Arabes et Berbères) et de groupes ethniques subsahariens.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le climat de la Mauritanie est principalement désertique, caractérisé par des conditions sèches et arides. Les températures diurnes peuvent être extrêmement chaudes, dépassant souvent 40°C en été, tandis que les nuits peuvent être fraîches. Dans le sud, le climat est légèrement plus tempéré avec une saison des pluies de juin à septembre. Les vents du désert, souvent chargés de sable, peuvent être fréquents et intenses. La côte atlantique bénéficie d'un climat légèrement plus doux grâce à l'influence de l'océan."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Passeport valide au moins six mois après la date d'entrée prévue en Mauritanie. Les ressortissants français doivent obtenir un visa électronique, qui doit être présenté avant l'embarquement. Les demandes de visa se font exclusivement sur le site de l'A.N.R.P.T.S à l'adresse http://anrpts.gov.mr/fr"
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La langue officielle en Mauritanie est l'arabe, le dialecte hassaniya étant le plus couramment parlé. Le français est également largement utilisé, en particulier dans les affaires, l'éducation et l'administration. D'autres langues parlées incluent le pulaar, le soninké et le wolof.",
+          "subtitle2": "Currency",
+          "content2": "La devise est l'ouguiya (MRO). Elle est non convertible et ne peut pas être exportée. Les transactions se font principalement en espèces. L'importation de devises étrangères n'est pas restreinte, mais doit être déclarée à l'arrivée. Les bureaux de change n'acceptent que les dollars américains et les euros."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Les coutumes, lois et règlements de la Mauritanie se conforment strictement aux pratiques et croyances islamiques. Habillez-vous et comportez-vous de manière modeste et respectueuse. Il est interdit de photographier les installations militaires, les aéroports et les bâtiments gouvernementaux ou religieux. L'importation de boissons alcoolisées, d'armes à feu ou de produits porcins dans le pays est strictement interdite."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "L'OMS recommande les vaccins suivants : Hépatite A, Hépatite B, Typhoïde, Rage, Méningite méningococcique (A + C + Y + W135), ainsi que tous les vaccins de routine (diphtérie, tétanos, polio, coqueluche, rougeole, oreillons et rubéole). Le vaccin contre la fièvre jaune est obligatoire pour tous les voyageurs de plus d'un an."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["117"] },
+            { "service": "Fire department", "numbers": ["119"] },
+            { "service": "Ambulance", "numbers": ["118"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy",
+              "address": "Rue Ahmed Ould Hamed – Tevragh-Zeina District – BP 231, Nouakchott",
+              "phone": ["+222 45 29 96 99"],
+              "email": "ambafrance.nouakchott-amba@diplomatie.gouv.fr",
+              "website": "https://mr.ambafrance.org"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Sénégal",
+      "video": "../video/Flags/Senegal.mp4",
+      "details": {
+        "overview": "Le Sénégal, situé en Afrique de l'Ouest, couvre une superficie d'environ 196 722 kilomètres carrés. Il est bordé par l'océan Atlantique à l'ouest, la Mauritanie au nord, le Mali à l'est, la Guinée et la Guinée-Bissau au sud, et il enclave presque entièrement la Gambie. La capitale, Dakar, est située sur la péninsule du Cap-Vert et est un important centre économique et culturel. Le Sénégal est traversé par plusieurs fleuves importants et présente une géographie diverse incluant des zones côtières, des plaines fertiles, des savanes et des régions semi-désertiques au nord.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le climat du Sénégal est principalement tropical, caractérisé par deux saisons distinctes : une saison des pluies généralement de juin à octobre, avec des précipitations plus abondantes dans la partie sud, et une saison sèche de novembre à mai, marquée par des températures plus fraîches et un temps sec avec des vents d'Harmattan. Les températures sont généralement élevées toute l'année, avec des moyennes annuelles entre 24°C et 30°C."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Passeport valide au moins six mois après la date d'entrée prévue au Sénégal. Les citoyens français n'ont pas besoin de visa pour des séjours touristiques de moins de 90 jours. Cependant, pour des séjours plus longs ou d'autres motifs de voyage (par exemple, travail), un visa peut être requis."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La langue officielle au Sénégal est le français, héritage de son passé colonial. Cependant, le pays se caractérise par une grande diversité linguistique, avec de nombreuses langues locales parlées par différentes communautés ethniques. Parmi les plus courantes figurent le wolof – largement parlé et compris par la majorité de la population, le pulaar (peul), le sérère, le diola et le mandingue.",
+          "subtitle2": "Currency",
+          "content2": "La devise du Sénégal est le franc CFA d'Afrique de l'Ouest, souvent abrégé en XOF. Le franc CFA est utilisé par plusieurs pays d'Afrique de l'Ouest et est garanti par le Trésor français. Il est divisé en 100 centimes, bien que les centimes ne soient plus utilisés dans les transactions quotidiennes."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Pour éviter d'offenser les locaux : habillez-vous modestement, comportez-vous discrètement et respectez les traditions sociales et religieuses. Il est interdit de photographier les bâtiments gouvernementaux, les aéroports et autres installations officielles. Ne traversez pas le fleuve Sénégal en utilisant des services de canoë privés, car cela est illégal et dangereux."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "L'OMS recommande les vaccins suivants : Hépatite A, Hépatite B, Typhoïde, Rage, Méningite bactérienne, Zona, ainsi que tous les vaccins de routine. Il existe un risque élevé de paludisme toute l'année dans les parties sud et est du pays. Le vaccin contre la fièvre jaune n'est plus obligatoire pour entrer au Sénégal, sauf pour les voyageurs venant de zones endémiques de fièvre jaune, mais la vaccination est fortement recommandée."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Fire department", "numbers": ["18"] },
+            { "service": "Malick Sy Fire Station", "numbers": ["+221 33 823 03 59"] },
+            { "service": "Police and gendarmerie", "numbers": ["17", "18"] },
+            { "service": "National Gendarmerie", "numbers": ["+221 800 00 20 20"] },
+            { "service": "SOS Médecin", "numbers": ["+221 33 889 15 15"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy",
+              "address": "1, rue El Hadji Amadou Assane Ndoye, BP 4035, Dakar",
+              "phone": ["+221 33 839 51 00"],
+              "email": "webmestre.dakar-amba@diplomatie.gouv.fr",
+              "website": "https://sn.ambafrance.org/-Francais-"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Guinée",
+      "video": "../video/Flags/Guinea.mp4",
+      "details": {
+        "overview": "La Guinée, située en Afrique de l'Ouest, est un pays aux paysages variés et aux ressources naturelles riches. Elle est bordée par l'océan Atlantique à l'ouest, avec une côte s'étendant sur environ 320 kilomètres. Le pays est divisé en quatre régions géographiques distinctes : la Basse-Guinée (une zone côtière humide et fertile), la Moyenne-Guinée (caractérisée par des montagnes et des plateaux, incluant les hauts plateaux du Fouta Djallon), la Haute-Guinée (une région de savanes au nord-est) et la Guinée forestière (une zone de forêt tropicale dense au sud-est). La Guinée est riche en ressources minérales, notamment la bauxite, le fer, l'or et les diamants.",
+        "climate": {
+          "title": "Climate",
+          "content": "La Guinée a un climat principalement tropical avec deux saisons distinctes : une saison des pluies généralement d'avril à octobre, avec des précipitations abondantes, en particulier dans les régions côtières et forestières, et une saison sèche de novembre à mars, avec peu de précipitations et un air plus sec. La diversité géographique influence également le climat, la région montagneuse du Fouta Djallon connaissant des températures plus fraîches."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Un passeport valide au moins six mois après la date d'entrée prévue. Les citoyens français doivent obtenir un visa pour entrer en Guinée. Les demandes doivent être faites en ligne à l'adresse : https://www.paf.gov.gn/visa. Un certificat de vaccination contre la fièvre jaune est obligatoire pour entrer en Guinée."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La langue officielle est le français, héritage de la période coloniale. Cependant, la Guinée est linguistiquement diverse en raison de la présence de nombreux groupes ethniques. Les langues locales courantes incluent le pular (peul) – parlé par le peuple peul et largement utilisé à travers la Guinée, le malinké (maninka) – parlé en Haute-Guinée, le soussou – parlé dans les régions côtières, le kissi – parlé en Guinée forestière, et le toma et le guerzé (kpellé).",
+          "subtitle2": "Currency",
+          "content2": "La devise est le franc guinéen (GNF). En général, l'argent liquide est le principal moyen de paiement. L'importation et l'exportation de la monnaie locale sont interdites. Il n'y a pas de restrictions sur l'entrée de devises étrangères, mais une déclaration est requise à l'arrivée. Les distributeurs automatiques ne permettent que de petits retraits, et les étrangers rencontrent souvent des difficultés. Les cartes de crédit ne sont souvent pas acceptées."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Prendre des photos n'est pas autorisé autour des sites militaires, des commissariats de police, des postes de gendarmerie ou à proximité des résidences et palais présidentiels à Conakry. Un permis est requis pour exporter des pierres précieuses. Le trafic illégal, en particulier de diamants et d'autres pierres précieuses, est sévèrement puni."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "La fièvre jaune est endémique en Guinée, et la vaccination est une exigence pour l'entrée. Assurez-vous que vos vaccinations de routine sont à jour ainsi que celles recommandées pour la région. Les vaccins contre la typhoïde, les hépatites A et B, et la méningite bactérienne A + C + Y + W135 peuvent également être recommandés. La vaccination contre la rage peut être conseillée en fonction des activités et des destinations."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "National Gendarmerie emergency hotline", "numbers": ["122"] },
+            { "service": "Fire department", "numbers": ["18"] },
+            { "service": "Medical Center at the French Embassy", "numbers": ["+224 621 00 00 10", "+224 656 44 87 45"] },
+            { "service": "Clinique Pasteur", "numbers": ["+224 621 350 101"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy in Guinea and Sierra Leone",
+              "address": "Avenue du Commerce (Kaloum), BP 373 and 570, Conakry",
+              "phone": ["+33 1 70 98 93 39"],
+              "email": "ambafrance.conakry@diplomatie.gouv.fr",
+              "website": "https://gn.ambafrance.org"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Sierra Leone",
+      "video": "../video/Flags/Sierra Leone.mp4",
+      "details": {
+        "overview": "La Sierra Leone, située en Afrique de l'Ouest, est un pays connu pour ses paysages diversifiés et sa riche biodiversité. Bordée par l'océan Atlantique à l'ouest, elle possède plus de 400 kilomètres de côte, marquée par des plages de sable, des mangroves et des estuaires. À l'intérieur des terres, le pays présente des plateaux, des montagnes et des forêts tropicales denses. La capitale, Freetown, est un port majeur et le centre économique du pays, située sur une péninsule montagneuse. La Sierra Leone est riche en ressources naturelles, notamment en diamants, or, bauxite et rutile. Le pays est ethniquement diversifié, avec des groupes tels que les Temne, Mende et Limba.",
+        "climate": {
+          "title": "Climate",
+          "content": "La Sierra Leone a un climat tropical, caractérisé par deux saisons principales : une saison des pluies généralement de mai à octobre, avec des précipitations abondantes, en particulier le long de la côte et dans les régions forestières, et une saison sèche de novembre à avril, avec peu ou pas de pluie et un air sec. La Sierra Leone connaît une humidité élevée toute l'année en raison de sa proximité avec l'océan Atlantique."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Un passeport valide au moins six mois après la date d'entrée prévue. Les ressortissants français souhaitant séjourner en Sierra Leone doivent obtenir un visa. Pour les courts séjours, la demande doit être soumise en ligne : https://www.evisa.sl/#/home. Un certificat de vaccination contre la fièvre jaune est obligatoire pour entrer en Sierra Leone."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La langue officielle est l'anglais, utilisé dans l'administration, l'éducation et les médias. Cependant, la Sierra Leone est très diversifiée sur le plan linguistique. Les langues locales couramment parlées incluent le krio : un créole à base d'anglais parlé comme lingua franca dans tout le pays, le mende : parlé dans le sud et l'est, le temne : parlé dans le nord et l'ouest, et le limba : parlé dans le nord.",
+          "subtitle2": "Currency",
+          "content2": "La monnaie locale est le leone (SLL). Les dollars américains et les euros sont les plus faciles à échanger. Le leone ne peut pas être exporté ou converti en d'autres devises. Seuls quelques hôtels acceptent les cartes de crédit. Les paiements se font généralement en espèces et en monnaie locale. Les paiements en devises étrangères sont officiellement interdits."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Il est recommandé d'emporter la seule carte routière disponible de Freetown pour les déplacements en voiture. Habillez-vous modestement et évitez les démonstrations publiques d'affection. Demandez toujours la permission avant de prendre une photo de quelqu'un. Il est strictement interdit de photographier les sites militaires, les aéroports, les bâtiments gouvernementaux et les ponts. L'importation et l'exportation d'or, de diamants et d'autres ressources précieuses sont strictement réglementées et nécessitent des permis."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "La fièvre jaune est endémique et la vaccination est obligatoire. Assurez-vous que vos vaccins de routine sont à jour ainsi que ceux spécifiques à la région. En raison d'une résurgence de la rougeole, la mise à jour du vaccin ROR (rougeole-oreillons-rubéole) est fortement recommandée. Les vaccins supplémentaires recommandés incluent les hépatites A et B, la typhoïde, la méningite et la méningite bactérienne (A + C + Y + W135). La vaccination contre la rage peut également être appropriée."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["999", "015", "22 30 33"] },
+            { "service": "Immigration", "numbers": ["22 47 61", "22 56 47"] }
+          ],
+          "hospitals": [
+            {
+              "name": "Aspen Medical Center",
+              "phone": "+232 99 500 800",
+              "location": "Brookfields, Basse Street, Freetown"
+            },
+            {
+              "name": "Choitram Memorial Hospital",
+              "phone": "+232 76 980 000",
+              "location": "Hill Station"
+            }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy (in Guinea and Sierra Leone)",
+              "address": "Avenue du Commerce (Kaloum), BP 373 and 570, Conakry",
+              "phone": ["+33 1 70 98 93 39"],
+              "email": "ambafrance.conakry@diplomatie.gouv.fr",
+              "website": "https://gn.ambafrance.org"
+            },
+            {
+              "name": "Diplomatic Office in Freetown",
+              "address": "FCSC compound 2, 2 Mandalay Street, Cold Storage, Kingtom, Freetown",
+              "phone": ["+232 79 990 991", "+232 74 085 469"]
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Libéria",
+      "video": "../video/Flags/Liberia.mp4",
+      "details": {
+        "overview": "Le Libéria, situé sur la côte ouest de l'Afrique, est bordé par la Sierra Leone au nord-ouest, la Guinée au nord, la Côte d'Ivoire à l'est, et l'océan Atlantique au sud et au sud-ouest. Le pays couvre environ 111 000 kilomètres carrés. La géographie du Libéria comprend des plaines côtières avec des mangroves et des lagunes, des collines à l'intérieur des terres et des hauteurs dans le nord. La capitale, Monrovia, est située sur la côte et est la plus grande ville ainsi que le centre administratif, commercial et culturel. Le Libéria possède d'importantes ressources naturelles, notamment du minerai de fer, de l'or, des diamants, du bois et des terres fertiles.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le Libéria a un climat tropical caractérisé par des températures élevées et des précipitations importantes. La saison des pluies s'étend de mai à octobre, avec des pics entre juin et août, marquée par de fortes pluies et des orages. La saison sèche va de novembre à avril, marquée par des vents secs et poussiéreux connus sous le nom d'Harmattan. Les températures sont relativement stables tout au long de l'année, avec une moyenne comprise entre 25°C et 30°C."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Un passeport valide au moins six mois après votre date d'entrée. Les citoyens français doivent obtenir un visa avant d'arriver au Libéria. Les visas sont délivrés par l'ambassade du Libéria à Paris. Un certificat de vaccination contre la fièvre jaune est obligatoire pour entrer dans le pays. Une preuve de voyage aller-retour ou de fonds suffisants peut être demandée."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La langue officielle est l'anglais. Cependant, le Libéria abrite plus de 30 langues locales parlées par divers groupes ethniques. Parmi les plus parlées figurent le kpelle (groupe majoritaire), le bassa, le gio, le mano, le grebo et le kru. L'anglais libérien, un créole anglais, est couramment utilisé dans les contextes informels et la vie quotidienne.",
+          "subtitle2": "Currency",
+          "content2": "La devise est le dollar libérien (LRD). Le dollar américain est également largement accepté et utilisé en parallèle. Les cartes de crédit sont rarement acceptées en dehors des grands hôtels ou institutions à Monrovia. Les espèces sont essentielles pour les transactions. Des distributeurs automatiques existent à Monrovia mais peuvent ne pas être fiables."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Dans tout le pays, les routes sont en mauvais état et la sécurité routière fait défaut. Les agents libériens peuvent solliciter des pots-de-vin lorsque vous passez la douane à l'aéroport. Il n'y a pas de réseau téléphonique fixe au Libéria. Il est interdit de photographier ou de filmer les environs des bâtiments officiels ou des cortèges de véhicules gouvernementaux. Le commerce et le transport de diamants bruts sont strictement réglementés et nécessitent une autorisation spéciale."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Un certificat de vaccination contre la fièvre jaune est obligatoire pour tous les voyageurs de plus de 9 mois. Vaccins recommandés : Hépatite A et B, Typhoïde, Méningite, Rage, Rougeole. Bien qu'il n'y ait pas de vaccin, une prophylaxie antipaludique est fortement recommandée en raison de la présence de paludisme dans le pays."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "CLINILAB", "numbers": ["+231 888 088 808"] },
+            { "service": "CLINILAB Emergency", "numbers": ["+231 770 200 002"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy in Liberia",
+              "address": "98 A UN Drive - Mamba Point, Monrovia",
+              "phone": ["+231 77 059 93 73"],
+              "emergency": "+231 77 088 73 04"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "video": "../video/Flags/Ivory Coast.mp4",
+      "details": {
+        "overview": "La Côte d'Ivoire, située en Afrique de l'Ouest, est un pays aux paysages diversifiés et à la biodiversité riche. Bordée par l'océan Atlantique au sud, elle possède une côte de plus de 500 kilomètres, marquée par des lagunes, des plages de sable et des forêts côtières. L'intérieur est caractérisé par des savanes, des forêts tropicales denses et des montagnes, en particulier dans la région ouest. La capitale politique est Yamoussoukro, tandis qu'Abidjan, située sur la côte, est le principal centre économique et urbain. La Côte d'Ivoire est l'un des plus grands producteurs mondiaux de cacao et un producteur important de café et d'huile de palme.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le climat de la Côte d'Ivoire est principalement tropical, avec des variations selon les régions. Le sud a un climat équatorial caractérisé par des températures élevées toute l'année, une humidité importante et des précipitations abondantes, surtout pendant la saison des pluies de mai à octobre. Le nord a un climat de savane tropicale, avec une saison sèche plus prononcée de novembre à mars et une saison des pluies d'avril à octobre."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Passeport valide au moins six mois après la date d'entrée prévue. Les ressortissants français souhaitant se rendre en Côte d'Ivoire sont soumis à l'obligation d'un visa biométrique et d'une vaccination contre la fièvre jaune. La demande de visa biométrique peut être faite en ligne à l'adresse : https://snedai.com/"
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "En Côte d'Ivoire, la langue officielle est le français, utilisé dans l'administration, l'éducation et les médias. Cependant, le pays se caractérise par une grande diversité linguistique. Parmi les langues locales les plus parlées figurent le dioula : largement utilisé comme langue commerciale, le baoulé : parlé principalement au centre, le bété : parlé principalement à l'ouest, le sénoufo : parlé principalement au nord, l'anyin : parlé à l'est, et le krou : parlé par divers sous-groupes ethniques au sud-ouest.",
+          "subtitle2": "Currency",
+          "content2": "La devise de la Côte d'Ivoire est le franc CFA (Communauté Financière Africaine), souvent abrégé en XOF. Le franc CFA est utilisé par plusieurs pays d'Afrique de l'Ouest qui font partie de l'Union Économique et Monétaire Ouest-Africaine (UEMOA)."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "La mer et les lagunes sont dangereuses et souvent laissées sans surveillance. La baignade y est risquée, même pour les excellents nageurs. Le réseau routier est étendu, mais la grande majorité des routes sont non goudronnées. Il est recommandé d'éviter de photographier un site ou une personne sans leur permission et de s'abstenir de photographier un marché, une foule ou un bâtiment officiel."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Le vaccin contre la fièvre jaune est obligatoire pour entrer et séjourner dans le pays. Il est recommandé de mettre à jour la vaccination diphtérie-tétanos-polio (DTP), ainsi que la vaccination rougeole-oreillons-rubéole chez les enfants. Selon les conditions locales de voyage, les vaccinations contre la fièvre typhoïde et les hépatites virales A et B peuvent être recommandées. Il est recommandé de se faire vacciner contre la méningite bactérienne A + C + Y + W135, surtout lors de voyages dans le nord du pays."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Green number in case of road harassment", "numbers": ["110"] },
+            { "service": "General Directorate of Police", "numbers": ["+225 27 20 22 08 22"] },
+            { "service": "Police Headquarters", "numbers": ["+225 27 20 21 00 22"] },
+            { "service": "Gendarmerie", "numbers": ["+225 27 20 21 88 83"] },
+            { "service": "Intensive Care", "numbers": ["185"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy in Côte d'Ivoire",
+              "address": "17, rue Lecoeur 17 BP 175 Abidjan",
+              "phone": ["+225 27 20 20 74 00"],
+              "emergency": "+225 07 07 20 50 77",
+              "email": "cad.abidjan-fslt@diplomatie.gouv.fr",
+              "website": "https://ci.ambafrance.org/"
+            },
+            {
+              "name": "Alliance Française",
+              "address": "Boulevard de la République, Plateau, Abidjan",
+              "phone": ["+225 27 22 46 89 25"]
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Ghana",
+      "video": "../video/Flags/Ghana.mp4",
+      "details": {
+        "overview": "Le Ghana, situé en Afrique de l'Ouest, est considéré comme un pays agréable et accueillant, connu pour sa stabilité politique. Le tourisme est une industrie en croissance au Ghana. Des forêts tropicales aux plages pittoresques, le pays offre de nombreuses opportunités de découvrir l'Afrique à travers des parcs nationaux, des réserves naturelles et des villages. Accra, la plus grande ville et capitale du Ghana, est une ville dynamique avec des marchés animés, des monuments historiques et une vie nocturne vibrante. Accra est une ville en rapide expansion, équipée d'hôtels modernes, de restaurants et de nombreux musées.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le Ghana est un pays avec de nombreuses destinations touristiques populaires, chacune avec ses propres caractéristiques climatiques. La capitale, Accra, jouit d'un climat tropical de savane, avec des températures comprises entre 25 et 30°C tout au long de l'année. La saison des pluies s'étend d'avril à juillet, avec de fortes averses en juin et juillet. Cape Coast, une ville côtière, a le même climat qu'Accra, et sa saison des pluies s'étend de mai à septembre. Kumasi, la capitale culturelle du Ghana, a un climat tropical humide et sec avec des températures allant de 20°C à 30°C, et sa saison des pluies s'étend d'avril à octobre. Tamale, une ville du nord du pays, jouit d'un climat tropical humide et sec, avec des températures comprises entre 25°C et 40°C, et sa saison des pluies s'étend de mai à octobre."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Passeport valide au moins 6 mois après la date de départ prévue du Ghana. Visa touristique requis. Certificat de vaccination contre la fièvre jaune requis pour l'entrée au Ghana. D'autres vaccins, tels que ceux contre l'hépatite A et l'hépatite B, sont également recommandés."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "La langue officielle du Ghana est l'anglais. Les langues locales incluent le ga, le twi et l'éwé.",
+          "subtitle2": "Currency",
+          "content2": "La devise du Ghana est le cedi (GHS). Il n'y a pas de restrictions sur l'importation ou l'exportation de devises étrangères. Cependant, vous devez les déclarer à l'arrivée et les convertir en cédis dans une banque ou un bureau de change. À l'arrivée, vous recevrez un formulaire de contrôle des changes T-5. Vous devez y indiquer le montant de devises étrangères que vous possédez et enregistrer toutes les transactions que vous effectuez pendant votre séjour dans le pays. Le formulaire T-5 doit montrer que les cédis obtenus pendant votre séjour au Ghana proviennent d'un intermédiaire autorisé à opérer sur le marché des changes. Il est illégal d'effectuer des transactions de change avec des particuliers. Conservez ce formulaire soigneusement pour éviter des problèmes au moment de votre départ. Il est interdit d'exporter des cédis. Avant de quitter le pays, vous devez dépenser les cédis restants ou les convertir en devises étrangères."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Porter des vêtements militaires ou des vêtements avec des éléments militaires est interdit. Le Ghana est une société conservatrice. Pour éviter d'offenser les locaux : habillez-vous modestement, comportez-vous discrètement, respectez les traditions sociales et religieuses. Il est interdit de photographier des installations particulièrement sensibles. Cela inclut, entre autres : les sites militaires, les bâtiments gouvernementaux, les ponts, l'aéroport international d'Accra. Les autorités peuvent vous demander de présenter une pièce d'identité à tout moment."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "L'OMS recommande les vaccins suivants pour le Ghana : Hépatite A, hépatite B, typhoïde, choléra, fièvre jaune, rage, méningite, polio, rougeole, oreillons et rubéole (ROR), tétanos, diphtérie et coqueluche (Tdap), varicelle, zona, pneumonie et grippe. La méningite se propage dans la région pendant les mois d'été. La vaccination contre la méningite est la meilleure forme de protection contre cette maladie potentiellement mortelle. Le paludisme, la dengue et le chikungunya sont présents au Ghana. Assurez-vous d'apporter des antipaludéens, des répulsifs anti-moustiques et des moustiquaires pour vous protéger pendant votre séjour."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["191", "999", "171"] },
+            { "service": "Firefighters", "numbers": ["192"] },
+            { "service": "Emergency Medical Services", "numbers": ["193"] },
+            { "service": "Ambulance", "numbers": ["193", "776111-5"] },
+            { "service": "Universal Emergency Number", "numbers": ["112"] }
+          ],
+          "hospitals": [
+            {
+              "name": "Korle Bu Teaching Hospital",
+              "location": "Accra",
+              "description": "L'un des plus grands et des plus importants hôpitaux du Ghana, offrant une large gamme de services médicaux."
+            },
+            {
+              "name": "Komfo Anokye Teaching Hospital",
+              "location": "Kumasi",
+              "description": "Un autre grand hôpital universitaire qui fournit des soins spécialisés."
+            },
+            {
+              "name": "37 Military Hospital",
+              "location": "Accra",
+              "description": "Un hôpital militaire qui offre également des services au public."
+            },
+            {
+              "name": "Cape Coast Teaching Hospital",
+              "location": "Cape Coast",
+              "description": "Un hôpital important dans la région centrale."
+            }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy in Ghana",
+              "address": "4th Circular Road, Cantonments, Accra, Ghana",
+              "phone": ["+233 30 215 1000"]
+            },
+            {
+              "name": "Alliance Française in Ghana",
+              "address": "Liberation Road, Accra, Ghana",
+              "emails": ["clientservice@afaccra.com", "clientservice2@afaccra.com"]
+            },
+            {
+              "name": "Lycée Français International Jacques Prévert",
+              "type": "School",
+              "addresses": ["6 Bathur Street, East Legon, Accra, Ghana", "PO BOX 1813, Cantonments, Accra, Ghana"],
+              "phones": ["+233 302 544 067", "+233 302 544 156", "+233 303 939 373", "+233 272 701 414"],
+              "emails": ["info@lfacra.com", "secretariaproviseur@lfaccra.com"]
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Togo",
+      "video": "../video/Flags/Togo.mp4",
+      "details": {
+        "overview": "Le Togo, situé en Afrique de l'Ouest, est un pays aux paysages diversifiés et à la culture riche. Bordé par le Ghana à l'ouest, le Bénin à l'est, le Burkina Faso au nord et l'océan Atlantique au sud, le Togo couvre une superficie d'environ 56 600 kilomètres carrés. Le pays est caractérisé par une côte sableuse au sud, des plateaux centraux et des chaînes de montagnes au nord-ouest, avec le point culminant étant le Mont Agou. La capitale, Lomé, est un important centre économique et administratif situé sur la côte. Le Togo est connu pour ses ressources agricoles, notamment le café, le cacao et le coton.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le sud du Togo a un climat équatorial avec des précipitations plus abondantes, tandis que le nord a un climat de savane tropicale caractérisé par une saison sèche plus prononcée. Les températures moyennes varient entre 25°C et 35°C tout au long de l'année."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Les ressortissants français souhaitant séjourner au Togo doivent être munis d'un visa. Ils doivent avoir un passeport valide au moins six mois après la date de retour prévue et un certificat de vaccination prouvant la vaccination contre la fièvre jaune. Désormais, les ressortissants français souhaitant entrer au Togo doivent d'abord s'inscrire sur la plateforme https://voyage.gouv.tg et demander un visa électronique."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "Au Togo, la langue officielle est le français, utilisé dans l'administration, l'éducation et les médias. Cependant, le pays se caractérise par une grande diversité linguistique en raison de la présence de nombreux groupes ethniques. Parmi les langues locales les plus parlées figurent l'éwé : parlé par le groupe ethnique éwé, principalement dans le sud, le kabiyè : parlé par les Kabiyè, principalement dans le nord, le tem : parlé par les Tem, principalement dans la région centrale, et le mina : parlé dans la région côtière, en particulier autour de Lomé.",
+          "subtitle2": "Currency",
+          "content2": "La devise officielle du Togo est le franc CFA (XOF). L'économie est principalement basée sur les espèces. Les cartes de crédit sont généralement acceptées dans les villes et les hôtels. Échangez les devises étrangères uniquement dans les banques ou les bureaux de change officiels."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Il est interdit de photographier les établissements publics et militaires ou le personnel militaire et policier. En général, il est conseillé de demander la permission avant de photographier des personnes. L'utilisation d'un drone pour filmer est soumise à autorisation. Il est conseillé de porter des vêtements couvrants et d'être respectueux des coutumes locales. Seules les cartes bancaires du réseau Visa peuvent être utilisées pour les retraits ou les paiements en espèces. Les coupures de courant sont fréquentes au Togo."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "La fièvre jaune est endémique, et la vaccination est obligatoire pour entrer au Togo (à faire avant le départ dans un centre agréé). Il est recommandé de mettre à jour la vaccination diphtérie-tétanos-polio (DTP), y compris la rubéole, les oreillons et la rougeole. Selon les conditions locales de voyage, les vaccinations contre la fièvre typhoïde et les hépatites virales A et B peuvent être recommandées. La vaccination contre la méningite bactérienne A + C + Y + W135 est fortement recommandée."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Emergency/Police", "numbers": ["117", "161"] },
+            { "service": "Central Police Station", "numbers": ["+228 2221 2871"] },
+            { "service": "Gendarmerie", "numbers": ["172", "+228 2221 3743"] },
+            { "service": "Fire Department", "numbers": ["118"] },
+            { "service": "COVID-19 Information", "numbers": ["111"] }
+          ],
+          "hospitals": [
+            {
+              "name": "CHU Tokoin",
+              "phone": "+228 22 21 25 01"
+            },
+            {
+              "name": "Polyclinique Internationale St Joseph",
+              "phone": "+228 22 26 72 32"
+            }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy",
+              "address": "13 Avenue Mama Fousséni, BP 337, Lomé",
+              "phone": ["+228 22 23 46 00"],
+              "email": "webmestre.lome-amba@diplomatie.gouv.fr",
+              "website": "https://tg.ambafrance.org/"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Namibie",
+      "video": "../video/Flags/Namibia.mp4",
+      "details": {
+        "overview": "La Namibie, située en Afrique australe, est un pays connu pour ses paysages spectaculaires et sa grande diversité naturelle. Bordée par l'océan Atlantique à l'ouest, elle possède une côte rocheuse et désertique, marquée par le désert du Namib, l'un des plus anciens déserts du monde. À l'intérieur des terres, on trouve le désert du Kalahari, des plateaux arides et des montagnes escarpées. La capitale, Windhoek, est située dans les hauts plateaux centraux et est le centre administratif et économique du pays. La Namibie est riche en ressources naturelles, notamment en diamants, en uranium et en zinc. Les principaux groupes ethniques incluent les Ovambo, les Nama et les Herero.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le climat de la Namibie est principalement aride à semi-aride, avec des caractéristiques spécifiques selon les régions. Le désert du Namib le long de la côte atlantique est l'un des endroits les plus secs du monde. Le désert du Kalahari à l'est a de faibles précipitations mais légèrement plus élevées que celles du Namib. Le plateau central, où se trouve Windhoek, a un climat semi-aride avec une saison des pluies en été de novembre à mars. Le nord du pays reçoit plus de précipitations et a un climat plus tropical. Les étés (novembre à mars) sont chauds, tandis que les hivers (mai à septembre) sont plus frais."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Passeport valide au moins six mois après la date d'entrée prévue. À partir du 1er avril 2025, les ressortissants français souhaitant effectuer un court séjour en Namibie auront besoin d'un visa. Ce visa peut être obtenu en ligne à l'avance sur le site https://eservices.mhaiss.gov.na/ ou délivré à l'arrivée en Namibie dans certains points d'entrée, y compris les aéroports de Windhoek et de Walvis Bay ainsi que divers postes frontaliers."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "En Namibie, la langue officielle est l'anglais, utilisé dans l'administration, l'éducation et les médias. Cependant, le pays se caractérise par une grande diversité linguistique. Parmi les langues locales les plus parlées figurent l'oshiwambo : parlé par le groupe ethnique Ovambo et le plus répandu en Namibie, le nama/damara : parlé par les groupes ethniques Nama et Damara, l'afrikaans : largement parlé et utilisé comme lingua franca dans certaines régions, l'herero : parlé par le groupe ethnique Herero, et le lozi : parlé dans la région du Caprivi.",
+          "subtitle2": "Currency",
+          "content2": "La devise officielle de la Namibie est le dollar namibien (NAD). Le rand sud-africain (ZAR) est également accepté. Les principales cartes de crédit sont acceptées et la plupart des distributeurs automatiques sont connectés aux réseaux internationaux."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Il est interdit de photographier les établissements publics et militaires ou le personnel militaire et policier. L'utilisation de drones en Namibie est soumise à des règles strictes et nécessite l'obtention d'un permis préalable auprès de l'Autorité de l'aviation civile de Namibie. L'importation d'un drone est interdite sans ce document. Le vol de drones au-dessus des zones urbaines et des parcs nationaux nécessite des autorisations spécifiques. La conduite se fait à gauche."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Les voyageurs en provenance de pays où la fièvre jaune est endémique doivent présenter une preuve de vaccination contre cette maladie à l'arrivée. Il est recommandé d'être à jour avec les vaccinations diphtérie-tétanos-polio (DTP) et rougeole-oreillons-rubéole (ROR). Selon les conditions locales de voyage, les vaccinations contre la fièvre typhoïde et les hépatites virales A et B peuvent être recommandées. La vaccination contre la rage peut également être recommandée, en particulier pour les enfants en cas de séjour prolongé dans le nord."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Police", "numbers": ["10111"] },
+            { "service": "City Police of Windhoek", "numbers": ["+264 612902239"] },
+            { "service": "Free number from a Namibian phone", "numbers": ["302302"] },
+            { "service": "Emergencies (firefighters and ambulances)", "numbers": ["+264 61211111"] },
+            { "service": "MVA Fund (road accident)", "numbers": ["+264 819682"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy",
+              "address": "24 Willemien Street - PO BOX 20484 - Windhoek",
+              "phone": ["+264 61 27 67 00"]
+            },
+            {
+              "name": "Alliance Française de Windhoek",
+              "address": "116 Robert Mugabe Avenue - Windhoek"
+            },
+            {
+              "name": "French Institute",
+              "address": "118 Robert Mugabe Avenue – 11622 Windhoek",
+              "phone": ["+(264) 61 387 330"],
+              "email": "reception@fncc.org.na",
+              "website": "http://www.fncc.org.na"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    },
+    {
+      "name": "Afrique du Sud",
+      "video": "../video/Flags/South Africa.mp4",
+      "details": {
+        "overview": "L'Afrique du Sud est un pays situé à l'extrémité sud du continent africain, bordé par l'océan Atlantique à l'ouest et l'océan Indien au sud et à l'est. Le pays partage des frontières terrestres avec la Namibie, le Botswana, le Zimbabwe, le Mozambique, l'Eswatini et le Lesotho. Le territoire sud-africain se caractérise par une grande diversité géographique, incluant des déserts, des montagnes, des plateaux et des côtes. La chaîne de montagnes du Drakensberg s'étend le long de la frontière est, tandis que le Grand Karoo occupe une vaste région semi-aride centrale. L'Afrique du Sud est célèbre pour sa biodiversité, avec de nombreux parcs nationaux et réserves naturelles, y compris le célèbre parc national Kruger.",
+        "climate": {
+          "title": "Climate",
+          "content": "Le climat de l'Afrique du Sud varie considérablement selon les régions, en raison de sa diversité géographique. Le pays présente un climat méditerranéen dans la région du Cap-Occidental autour du Cap avec des étés chauds et secs et des hivers doux et humides ; un climat désertique et semi-aride dans les régions intérieures comme le Karoo et le Kalahari avec très peu de précipitations ; un climat subtropical le long de la côte est dans le KwaZulu-Natal avec des étés chauds et humides et des hivers doux ; un climat océanique sur la côte sud avec des températures modérées toute l'année ; un climat montagnard dans des zones comme les montagnes du Drakensberg avec des températures fraîches et des chutes de neige possibles ; et un climat tropical dans les régions extrêmes du nord-est près des frontières avec le Mozambique et le Zimbabwe."
+        },
+        "documents": {
+          "title": "Travel Documents",
+          "content": "Pour des séjours touristiques en Afrique du Sud de moins de 90 jours, les titulaires d'un passeport français (ordinaire, diplomatique ou de service) sont exemptés de visa préalable. Un permis de séjour de 90 jours sera délivré à la frontière et à l'entrée sur le territoire sud-africain. Le passeport doit impérativement comporter deux pages vierges et être valide 30 jours après la date de sortie prévue du territoire sud-africain."
+        },
+        "language": {
+          "title": "Language & Currency",
+          "subtitle": "Languages",
+          "content": "En Afrique du Sud, il y a 11 langues officielles, reflétant la diversité culturelle du pays. Les langues officielles sont : l'afrikaans, l'anglais, le ndébélé, le pedi (ou sepedi), le sotho (ou sesotho), le swati (ou siswati), le tsonga (ou xitsonga), le tswana (ou setswana), le venda (ou tshivenda), le xhosa (ou isiXhosa) et le zoulou (ou isiZulu). L'anglais est largement utilisé dans les affaires, le gouvernement et l'éducation, et est compris dans la plupart des zones urbaines.",
+          "subtitle2": "Currency",
+          "content2": "La devise de l'Afrique du Sud est le rand sud-africain, avec le code ISO ZAR."
+        },
+        "customs": {
+          "title": "Customs & Traditions",
+          "content": "Il est interdit de photographier les établissements publics et militaires ou le personnel militaire et policier. L'utilisation de drones est soumise à des règles strictes et nécessite l'obtention d'un permis préalable. La conduite se fait à gauche."
+        },
+        "health": {
+          "title": "Vaccination & Health Risks",
+          "content": "Un certificat de vaccination contre la fièvre jaune est requis pour les voyageurs en provenance d'une zone infectée (cette mesure s'applique également à toute personne ayant transité plus de douze heures dans l'un des pays à risque). Les pays à risque incluent l'Angola, le Bénin, le Burkina Faso, le Burundi, le Cameroun, la République centrafricaine, le Tchad, le Congo, la Côte d'Ivoire, la République démocratique du Congo, l'Éthiopie, la Guinée équatoriale, le Gabon, la Gambie, le Ghana, la Guinée, la Guinée-Bissau, le Kenya, le Libéria, le Mali, la Mauritanie, le Niger, le Nigeria, le Rwanda, le Sénégal, la Sierra Leone, le Soudan, le Togo, l'Ouganda, et d'autres. Assurez-vous que vos vaccins de routine sont à jour."
+        },
+        "emergency": {
+          "title": "Emergency Numbers & Useful Addresses",
+          "emergencyNumbers": [
+            { "service": "Any type of emergency (rescue, ambulance, fire, accident, etc.)", "numbers": ["112"] },
+            { "service": "Police emergency", "numbers": ["10111"] },
+            { "service": "Ambulances", "numbers": ["10177"] }
+          ],
+          "embassiesAndInstitutions": [
+            {
+              "name": "French Embassy",
+              "address": "250 Melk Street - New Muckleneuk – 0181 Pretoria",
+              "phone": ["+27 12 425 1600"],
+              "email": "france@ambafrance-rsa.org",
+              "website": "https://za.ambafrance.org/-Francais-"
+            },
+            {
+              "name": "French Consulate in Johannesburg",
+              "address": "Rosebank Corner Building, 3rd floor – 191 Jan Smuts Avenue – 2193 Parktown North, Randburg – Johannesburg",
+              "phone": ["+27 11 209 0178"],
+              "emergency": "+27 82 467 2588",
+              "email": "admin-francais.johannesburg-fslt@diplomatie.gouv.fr",
+              "website": "https://johannesburg.consulfrance.org/"
+            },
+            {
+              "name": "French Consulate in Cape Town",
+              "address": "78 Queen Victoria Street Gardens – 8001 Cape Town",
+              "phone": ["+27 (0)21 490 0940"],
+              "emergency": "+27 834 604 360",
+              "email": "consulat.le-cap-fslt@diplomatie.gouv.fr",
+              "website": "https://lecap.consulfrance.org/"
+            }
+          ],
+          "schools": [
+            {
+              "name": "Lycée Français Jules Verne de Johannesburg",
+              "address": "101 Kloof Road, Johannesburg, 2193",
+              "phone": ["+27 (0)11 485 2900"],
+              "website": "www.lyceejulesverne.co.za"
+            },
+            {
+              "name": "Lycée Français du Cap",
+              "address": "75 Baden Powell Drive, Cape Town, 7945",
+              "phone": ["+27 (0)21 761 4300"],
+              "website": "www.lfcap.co.za"
+            }
+          ],
+          "culturalCenters": [
+            {
+              "name": "Alliance Française de Johannesburg",
+              "address": "Lower Park Drive, Cnr Kerry Road, Parkview 2122",
+              "phone": ["011 646 1169"],
+              "email": "info@alliance.org.za",
+              "website": "www.alliance.org.za"
+            },
+            {
+              "name": "Alliance Française du Cap",
+              "address": "155 Loop Street, Cape Town, 8001",
+              "phone": ["+27 (0)21 423 5699"],
+              "email": "info@alliance.org.za"
+            }
+          ]
+        },
+        "sources": {
+          "title": "Sources",
+          "content": "Ministère de l'Europe et des Affaires étrangères – OMS – ASPC – ISTM – SPF – Kafumel – Service-public.fr – Wanda – Service public fédéral belge – Wikipédia"
+        }
+      }
+    }
+  ]
+}
