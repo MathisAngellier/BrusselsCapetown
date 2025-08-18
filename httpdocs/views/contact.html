@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/contact.css">
     <script src="../js/script.js" defer></script>
-
+    <script src="../js/contact.js" defer></script>
+    <script src="../js/translate.js" defer></script>
 </head>
 
 <body>
@@ -27,13 +28,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="../index.html" data-translate="nav_home">HOME</a>
-                    <div class="dropdown">
-                        <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
-                        <div class="dropdown-content">
-                            <a href="charities.html" class="sub-menu" data-translate="nav_charities">CHARITIES</a>
-                            <a href="bicycle.html" class="sub-menu" data-translate="nav_bicycle">WHY BICYCLE TOURING</a>
-                        </div>
-                    </div>
+                    <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
+                    <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
                     <a href="about.html" data-translate="nav_about">ABOUT ME</a>
                     <div class="dropdown">
                         <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
@@ -41,7 +37,6 @@
                             <div class="dropdown-content">
                                 <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
                             </div>
-
                         </div>
                     </div>
                     <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
@@ -56,7 +51,107 @@
         </nav>
     </header>
     <main>
+        <section class="contact-section">
+            <h1 data-translate="contact_title">Contact</h1>
 
+            <div class="contact-intro">
+                <p data-translate="contact_description">For any inquiries regarding partnerships, sponsorships, support,
+                    suggestions, feedback, or general information, please don't hesitate to reach out. Thank you in
+                    advance!</p>
+            </div>
+
+            <div class="contact-reasons">
+                <ul>
+                    <li data-translate="contact_reason_1">Are you a professional and want to test your gear in
+                        real-world conditions? Don't hesitate to contact me.</li>
+                    <li data-translate="contact_reason_2">Are you an individual living along my route and able to offer
+                        me a place to stay for the night? Please get in touch as soon as possible.</li>
+                    <li data-translate="contact_reason_3">Are you a small school or a large educational institution and
+                        would like to take part in this outreach project? Please contact me.</li>
+                    <li data-translate="contact_reason_4">Are you curious and want to learn more about this adventure?
+                        Feel free to contact me.</li>
+                </ul>
+            </div>
+
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3 data-translate="contact_method_email_title">Email</h3>
+                    <p data-translate="contact_method_email_desc">Send me a direct email for quick responses</p>
+                    <a href="mailto:info@brusselscapetown.com">info@brusselscapetown.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fa-brands fa-tiktok"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <h3 data-translate="contact_method_social_title">Social Media</h3>
+                    <p data-translate="contact_method_social_desc">Follow the journey and send messages</p>
+                    <a href="https://www.instagram.com/brusselscapetown/" target="_blank">@brusselscapetown</a>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fa-brands fa-strava"></i>
+                    <h3 data-translate="contact_method_location_title">Location</h3>
+                    <p data-translate="contact_method_location_desc">Follow the progression</p>
+                    <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank"
+                        aria-label="Follow us on Strava">BrusselsCapeTown</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2 data-translate="contact_form_title">Send Me a Message</h2>
+                <form id="contactForm" action="https://formspree.io/f/meoqbawg" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" data-translate="contact_form_name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-translate="contact_form_email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subject" data-translate="contact_form_subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" data-translate="contact_form_subject_placeholder">Select a subject
+                                </option>
+                                <option value="gear-testing" data-translate="contact_form_subject_gear">Professional
+                                    Gear Testing</option>
+                                <option value="accommodation" data-translate="contact_form_subject_accommodation">
+                                    Accommodation Offer</option>
+                                <option value="educational" data-translate="contact_form_subject_educational">
+                                    Educational Partnership</option>
+                                <option value="sponsorship" data-translate="contact_form_subject_sponsorship">
+                                    Sponsorship/Partnership</option>
+                                <option value="media" data-translate="contact_form_subject_media">Media Inquiry</option>
+                                <option value="general" data-translate="contact_form_subject_general">General Question
+                                </option>
+                                <option value="other" data-translate="contact_form_subject_other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location" data-translate="contact_form_location">Your Location</label>
+                            <input type="text" id="location" name="location"
+                                data-translate="contact_form_location_placeholder" placeholder="City, Country">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-translate="contact_form_message">Message *</label>
+                        <textarea id="message" name="message" required data-translate="contact_form_message_placeholder"
+                            placeholder="Tell me about your inquiry, offer, or question..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" data-translate="contact_form_submit">Send Message</button>
+                </form>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-content">
@@ -94,7 +189,8 @@
                 </a>
             </div>
             <div class="footer-note">
-                <p id="designed">&copy 2025 - Created and designed by <strong>Mathis Angellier</strong> </p>
+                <p id="designed" data-translate="footer_copyright">&copy 2025 - Created and designed by <strong>Mathis
+                        Angellier</strong> </p>
             </div>
         </div>
     </footer>

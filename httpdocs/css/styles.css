@@ -502,9 +502,16 @@ footer {
 .form_group input[type="email"] {
   flex: 1;
   padding: 0.75rem;
-  border: none;
+  border: 2px solid #ddd;
   border-radius: 4px 0 0 4px;
+
   font-family: "Raleway", sans-serif;
+}
+
+.form_group input[type="email"]:focus {
+  outline: none;
+  border-color: rgba(183, 123, 58, 0.85);
+  box-shadow: 0 0 0 3px rgba(183, 123, 58, 0.1);
 }
 
 .form_group input[type="submit"] {

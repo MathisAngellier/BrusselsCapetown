@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/images.css">
     <script src="../js/script.js" defer></script>
-
+    <script src="../js/translate.js" defer></script>
 </head>
 
 <body>
@@ -27,13 +27,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="../index.html" data-translate="nav_home">HOME</a>
-                    <div class="dropdown">
-                        <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
-                        <div class="dropdown-content">
-                            <a href="charities.html" class="sub-menu" data-translate="nav_charities">CHARITIES</a>
-                            <a href="bicycle.html" class="sub-menu" data-translate="nav_bicycle">WHY BICYCLE TOURING</a>
-                        </div>
-                    </div>
+                    <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
+                    <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
                     <a href="about.html" data-translate="nav_about">ABOUT ME</a>
                     <div class="dropdown">
                         <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
@@ -41,7 +36,6 @@
                             <div class="dropdown-content">
                                 <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
                             </div>
-
                         </div>
                     </div>
                     <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
@@ -56,18 +50,19 @@
         </nav>
     </header>
     <main>
-
+        <h1 data-translate="comeback">Come back on September 1st, 2026</h1>
     </main>
     <footer>
         <div class="footer-content">
             <div class="newsletter">
-                <h4>Newsletter & social media</h4>
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
                 <br>
-                <p>Subscribe to receive first-hand information and stories.</p>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
                 <form action="https://formspree.io/f/meoqbawg" method="POST">
                     <div class="form_group">
-                        <input required="" class="" type="email" value="" name="email" placeholder="Email Address">
-                        <input type="submit" class="" value="Subscribe">
+                        <input required="" class="" type="email" value="" name="email"
+                            data-translate="email_placeholder" placeholder="Email Address">
+                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
                     </div>
                 </form>
             </div>
@@ -93,7 +88,8 @@
                 </a>
             </div>
             <div class="footer-note">
-                <p id="designed">&copy 2025 - Created and designed by <strong>Mathis Angellier</strong> </p>
+                <p id="designed" data-translate="footer_copyright">&copy 2025 - Created and designed by <strong>Mathis
+                        Angellier</strong> </p>
             </div>
         </div>
     </footer>

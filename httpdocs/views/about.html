@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/about.css">
     <script src="../js/script.js" defer></script>
     <script src="../js/about.js" defer></script>
+    <script src="../js/translate.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -29,13 +30,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="../index.html" data-translate="nav_home">HOME</a>
-                    <div class="dropdown">
-                        <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
-                        <div class="dropdown-content">
-                            <a href="charities.html" class="sub-menu" data-translate="nav_charities">CHARITIES</a>
-                            <a href="bicycle.html" class="sub-menu" data-translate="nav_bicycle">WHY BICYCLE TOURING</a>
-                        </div>
-                    </div>
+                    <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
+                    <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
                     <a href="about.html" data-translate="nav_about">ABOUT ME</a>
                     <div class="dropdown">
                         <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
@@ -43,7 +39,6 @@
                             <div class="dropdown-content">
                                 <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
                             </div>
-
                         </div>
                     </div>
                     <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
@@ -61,7 +56,6 @@
     <main class="main-wrapper">
         <div class="section">
             <div class="container-medium">
-
             </div>
         </div>
 
@@ -70,9 +64,8 @@
                 <div role="list" class="list">
                     <div role="listitem" class="item">
                         <div class="item_content">
-
-                            <h2>More than 20 years in radio</h2>
-                            <p class="item_p">
+                            <h2 data-translate="aboutme_section1_title">More than 15 years in radio</h2>
+                            <p class="item_p" data-translate="aboutme_section1_text">
                                 Successively working as a technician, announcer, editor, production manager, and host
                                 of the World Chart Show for Radio Express (Los Angeles), broadcast across all
                                 French-speaking African countries.
@@ -82,9 +75,8 @@
                     </div>
                     <div role="listitem" class="item">
                         <div class="item_content">
-
-                            <h2>A lifelong enthusiast of physical activity</h2>
-                            <p class="item_p">
+                            <h2 data-translate="aboutme_section2_title">A lifelong enthusiast of physical activity</h2>
+                            <p class="item_p" data-translate="aboutme_section2_text">
                                 Now with a preference for endurance sports and long-distance sporting challenges.
                             </p>
                         </div>
@@ -92,30 +84,30 @@
                     </div>
                     <div role="listitem" class="item">
                         <div class="item_content">
-
-                            <h2>Nearly 15 years serving patients</h2>
-                            <p class="item_p">
+                            <h2 data-translate="aboutme_section3_title">Nearly 15 years serving patients</h2>
+                            <p class="item_p" data-translate="aboutme_section3_text">
                                 Contributing to the improvement of their daily lives in the fields of orthopedics,
                                 medical and surgical equipment, and pharmaceutical products.
                             </p>
                         </div>
                         <video src="../video/AboutMe - Part3.mp4" loading="lazy" autoplay muted loop></video>
                     </div>
-
                 </div>
             </div>
         </div>
     </main>
+
     <footer>
         <div class="footer-content">
             <div class="newsletter">
-                <h4>Newsletter & social media</h4>
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
                 <br>
-                <p>Subscribe to receive first-hand information and stories.</p>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
                 <form action="https://formspree.io/f/meoqbawg" method="POST">
                     <div class="form_group">
-                        <input required="" class="" type="email" value="" name="email" placeholder="Email Address">
-                        <input type="submit" class="" value="Subscribe">
+                        <input required="" class="" type="email" value="" name="email"
+                            data-translate="email_placeholder" placeholder="Email Address">
+                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
                     </div>
                 </form>
             </div>
@@ -141,7 +133,8 @@
                 </a>
             </div>
             <div class="footer-note">
-                <p id="designed">&copy 2025 - Created and designed by <strong>Mathis Angellier</strong> </p>
+                <p id="designed" data-translate="footer_copyright">&copy 2025 - Created and designed by <strong>Mathis
+                        Angellier</strong> </p>
             </div>
         </div>
     </footer>

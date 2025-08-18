@@ -1,0 +1,200 @@
+.contact-section {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.contact-section h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.contact-intro {
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+}
+
+.contact-intro p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-reasons {
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+
+.contact-reasons ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-reasons li {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #383838;
+  line-height: 1.6;
+  border-left: 4px solid rgba(183, 123, 58, 0.85);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-reasons li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-reasons li::before {
+  content: "✉";
+  color: rgba(183, 123, 58, 0.85);
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* Contact Form Styles */
+.contact-form-section {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(183, 123, 58, 0.85);
+  box-shadow: 0 0 0 3px rgba(183, 123, 58, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  background: rgba(183, 123, 58, 0.85);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 2rem auto 0 auto;
+  min-width: 200px;
+}
+
+.submit-btn:hover {
+  background: #f59520;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(245, 149, 32, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Contact Methods */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 4rem auto;
+  max-width: 1000px;
+}
+
+.contact-method {
+  background: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-method:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.contact-method i {
+  font-size: 3rem;
+  color: rgba(183, 123, 58, 0.85);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.contact-method h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.contact-method p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.contact-method a {
+  color: rgba(183, 123, 58, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+  color: #f59520;
+  text-decoration: underline;
+}

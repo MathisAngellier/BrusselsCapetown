@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/route.css">
     <script src="../js/script.js" defer></script>
-    <script src="../js/route.js" defer></script>
+    <script src="../js/translate.js" defer></script>
 </head>
 
 <body>
@@ -27,13 +27,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="../index.html" data-translate="nav_home">HOME</a>
-                    <div class="dropdown">
-                        <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
-                        <div class="dropdown-content">
-                            <a href="charities.html" class="sub-menu" data-translate="nav_charities">CHARITIES</a>
-                            <a href="bicycle.html" class="sub-menu" data-translate="nav_bicycle">WHY BICYCLE TOURING</a>
-                        </div>
-                    </div>
+                    <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
+                    <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
                     <a href="about.html" data-translate="nav_about">ABOUT ME</a>
                     <div class="dropdown">
                         <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
@@ -41,7 +36,6 @@
                             <div class="dropdown-content">
                                 <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
                             </div>
-
                         </div>
                     </div>
                     <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
@@ -59,47 +53,63 @@
         <section class="hero">
             <video src="../video/Opener Route.mp4" autoplay muted loop="false"></video>
         </section>
-        <section>
-            <section class="content-section mission-section">
-                <div class="mission-text">
-                    <h2>The Mission</h2>
-                    <p>From the heart of Europe to the southern tip of Africa, this solo cycling expedition aims to
-                        bring
-                        cultures closer together, raise awareness of humanitarian causes, and inspire others to chase
-                        their
-                        dreams. Through this journey, I hope to support local charities and highlight the diverse
-                        communities and landscapes along the way.</p>
-                </div>
-                <div class="mission-image">
-                    <img src="img/brusselscapetown.png" alt="Cyclist on a journey"
-                        style="max-width: 100%; height: 400px;">
 
-                </div>
+        <section class="route-section">
 
-            </section>
+            <h1 data-translate="route_title1">From Brussels to Cape Town: 4 Months Cycling Toward the Horizon</h1>
+            <p data-translate="route_description">On the first day of September 2026, as summer gently withdrew from
+                the Belgian sky, I will set off southward on my bicycle with a goal as clear as it is dizzying: to
+                reach the city of Cape Town in South Africa. A journey powered by the strength of my legs,
+                stretching more than 14,000 kilometers through cities, countryside, deserts, mountains, and ocean
+                shores.</p>
 
-            <section class="content-section">
-                <h2 style="text-align: center; margin-bottom: 2rem;">The Route</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-                    Starting from Brussels, the road winds through Europe, crosses the Mediterranean, follows the
-                    Atlantic
-                    Ocean and the African continent, and finally reaches Cape Town, South Africa. Along the way, I will
-                    traverse various landscapes and climates, including the Pyrenees, the Sahara and Namib deserts, the
-                    humid savannas of West Africa, and much more.
-                </p>
-            </section>
+            <h2 data-translate="route_subtitle1">September – Crossing Western Europe</h2>
+            <p data-translate="route_text1">The journey will begin with a gentle ride through Belgian and French roads.
+                Paris will be the first major stop, followed by Tours, Poitiers, and Royan. The salty wind of the
+                Atlantic and coastal villages will accompany my route into Spain, where Madrid will bring the first
+                sensation of Mediterranean warmth. Then comes Andalusia, arid and radiant, before finally reaching
+                Tarifa, at the very end of Europe. And there, after nearly 3,000 km of pedaling, Africa will be just a
+                tiny hour’s ferry away.</p>
+
+            <h2 data-translate="route_subtitle2">October – West Africa as Compass</h2>
+            <p data-translate="route_text2">Along the ocean, Morocco will unfurl its white cities and endless beaches.
+                And if my prayers are answered, the desert wind will push me southward. Western Sahara, then Mauritania,
+                with their arid landscapes and desert solitude, will no doubt become a logistical and human challenge.
+                Nouakchott will mark the halfway point before reaching Saint-Louis and then Dakar, the vibrant capital
+                of Senegal. Europe will feel far away; the first great loop coming to its end.</p>
+
+            <h2 data-translate="route_subtitle5">November – Immersion in Tropical Africa</h2>
+            <p data-translate="route_text3">The journey will slide eastward, leaving the dunes behind to enter a
+                greener, denser, wetter Africa; the Sahel transforming into savanna, then into forest. Welcome to
+                Guinea, Côte d’Ivoire, and Ghana, in the heart of a mosaic of cultures, languages, and smiles. Rain will
+                become more frequent, and the roads more chaotic. In Lomé, after thousands of kilometers and three
+                months of travel, and to avoid crossing the heart of Central Africa, a flight to Windhoek will carry me
+                to Namibia, where I will resume the road southward.</p>
+
+            <h2 data-translate="route_subtitle4">December – The Final Meridian, the Last Breath</h2>
+            <p data-translate="route_text4">The last part of this wild journey will be the most austere: 2,000 km
+                through a Southern Africa as harsh
+                as it is magnificent. After Namibia, with its lunar landscapes, vast silent expanses, endless skies, and
+                long straight lines crossing the Namib Desert and sun-scorched canyons, South Africa will appear, with
+                its mountains, vineyards, and more familiar terrain.</p>
+            <p data-translate="route_text5">On December 25th, after 4 months of effort, solitude, encounters, and
+                sunburns, my bicycle will come to a
+                stop in the city of Cape Town—precisely where the Atlantic Ocean meets the Indian Ocean, where the land
+                ends.</p>
+
         </section>
     </main>
     <footer>
         <div class="footer-content">
             <div class="newsletter">
-                <h4>Newsletter & social media</h4>
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
                 <br>
-                <p>Subscribe to receive first-hand information and stories.</p>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
                 <form action="https://formspree.io/f/meoqbawg" method="POST">
                     <div class="form_group">
-                        <input required="" class="" type="email" value="" name="email" placeholder="Email Address">
-                        <input type="submit" class="" value="Subscribe">
+                        <input required="" class="" type="email" value="" name="email"
+                            data-translate="email_placeholder" placeholder="Email Address">
+                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
                     </div>
                 </form>
             </div>
@@ -125,7 +135,8 @@
                 </a>
             </div>
             <div class="footer-note">
-                <p id="designed">&copy 2025 - Created and designed by <strong>Mathis Angellier</strong> </p>
+                <p id="designed" data-translate="footer_copyright">&copy 2025 - Created and designed by <strong>Mathis
+                        Angellier</strong> </p>
             </div>
         </div>
     </footer>
