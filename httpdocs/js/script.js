@@ -163,8 +163,7 @@ window.onload = function () {
 // Load translations for static content
 async function loadTranslations() {
   try {
-    // You'll need to create this translations file
-    const response = await fetch("../data/translations.json");
+    const response = await fetch("data/translations.json");
     translations = await response.json();
   } catch (error) {
     console.error("Error loading translations:", error);
@@ -177,12 +176,18 @@ function updateStaticTexts() {
   elements.forEach((element) => {
     const key = element.getAttribute("data-translate");
     if (translations[currentLanguage] && translations[currentLanguage][key]) {
+      const text = translations[currentLanguage][key];
       if (element.tagName === "INPUT" && element.type === "submit") {
-        element.value = translations[currentLanguage][key];
+        element.value = text;
       } else if (element.placeholder !== undefined) {
-        element.placeholder = translations[currentLanguage][key];
+        element.placeholder = text;
       } else {
-        element.textContent = translations[currentLanguage][key];
+        // Check if the translation contains HTML tags
+        if (text.includes("<") && text.includes(">")) {
+          element.innerHTML = text; // Use innerHTML for HTML content
+        } else {
+          element.textContent = text; // Use textContent for plain text
+        }
       }
     }
   });
@@ -197,15 +202,6 @@ async function switchLanguage(lang) {
 
   // Update static texts
   updateStaticTexts();
-
-  // Reload country data
-  try {
-    countries = await getCountriesData();
-    generateSlides();
-    selectCountry(0);
-  } catch (error) {
-    console.error("Error loading countries for language:", lang, error);
-  }
 
   // Update active language button
   document.querySelectorAll(".lang-btn").forEach((btn) => {
