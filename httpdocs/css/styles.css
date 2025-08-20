@@ -645,6 +645,20 @@ footer {
   transform: translateY(30px);
 }
 
+.scroll-animation,
+.fade-in-animation,
+.slide-in-left,
+.slide-in-right {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.animate-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 /* Add a subtle bounce effect for stat numbers */
 @keyframes count-up {
   0% {

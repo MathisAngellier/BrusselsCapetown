@@ -143,9 +143,37 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 function closePopup() {
   document.getElementById("videoPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+  handleScrollAnimations(); // <-- important to trigger animations
 }
 
 // Optional: Show popup only once per session
 window.onload = function () {
   document.getElementById("videoPopup").style.display = "flex";
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    closePopup();
+  }, 8000); // auto close after 8 seconds
 };
+
+function handleScrollAnimations() {
+  const animatedElements = document.querySelectorAll(".scroll-animation, .fade-in-animation, .slide-in-left, .slide-in-right");
+
+  animatedElements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight - 100;
+
+    if (isVisible && !el.classList.contains("animate-active")) {
+      el.classList.add("animate-active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", handleScrollAnimations);
+window.addEventListener("scroll", handleScrollAnimations);
+window.addEventListener("resize", handleScrollAnimations);
+
+document.addEventListener("DOMContentLoaded", handleScrollAnimations);
+window.addEventListener("scroll", handleScrollAnimations);
+window.addEventListener("resize", handleScrollAnimations);
