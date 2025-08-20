@@ -705,14 +705,15 @@ footer {
   transition: content 2s ease;
 }
 
-/* Add this to your existing CSS */
-
 /* Mobile Styles */
 @media (max-width: 767px) {
   .hamburger {
     display: block;
   }
-
+  .navbar {
+    padding: 0 1rem;
+    justify-content: flex-start;
+  }
   .nav-links {
     display: none;
     flex-direction: column;
@@ -723,35 +724,33 @@ footer {
     left: 0;
     z-index: 1001;
     border-top: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+    align-items: stretch;
+    max-width: none;
   }
-
   .nav-links.show {
     display: flex;
   }
-
   .nav-links a {
     border-bottom: 1px solid #ddd;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
-
   .dropdown-content {
-    display: none !important; /* Hide dropdown for mobile */
-  }
-  .dropdown-content a {
-    padding-left: 2rem;
-    font-size: 0.9rem;
-    color: #333 !important; /* Dark text for contrast */
-    background-color: transparent;
-    border: none;
-    display: block;
-  }
-  .dropdown-content a.sub-menu {
-    color: #333 !important;
-    background: #f8f8f8 !important;
+    display: none !important;
   }
   .sub-menu {
     display: block !important;
     visibility: visible !important;
-    color: black !important;
+    color: #333 !important;
+    padding-left: 1rem !important;
+  }
+  .language-switcher {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .hero {

@@ -139,22 +139,50 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
   // Move "COUNTRIES" out of the dropdown for mobile
-  if (window.innerWidth <= 767) {
-    const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
-    const routeLink = document.querySelector(".dropdown a.dropbtn");
-    const dropdown = document.querySelector(".dropdown");
+  function updateMobileMenu() {
+    if (window.innerWidth <= 767) {
+      const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
+      const routeLink = document.querySelector(".dropdown a.dropbtn");
+      const dropdown = document.querySelector(".dropdown");
 
-    if (countriesLink && routeLink && dropdown) {
-      // Insert "COUNTRIES" after "ROUTE" in the main menu
-      routeLink.insertAdjacentElement("afterend", countriesLink);
-      // Remove the dropdown wrapper for mobile
-      dropdown.removeChild(document.querySelector(".dropdown-content"));
+      if (countriesLink && routeLink && dropdown) {
+        routeLink.insertAdjacentElement("afterend", countriesLink);
+        dropdown.removeChild(document.querySelector(".dropdown-content"));
+      }
     }
   }
+
+  // Run on load and resize
+  window.addEventListener("load", updateMobileMenu);
+  window.addEventListener("resize", updateMobileMenu);
 
   // === Initial Scroll Animations ===
   handleScrollAnimations();
 });
+
+function updateLogo() {
+  const logoImg = document.getElementById("logo-img");
+  if (!logoImg) return;
+
+  // Determine the correct path prefix
+  const pathPrefix = window.location.pathname.includes("/views/") ? "../" : "";
+  const mobileSrc = `${pathPrefix}img/Logo-petit-format.png`;
+  const desktopSrc = `${pathPrefix}img/Logo-petit-format+vélo.jpg`;
+
+  if (window.innerWidth <= 767) {
+    logoImg.src = mobileSrc;
+  } else {
+    logoImg.src = desktopSrc;
+  }
+}
+
+// Call on load and resize
+window.addEventListener("load", updateLogo);
+window.addEventListener("resize", updateLogo);
+
+// Run on load and resize
+window.addEventListener("load", updateLogo);
+window.addEventListener("resize", updateLogo);
 
 // === Scroll-Triggered Animations ===
 function handleScrollAnimations() {
