@@ -103,7 +103,12 @@
     "contact_form_message_placeholder": "Tell me about your inquiry, offer, or question...",
     "contact_form_submit": "Send Message",
     "contact_method_location": "<strong>Putte, Flanders, Belgium</strong>",
-    "contact_description": "For any other inquiries (partnerships, sponsorships, support, suggestions, feedback, or general information), please don’t hesitate to reach out. Thank you in advance!"
+    "contact_description": "For any other inquiries (partnerships, sponsorships, support, suggestions, feedback, or general information), please don’t hesitate to reach out. Thank you in advance!",
+    "equipment_title": "Equipment",
+    "equipment_intro1": "Because a short trip around Europe and a four-month journey across Africa require different preparations, prudence compels me to carefully consider what to pack and what to leave behind—since there’s only room for the essentials; the “just in case” option simply isn’t feasible. Duration, distance, and climate variations are all factors that must be taken into account when making these choices.",
+    "equipment_intro2": "My setup consists of a touring bicycle, the TX800 from the renowned German manufacturer Fahrradmanufaktur, and a single-wheel trailer made in Poland by Extrawheel, all constructed from steel—a material that can be easily repaired even at the farthest corners of the world.",
+    "equipment_intro3": "Two pairs of side panniers are attached to the front and rear racks of the bike (2x12.5L Extrawheel at the front and 2x25L Ortlieb at the rear), plus a third pair (2x50L Extrawheel) mounted on the trailer. Together, these six bags serve as my bedroom, wardrobe, bathroom, kitchen, pantry, and garage.",
+    "equipment_intro4": "Finally, two frame bags complete the setup, keeping essentials within easy reach: first aid kit, travel journal, pen, Swiss army knife, snacks, reflective vest, and more."
   },
   "fr": {
     "nav_home": "ACCUEIL",
@@ -181,10 +186,10 @@
     "route_text4": "La dernière partie de ce fou périple sera la plus austère : 2000 km dans une Afrique australe aussi rude que splendide. Après la Namibie et ses paysages lunaires, ses vastes étendues silencieuses, ses ciels sans fin et ses longues lignes droites qui traversent le désert du Namib et les canyons brûlés de soleil, apparaîtra l’Afrique du Sud avec ses montagnes, ses vignobles, et ses reliefs plus familiers.",
     "route_text5": "Le 25 décembre, après 4 mois d'effort, de solitude, de rencontres et de coups de soleil, mon vélo s’arrêtera dans la cité du Cap, précisément là où l’océan Atlantique rencontre l’océan Indien, là où la terre s'arrête.",
     "comeback": "Revenez le 1er septembre 2026",
-    "contact_reason_1": "Êtes-vous un professionnel et souhaitez-vous tester votre équipement en conditions réelles ? N'hésitez pas à me contacter.",
-    "contact_reason_2": "Êtes-vous un particulier habitant le long de mon itinéraire et pouvez-vous m'offrir un hébergement pour la nuit ? Merci de me contacter au plus vite.",
-    "contact_reason_3": "Êtes-vous une petite école ou un grand établissement d'enseignement et souhaitez-vous participer à ce projet de sensibilisation ? Contactez-moi.",
-    "contact_reason_4": "Êtes-vous curieux et voulez-vous en savoir plus sur cette aventure ? N'hésitez pas à me contacter.",
+    "contact_reason_1": "Vous êtes un professionnel et vous souhaitez tester votre matériel en conditions réelles ? N’hésitez pas à me contacter.",
+    "contact_reason_2": "Vous êtes un particulier, vous habitez sur la route de mon parcours et vous pouvez m’offrir le gîte pour une nuit ? Merci de prendre contact avec moi dès que possible.",
+    "contact_reason_3": "Vous êtes une petite école ou un grand établissement scolaire et vous souhaitez participer à ce projet de rapprochement ? SVP contactez-moi.",
+    "contact_reason_4": "Vous êtes curieux et souhaitez en savoir encore plus sur cette aventure, n’hésitez pas, contactez-moi.",
     "contact_method_email_title": "E-mail",
     "contact_method_email_desc": "Envoyez-moi un e-mail direct pour des réponses rapides",
     "contact_method_social_title": "Réseaux Sociaux",
@@ -209,6 +214,11 @@
     "contact_form_message_placeholder": "Parlez-moi de votre demande, offre ou question...",
     "contact_form_submit": "Envoyer le Message",
     "contact_method_location": "<strong>Putte, Flandres, Belgique</strong>",
-    "contact_description": "Pour toutes autres demandes (partenariats, sponsoring, soutiens, suggestions, commentaires, ou simples renseignements), n’hésitez pas à me contacter. Merci d’avance."
+    "contact_description": "Pour toutes autres demandes (partenariats, sponsoring, soutiens, suggestions, commentaires, ou simples renseignements), n’hésitez pas à me contacter. Merci d’avance.",
+    "equipment_title": "Équipement",
+    "equipment_intro1": "Parce qu’un voyage de quelques jours en Europe et celui de 4 mois à travers l’Afrique ne se prépare pas de la même façon, la prudence m’impose de réfléchir correctement aux affaires à prendre et celles à laisser, car il n’y a de place que pour l’essentiel ; le « au cas où » étant une option qui ne peut être envisageable. La durée, la distance, la variation des climats, sont autant de paramètres à prendre en considération dans les choix à faire. ",
+    "equipment_intro2": "Mon embarcation se compose d’un vélo de voyage, le TX800 du célèbre fabricant allemand Fahrradmanufaktur, et d’une remorque mono roue made in Poland de la marque Extrawheel, le tout en acier, matériau facilement réparable même à l’autre bout du monde. ",
+    "equipment_intro3": "Deux paires de sacoches latérales fixées aux porte-bagages avant et arrière du vélo (2x12.5L Extrawheel à l’avant et 2x25L Ortlieb à l’arrière), plus une troisième paire (2x50L Extrawheel) accrochée la remorque, desservent à elles six : la chambre, le dressing, la salle de bains, la cuisine, le garde-manger et le garage. ",
+    "equipment_intro4": "Enfin, deux sacoches de cadre viennent compléter l’équipement pour garder à portée de mains le nécessaire d’urgence : pharmacie, carnet de route, stylo, couteau suisse, petite restauration, veste réfléchissante, téléphone satellite… "
   }
 }
