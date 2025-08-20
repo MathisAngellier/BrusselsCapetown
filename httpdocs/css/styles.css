@@ -356,12 +356,6 @@ header {
   transform: scale(1.05);
 }
 
-.bicycle-section p {
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: 1.5rem;
-}
-
 .sponsor-section {
   max-width: 1200px;
   margin: 0 auto;
