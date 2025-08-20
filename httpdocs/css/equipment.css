@@ -116,26 +116,44 @@ h2 {
   padding: 2rem;
 }
 
-@media (max-width: 575.98px) {
-  .heading {
-    font-size: 2.5rem;
-  }
-
-  .item {
-    display: flex;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Stack items vertically */
+  .scroll-section.horizontal-section .list {
     flex-direction: column;
+    height: auto;
   }
 
-  .item_content,
-  .item_media {
-    height: 50vh;
+  /* Each item takes full viewport height */
+  .scroll-section.horizontal-section .item {
     width: 100%;
-    padding-top: 0;
-    padding-bottom: 0;
+    height: 100vh;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 0;
   }
 
-  .item_number {
-    font-size: 0.5rem;
-    top: 1.5rem;
+  /* Content and media take full width and stack vertically */
+  .scroll-section.horizontal-section .item_content,
+  .scroll-section.horizontal-section .item_media {
+    width: 100%;
+    height: 50%;
+    padding: 1rem;
+  }
+
+  /* Adjust the item content for readability */
+  .scroll-section.horizontal-section .item_content {
+    padding: 4rem 1.5rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Adjust the item number position */
+  .scroll-section.horizontal-section .item_number {
+    top: 2rem;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
   }
 }

@@ -108,7 +108,19 @@
     "equipment_intro1": "Because a short trip around Europe and a four-month journey across Africa require different preparations, prudence compels me to carefully consider what to pack and what to leave behind—since there’s only room for the essentials; the “just in case” option simply isn’t feasible. Duration, distance, and climate variations are all factors that must be taken into account when making these choices.",
     "equipment_intro2": "My setup consists of a touring bicycle, the TX800 from the renowned German manufacturer Fahrradmanufaktur, and a single-wheel trailer made in Poland by Extrawheel, all constructed from steel—a material that can be easily repaired even at the farthest corners of the world.",
     "equipment_intro3": "Two pairs of side panniers are attached to the front and rear racks of the bike (2x12.5L Extrawheel at the front and 2x25L Ortlieb at the rear), plus a third pair (2x50L Extrawheel) mounted on the trailer. Together, these six bags serve as my bedroom, wardrobe, bathroom, kitchen, pantry, and garage.",
-    "equipment_intro4": "Finally, two frame bags complete the setup, keeping essentials within easy reach: first aid kit, travel journal, pen, Swiss army knife, snacks, reflective vest, and more."
+    "equipment_intro4": "Finally, two frame bags complete the setup, keeping essentials within easy reach: first aid kit, travel journal, pen, Swiss army knife, snacks, reflective vest, and more.",
+    "equipment_bedroom": "Bedroom",
+    "equipment_bedroom_text": "MSR Hubba Hubba BikePack2 tent – MSR footprint – Therm-A-Rest sleeping pad – Foam mat – Sea To Summit sleeping bag – Sea To Summit liner – Nemo inflatable pillow – USB headlamp – USB flashlight – Helinox folding chair – Solar panels – USB charger & cables – Power banks",
+    "equipment_wardrobe": "Wardrobe",
+    "equipment_wardrobe_text": "Helmet – Sunglasses – Cap – Hat – Headband – Cycling shorts – Long pants – Waterproof overpants – Poncho – Rain jacket – Fleece – Short-sleeve & long-sleeve T-shirts – Beanie – Gloves – Underwear – Socks – Sandals – Cycling shoes – Small canvas backpack – TrekMates waterproof storage bags",
+    "equipment_bathroom": "Bathroom",
+    "equipment_bathroom_text": "Microfiber towel – First aid kit (bandages, antiseptic wipes, gauze, medical tape, disinfectant, surgical mask and gloves) – Emergency blanket – Small scissors – Tweezers – Tick remover – Insect repellent – Sunscreen – Marseille soap – Toothbrush & toothpaste – Deodorant – Medicine kit (Ibuprofen – Paracetamol – Antihistamines – Anti-diarrheal – Anti-malaria tablets…)",
+    "equipment_kitchen": "Kitchen",
+    "equipment_kitchen_text": "MSR stove + gas canisters – Sea To Summit & GSI titanium cookset – Plastic cutlery – Cooking set (spatula, cutting board, salt shaker, pepper shaker) – Fire starter – LifeStraw water filter – Sponge – Dish towel – Zip lock bags – Clips – Rubber bands",
+    "equipment_pantry": "Pantry",
+    "equipment_pantry_text": "Water bladders (6 & 8 liters) – 72-hour supply of freeze-dried food (for emergencies) – Dried fruit – Crackers – Sugar – Salt & pepper – Condensed milk – Food purchased during the trip",
+    "equipment_garage": "Garage",
+    "equipment_garage_text": "Multi-tool – Chain breaker & quick links – Tire levers – Mini pump (compatible with Schrader and Presta valves, with pressure gauge) – Spare inner tubes – Patch kit – Spare tire – Bike locks – Rag – Chain oil – Adjustable wrench – Multi-grip pliers – Spare spokes – Screw, bolt & nut kit – Cable ties – Duct tape – Maps"
   },
   "fr": {
     "nav_home": "ACCUEIL",
@@ -219,6 +231,18 @@
     "equipment_intro1": "Parce qu’un voyage de quelques jours en Europe et celui de 4 mois à travers l’Afrique ne se prépare pas de la même façon, la prudence m’impose de réfléchir correctement aux affaires à prendre et celles à laisser, car il n’y a de place que pour l’essentiel ; le « au cas où » étant une option qui ne peut être envisageable. La durée, la distance, la variation des climats, sont autant de paramètres à prendre en considération dans les choix à faire. ",
     "equipment_intro2": "Mon embarcation se compose d’un vélo de voyage, le TX800 du célèbre fabricant allemand Fahrradmanufaktur, et d’une remorque mono roue made in Poland de la marque Extrawheel, le tout en acier, matériau facilement réparable même à l’autre bout du monde. ",
     "equipment_intro3": "Deux paires de sacoches latérales fixées aux porte-bagages avant et arrière du vélo (2x12.5L Extrawheel à l’avant et 2x25L Ortlieb à l’arrière), plus une troisième paire (2x50L Extrawheel) accrochée la remorque, desservent à elles six : la chambre, le dressing, la salle de bains, la cuisine, le garde-manger et le garage. ",
-    "equipment_intro4": "Enfin, deux sacoches de cadre viennent compléter l’équipement pour garder à portée de mains le nécessaire d’urgence : pharmacie, carnet de route, stylo, couteau suisse, petite restauration, veste réfléchissante, téléphone satellite… "
+    "equipment_intro4": "Enfin, deux sacoches de cadre viennent compléter l’équipement pour garder à portée de mains le nécessaire d’urgence : pharmacie, carnet de route, stylo, couteau suisse, petite restauration, veste réfléchissante, téléphone satellite… ",
+    "equipment_bedroom": "La chambre",
+    "equipment_bedroom_text": "Tente MSR Hubba Hubba BikePack2 – Toile de sol MSR – Tapis de sol Therm-A-Rest – Tapis mousse – Sac de couchage Sea To Summit – Sac à viande Sea To Summit – Oreiller gonflable Nemo – Lampe frontale USB – Lampe torche USB – Chaise pliante Helinox – Paneaux solaires – Chargeur & câbles USB – Powerbanks",
+    "equipment_wardrobe": "Le dressing",
+    "equipment_wardrobe_text": "Casque – Lunettes de soleil – Casquette – Chapeau – Bandeau– Cuissard court – Pantalons longs – Surpantalon étanche – Poncho – Veste de pluie – Polaire – T-shirts manches courtes et manches longues - Bonnet – Gants – Sous-vêtements – Chaussettes – Sandales – Chaussures de vélo – Mini sac à dos en toile – Sacs de rangement étanches TrekMates",
+    "equipment_bathroom": "La salle de bain",
+    "equipment_bathroom_text": "Serviette de bain en microfibre – kit de premier secours (pansements, lingettes antiseptiques, gaze, ruban médical, désinfectant, masque et gants chirurgicaux) – Couverture de survie – Petite paire de ciseaux – Pince à épiler – Pince à tiques – Répulsif anti-insectes – Crème solaire – Savon de Marseille – Brosse à dents & dentifrice – Déodorant – Trousse de médicaments (Ibuprofène – Paracétamol – Antihistaminiques – Anti-diarrhéiques – Cachets contre la malaria…)",
+    "equipment_kitchen": "La cuisine",
+    "equipment_kitchen_text": "Réchaud MSR + Cartouches à gaz – Popote en titane Sea To Summit & GSI– Couverts en plastique – Set de cuisine (spatule, planche à découper, salière, poivrière) – Allume-feu – Filtre à eau LifeStraw – Éponge – Torchon de vaisselle – Sacs zip locks – Clips de fermeture – Élastiques",
+    "equipment_pantry": "Le garde-manger",
+    "equipment_pantry_text": "Poches à eau (6 & 8 litres) – Pack 72h de nourritures lyophilisées (réservées en cas d’urgence) – Fruits secs – Biscuits secs – Sucre – Sel & Poivre – Lait concentré – Achats pendant le voyage",
+    "equipment_garage": "Le garage",
+    "equipment_garage_text": "Multi-outil – Dérive-chaîne & maillons d’attache rapides – Démonte-pneu – Mini pompe compatible Schrader et Presta avec manomètre – Chambres à air de secours – Kit de rustines – Pneu de rechange – Antivols – Chiffon – Huile de chaîne – Clé à molette – Pince multifonctions – Rayons de rechange – Kit de vis, boulons & écrous – Serre-câbles – Ruban adhésif – Cartes"
   }
 }

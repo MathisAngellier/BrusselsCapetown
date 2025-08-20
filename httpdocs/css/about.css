@@ -110,6 +110,10 @@ h2 {
     flex-direction: column;
   }
 
+  #item2 {
+    background-color: #fff;
+  }
+
   .item_content,
   .item_media {
     height: 50vh;

@@ -3,18 +3,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Select the HTML elements needed for the animation
 const scrollSection = document.querySelectorAll(".scroll-section");
-
 scrollSection.forEach((section) => {
   const wrapper = section.querySelector(".wrapper");
   const items = wrapper.querySelectorAll(".item");
 
   // Initialize
   let direction = null;
-
   if (section.classList.contains("vertical-section")) {
     direction = "vertical";
   } else if (section.classList.contains("horizontal-section")) {
-    direction = "horizontal";
+    direction = window.innerWidth <= 768 ? "vertical" : "horizontal";
   }
 
   initScroll(section, items, direction);
@@ -36,30 +34,21 @@ function initScroll(section, items, direction) {
       end: () => `+=${items.length * 100}%`,
       scrub: 1,
       invalidateOnRefresh: true,
-      // markers: true,
     },
     defaults: { ease: "none" },
   });
+
   items.forEach((item, index) => {
     timeline.to(item, {
       scale: 0.9,
       borderRadius: "10px",
     });
 
-    direction == "horizontal"
-      ? timeline.to(
-          items[index + 1],
-          {
-            xPercent: 0,
-          },
-          "<"
-        )
-      : timeline.to(
-          items[index + 1],
-          {
-            yPercent: 0,
-          },
-          "<"
-        );
+    direction == "horizontal" ? timeline.to(items[index + 1], { xPercent: 0 }, "<") : timeline.to(items[index + 1], { yPercent: 0 }, "<");
   });
 }
+
+// Refresh ScrollTrigger on window resize
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});
