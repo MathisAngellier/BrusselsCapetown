@@ -28,13 +28,15 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  padding-right: 2rem; /* Added padding to the right */
+  padding-right: 2rem;
+  min-height: 60px; /* Fixed minimum height */
 }
 
 .logo {
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
+  flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 .logo img {
@@ -53,34 +55,7 @@ header {
   align-items: center;
   margin-left: auto;
   padding-left: 4rem;
-}
-
-.language-switcher {
-  display: flex;
-  gap: 5px;
-  margin-left: 20px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: 1px solid #333;
-  color: #333;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 3px;
-  font-size: 0.9em;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-  background: #333;
-  color: white;
-}
-
-.lang-btn.active {
-  background: #333;
-  color: white;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .nav-links a {
@@ -93,6 +68,8 @@ header {
   font-weight: 400;
   letter-spacing: 2px;
   font-size: 0.8rem;
+  min-width: fit-content; /* Ensure consistent width */
+  text-align: center; /* Center text within each link */
 }
 
 .nav-links a:hover,
@@ -114,11 +91,14 @@ header {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   top: 100%;
   left: 0;
+  z-index: 1001;
 }
 
 .dropdown-content a {
   padding: 0.75rem 1rem;
   border-top: 1px solid #444;
+  white-space: nowrap; /* Prevent text wrapping in dropdown */
+  text-align: left;
 }
 
 .dropdown-content a:hover {
@@ -131,6 +111,37 @@ header {
 
 .sub-menu {
   color: #fff !important;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 5px;
+  margin-left: 20px;
+  flex-shrink: 0; /* Prevent language buttons from shrinking */
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #333;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 40px; /* Fixed width for consistency */
+  text-align: center;
+}
+
+.lang-btn:hover {
+  background: #333;
+  color: white;
+}
+
+.lang-btn.active {
+  background: #333;
+  color: white;
 }
 
 .hero {
