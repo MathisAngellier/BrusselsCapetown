@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // === Hero Background Image Carousel ===
   const heroOverlay = document.querySelector(".hero-overlay");
-
   const images = [
     "img/DJI_0517-min-scaled 1.jpg",
     "img/DJI_0558-min-scaled 1.jpg",
@@ -9,10 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "img/Namibie3.jpg",
     "img/IMG_20221109_152708 1.jpg",
   ];
-
   let currIndex = 0;
   let nextIndex = 1;
-
   heroOverlay.style.backgroundImage = `url('${images[currIndex]}')`;
 
   function changeBackground() {
@@ -20,11 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
     fadingLayer.classList.add("fade-layer");
     fadingLayer.style.backgroundImage = `url('${images[nextIndex]}')`;
     heroOverlay.appendChild(fadingLayer);
-
     setTimeout(() => {
       fadingLayer.classList.add("active");
     }, 50);
-
     setTimeout(() => {
       heroOverlay.style.backgroundImage = `url('${images[nextIndex]}')`;
       heroOverlay.removeChild(fadingLayer);
@@ -32,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       nextIndex = (nextIndex + 1) % images.length;
     }, 1600);
   }
-
   setInterval(changeBackground, 3500);
 
   // === Sponsor Carousel ===
@@ -44,14 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
   let slideInterval;
 
-  for (let i = 0; i < 6; i++) {
+  // Clone slides for seamless looping
+  for (let i = 0; i < (window.innerWidth <= 767 ? 2 : 6); i++) {
     const clone = slides[i % slides.length].cloneNode(true);
     track.appendChild(clone);
   }
 
   function getSlideWidth() {
     const containerWidth = trackContainer.getBoundingClientRect().width;
-    return containerWidth / 6;
+    return window.innerWidth <= 767 ? containerWidth / 2 : containerWidth / 6;
   }
 
   function updateCarousel() {
@@ -64,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
     currentIndex++;
     track.style.transition = "transform 0.5s ease";
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-
     if (currentIndex >= slides.length) {
       setTimeout(() => {
         track.style.transition = "none";
@@ -79,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
     currentIndex--;
     track.style.transition = "transform 0.5s ease";
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-
     if (currentIndex < 0) {
       setTimeout(() => {
         track.style.transition = "none";
@@ -119,32 +112,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateCarousel();
   startAutoScroll();
-
   track.addEventListener("mouseenter", stopAutoScroll);
   track.addEventListener("mouseleave", startAutoScroll);
 
   // === Hamburger Menu (Mobile) ===
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
-
   if (hamburger && navLinks) {
     hamburger.addEventListener("click", () => {
       navLinks.classList.toggle("show");
     });
-
     document.querySelectorAll(".nav-links a").forEach((link) =>
       link.addEventListener("click", () => {
         navLinks.classList.remove("show");
       })
     );
   }
+
   // Move "COUNTRIES" out of the dropdown for mobile
   function updateMobileMenu() {
     if (window.innerWidth <= 767) {
       const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
       const routeLink = document.querySelector(".dropdown a.dropbtn");
       const dropdown = document.querySelector(".dropdown");
-
       if (countriesLink && routeLink && dropdown) {
         routeLink.insertAdjacentElement("afterend", countriesLink);
         dropdown.removeChild(document.querySelector(".dropdown-content"));
@@ -160,15 +150,13 @@ document.addEventListener("DOMContentLoaded", function () {
   handleScrollAnimations();
 });
 
+// === Logo Update ===
 function updateLogo() {
   const logoImg = document.getElementById("logo-img");
   if (!logoImg) return;
-
-  // Determine the correct path prefix
   const pathPrefix = window.location.pathname.includes("/views/") ? "../" : "";
   const mobileSrc = `${pathPrefix}img/Logo-petit-format.png`;
   const desktopSrc = `${pathPrefix}img/Logo-petit-format+vélo.jpg`;
-
   if (window.innerWidth <= 767) {
     logoImg.src = mobileSrc;
   } else {
@@ -180,18 +168,12 @@ function updateLogo() {
 window.addEventListener("load", updateLogo);
 window.addEventListener("resize", updateLogo);
 
-// Run on load and resize
-window.addEventListener("load", updateLogo);
-window.addEventListener("resize", updateLogo);
-
 // === Scroll-Triggered Animations ===
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(".scroll-animation, .fade-in-animation, .slide-in-left, .slide-in-right");
-
   animatedElements.forEach((el) => {
     const rect = el.getBoundingClientRect();
     const isVisible = rect.top < window.innerHeight - 100;
-
     if (isVisible && !el.classList.contains("animate-active")) {
       el.classList.add("animate-active");
     }
@@ -205,13 +187,12 @@ window.addEventListener("resize", handleScrollAnimations);
 function closePopup() {
   document.getElementById("videoPopup").style.display = "none";
   document.body.style.overflow = "auto";
-  handleScrollAnimations(); // Trigger animations after closing popup
+  handleScrollAnimations();
 }
 
 window.onload = function () {
   document.getElementById("videoPopup").style.display = "flex";
   document.body.style.overflow = "hidden";
-
   setTimeout(() => {
     closePopup();
   }, 8000);
