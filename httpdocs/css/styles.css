@@ -158,6 +158,18 @@ header {
   background-color: black;
 }
 
+.hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
+
 .hero-overlay {
   position: absolute;
   width: 100%;
@@ -751,7 +763,15 @@ footer {
   }
 
   .hero {
-    height: 25rem;
+    height: 20rem;
+  }
+
+  .hero video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 
   .popup-content {
