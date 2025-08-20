@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
+  // === Hero Background Image Carousel ===
   const heroOverlay = document.querySelector(".hero-overlay");
 
   const images = [
@@ -20,12 +21,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     fadingLayer.style.backgroundImage = `url('${images[nextIndex]}')`;
     heroOverlay.appendChild(fadingLayer);
 
-    // Add the "active" class to trigger the fade-in effect
     setTimeout(() => {
       fadingLayer.classList.add("active");
     }, 50);
 
-    // Remove old background after transition
     setTimeout(() => {
       heroOverlay.style.backgroundImage = `url('${images[nextIndex]}')`;
       heroOverlay.removeChild(fadingLayer);
@@ -36,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   setInterval(changeBackground, 3500);
 
+  // === Sponsor Carousel ===
   const trackContainer = document.querySelector(".carousel-track-container");
   const track = document.getElementById("sponsor-carousel");
   const slides = Array.from(track.getElementsByClassName("carousel-slide"));
@@ -44,33 +44,27 @@ document.addEventListener("DOMContentLoaded", async function () {
   let currentIndex = 0;
   let slideInterval;
 
-  // Clone only enough slides for continuous scrolling
-  // We need at least 6 more slides to maintain the illusion of infinite scrolling
   for (let i = 0; i < 6; i++) {
     const clone = slides[i % slides.length].cloneNode(true);
     track.appendChild(clone);
   }
 
-  // Calculate slide width based on container width
   function getSlideWidth() {
     const containerWidth = trackContainer.getBoundingClientRect().width;
-    return containerWidth / 6; // 6 slides visible at a time
+    return containerWidth / 6;
   }
 
-  // Set initial position
   function updateCarousel() {
     const slideWidth = getSlideWidth();
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
   }
 
-  // Next slide function
   function nextSlide() {
     const slideWidth = getSlideWidth();
     currentIndex++;
     track.style.transition = "transform 0.5s ease";
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
 
-    // If we've reached close to the end of original slides, reset to the beginning after transition
     if (currentIndex >= slides.length) {
       setTimeout(() => {
         track.style.transition = "none";
@@ -80,14 +74,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  // Previous slide function
   function prevSlide() {
     const slideWidth = getSlideWidth();
     currentIndex--;
     track.style.transition = "transform 0.5s ease";
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
 
-    // If we're at the beginning, jump to the end
     if (currentIndex < 0) {
       setTimeout(() => {
         track.style.transition = "none";
@@ -97,17 +89,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  // Initialize auto-scroll
   function startAutoScroll() {
     slideInterval = setInterval(nextSlide, 3000);
   }
 
-  // Stop auto-scroll on user interaction
   function stopAutoScroll() {
     clearInterval(slideInterval);
   }
 
-  // Event listeners
   nextButton.addEventListener("click", () => {
     stopAutoScroll();
     nextSlide();
@@ -120,43 +109,54 @@ document.addEventListener("DOMContentLoaded", async function () {
     startAutoScroll();
   });
 
-  // Handle window resize
   window.addEventListener("resize", () => {
-    // Stop transition during resize
     track.style.transition = "none";
     updateCarousel();
-
-    // Resume transition after a short delay
     setTimeout(() => {
       track.style.transition = "transform 0.5s ease";
     }, 50);
   });
 
-  // Initialize
   updateCarousel();
   startAutoScroll();
 
-  // Pause autoplay when hovering
   track.addEventListener("mouseenter", stopAutoScroll);
   track.addEventListener("mouseleave", startAutoScroll);
+
+  // === Hamburger Menu (Mobile) ===
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) =>
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      })
+    );
+  }
+  // Move "COUNTRIES" out of the dropdown for mobile
+  if (window.innerWidth <= 767) {
+    const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
+    const routeLink = document.querySelector(".dropdown a.dropbtn");
+    const dropdown = document.querySelector(".dropdown");
+
+    if (countriesLink && routeLink && dropdown) {
+      // Insert "COUNTRIES" after "ROUTE" in the main menu
+      routeLink.insertAdjacentElement("afterend", countriesLink);
+      // Remove the dropdown wrapper for mobile
+      dropdown.removeChild(document.querySelector(".dropdown-content"));
+    }
+  }
+
+  // === Initial Scroll Animations ===
+  handleScrollAnimations();
 });
 
-function closePopup() {
-  document.getElementById("videoPopup").style.display = "none";
-  document.body.style.overflow = "auto";
-  handleScrollAnimations(); // <-- important to trigger animations
-}
-
-// Optional: Show popup only once per session
-window.onload = function () {
-  document.getElementById("videoPopup").style.display = "flex";
-  document.body.style.overflow = "hidden";
-
-  setTimeout(() => {
-    closePopup();
-  }, 8000); // auto close after 8 seconds
-};
-
+// === Scroll-Triggered Animations ===
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(".scroll-animation, .fade-in-animation, .slide-in-left, .slide-in-right");
 
@@ -170,10 +170,21 @@ function handleScrollAnimations() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", handleScrollAnimations);
 window.addEventListener("scroll", handleScrollAnimations);
 window.addEventListener("resize", handleScrollAnimations);
 
-document.addEventListener("DOMContentLoaded", handleScrollAnimations);
-window.addEventListener("scroll", handleScrollAnimations);
-window.addEventListener("resize", handleScrollAnimations);
+// === Video Popup Logic ===
+function closePopup() {
+  document.getElementById("videoPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+  handleScrollAnimations(); // Trigger animations after closing popup
+}
+
+window.onload = function () {
+  document.getElementById("videoPopup").style.display = "flex";
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    closePopup();
+  }, 8000);
+};

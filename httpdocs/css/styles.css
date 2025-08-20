@@ -670,6 +670,17 @@ footer {
   transform: translate(0, 0);
 }
 
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.hamburger i {
+  color: #333;
+}
+
 /* Add a subtle bounce effect for stat numbers */
 @keyframes count-up {
   0% {
@@ -698,21 +709,49 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+  .hamburger {
+    display: block;
   }
 
   .nav-links {
+    display: none;
     flex-direction: column;
     width: 100%;
-    padding-left: 0;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1001;
+    border-top: 1px solid #ccc;
+  }
+
+  .nav-links.show {
+    display: flex;
   }
 
   .nav-links a {
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dropdown-content {
+    display: none !important; /* Hide dropdown for mobile */
+  }
+  .dropdown-content a {
+    padding-left: 2rem;
+    font-size: 0.9rem;
+    color: #333 !important; /* Dark text for contrast */
+    background-color: transparent;
+    border: none;
+    display: block;
+  }
+  .dropdown-content a.sub-menu {
+    color: #333 !important;
+    background: #f8f8f8 !important;
+  }
+  .sub-menu {
+    display: block !important;
+    visibility: visible !important;
+    color: black !important;
   }
 
   .hero {
@@ -754,10 +793,6 @@ footer {
 
   .footer-content {
     text-align: center;
-  }
-
-  .social {
-    flex-direction: column;
   }
 
   .social a {
