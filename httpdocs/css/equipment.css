@@ -12,10 +12,14 @@ body {
   transition: color 0.3s, background-color 0.3s;
 }
 
+/* Hero Section - Fixed for mobile */
 .hero {
   background-image: url("../img/equipment/zoom.JPG");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+  height: 35rem;
+  width: 100%;
 }
 
 h1 {
@@ -118,6 +122,16 @@ h2 {
 
 /* Mobile Responsiveness - matches about page behavior */
 @media (max-width: 768px) {
+  .hero {
+    height: 25rem;
+    /* Change to contain to show the full image without cropping */
+    background-size: auto 45%;
+    /* Add background color to fill empty space if needed */
+    background-color: #000;
+    /* Keep image centered */
+    background-position: center center;
+  }
+
   .heading {
     font-size: 2.5rem;
   }
