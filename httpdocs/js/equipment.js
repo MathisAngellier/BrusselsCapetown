@@ -3,22 +3,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Select the HTML elements needed for the animation
 const scrollSection = document.querySelectorAll(".scroll-section");
-scrollSection.forEach((section) => {
-  const wrapper = section.querySelector(".wrapper");
-  const items = wrapper.querySelectorAll(".item");
 
-  // Initialize
-  let direction = null;
-  if (section.classList.contains("vertical-section")) {
-    direction = "vertical";
-  } else if (section.classList.contains("horizontal-section")) {
-    direction = window.innerWidth <= 768 ? "vertical" : "horizontal";
-  }
+function initializeAnimations() {
+  // Kill all existing ScrollTrigger instances
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
-  initScroll(section, items, direction);
-});
+  scrollSection.forEach((section) => {
+    const wrapper = section.querySelector(".wrapper");
+    const items = wrapper.querySelectorAll(".item");
+
+    // Initialize
+    let direction = null;
+    if (section.classList.contains("vertical-section")) {
+      direction = "vertical";
+    } else if (section.classList.contains("horizontal-section")) {
+      // Dynamic direction based on screen size
+      direction = window.innerWidth <= 768 ? "vertical" : "horizontal";
+    }
+
+    initScroll(section, items, direction);
+  });
+}
 
 function initScroll(section, items, direction) {
+  // Clear any existing transforms
+  items.forEach((item) => {
+    gsap.set(item, { clearProps: "all" });
+  });
+
   // Initial states
   items.forEach((item, index) => {
     if (index !== 0) {
@@ -44,11 +56,22 @@ function initScroll(section, items, direction) {
       borderRadius: "10px",
     });
 
-    direction == "horizontal" ? timeline.to(items[index + 1], { xPercent: 0 }, "<") : timeline.to(items[index + 1], { yPercent: 0 }, "<");
+    if (items[index + 1]) {
+      direction == "horizontal" ? timeline.to(items[index + 1], { xPercent: 0 }, "<") : timeline.to(items[index + 1], { yPercent: 0 }, "<");
+    }
   });
 }
 
-// Refresh ScrollTrigger on window resize
+// Initialize on load
+document.addEventListener("DOMContentLoaded", () => {
+  initializeAnimations();
+});
+
+// Refresh ScrollTrigger on window resize with debouncing
+let resizeTimeout;
 window.addEventListener("resize", () => {
-  ScrollTrigger.refresh();
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    initializeAnimations();
+  }, 250);
 });
