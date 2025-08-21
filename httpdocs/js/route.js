@@ -2,7 +2,7 @@ const video = document.getElementById("responsive-video");
 
 function setVideoSource() {
   const isMobile = window.innerWidth <= 768;
-  const src = isMobile ? "../video/Route-Mobile-16x9.mp4" : "../video/Opener Route.mp4";
+  const src = isMobile ? "../video/Route-Mobile-4x3.mp4" : "../video/Opener Route.mp4";
 
   if (video.src !== location.origin + "/" + src) {
     video.src = src;

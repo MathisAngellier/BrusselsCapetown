@@ -1,3 +1,20 @@
+const img = document.getElementById("responsive-video");
+
+function setVideoSource() {
+  const isMobile = window.innerWidth <= 768;
+  const src = isMobile ? "../img/Equipement - Mobile 4x3.JPG" : "../img/zoom.JPG";
+
+  if (video.src !== location.origin + "/" + src) {
+    video.src = src;
+  }
+}
+
+// Set on load
+window.addEventListener("DOMContentLoaded", setVideoSource);
+
+// Optional: update on resize
+window.addEventListener("resize", setVideoSource);
+
 // Make ScrollTrigger available for use in GSAP animations
 gsap.registerPlugin(ScrollTrigger);
 

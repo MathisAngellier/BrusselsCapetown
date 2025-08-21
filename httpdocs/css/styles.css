@@ -790,7 +790,7 @@ footer {
   }
 
   .hero {
-    height: 25rem; /* Slightly taller for better proportions */
+    height: 15rem; /* Slightly taller for better proportions */
   }
 
   .hero video {
@@ -862,8 +862,13 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .stat-card {
+    margin: -2rem;
+  }
+
   .mission-section {
     grid-template-columns: 1fr;
+    margin-top: -1rem;
   }
 
   .mission-image img {

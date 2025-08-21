@@ -14,7 +14,7 @@ body {
 
 /* Hero Section - Fixed for mobile */
 .hero {
-  background-image: url("../img/equipment/zoom.JPG");
+  background-image: url("../img/zoom.JPG");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -123,9 +123,10 @@ h2 {
 /* Mobile Responsiveness - matches about page behavior */
 @media (max-width: 768px) {
   .hero {
-    height: 25rem;
+    background-image: url("../img/Equipement-Mobile-4x3.JPG");
+    height: 15rem;
     /* Change to contain to show the full image without cropping */
-    background-size: auto 45%;
+    background-size: cover;
     /* Add background color to fill empty space if needed */
     background-color: #000;
     /* Keep image centered */
