@@ -331,7 +331,11 @@
             { "service": "Malick Sy Fire Station", "numbers": ["+221 33 823 03 59"] },
             { "service": "Police and gendarmerie", "numbers": ["17", "18"] },
             { "service": "National Gendarmerie", "numbers": ["+221 800 00 20 20"] },
-            { "service": "SOS Médecin", "numbers": ["+221 33 889 15 15"] }
+            { "service": "SOS Médecin", "numbers": ["+221 33 889 15 15"] },
+            { "service": "Hôpital Principal de Dakar ", "numbers": ["+221 33 839 50 50"] },
+            { "service": "Hôpital Le Dantec ", "numbers": ["+221 33 889 38 00"] },
+            { "service": "Clinique de la Madeleine ", "numbers": ["+221 33 889 94 70"] },
+            { "service": "Clinique Casahous ", "numbers": ["+221 33 889 72 00"] }
           ],
           "embassiesAndInstitutions": [
             {

@@ -32,9 +32,9 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["101"] },
-            { "service": "Firefighters", "numbers": ["100"] },
-            { "service": "Poison Control Center", "numbers": ["070 245 245"] },
-            { "service": "Universal Emergency Number", "numbers": ["112"] }
+            { "service": "Pompiers", "numbers": ["100"] },
+            { "service": "Centre antipoison", "numbers": ["070 245 245"] },
+            { "service": "Numéro d'urgence universel", "numbers": ["112"] }
           ]
         },
         "sources": {
@@ -75,9 +75,9 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["17"] },
-            { "service": "Firefighters", "numbers": ["18"] },
-            { "service": "SAMU (Emergency Medical Assistance Service)", "numbers": ["15"] },
-            { "service": "Universal Emergency Number", "numbers": ["112"] }
+            { "service": "Pompiers", "numbers": ["18"] },
+            { "service": "SAMU (Service d’Aide Médical Urgente)", "numbers": ["15"] },
+            { "service": "Numéro d'urgence universel ", "numbers": ["112"] }
           ]
         },
         "sources": {
@@ -117,16 +117,16 @@
         "emergency": {
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
-            { "service": "Emergency call number", "numbers": ["112"] },
+            { "service": "Numéro d’appel d’urgence ", "numbers": ["112"] },
             { "service": "Policia Nacional", "numbers": ["091"] },
             { "service": "Guardia Civil", "numbers": ["062"] },
-            { "service": "Municipal Police", "numbers": ["092"] },
-            { "service": "Firefighters", "numbers": ["080"] },
-            { "service": "SAMU (Emergency Medical Services)", "numbers": ["061"] }
+            { "service": "Police municipale ", "numbers": ["092"] },
+            { "service": "Pompiers", "numbers": ["080"] },
+            { "service": "SAMU (Service d’Aide Médical Urgente)", "numbers": ["061"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "Embassy of France in Spain",
+              "name": "Ambassade de France en Espagne ",
               "address": "Calle Salustiano Olozaga, 9, 28001 Madrid",
               "phone": ["+34 91 423 89 00"],
               "website": "https://es.ambafrance.org"
@@ -171,17 +171,37 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["19"] },
-            { "service": "Royal Gendarmerie", "numbers": ["177"] },
-            { "service": "Civil Protection", "numbers": ["15"] },
-            { "service": "SAMU (Emergency Medical Assistance Service)", "numbers": ["141"] },
-            { "service": "Fire Department", "numbers": ["17"] }
+            { "service": "Gendarmerie Royale", "numbers": ["177"] },
+            { "service": "Protection Civile ", "numbers": ["15"] },
+            { "service": "SAMU (Service d’Aide Médical Urgente)", "numbers": ["141"] },
+            { "service": "Pompiers", "numbers": ["17"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy in Morocco",
+              "name": "Ambassade et consulats de France au Maroc ",
               "address": "3, rue Saïda, BP 602, Rabat",
               "phone": ["+212 (0) 5 37 68 42 00"],
               "website": "https://ma.ambafrance.org/"
+            },
+            {
+              "name": "Alliance Franco-Marocaine de Safi",
+              "address": "Ex-Ecole Manet – Boulevard Zerktouni, 46000 Safi, Maroc",
+              "phone": ["+212 (0)5 24 62 79 46"],
+              "email": "adm.direction@af-safi.com"
+            },
+            {
+              "name": "Alliance Française de Ouarzazate",
+              "address": "N° 207, Hay El Hassani Kastor, Bd Mouhammed VI, Ouarzazate, Maroc",
+              "phone": ["+212 (0)5 24 88 87 28"],
+              "email": "aithrizkarima2018@gmail.com"
+            },
+            {
+              "name": "Lycée Français International Louis-Massignon",
+              "address": "BP N°6, CP 27182 Bouskoura Ville verte - Grand Casablanca"
+            },
+            {
+              "name": "Lycée Français Guy de Maupassant",
+              "address": "Quartier Almaz, Rocade Sud-Ouest, Casablanca, Maroc"
             }
           ]
         },
@@ -223,8 +243,8 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["19"] },
-            { "service": "Ambulance and medical services", "numbers": ["15"] },
-            { "service": "Fire department", "numbers": ["17"] }
+            { "service": "Ambulance et services médicaux", "numbers": ["15"] },
+            { "service": "Pompiers", "numbers": ["17"] }
           ],
           "embassiesAndInstitutions": [
             {
@@ -277,7 +297,7 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["117"] },
-            { "service": "Fire department", "numbers": ["119"] },
+            { "service": "Pompiers", "numbers": ["119"] },
             { "service": "Ambulance", "numbers": ["118"] }
           ],
           "embassiesAndInstitutions": [
@@ -327,15 +347,19 @@
         "emergency": {
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
-            { "service": "Fire department", "numbers": ["18"] },
-            { "service": "Malick Sy Fire Station", "numbers": ["+221 33 823 03 59"] },
-            { "service": "Police and gendarmerie", "numbers": ["17", "18"] },
-            { "service": "National Gendarmerie", "numbers": ["+221 800 00 20 20"] },
-            { "service": "SOS Médecin", "numbers": ["+221 33 889 15 15"] }
+            { "service": "Pompiers", "numbers": ["18"] },
+            { "service": "Pompiers de Malick Sy ", "numbers": ["+221 33 823 03 59"] },
+            { "service": "Police et gendarmerie", "numbers": ["17", "18"] },
+            { "service": "Gendarmerie nationale ", "numbers": ["+221 800 00 20 20"] },
+            { "service": "SOS Médecin", "numbers": ["+221 33 889 15 15"] },
+            { "service": "Hôpital Principal de Dakar ", "numbers": ["+221 33 839 50 50"] },
+            { "service": "Hôpital Le Dantec ", "numbers": ["+221 33 889 38 00"] },
+            { "service": "Clinique de la Madeleine ", "numbers": ["+221 33 889 94 70"] },
+            { "service": "Clinique Casahous ", "numbers": ["+221 33 889 72 00"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy",
+              "name": "Ambassade de France au Sénégal",
               "address": "1, rue El Hadji Amadou Assane Ndoye, BP 4035, Dakar",
               "phone": ["+221 33 839 51 00"],
               "email": "webmestre.dakar-amba@diplomatie.gouv.fr",
@@ -380,14 +404,14 @@
         "emergency": {
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
-            { "service": "National Gendarmerie emergency hotline", "numbers": ["122"] },
-            { "service": "Fire department", "numbers": ["18"] },
-            { "service": "Medical Center at the French Embassy", "numbers": ["+224 621 00 00 10", "+224 656 44 87 45"] },
+            { "service": "Numéro vert de la Gendarmerie nationale ", "numbers": ["122"] },
+            { "service": "Pompiers", "numbers": ["18"] },
+            { "service": "Urgences médicales à Conakry", "numbers": ["+224 621 00 00 10", "+224 656 44 87 45"] },
             { "service": "Clinique Pasteur", "numbers": ["+224 621 350 101"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy in Guinea and Sierra Leone",
+              "name": "Ambassade de France en Guinée et en Sierra Leone",
               "address": "Avenue du Commerce (Kaloum), BP 373 and 570, Conakry",
               "phone": ["+33 1 70 98 93 39"],
               "email": "ambafrance.conakry@diplomatie.gouv.fr",
@@ -449,14 +473,14 @@
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy (in Guinea and Sierra Leone)",
+              "name": "Ambassade de France en Guinée et en Sierra Leone",
               "address": "Avenue du Commerce (Kaloum), BP 373 and 570, Conakry",
               "phone": ["+33 1 70 98 93 39"],
               "email": "ambafrance.conakry@diplomatie.gouv.fr",
               "website": "https://gn.ambafrance.org"
             },
             {
-              "name": "Diplomatic Office in Freetown",
+              "name": "Antenne diplomatique de Freetown",
               "address": "FCSC compound 2, 2 Mandalay Street, Cold Storage, Kingtom, Freetown",
               "phone": ["+232 79 990 991", "+232 74 085 469"]
             }
@@ -500,11 +524,11 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "CLINILAB", "numbers": ["+231 888 088 808"] },
-            { "service": "CLINILAB Emergency", "numbers": ["+231 770 200 002"] }
+            { "service": "Urgences", "numbers": ["+231 770 200 002"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy in Liberia",
+              "name": "Ambassade de France au Libéria",
               "address": "98 A UN Drive - Mamba Point, Monrovia",
               "phone": ["+231 77 059 93 73"],
               "emergency": "+231 77 088 73 04"
@@ -548,15 +572,15 @@
         "emergency": {
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
-            { "service": "Green number in case of road harassment", "numbers": ["110"] },
-            { "service": "General Directorate of Police", "numbers": ["+225 27 20 22 08 22"] },
-            { "service": "Police Headquarters", "numbers": ["+225 27 20 21 00 22"] },
+            { "service": "Numéro vert en cas de harcèlement routier", "numbers": ["110"] },
+            { "service": "Direction générale de la police", "numbers": ["+225 27 20 22 08 22"] },
+            { "service": "Préfecture de police (commissariat central)", "numbers": ["+225 27 20 21 00 22"] },
             { "service": "Gendarmerie", "numbers": ["+225 27 20 21 88 83"] },
-            { "service": "Intensive Care", "numbers": ["185"] }
+            { "service": "Réanimation", "numbers": ["185"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy in Côte d'Ivoire",
+              "name": "Ambassade de France en Côte d’Ivoire",
               "address": "17, rue Lecoeur 17 BP 175 Abidjan",
               "phone": ["+225 27 20 20 74 00"],
               "emergency": "+225 07 07 20 50 77",
@@ -608,10 +632,10 @@
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["191", "999", "171"] },
-            { "service": "Firefighters", "numbers": ["192"] },
-            { "service": "Emergency Medical Services", "numbers": ["193"] },
+            { "service": "Pompiers", "numbers": ["192"] },
+            { "service": "Services médicaux d'urgence ", "numbers": ["193"] },
             { "service": "Ambulance", "numbers": ["193", "776111-5"] },
-            { "service": "Universal Emergency Number", "numbers": ["112"] }
+            { "service": "Numéro d'urgence universel", "numbers": ["112"] }
           ],
           "hospitals": [
             {
@@ -637,12 +661,12 @@
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy in Ghana",
+              "name": "Ambassade de France au Ghana ",
               "address": "4th Circular Road, Cantonments, Accra, Ghana",
               "phone": ["+233 30 215 1000"]
             },
             {
-              "name": "Alliance Française in Ghana",
+              "name": "Alliance Française au Ghana",
               "address": "Liberation Road, Accra, Ghana",
               "emails": ["clientservice@afaccra.com", "clientservice2@afaccra.com"]
             },
@@ -692,10 +716,10 @@
         "emergency": {
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
-            { "service": "Emergency/Police", "numbers": ["117", "161"] },
-            { "service": "Central Police Station", "numbers": ["+228 2221 2871"] },
+            { "service": "Urgences/Police", "numbers": ["117", "161"] },
+            { "service": "Commissariat central ", "numbers": ["+228 2221 2871"] },
             { "service": "Gendarmerie", "numbers": ["172", "+228 2221 3743"] },
-            { "service": "Fire Department", "numbers": ["118"] },
+            { "service": "Sapeurs-pompiers ", "numbers": ["118"] },
             { "service": "COVID-19 Information", "numbers": ["111"] }
           ],
           "hospitals": [
@@ -710,7 +734,7 @@
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy",
+              "name": "Ambassade de France ",
               "address": "13 Avenue Mama Fousséni, BP 337, Lomé",
               "phone": ["+228 22 23 46 00"],
               "email": "webmestre.lome-amba@diplomatie.gouv.fr",
@@ -757,13 +781,16 @@
           "emergencyNumbers": [
             { "service": "Police", "numbers": ["10111"] },
             { "service": "City Police of Windhoek", "numbers": ["+264 612902239"] },
-            { "service": "Free number from a Namibian phone", "numbers": ["302302"] },
-            { "service": "Emergencies (firefighters and ambulances)", "numbers": ["+264 61211111"] },
-            { "service": "MVA Fund (road accident)", "numbers": ["+264 819682"] }
+            { "service": "Numéro gratuit depuis un téléphone namibien", "numbers": ["302302"] },
+            { "service": "Urgences (sapeurs-pompiers et ambulances) ", "numbers": ["+264 61211111"] },
+            { "service": "MVA Fund (accident de la route) ", "numbers": ["+264 819682"] },
+            { "service": "Médecin agréé par l’ambassade de France en Namibie: Dr. Ernu De Villiers ", "numbers": ["+264 61 402 807"] },
+            { "service": "International SOS", "numbers": ["+264 61 230 505", "+264 8 17 07", "+ 264 8 19 11"] },
+            { "service": "E-MED Rescue ", "numbers": ["+264 61 299 99 24", "+264 61 30 59 24", "+ 264 8 19 24"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy",
+              "name": "Ambassade de France",
               "address": "24 Willemien Street - PO BOX 20484 - Windhoek",
               "phone": ["+264 61 27 67 00"]
             },
@@ -772,7 +799,7 @@
               "address": "116 Robert Mugabe Avenue - Windhoek"
             },
             {
-              "name": "French Institute",
+              "name": "Institut Français",
               "address": "118 Robert Mugabe Avenue – 11622 Windhoek",
               "phone": ["+(264) 61 387 330"],
               "email": "reception@fncc.org.na",
@@ -817,20 +844,20 @@
         "emergency": {
           "title": "Emergency Numbers & Useful Addresses",
           "emergencyNumbers": [
-            { "service": "Any type of emergency (rescue, ambulance, fire, accident, etc.)", "numbers": ["112"] },
-            { "service": "Police emergency", "numbers": ["10111"] },
+            { "service": "Tout type d’urgence (secours, ambulance, incendie, accident…)", "numbers": ["112"] },
+            { "service": "Police secours (urgence)", "numbers": ["10111"] },
             { "service": "Ambulances", "numbers": ["10177"] }
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy",
+              "name": "Ambassade de France",
               "address": "250 Melk Street - New Muckleneuk – 0181 Pretoria",
               "phone": ["+27 12 425 1600"],
               "email": "france@ambafrance-rsa.org",
               "website": "https://za.ambafrance.org/-Francais-"
             },
             {
-              "name": "French Consulate in Johannesburg",
+              "name": "Consulat de France à Johannesburg",
               "address": "Rosebank Corner Building, 3rd floor – 191 Jan Smuts Avenue – 2193 Parktown North, Randburg – Johannesburg",
               "phone": ["+27 11 209 0178"],
               "emergency": "+27 82 467 2588",
@@ -838,12 +865,31 @@
               "website": "https://johannesburg.consulfrance.org/"
             },
             {
-              "name": "French Consulate in Cape Town",
+              "name": "Consulat de France au Cap",
               "address": "78 Queen Victoria Street Gardens – 8001 Cape Town",
               "phone": ["+27 (0)21 490 0940"],
               "emergency": "+27 834 604 360",
               "email": "consulat.le-cap-fslt@diplomatie.gouv.fr",
               "website": "https://lecap.consulfrance.org/"
+            },
+            {
+              "name": "Alliance Française de Johannesburg",
+              "address": "Lower Park Drive, Cnr Kerry Road, Parkview 2122",
+              "phone": ["011 646 1169"],
+              "email": " info@alliance.org.za",
+              "website": "www.alliance.org.za"
+            },
+            {
+              "name": "Alliance Française du Cap",
+              "address": "155 Loop Street, Cape Town, 8001",
+              "phone": ["+27 (0)21 423 5699"],
+              "email": "info@alliance.org.za"
+            },
+            {
+              "name": "Alliance Française de Port Elizabeth",
+              "address": "17 Mackay Street, Richmond Hill, Port Elizabeth, 6001",
+              "phone": ["+27 (0)21 490 0940"],
+              "emergency": "+27 63 499 4417"
             }
           ],
           "schools": [

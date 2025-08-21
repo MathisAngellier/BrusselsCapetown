@@ -122,20 +122,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       switchLanguage(btn.dataset.lang);
+      location.reload();
     });
   });
 
   // Replace the sampleCountries array with:
-  fetch(getCountriesData())
-    .then((response) => response.json())
-    .then((data) => {
-      countries = data.countries;
-      generateSlides();
-      selectCountry(0);
-    })
-    .catch((error) => {
-      console.error("Error loading countries:", error);
-    });
 
   // Replace your generateSlides function with this updated version
   function generateSlides() {
