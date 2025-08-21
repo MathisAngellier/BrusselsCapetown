@@ -338,9 +338,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     const embassies = emergency?.embassiesAndInstitutions || [];
     embassies.forEach((institution) => {
       const li = document.createElement("li");
-      let html = `<strong>${institution.name}</strong> (${institution.type})<br>`;
+      let html = `<strong>${institution.name}</strong>`;
+
+      if (institution.type) {
+        html += ` (${institution.type})`;
+      }
+
+      html += "<br>";
+
       if (institution.address) html += `Address: ${institution.address}<br>`;
-      if (institution.phone) html += `Phone: ${institution.phone.join(", ")}`;
+      if (institution.phone) html += `Phone: ${institution.phone.join(", ")}<br>`;
+      if (institution.email) html += `Email: ${institution.email}<br>`;
+      if (institution.website) html += `Website: ${institution.website}<br>`;
+
       li.innerHTML = html;
       embassiesList.appendChild(li);
     });
