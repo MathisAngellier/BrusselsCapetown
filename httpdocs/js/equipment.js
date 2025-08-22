@@ -1,40 +1,18 @@
-const img = document.getElementById("responsive-video");
-
-function setVideoSource() {
-  const isMobile = window.innerWidth <= 768;
-  const src = isMobile ? "../img/Equipement - Mobile 4x3.JPG" : "../img/zoom.JPG";
-
-  if (video.src !== location.origin + "/" + src) {
-    video.src = src;
-  }
-}
-
-// Set on load
-window.addEventListener("DOMContentLoaded", setVideoSource);
-
-// Optional: update on resize
-window.addEventListener("resize", setVideoSource);
-
-// Make ScrollTrigger available for use in GSAP animations
 gsap.registerPlugin(ScrollTrigger);
 
-// Select the HTML elements needed for the animation
 const scrollSection = document.querySelectorAll(".scroll-section");
 
 function initializeAnimations() {
-  // Kill all existing ScrollTrigger instances
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
   scrollSection.forEach((section) => {
     const wrapper = section.querySelector(".wrapper");
     const items = wrapper.querySelectorAll(".item");
 
-    // Initialize
     let direction = null;
     if (section.classList.contains("vertical-section")) {
       direction = "vertical";
     } else if (section.classList.contains("horizontal-section")) {
-      // Dynamic direction based on screen size
       direction = window.innerWidth <= 768 ? "vertical" : "horizontal";
     }
 
@@ -43,12 +21,10 @@ function initializeAnimations() {
 }
 
 function initScroll(section, items, direction) {
-  // Clear any existing transforms
   items.forEach((item) => {
     gsap.set(item, { clearProps: "all" });
   });
 
-  // Initial states
   items.forEach((item, index) => {
     if (index !== 0) {
       direction == "horizontal" ? gsap.set(item, { xPercent: 100 }) : gsap.set(item, { yPercent: 100 });
@@ -79,12 +55,10 @@ function initScroll(section, items, direction) {
   });
 }
 
-// Initialize on load
 document.addEventListener("DOMContentLoaded", () => {
   initializeAnimations();
 });
 
-// Refresh ScrollTrigger on window resize with debouncing
 let resizeTimeout;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);

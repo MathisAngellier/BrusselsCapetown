@@ -9,7 +9,7 @@
   position: relative;
   max-width: 90%;
   margin: 0 auto;
-  padding: 0 60px; /* Added padding for arrows */
+  padding: 0 60px;
 }
 
 .carousel-track-container {
@@ -23,12 +23,12 @@
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
-  width: 100%; /* Ensure the track takes up only the available width */
+  width: 100%;
 }
 
 .carousel-slide {
-  flex: 0 0 20%; /* Fixed width for each slide - exactly 1/6 */
-  max-width: 20%; /* Ensure slides don't grow larger */
+  flex: 0 0 20%;
+  max-width: 20%;
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -64,11 +64,11 @@
 }
 
 .button-prev {
-  left: 0; /* Moved further out */
+  left: 0;
 }
 
 .button-next {
-  right: 0; /* Moved further out */
+  right: 0;
 }
 
 .flagVideo {
@@ -135,7 +135,7 @@
   border-top: 1px solid rgba(31, 31, 31, 0.2);
   padding-top: 3rem;
   margin-top: 3rem;
-  flex-wrap: wrap; /* In case it gets too long on small screens */
+  flex-wrap: wrap;
 }
 
 #country-sources-section h3,
@@ -144,4 +144,11 @@
   font-size: 0.95rem;
   color: #494646;
   line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  .carousel-track-container::before,
+  .carousel-track-container::after {
+    display: none !important;
+  }
 }

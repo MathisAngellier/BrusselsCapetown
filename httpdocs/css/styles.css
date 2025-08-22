@@ -29,14 +29,14 @@ header {
   align-items: center;
   z-index: 1000;
   padding-right: 2rem;
-  min-height: 60px; /* Fixed minimum height */
+  min-height: 60px;
 }
 
 .logo {
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
-  flex-shrink: 0; /* Prevent logo from shrinking */
+  flex-shrink: 0;
 }
 
 .logo img {
@@ -55,7 +55,7 @@ header {
   align-items: center;
   margin-left: auto;
   padding-left: 4rem;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .nav-links a {
@@ -68,8 +68,8 @@ header {
   font-weight: 400;
   letter-spacing: 2px;
   font-size: 0.8rem;
-  min-width: fit-content; /* Ensure consistent width */
-  text-align: center; /* Center text within each link */
+  min-width: fit-content;
+  text-align: center;
 }
 
 .nav-links a:hover,
@@ -97,7 +97,7 @@ header {
 .dropdown-content a {
   padding: 0.75rem 1rem;
   border-top: 1px solid #444;
-  white-space: nowrap; /* Prevent text wrapping in dropdown */
+  white-space: nowrap;
   text-align: left;
 }
 
@@ -117,7 +117,7 @@ header {
   display: flex;
   gap: 5px;
   margin-left: 20px;
-  flex-shrink: 0; /* Prevent language buttons from shrinking */
+  flex-shrink: 0;
 }
 
 .lang-btn {
@@ -130,7 +130,7 @@ header {
   font-size: 0.9em;
   font-weight: 500;
   transition: all 0.3s ease;
-  width: 40px; /* Fixed width for consistency */
+  width: 40px;
   text-align: center;
 }
 
@@ -143,32 +143,6 @@ header {
   background: #333;
   color: white;
 }
-
-/* .hero {
-  position: relative;
-  width: 100%;
-  height: 35rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  z-index: 1;
-  background-color: black;
-}
-
-.hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1;
-} */
 
 .hero {
   position: relative;
@@ -194,7 +168,7 @@ header {
   width: auto;
   height: auto;
   z-index: -1;
-  object-fit: cover; /* This ensures proper scaling */
+  object-fit: cover;
 }
 
 .hero-overlay {
@@ -205,7 +179,6 @@ header {
   background-position: center;
 }
 
-/* Fading Layer */
 .fade-layer {
   position: absolute;
   width: 100%;
@@ -219,7 +192,6 @@ header {
   opacity: 1;
 }
 
-/* Hero Content */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -241,7 +213,6 @@ header {
   line-height: 1.6;
 }
 
-/* Popup Styles */
 .popup {
   position: fixed;
   top: 0;
@@ -411,7 +382,7 @@ header {
   position: relative;
   max-width: 90%;
   margin: 0 auto;
-  padding: 0 60px; /* Added padding for arrows */
+  padding: 0 60px;
 }
 
 .carousel-track-container {
@@ -425,12 +396,12 @@ header {
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
-  width: 100%; /* Ensure the track takes up only the available width */
+  width: 100%;
 }
 
 .carousel-slide {
-  flex: 0 0 16.666%; /* Fixed width for each slide - exactly 1/6 */
-  max-width: 16.666%; /* Ensure slides don't grow larger */
+  flex: 0 0 16.666%;
+  max-width: 16.666%;
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -467,14 +438,13 @@ header {
 }
 
 .button-prev {
-  left: 0; /* Moved further out */
+  left: 0;
 }
 
 .button-next {
-  right: 0; /* Moved further out */
+  right: 0;
 }
 
-/* For placeholder images */
 .logoImg {
   width: 150px;
   height: 80px;
@@ -503,7 +473,6 @@ header {
   margin-bottom: 2rem;
 }
 
-/* Footer Styles */
 footer {
   background-color: #54585a;
   color: white;
@@ -521,7 +490,6 @@ footer {
   text-align: center;
 }
 
-/* Newsletter Section */
 .newsletter {
   margin-bottom: 1.5rem;
 }
@@ -577,7 +545,6 @@ footer {
   background-color: #f59520;
 }
 
-/* Social Section */
 .social {
   display: flex;
   justify-content: center;
@@ -605,7 +572,6 @@ footer {
   justify-content: center;
 }
 
-/* Footer Note */
 .footer-note {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 1.5rem;
@@ -623,7 +589,6 @@ footer {
   color: #ffffff;
 }
 
-/* Animation for dropdown */
 .dropdown-content {
   opacity: 0;
   transform: translateY(-10px);
@@ -635,7 +600,6 @@ footer {
   transform: translateY(0);
 }
 
-/* Scroll Animation Base Styles */
 .scroll-animation {
   opacity: 0;
   transition: opacity 1.8s ease-out, transform 1.8s ease-out;
@@ -659,35 +623,29 @@ footer {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Initial state - small and transparent */
 .zoom-in img {
   transform: scale(0.1);
   opacity: 0;
 }
 
-/* Active state - normal size and fully visible */
 .zoom-in.animate-active img {
   transform: scale(1);
   opacity: 1;
 }
 
-/* Active states that trigger the animations */
 .animate-active {
   opacity: 1;
   transform: translate(0, 0);
 }
 
-/* Mission section animation */
 .mission-section.scroll-animation {
   transform: translateY(30px);
 }
 
-/* Route section animation */
 .route-section.scroll-animation {
   transform: translateY(30px);
 }
 
-/* Sponsor section animation */
 .sponsor-section.scroll-animation {
   transform: translateY(30px);
 }
@@ -717,7 +675,6 @@ footer {
   color: #333;
 }
 
-/* Add a subtle bounce effect for stat numbers */
 @keyframes count-up {
   0% {
     transform: translateY(20px);
@@ -736,12 +693,10 @@ footer {
   animation: count-up 1s forwards;
 }
 
-/* Add smooth transition for number counting */
 .stat-number {
   transition: content 2s ease;
 }
 
-/* Mobile Styles */
 @media (max-width: 767px) {
   .hamburger {
     display: block;
@@ -790,25 +745,20 @@ footer {
   }
 
   .hero {
-    height: 15rem; /* Slightly taller for better proportions */
+    height: 15rem;
   }
 
   .hero video {
-    /* Remove the problematic object-fit: contain */
-    /* Keep the video covering the full area */
     object-fit: cover;
-    /* Ensure video fills the container properly */
     min-width: 100%;
     min-height: 100%;
-    width: 100vw; /* Full viewport width */
+    width: 100vw;
     height: auto;
-    /* Center the video properly */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  /* Alternative approach for videos that are too wide */
   .hero video.wide-video {
     width: auto;
     height: 100%;
@@ -816,7 +766,6 @@ footer {
     min-width: 100%;
   }
 
-  /* For very wide aspect ratio videos */
   @media (max-aspect-ratio: 16/9) {
     .hero video {
       width: 100%;
@@ -825,7 +774,6 @@ footer {
     }
   }
 
-  /* For very tall aspect ratio videos */
   @media (min-aspect-ratio: 16/9) {
     .hero video {
       width: auto;
@@ -876,23 +824,72 @@ footer {
   }
 
   .carousel-container {
-    padding: 0 10px;
-  }
-  .carousel-slide {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: 10px;
-    height: 80px;
-  }
-  .carousel-slide img {
-    max-height: 60px;
-  }
-  .carousel-button {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
+    padding: 0 20px; /* Reduce padding to allow more slide visibility */
   }
 
+  .carousel-container {
+    padding: 0 20px; /* Reduce padding to allow more slide visibility */
+  }
+
+  .carousel-slide {
+    flex: 0 0 60%; /* Reduced from 70% to bring logos closer */
+    max-width: 60%;
+    padding: 5px; /* Reduced padding to bring logos closer */
+    height: 80px;
+    justify-content: center; /* Center the logo within the slide */
+  }
+
+  .carousel-track {
+    /* Ensure track allows for partial slide views */
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    align-items: center;
+  }
+
+  .carousel-track-container {
+    overflow: hidden; /* Hide content outside container */
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    background-color: #dedede;
+    position: relative;
+  }
+
+  /* Add gradient masks to fade out the edges */
+  .carousel-track-container::before,
+  .carousel-track-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .carousel-track-container::before {
+    left: 0;
+    background: linear-gradient(to right, #dedede, transparent);
+  }
+
+  .carousel-track-container::after {
+    right: 0;
+    background: linear-gradient(to left, #dedede, transparent);
+  }
+
+  .carousel-slide img {
+    max-height: 60px;
+    opacity: 0.6; /* Make side logos partially transparent */
+    transform: scale(0.8); /* Make side logos smaller */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Center slide should be fully visible and larger */
+  .carousel-slide.center-slide img {
+    opacity: 1;
+    transform: scale(1);
+  }
   .footer-content {
     padding: 0 0.5rem;
   }
@@ -910,7 +907,6 @@ footer {
   }
 }
 
-/* Tablet Styles */
 @media (min-width: 768px) and (max-width: 1024px) {
   .navbar {
     flex-direction: row;
@@ -962,7 +958,6 @@ footer {
   }
 }
 
-/* Desktop Styles */
 @media (min-width: 1025px) {
   .navbar {
     flex-direction: row;

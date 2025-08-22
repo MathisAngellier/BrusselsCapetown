@@ -58,7 +58,6 @@
   margin-right: 0.5rem;
 }
 
-/* Contact Form Styles */
 .contact-form-section {
   max-width: 700px;
   margin: 0 auto;
@@ -146,7 +145,6 @@
   transform: translateY(0);
 }
 
-/* Contact Methods */
 .contact-methods {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -199,7 +197,6 @@
   text-decoration: underline;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .contact-section {
     padding: 2rem 1rem;
@@ -211,7 +208,7 @@
   }
 
   .form-row {
-    grid-template-columns: 1fr; /* Stack form fields vertically */
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
@@ -229,6 +226,6 @@
   }
 
   .contact-methods {
-    grid-template-columns: 1fr; /* Stack contact methods vertically */
+    grid-template-columns: 1fr;
   }
 }

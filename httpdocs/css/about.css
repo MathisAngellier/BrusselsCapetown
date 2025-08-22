@@ -101,7 +101,6 @@ h2 {
   font-weight: 600;
 }
 
-/* Info Cards Layout Alternative */
 .about-info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -262,5 +261,33 @@ h2 {
   .item_number {
     font-size: 0.5rem;
     top: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .about-info-card:nth-child(1) {
+    /* Origin card - stays in first position */
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-info-card:nth-child(2) {
+    /* Year of Birth card - stays in second position */
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .about-info-card:nth-child(3) {
+    /* Quote card - spans across both columns */
+    grid-column: 1 / -1; /* Spans from first to last column */
+    grid-row: 2;
   }
 }

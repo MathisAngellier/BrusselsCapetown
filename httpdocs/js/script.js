@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // === Hero Background Image Carousel ===
   const heroOverlay = document.querySelector(".hero-overlay");
   if (heroOverlay) {
     const images = [
-      "img/DJI_0517-min-scaled 1.jpg",
-      "img/DJI_0558-min-scaled 1.jpg",
-      "img/IMG_20180128_103822 1.jpg",
+      "img/DJI_0517-min-scaled.jpg",
+      "img/DJI_0558-min-scaled.jpg",
+      "img/IMG_20180128_103822.jpg",
       "img/Namibie3.jpg",
-      "img/IMG_20221109_152708 1.jpg",
+      "img/IMG_20221109_152708.jpg",
     ];
     let currIndex = 0;
     let nextIndex = 1;
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(changeBackground, 3500);
   }
 
-  // === Sponsor Carousel ===
   const trackContainer = document.querySelector(".carousel-track-container");
   const track = document.getElementById("sponsor-carousel");
   if (trackContainer && track) {
@@ -41,48 +39,85 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     let slideInterval;
 
-    // Clone slides for seamless looping
-    for (let i = 0; i < (window.innerWidth <= 767 ? 2 : 6); i++) {
+    const cloneCount = window.innerWidth <= 767 ? 2 : 6;
+    for (let i = 0; i < cloneCount; i++) {
       const clone = slides[i % slides.length].cloneNode(true);
       track.appendChild(clone);
     }
 
     function getSlideWidth() {
       const containerWidth = trackContainer.getBoundingClientRect().width;
-      return window.innerWidth <= 767 ? containerWidth / 2 : containerWidth / 6;
+      if (window.innerWidth <= 767) {
+        return containerWidth * 0.6;
+      }
+      return containerWidth / 6;
+    }
+
+    function updateCenterSlide() {
+      if (window.innerWidth <= 767) {
+        const allSlides = track.querySelectorAll(".carousel-slide");
+        allSlides.forEach((slide, index) => {
+          slide.classList.remove("center-slide");
+          if (index === currentIndex) {
+            slide.classList.add("center-slide");
+          }
+        });
+      }
     }
 
     function updateCarousel() {
       const slideWidth = getSlideWidth();
-      track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+      if (window.innerWidth <= 767) {
+        const offset = trackContainer.getBoundingClientRect().width * 0.2;
+        track.style.transform = `translateX(${offset - currentIndex * slideWidth}px)`;
+      } else {
+        track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+      }
+      updateCenterSlide();
     }
 
     function nextSlide() {
       const slideWidth = getSlideWidth();
       currentIndex++;
       track.style.transition = "transform 0.5s ease";
-      track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+
+      if (window.innerWidth <= 767) {
+        const offset = trackContainer.getBoundingClientRect().width * 0.2;
+        track.style.transform = `translateX(${offset - currentIndex * slideWidth}px)`;
+      } else {
+        track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+      }
+
       if (currentIndex >= slides.length) {
         setTimeout(() => {
           track.style.transition = "none";
           currentIndex = 0;
-          track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+          updateCarousel();
         }, 500);
       }
+      updateCenterSlide();
     }
 
     function prevSlide() {
       const slideWidth = getSlideWidth();
       currentIndex--;
       track.style.transition = "transform 0.5s ease";
-      track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+
       if (currentIndex < 0) {
         setTimeout(() => {
           track.style.transition = "none";
           currentIndex = slides.length - 1;
-          track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+          updateCarousel();
         }, 500);
+      } else {
+        if (window.innerWidth <= 767) {
+          const offset = trackContainer.getBoundingClientRect().width * 0.2;
+          track.style.transform = `translateX(${offset - currentIndex * slideWidth}px)`;
+        } else {
+          track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+        }
       }
+      updateCenterSlide();
     }
 
     function startAutoScroll() {
@@ -117,13 +152,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateCarousel();
     startAutoScroll();
+
     if (track) {
       track.addEventListener("mouseenter", stopAutoScroll);
       track.addEventListener("mouseleave", startAutoScroll);
     }
   }
 
-  // === Hamburger Menu (Mobile) ===
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
   if (hamburger && navLinks) {
@@ -137,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  // Move "COUNTRIES" out of the dropdown for mobile
   function updateMobileMenu() {
     if (window.innerWidth <= 767) {
       const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
@@ -150,15 +184,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Run on load and resize
   window.addEventListener("load", updateMobileMenu);
   window.addEventListener("resize", updateMobileMenu);
 
-  // === Initial Scroll Animations ===
   handleScrollAnimations();
 });
 
-// === Logo Update ===
 function updateLogo() {
   const logoImg = document.getElementById("logo-img");
   if (!logoImg) return;
@@ -172,11 +203,26 @@ function updateLogo() {
   }
 }
 
-// Call on load and resize
+function setResponsiveVideoSource() {
+  const video = document.getElementById("responsive-video");
+  if (!video) return;
+  const isMobile = window.innerWidth <= 768;
+  const mobileSrc = video.dataset.videoMobile;
+  const desktopSrc = video.dataset.videoDesktop;
+  const selectedSrc = isMobile ? mobileSrc : desktopSrc;
+  const absoluteSrc = new URL(selectedSrc, window.location.origin).href;
+  if (video.src !== absoluteSrc) {
+    video.src = selectedSrc;
+    video.load();
+    video.play().catch(() => {});
+  }
+}
+
+window.addEventListener("DOMContentLoaded", setResponsiveVideoSource);
+window.addEventListener("resize", setResponsiveVideoSource);
 window.addEventListener("load", updateLogo);
 window.addEventListener("resize", updateLogo);
 
-// === Scroll-Triggered Animations ===
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(".scroll-animation, .fade-in-animation, .slide-in-left, .slide-in-right");
   animatedElements.forEach((el) => {
@@ -191,7 +237,6 @@ function handleScrollAnimations() {
 window.addEventListener("scroll", handleScrollAnimations);
 window.addEventListener("resize", handleScrollAnimations);
 
-// === Video Popup Logic ===
 function closePopup() {
   const popup = document.getElementById("videoPopup");
   if (popup) {

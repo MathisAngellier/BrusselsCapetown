@@ -10,10 +10,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
-// Load translations for static content
 async function loadTranslations() {
   try {
-    // Get the current script's path and resolve the correct URL
     const basePath = window.location.pathname.includes("/views/") ? "../data/translations.json" : "data/translations.json";
     const response = await fetch(basePath);
     translations = await response.json();
@@ -22,7 +20,6 @@ async function loadTranslations() {
   }
 }
 
-// Update static text elements
 function updateStaticTexts() {
   const elements = document.querySelectorAll("[data-translate]");
   elements.forEach((element) => {
@@ -34,43 +31,35 @@ function updateStaticTexts() {
       } else if (element.placeholder !== undefined) {
         element.placeholder = text;
       } else {
-        // Check if the translation contains HTML tags
         if (text.includes("<") && text.includes(">")) {
-          element.innerHTML = text; // Use innerHTML for HTML content
+          element.innerHTML = text;
         } else {
-          element.textContent = text; // Use textContent for plain text
+          element.textContent = text;
         }
       }
     }
   });
 }
 
-// Switch language function
 async function switchLanguage(lang) {
   if (lang === currentLanguage) return;
 
   currentLanguage = lang;
   localStorage.setItem("selectedLanguage", lang);
 
-  // Update static texts
   updateStaticTexts();
 
-  // Update active language button
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
 }
 
-// Initialize language on page load
 async function initializeLanguage() {
-  // Check for saved language preference
   const savedLang = localStorage.getItem("selectedLanguage") || "en";
   currentLanguage = savedLang;
 
-  // Load translations
   await loadTranslations();
 
-  // Update UI
   updateStaticTexts();
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === currentLanguage);

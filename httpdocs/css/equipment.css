@@ -12,7 +12,6 @@ body {
   transition: color 0.3s, background-color 0.3s;
 }
 
-/* Hero Section - Fixed for mobile */
 .hero {
   background-image: url("../img/zoom.JPG");
   background-position: center;
@@ -120,16 +119,12 @@ h2 {
   padding: 2rem;
 }
 
-/* Mobile Responsiveness - matches about page behavior */
 @media (max-width: 768px) {
   .hero {
     background-image: url("../img/Equipement-Mobile-4x3.JPG");
     height: 15rem;
-    /* Change to contain to show the full image without cropping */
     background-size: cover;
-    /* Add background color to fill empty space if needed */
     background-color: #000;
-    /* Keep image centered */
     background-position: center center;
   }
 
@@ -137,7 +132,6 @@ h2 {
     font-size: 2.5rem;
   }
 
-  /* Items stack vertically on mobile */
   .scroll-section.horizontal-section .item {
     display: flex;
     flex-direction: column;
@@ -145,7 +139,6 @@ h2 {
     height: 100vh;
   }
 
-  /* Content and media take equal vertical space */
   .scroll-section.horizontal-section .item_content,
   .scroll-section.horizontal-section .item_media {
     height: 50vh;
@@ -160,7 +153,6 @@ h2 {
     line-height: 1.6;
   }
 
-  /* Adjust number position for mobile */
   .scroll-section.horizontal-section .item_number {
     top: 2rem;
     left: 1.5rem;
