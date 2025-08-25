@@ -253,6 +253,6 @@ window.onload = function () {
     document.body.style.overflow = "hidden";
     setTimeout(() => {
       closePopup();
-    }, 8000);
+    }, 14500);
   }
 };
