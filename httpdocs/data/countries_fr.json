@@ -248,7 +248,7 @@
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Consulate",
+              "name": "Consulat de France",
               "address": "Laayoune, Western Sahara",
               "note": "La France a annoncé l'ouverture d'un consulat à Laayoune, au Sahara Occidental."
             },
@@ -302,7 +302,7 @@
           ],
           "embassiesAndInstitutions": [
             {
-              "name": "French Embassy",
+              "name": "Ambassade de France",
               "address": "Rue Ahmed Ould Hamed – Tevragh-Zeina District – BP 231, Nouakchott",
               "phone": ["+222 45 29 96 99"],
               "email": "ambafrance.nouakchott-amba@diplomatie.gouv.fr",
@@ -672,8 +672,7 @@
             },
             {
               "name": "Lycée Français International Jacques Prévert",
-              "type": "School",
-              "addresses": ["6 Bathur Street, East Legon, Accra, Ghana", "PO BOX 1813, Cantonments, Accra, Ghana"],
+              "address": ["6 Bathur Street, East Legon, Accra, Ghana", "PO BOX 1813, Cantonments, Accra, Ghana"],
               "phones": ["+233 302 544 067", "+233 302 544 156", "+233 303 939 373", "+233 272 701 414"],
               "emails": ["info@lfacra.com", "secretariaproviseur@lfaccra.com"]
             }

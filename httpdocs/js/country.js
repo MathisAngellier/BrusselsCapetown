@@ -301,10 +301,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       html += "<br>";
 
-      if (institution.address) html += `Address: ${institution.address}<br>`;
-      if (institution.phone) html += `Phone: ${institution.phone.join(", ")}<br>`;
-      if (institution.email) html += `Email: ${institution.email}<br>`;
-      if (institution.website) html += `Website: ${institution.website}<br>`;
+      if (institution.address) html += `${institution.address}<br>`;
+      if (institution.phone) html += `${institution.phone.join(", ")}<br>`;
+      if (institution.email) html += `${institution.email}<br>`;
+      if (institution.website) html += `${institution.website}<br>`;
 
       li.innerHTML = html;
       embassiesList.appendChild(li);
