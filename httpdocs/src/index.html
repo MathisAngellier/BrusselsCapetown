@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="/brusselscapetown.png" type="image/png">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Brussels CapeTown</title>
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script type="module" src="assets/js/script.js" defer></script>
+    <script type="module" src="assets/js/translate.js" defer></script>
+    <script type="module" src="assets/js/index_animations.js" defer></script>
+</head>
+
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img id="logo-img" src="img/Logo-petit-format+vélo.jpg"
+                            alt="Brussels CapeTown Logo"></a>
+                </div>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" data-translate="nav_home">HOME</a>
+                    <a href="views/project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
+                    <a href="views/bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
+                    <a href="views/about.html" data-translate="nav_about">ABOUT ME</a>
+                    <div class="dropdown">
+                        <a href="views/route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
+                        <div class="dropdown-content">
+                            <a href="views/countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
+                        </div>
+                    </div>
+                    <a href="views/equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
+
+                    <a href="views/contact.html" data-translate="nav_contact">CONTACT</a>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 data-translate="hero_title">Brussels to Cape Town by Bicycle</h1>
+                <p data-translate="hero_subtitle">An extraordinary journey of MINIMUM 14000 km across two continents,
+                    connecting cultures and raising awareness for humanitarian causes</p>
+            </div>
+        </section>
+
+        <div id="videoPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <video autoplay loop muted playsinline>
+                    <source src="video/Intro-Date.mp4" type="video/mp4">
+                    <p data-translate="video_error">Your browser does not support the video tag.</p>
+                </video>
+            </div>
+        </div>
+
+        <section class="journey-stats">
+            <div class="stat-card">
+                <div class="stat-number" data-translate="stat_kilometers">14 000</div>
+                <div data-translate="stat_kilometers_label">Kilometers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-translate="stat_countries">16</div>
+                <div data-translate="stat_countries_label">Countries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-translate="stat_months">4</div>
+                <div data-translate="stat_months_label">Months</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-translate="stat_continents">2</div>
+                <div data-translate="stat_continents_label">Continents</div>
+            </div>
+        </section>
+
+        <section class="content-section mission-section scroll-animation">
+            <div class="mission-text">
+                <h2 data-translate="mission_title">The Mission</h2>
+                <p data-translate="mission_description">
+                    From the capital of Europe to the southern tip of Africa, this solo cycling expedition aims to bring
+                    cultures together, raise awareness for humanitarian causes, and inspire each of us to pursue our
+                    dreams. Through this journey, I hope to support local charities and highlight the diverse
+                    communities and landscapes along the way.
+                </p>
+            </div>
+            <div class="mission-image">
+                <img src="img/brusselscapetown.png" alt="Cyclist on a journey">
+            </div>
+        </section>
+
+        <section class="content-section route-section scroll-animation">
+            <h2 data-translate="route_title">The Route</h2>
+            <p data-translate="route_description1">
+                The road sets off from Brussels, cuts across Europe, crosses the Mediterranean, follows the Atlantic,
+                then plunges southward to the tip of Africa. A journey where the rugged Pyrenees, the majestic Atlas,
+                the scorching vastness of the Sahara, the red dunes of the Namib, and the lush greenery of West African
+                savannas unfold one after another.
+            </p>
+            <p data-translate="route_description2">
+                Each landscape is a page, each climate an emotion. The mountains are challenges, the deserts trials, the
+                savannas promises. And at every step, the road becomes more than a path—it turns into a story, an
+                encounter with the boundless world, all the way to the Cape, where the ocean halts the adventure but not
+                the memories.
+            </p>
+
+        </section>
+
+        <section class="content-section shoutout-section scroll-animation">
+            <p data-translate="shoutout_text">
+                Special thanks to <strong>LUXURY AFRICA EXPERIENCES</strong> in South Africa, my very first sponsor, who
+                didn’t hesitate for a second to support my project and my adventure.
+            </p>
+            <a href="https://www.luxuryafricaexperiences.com/" target="_blank"><img src="img/logos/LAE.png"
+                    alt="luxuray african experiences logo" class="logo"></a>
+        </section>
+
+        <section class="sponsor-section scroll-animation">
+            <h2 data-translate="sponsor_title">My partners & supports</h2>
+            <div class="carousel-container">
+                <button class="carousel-button button-prev">&#10094;</button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="sponsor-carousel">
+                        <div class="carousel-slide"><img src="img/logos/logo-joker.png" alt="joker" class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/Organon.png" alt="Organon" class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/LuxuryAfricaExperiences.png"
+                                alt="LuxuryAfricaExperiences" class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/Wildiers.png" alt="Wildiers" class="logoImg">
+                        </div>
+                        <div class="carousel-slide"><img src="img/logos/FahrradManufaktur.png" alt="FahrradManufaktur"
+                                class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/SeaToSummit.png" alt="SeaToSummit"
+                                class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/Extrawheel.png" alt="Extrawheel"
+                                class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/msr-logo.png" alt="MSR" class="logoImg"></div>
+                        <div class="carousel-slide"><img src="img/logos/Ortlieb.png" alt="Ortlieb" class="logoImg">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button button-next">&#10095;</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="newsletter">
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
+                <br>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
+                <form action="https://formspree.io/f/meoqbawg" method="POST">
+                    <div class="form_group">
+                        <input required="" class="" type="email" value="" name="email"
+                            data-translate="email_placeholder" placeholder="Email Address">
+                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+
+            <div class="social">
+                <a href="https://www.tiktok.com/@brussels.capetown?_t=ZN-8uSkNRMWnpu" target="_blank">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/brusselscapetown/" target="_blank"
+                    aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@BrusselsCapeTown" target="_blank"
+                    aria-label="Subscribe to our YouTube channel">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank" aria-label="Follow us on Strava">
+                    <i class="fa-brands fa-strava"></i>
+                </a>
+                <a href="mailto:info@brusselscapetown.com" aria-label="Send us an email">
+                    <i class="fa-solid fa-square-envelope"></i>
+                </a>
+            </div>
+            <div class="footer-note">
+                <p id="designed" data-translate="footer_copyright">&copy; 2025 - Created by <strong>Mathis
+                        Angellier</strong> </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

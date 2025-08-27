@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../brusselscapetown.png" type="image/icon">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Contact</title>
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/contact.css">
+    <script type="module" src="/assets/js/script.js" defer></script>
+    <script type="module" src="/assets/js/contact.js" defer></script>
+    <script type="module" src="/assets/js/translate.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <a href="/index.html"><img id="logo-img" src="/img/Logo-petit-format+vélo.jpg"
+                            alt="Brussels CapeTown Logo"></a>
+                </div>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="/index.html" data-translate="nav_home">HOME</a>
+                    <a href="project.html" class="dropbtn" data-translate="nav_project">PROJECT</a>
+                    <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
+                    <a href="about.html" data-translate="nav_about">ABOUT ME</a>
+                    <div class="dropdown">
+                        <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
+                        <div class="dropdown-content">
+                            <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
+                        </div>
+                    </div>
+                    <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
+                    <a href="contact.html" data-translate="nav_contact">CONTACT</a>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section">
+            <h1 data-translate="contact_title">Contact</h1>
+
+            <div class="contact-reasons">
+                <ul>
+                    <li data-translate="contact_reason_1">Are you a professional and want to test your gear in
+                        real-world conditions? Don't hesitate to contact me.</li>
+                    <li data-translate="contact_reason_2">Are you an individual living along my route and able to offer
+                        me a place to stay for the night? Please get in touch as soon as possible.</li>
+                    <li data-translate="contact_reason_3">Are you a small school or a large educational institution and
+                        would like to take part in this outreach project? Please contact me.</li>
+                    <li data-translate="contact_reason_4">Are you curious and want to learn more about this adventure?
+                        Feel free to contact me.</li>
+                </ul>
+            </div>
+
+            <div class="contact-intro">
+                <p data-translate="contact_description">For any inquiries regarding partnerships, sponsorships, support,
+                    suggestions, feedback, or general information, please don't hesitate to reach out. Thank you in
+                    advance!</p>
+            </div>
+
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <a href="mailto:info@brusselscapetown.com" aria-label="Send us an email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <h3 data-translate="contact_method_email_title">Email</h3>
+                    <p data-translate="contact_method_email_desc">Send me a direct email for quick responses</p>
+                    <a href="mailto:info@brusselscapetown.com">info@brusselscapetown.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <a href="https://www.tiktok.com/@brussels.capetown?_t=ZN-8uSkNRMWnpu" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/brusselscapetown/" target="_blank"
+                        aria-label="Follow us on Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@BrusselsCapeTown" target="_blank"
+                        aria-label="Subscribe to our YouTube channel">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <h3 data-translate="contact_method_social_title">Social Media</h3>
+                    <p data-translate="contact_method_social_desc">Follow the journey and send messages</p>
+                    <a href="https://www.instagram.com/brusselscapetown/" target="_blank">@brusselscapetown</a>
+                </div>
+
+                <div class="contact-method">
+                    <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank" aria-label="Follow us on Strava">
+                        <i class="fa-brands fa-strava"></i>
+                    </a>
+                    <h3 data-translate="contact_method_location_title">Location</h3>
+                    <p data-translate="contact_method_location_desc">Follow the progression</p>
+                    <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank"
+                        aria-label="Follow us on Strava">BrusselsCapeTown</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2 data-translate="contact_form_title">Send Me a Message</h2>
+                <form id="contactForm" action="https://formspree.io/f/meoqbawg" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" data-translate="contact_form_name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-translate="contact_form_email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subject" data-translate="contact_form_subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" data-translate="contact_form_subject_placeholder">Select a subject
+                                </option>
+                                <option value="gear-testing" data-translate="contact_form_subject_gear">Professional
+                                    Gear Testing</option>
+                                <option value="accommodation" data-translate="contact_form_subject_accommodation">
+                                    Accommodation Offer</option>
+                                <option value="educational" data-translate="contact_form_subject_educational">
+                                    Educational Partnership</option>
+                                <option value="sponsorship" data-translate="contact_form_subject_sponsorship">
+                                    Sponsorship/Partnership</option>
+                                <option value="media" data-translate="contact_form_subject_media">Media Inquiry</option>
+                                <option value="general" data-translate="contact_form_subject_general">General Question
+                                </option>
+                                <option value="other" data-translate="contact_form_subject_other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location" data-translate="contact_form_location">Your Location</label>
+                            <input type="text" id="location" name="location"
+                                data-translate="contact_form_location_placeholder" placeholder="City, Country">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-translate="contact_form_message">Message *</label>
+                        <textarea id="message" name="message" required data-translate="contact_form_message_placeholder"
+                            placeholder="Tell me about your inquiry, offer, or question..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" data-translate="contact_form_submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="newsletter">
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
+                <br>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
+                <form action="https://formspree.io/f/meoqbawg" method="POST">
+                    <div class="form_group">
+                        <input required="" class="" type="email" value="" name="email"
+                            data-translate="email_placeholder" placeholder="Email Address">
+                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+
+            <div class="social">
+                <a href="https://www.tiktok.com/@brussels.capetown?_t=ZN-8uSkNRMWnpu" target="_blank">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/brusselscapetown/" target="_blank"
+                    aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@BrusselsCapeTown" target="_blank"
+                    aria-label="Subscribe to our YouTube channel">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank" aria-label="Follow us on Strava">
+                    <i class="fa-brands fa-strava"></i>
+                </a>
+                <a href="mailto:info@brusselscapetown.com" aria-label="Send us an email">
+                    <i class="fa-solid fa-square-envelope"></i>
+                </a>
+            </div>
+            <div class="footer-note">
+                <p id="designed" data-translate="footer_copyright">&copy; 2025 - Created by <strong>Mathis
+                        Angellier</strong> </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
