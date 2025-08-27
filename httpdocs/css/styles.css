@@ -370,11 +370,12 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-  padding: 30px 0;
+  margin-bottom: 5rem;
+  margin-top: -2rem;
 }
 
 .sponsor-section h2 {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   color: #333;
 }
 
@@ -811,7 +812,7 @@ footer {
   }
 
   .stat-card {
-    margin: -2rem;
+    margin: -2.3rem;
   }
 
   .mission-section {
@@ -824,23 +825,18 @@ footer {
   }
 
   .carousel-container {
-    padding: 0 20px; /* Reduce padding to allow more slide visibility */
-  }
-
-  .carousel-container {
-    padding: 0 20px; /* Reduce padding to allow more slide visibility */
+    padding: 0 20px;
   }
 
   .carousel-slide {
-    flex: 0 0 60%; /* Reduced from 70% to bring logos closer */
+    flex: 0 0 60%;
     max-width: 60%;
-    padding: 5px; /* Reduced padding to bring logos closer */
+    padding: 5px;
     height: 80px;
-    justify-content: center; /* Center the logo within the slide */
+    justify-content: center;
   }
 
   .carousel-track {
-    /* Ensure track allows for partial slide views */
     display: flex;
     transition: transform 0.5s ease;
     width: 100%;
@@ -848,7 +844,7 @@ footer {
   }
 
   .carousel-track-container {
-    overflow: hidden; /* Hide content outside container */
+    overflow: hidden;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
@@ -856,7 +852,6 @@ footer {
     position: relative;
   }
 
-  /* Add gradient masks to fade out the edges */
   .carousel-track-container::before,
   .carousel-track-container::after {
     content: "";
@@ -880,12 +875,11 @@ footer {
 
   .carousel-slide img {
     max-height: 60px;
-    opacity: 0.6; /* Make side logos partially transparent */
-    transform: scale(0.8); /* Make side logos smaller */
+    opacity: 0.6;
+    transform: scale(0.8);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
-  /* Center slide should be fully visible and larger */
   .carousel-slide.center-slide img {
     opacity: 1;
     transform: scale(1);
@@ -914,6 +908,11 @@ footer {
 
   .nav-links {
     flex-direction: row;
+  }
+
+  .nav-links a {
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
   }
 
   .hero {
@@ -955,6 +954,52 @@ footer {
   .carousel-slide {
     flex: 0 0 33.333%;
     max-width: 33.333%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1450px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .logo img {
+    max-height: 40px;
+    height: auto;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .nav-links a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .language-switcher {
+    display: flex;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+
+  .language-switcher button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .hamburger {
+    display: none;
   }
 }
 

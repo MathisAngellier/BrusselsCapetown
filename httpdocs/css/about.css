@@ -138,7 +138,6 @@ h2 {
   line-height: 1.4;
 }
 
-/* Quote Styling */
 .about-quote {
   font-style: italic;
   font-size: 1.1rem;
@@ -172,13 +171,34 @@ h2 {
 }
 
 .item {
-  width: 100vw;
-  height: 100%;
   display: flex;
-  position: absolute;
-  inset: 0%;
-  box-shadow: rgb(149, 157, 165, 0.2) 0px 8px 24px;
+  position: absolute; /* <-- keeps GSAP scroll trigger working */
+  inset: 0;
+  width: 100%; /* use % instead of 100vw to avoid scrollbar overflow */
+  height: 100%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
+}
+
+.item_content {
+  flex: 1 1 50%;
+  background-color: #fff;
+  color: #292929;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+  z-index: 1;
+}
+
+.item video {
+  flex: 1 1 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* fills half, may crop */
+  display: block;
+  background-color: #fff;
 }
 
 .item_number {
@@ -198,16 +218,9 @@ h2 {
   left: 3rem;
 }
 
-.item_content {
-  background-color: #fff;
-  color: #292929;
-  flex-flow: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 3rem;
-  display: flex;
-  position: relative;
-  width: 50%;
+.item video.contain {
+  object-fit: contain;
+  background: #000; /* avoids empty background if aspect ratio differs */
 }
 
 .item_media {
