@@ -824,6 +824,10 @@ footer {
     height: auto;
   }
 
+  .route-section {
+    padding-bottom: 0.7rem;
+  }
+
   .carousel-container {
     padding: 0 20px;
   }
