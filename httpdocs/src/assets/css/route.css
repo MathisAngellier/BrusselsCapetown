@@ -12,6 +12,7 @@ body {
 .route-section h1 {
   margin-bottom: 2rem;
   color: #333;
+  text-align: center;
 }
 
 .route-section h2 {

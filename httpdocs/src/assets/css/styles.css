@@ -154,6 +154,7 @@ header {
   cursor: pointer;
   padding: 1rem;
   font-size: 1.5rem;
+  margin-left: 3rem;
 }
 
 .hamburger i {
