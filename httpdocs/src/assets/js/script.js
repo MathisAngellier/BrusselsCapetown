@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateMobileMenu() {
-    if (window.innerWidth <= 767) {
+    if (window.innerWidth <= 1024) {
       const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
       const routeLink = document.querySelector(".dropdown a.dropbtn");
       const dropdown = document.querySelector(".dropdown");

@@ -172,9 +172,9 @@ h2 {
 
 .item {
   display: flex;
-  position: absolute; /* <-- keeps GSAP scroll trigger working */
+  position: absolute;
   inset: 0;
-  width: 100%; /* use % instead of 100vw to avoid scrollbar overflow */
+  width: 100%;
   height: 100%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
@@ -182,22 +182,20 @@ h2 {
 
 .item_content {
   flex: 1 1 50%;
-  background-color: #fff;
-  color: #292929;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 3rem;
+  background-color: #fff;
   z-index: 1;
 }
 
 .item video {
   flex: 1 1 50%;
-  width: 100%;
+  width: 50%;
   height: 100%;
-  object-fit: contain; /* fills half, may crop */
-  display: block;
+  object-fit: contain;
   background-color: #fff;
 }
 
