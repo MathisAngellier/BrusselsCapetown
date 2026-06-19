@@ -3,9 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../brusselscapetown.png" type="image/icon">
-    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Countries</title>
@@ -50,6 +48,7 @@
             </div>
         </nav>
     </header>
+
     <main>
         <section class="hero">
             <video id="responsive-video" autoplay muted loop playsinline
@@ -71,39 +70,61 @@
 
             <div class="country-details" id="country-details">
                 <h2 id="selected-country-name">Country Name</h2>
+
                 <div class="country-section">
-                    <h3 data-translate="overview">Overview</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="overview">Overview</h3>
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
                     <p id="country-overview"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3 data-translate="climate">Climate</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="climate">Climate</h3>
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
                     <p id="country-climate"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3 data-translate="travel_documents">Travel Documents</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="travel_documents">Travel Documents</h3>
+                        <i class="fa-solid fa-passport"></i>
+                    </div>
                     <p id="country-documents"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3 data-translate="language_currency">Language & Currency</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="language_currency">Language & Currency</h3>
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
                     <p id="country-language"></p>
                     <p id="country-currency"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3 data-translate="customs_traditions">Customs & Traditions</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="customs_traditions">Customs & Traditions</h3>
+                        <i class="fa-solid fa-earth-africa"></i>
+                    </div>
                     <p id="country-customs"></p>
                 </div>
 
                 <div class="country-section">
-                    <h3 data-translate="vaccination">Vaccination & Health Risks</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="vaccination">Vaccination & Health Risks</h3>
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
                     <p id="country-health"></p>
                 </div>
 
                 <div class="country-section emergency-section">
-                    <h3 data-translate="emergency">Emergency Numbers & Useful Addresses</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="emergency">Emergency Numbers & Useful Addresses</h3>
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
                     <div>
                         <ul class="emergency-numbers"></ul>
                         <ul class="hospitals"></ul>
@@ -112,13 +133,16 @@
                 </div>
 
                 <div class="country-section country-sources-section" id="country-sources-section">
-                    <h3 data-translate="sources">Sources:</h3>
+                    <div class="country-section-header">
+                        <h3 data-translate="sources">Sources:</h3>
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
                     <p id="country-sources"></p>
                 </div>
             </div>
         </div>
-
     </main>
+
     <footer>
         <div class="footer-content">
             <div class="newsletter">
@@ -127,9 +151,9 @@
                 <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
                 <form action="https://formspree.io/f/meoqbawg" method="POST">
                     <div class="form_group">
-                        <input required="" class="" type="email" value="" name="email"
-                            data-translate="email_placeholder" placeholder="Email Address">
-                        <input type="submit" class="" data-translate="subscribe_btn" value="Subscribe">
+                        <input required type="email" name="email" data-translate="email_placeholder"
+                            placeholder="Email Address">
+                        <input type="submit" data-translate="subscribe_btn" value="Subscribe">
                     </div>
                 </form>
             </div>
@@ -146,7 +170,6 @@
                     aria-label="Subscribe to our YouTube channel">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
-
                 <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank" aria-label="Follow us on Strava">
                     <i class="fa-brands fa-strava"></i>
                 </a>
@@ -154,9 +177,10 @@
                     <i class="fa-solid fa-square-envelope"></i>
                 </a>
             </div>
+
             <div class="footer-note">
                 <p id="designed" data-translate="footer_copyright">&copy; 2025 - Created by <strong>Mathis
-                        Angellier</strong> </p>
+                        Angellier</strong></p>
             </div>
         </div>
     </footer>
