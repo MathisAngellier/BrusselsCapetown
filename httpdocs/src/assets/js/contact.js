@@ -1,47 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
+  if (!form) return;
+
   const submitBtn = form.querySelector(".submit-btn");
+  if (!submitBtn) return;
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    const formData = new FormData(form);
 
     const originalText = submitBtn.textContent;
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    fetch("https://formspree.io/f/meoqbawg", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          submitBtn.textContent = "Message Sent!";
-          submitBtn.style.background = "#28a745";
-          form.reset();
-
-          setTimeout(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.style.background = "";
-            submitBtn.disabled = false;
-          }, 3000);
-        } else {
-          throw new Error("Form submission failed");
-        }
-      })
-      .catch((error) => {
-        submitBtn.textContent = "Error - Try Again";
-        submitBtn.style.background = "#dc3545";
-
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.style.background = "";
-          submitBtn.disabled = false;
-        }, 3000);
+    try {
+      const response = await fetch("https://formspree.io/f/meoqbawg", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
       });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      submitBtn.textContent = "Message Sent!";
+      submitBtn.style.background = "#28a745";
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      submitBtn.textContent = "Error - Try Again";
+      submitBtn.style.background = "#dc3545";
+    } finally {
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = "";
+        submitBtn.disabled = false;
+      }, 3000);
+    }
   });
 });

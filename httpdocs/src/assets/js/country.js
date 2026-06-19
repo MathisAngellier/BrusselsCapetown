@@ -1,178 +1,88 @@
-let currentLanguage = "en"; // Default language
-let translations = {};
+import { getCurrentLanguage } from "./language.js";
 
-async function loadTranslations() {
-  try {
-    const response = await fetch("/data/translations.json");
-    translations = await response.json();
-  } catch (error) {
-    console.error("Error loading translations:", error);
-  }
+const countriesCache = new Map();
+
+function getCountriesPath(language) {
+  return language === "fr" ? "/data/countries_fr.json" : "/data/countries_en.json";
 }
 
-function getCountriesData() {
-  const dataFile = currentLanguage === "fr" ? "/data/countries_fr.json" : "/data/countries_en.json";
-  return fetch(dataFile)
-    .then((response) => response.json())
-    .then((data) => data.countries);
+async function getCountriesData() {
+  const lang = getCurrentLanguage();
+
+  const file = lang === "fr" ? "/data/countries_fr.json" : "/data/countries_en.json";
+
+  const response = await fetch(file);
+  const data = await response.json();
+
+  return data.countries;
 }
 
-function updateStaticTexts() {
-  const elements = document.querySelectorAll("[data-translate]");
-  elements.forEach((element) => {
-    const key = element.getAttribute("data-translate");
-    if (translations[currentLanguage] && translations[currentLanguage][key]) {
-      if (element.tagName === "INPUT" && element.type === "submit") {
-        element.value = translations[currentLanguage][key];
-      } else if (element.placeholder !== undefined) {
-        element.placeholder = translations[currentLanguage][key];
-      } else {
-        element.textContent = translations[currentLanguage][key];
-      }
-    }
-  });
-}
-
-async function switchLanguage(lang) {
-  if (lang === currentLanguage) return;
-
-  currentLanguage = lang;
-  localStorage.setItem("selectedLanguage", lang);
-
-  updateStaticTexts();
-
-  try {
-    countries = await getCountriesData();
-    generateSlides();
-    selectCountry(0);
-  } catch (error) {
-    console.error("Error loading countries for language:", lang, error);
-  }
-
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
-  });
-}
-
-async function initializeLanguage() {
-  const savedLang = localStorage.getItem("selectedLanguage") || "en";
-  currentLanguage = savedLang;
-
-  await loadTranslations();
-
-  updateStaticTexts();
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.lang === currentLanguage);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async () => {
   const track = document.getElementById("countries-select-carousel");
-  const countryNameElement = document.getElementById("selected-country-name");
   const countryDetailsElement = document.getElementById("country-details");
-
-  const countryOverviewElement = document.getElementById("country-overview");
-  const countryClimateElement = document.getElementById("country-climate");
-  const countryDocumentsElement = document.getElementById("country-documents");
-  const countryLanguageElement = document.getElementById("country-language");
-  const countryCurrencyElement = document.getElementById("country-currency");
-  const countryCustomsElement = document.getElementById("country-customs");
-  const countryHealthElement = document.getElementById("country-health");
-  const countrySourcesElement = document.getElementById("country-sources");
-
-  const emergencyNumbersList = document.querySelector(".emergency-numbers");
-  const hospitalsList = document.querySelector(".hospitals");
-  const embassiesList = document.querySelector(".embassies");
-
   const nextButton = document.querySelector(".button-next");
   const prevButton = document.querySelector(".button-prev");
+
+  const detailsElements = {
+    name: document.getElementById("selected-country-name"),
+    overview: document.getElementById("country-overview"),
+    climate: document.getElementById("country-climate"),
+    documents: document.getElementById("country-documents"),
+    language: document.getElementById("country-language"),
+    currency: document.getElementById("country-currency"),
+    customs: document.getElementById("country-customs"),
+    health: document.getElementById("country-health"),
+    sources: document.getElementById("country-sources"),
+    emergencyNumbers: document.querySelector(".emergency-numbers"),
+    hospitals: document.querySelector(".hospitals"),
+    embassies: document.querySelector(".embassies"),
+  };
+
+  if (!track || !countryDetailsElement || !detailsElements.name) return;
 
   let countries = [];
   let currentIndex = 0;
   let allSlides = [];
+  const clonesAtStart = 2;
+  const clonesAtEnd = 2;
+  let resizeTimeout;
 
-  await initializeLanguage();
-
-  try {
-    countries = await getCountriesData();
-    generateSlides();
-    selectCountry(0);
-  } catch (error) {
-    console.error("Error loading countries:", error);
+  async function loadCountriesForLanguage(language = getCurrentLanguage()) {
+    try {
+      countries = await getCountriesData(language);
+      generateSlides();
+      selectCountry(0);
+    } catch (error) {
+      console.error("Error loading countries:", error);
+    }
   }
 
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      switchLanguage(btn.dataset.lang);
-      location.reload();
-    });
-  });
+  await initializeLanguage(loadCountriesForLanguage);
+  await loadCountriesForLanguage();
 
   function generateSlides() {
-    if (!track || !countries || countries.length === 0) return;
+    if (!countries.length) return;
 
     track.innerHTML = "";
-
     const totalSlides = countries.length;
-    const clonesAtStart = 2;
-    const clonesAtEnd = 2;
 
     for (let i = totalSlides - clonesAtStart; i < totalSlides; i++) {
-      createSlide(countries[i], i, true);
+      createSlide(countries[i], i);
     }
 
-    countries.forEach((country, index) => {
-      createSlide(country, index, false);
-    });
+    countries.forEach((country, index) => createSlide(country, index));
 
     for (let i = 0; i < clonesAtEnd; i++) {
-      createSlide(countries[i], i, true);
+      createSlide(countries[i], i);
     }
 
     allSlides = Array.from(track.children);
-
-    if (allSlides.length === 0) return;
-
     currentIndex = clonesAtStart;
-    setTimeout(() => {
+
+    requestAnimationFrame(() => {
       updateCarousel(false);
-      setTimeout(() => {
-        forceInitialAutoplay();
-      }, 200);
-    }, 100);
-  }
-
-  function forceInitialAutoplay() {
-    const activeSlide = allSlides[currentIndex];
-    if (activeSlide) {
-      const activeVideo = activeSlide.querySelector("video");
-      if (activeVideo) {
-        activeVideo.muted = true;
-        activeVideo.loop = true;
-        activeVideo.playsInline = true;
-        activeVideo.currentTime = 0;
-
-        const attemptPlay = () => {
-          const playPromise = activeVideo.play();
-          if (playPromise !== undefined) {
-            playPromise
-              .then(() => {
-                console.log("Initial video autoplay successful");
-              })
-              .catch((error) => {
-                console.log("Initial autoplay failed, retrying:", error);
-                setTimeout(() => {
-                  activeVideo.play().catch(() => {
-                    console.log("Retry also failed");
-                  });
-                }, 100);
-              });
-          }
-        };
-        attemptPlay();
-      }
-    }
+      playActiveVideo();
+    });
   }
 
   function createSlide(country, originalIndex) {
@@ -186,9 +96,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
-    video.preload = "auto";
+    video.preload = "metadata";
 
-    slide.appendChild(video); // directly append video
+    slide.appendChild(video);
     track.appendChild(slide);
 
     slide.addEventListener("click", () => {
@@ -198,147 +108,118 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function updateCarousel(animate = true) {
-    if (!allSlides || allSlides.length === 0) return;
-    if (!animate) {
-      track.style.transition = "none";
-    }
+    if (!allSlides.length) return;
+
+    track.style.transition = animate ? "transform 0.5s ease" : "none";
 
     const slideWidth = allSlides[0].offsetWidth;
-    const offset = (currentIndex - 2) * slideWidth;
+    const offset = (currentIndex - clonesAtStart) * slideWidth;
     track.style.transform = `translateX(-${offset}px)`;
-
-    if (!animate) {
-      setTimeout(() => {
-        track.style.transition = "transform 0.5s ease";
-      }, 50);
-    }
 
     allSlides.forEach((slide, index) => {
       slide.classList.toggle("active", index === currentIndex);
-    });
 
-    allSlides.forEach((slide, index) => {
       const video = slide.querySelector("video");
-      if (video) {
+      if (!video) return;
+
+      if (index === currentIndex) {
+        video.currentTime = 0;
+        playVideo(video);
+      } else {
         video.pause();
         video.currentTime = 0;
       }
     });
+  }
 
-    const activeSlide = allSlides[currentIndex];
-    if (activeSlide) {
-      const activeVideo = activeSlide.querySelector("video");
-      if (activeVideo) {
-        activeVideo.currentTime = 0;
-        playVideo(activeVideo);
-      }
-    }
+  function playActiveVideo() {
+    const activeVideo = allSlides[currentIndex]?.querySelector("video");
+    playVideo(activeVideo);
   }
 
   function playVideo(video) {
     if (!video) return;
 
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        document.body.addEventListener(
-          "click",
-          () => {
-            video.play().catch(() => {});
-          },
-          { once: true }
-        );
-      });
-    }
+    video.play().catch(() => {
+      document.body.addEventListener("click", () => video.play().catch(() => {}), { once: true });
+    });
+  }
+
+  function setText(element, text) {
+    if (element) element.textContent = text;
   }
 
   function selectCountry(countryIndex) {
-    if (!countries[countryIndex]) return;
-
     const country = countries[countryIndex];
+    if (!country) return;
 
-    countryNameElement.textContent = country.name;
-
+    const details = country.details || {};
     countryDetailsElement.style.display = "grid";
 
-    countryOverviewElement.textContent = country.details?.overview || "No information available.";
-    countryClimateElement.textContent = country.details?.climate?.content || "No climate information available.";
-    countryDocumentsElement.textContent = country.details?.documents?.content || "No document information available.";
-    countryLanguageElement.textContent = country.details?.language?.content || "No language information available.";
-    countryCurrencyElement.textContent = country.details?.language?.content2 || "No currency information available.";
-    countryCustomsElement.textContent = country.details?.customs?.content || "No customs information available.";
-    countryHealthElement.textContent = country.details?.health?.content || "No health information available.";
-    countrySourcesElement.textContent = country.details?.sources?.content || "No sources available.";
+    setText(detailsElements.name, country.name);
+    setText(detailsElements.overview, details.overview || "No information available.");
+    setText(detailsElements.climate, details.climate?.content || "No climate information available.");
+    setText(detailsElements.documents, details.documents?.content || "No document information available.");
+    setText(detailsElements.language, details.language?.content || "No language information available.");
+    setText(detailsElements.currency, details.language?.content2 || "No currency information available.");
+    setText(detailsElements.customs, details.customs?.content || "No customs information available.");
+    setText(detailsElements.health, details.health?.content || "No health information available.");
+    setText(detailsElements.sources, details.sources?.content || "No sources available.");
 
-    updateEmergencyInfo(country.details?.emergency);
+    updateEmergencyInfo(details.emergency);
+  }
+
+  function clearList(list) {
+    if (list) list.innerHTML = "";
+  }
+
+  function appendListItem(list, html) {
+    if (!list) return;
+    const li = document.createElement("li");
+    li.innerHTML = html;
+    list.appendChild(li);
   }
 
   function updateEmergencyInfo(emergency) {
-    emergencyNumbersList.innerHTML = "";
-    const numbers = emergency?.emergencyNumbers || [];
-    numbers.forEach((item) => {
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${item.service}:</strong> ${item.numbers.join(", ")}`;
-      emergencyNumbersList.appendChild(li);
+    clearList(detailsElements.emergencyNumbers);
+    clearList(detailsElements.hospitals);
+    clearList(detailsElements.embassies);
+
+    emergency?.emergencyNumbers?.forEach((item) => {
+      appendListItem(detailsElements.emergencyNumbers, `<strong>${item.service}:</strong> ${item.numbers.join(", ")}`);
     });
 
-    hospitalsList.innerHTML = "";
-    const hospitals = emergency?.hospitals || [];
-    hospitals.forEach((hospital) => {
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${hospital.name}</strong> (${hospital.location})<br>${hospital.description}`;
-      hospitalsList.appendChild(li);
+    emergency?.hospitals?.forEach((hospital) => {
+      appendListItem(detailsElements.hospitals, `<strong>${hospital.name}</strong> (${hospital.location})<br>${hospital.description}`);
     });
 
-    embassiesList.innerHTML = "";
-    const embassies = emergency?.embassiesAndInstitutions || [];
-    embassies.forEach((institution) => {
-      const li = document.createElement("li");
-      let html = `<strong>${institution.name}</strong>`;
-
-      if (institution.type) {
-        html += ` (${institution.type})`;
-      }
-
-      html += "<br>";
-
-      if (institution.address) html += `${institution.address}<br>`;
-      if (institution.phone) html += `${institution.phone.join(", ")}<br>`;
-      if (institution.email) html += `${institution.email}<br>`;
-      if (institution.website) html += `${institution.website}<br>`;
-
-      li.innerHTML = html;
-      embassiesList.appendChild(li);
+    emergency?.embassiesAndInstitutions?.forEach((institution) => {
+      const lines = [`<strong>${institution.name}</strong>${institution.type ? ` (${institution.type})` : ""}`];
+      if (institution.address) lines.push(institution.address);
+      if (institution.phone) lines.push(institution.phone.join(", "));
+      if (institution.email) lines.push(institution.email);
+      if (institution.website) lines.push(institution.website);
+      appendListItem(detailsElements.embassies, lines.join("<br>"));
     });
   }
 
   function centerSlide(countryIndex) {
-    const matchingSlides = [];
-    allSlides.forEach((slide, index) => {
-      if (parseInt(slide.dataset.originalIndex) === countryIndex) {
-        matchingSlides.push(index);
-      }
-    });
+    const matchingSlides = allSlides.map((slide, index) => ({ slide, index })).filter(({ slide }) => Number(slide.dataset.originalIndex) === countryIndex);
 
-    if (matchingSlides.length === 0) return;
+    if (!matchingSlides.length) return;
 
-    let bestIndex = matchingSlides[0];
-    let shortestDistance = Math.abs(matchingSlides[0] - currentIndex);
+    currentIndex = matchingSlides.reduce((best, item) => {
+      const currentDistance = Math.abs(item.index - currentIndex);
+      const bestDistance = Math.abs(best.index - currentIndex);
+      return currentDistance < bestDistance ? item : best;
+    }).index;
 
-    matchingSlides.forEach((slideIndex) => {
-      const distance = Math.abs(slideIndex - currentIndex);
-      if (distance < shortestDistance) {
-        shortestDistance = distance;
-        bestIndex = slideIndex;
-      }
-    });
-
-    currentIndex = bestIndex;
     updateCarousel();
+    resetCarouselPositionIfNeeded();
+  }
 
+  function resetCarouselPositionIfNeeded() {
     const totalSlides = allSlides.length;
-    const clonesAtStart = 2;
-    const clonesAtEnd = 2;
 
     if (currentIndex >= totalSlides - clonesAtEnd) {
       setTimeout(() => {
@@ -353,42 +234,30 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
+  function showCurrentCountry() {
+    const countryIndex = Number(allSlides[currentIndex]?.dataset.originalIndex);
+    if (!Number.isNaN(countryIndex)) selectCountry(countryIndex);
+  }
+
   function nextSlide() {
-    currentIndex++;
+    currentIndex += 1;
     updateCarousel();
-
-    if (currentIndex >= allSlides.length - 2) {
-      setTimeout(() => {
-        currentIndex = 2;
-        updateCarousel(false);
-      }, 500);
-    }
-
-    const activeSlide = allSlides[currentIndex];
-    const countryIndex = parseInt(activeSlide.dataset.originalIndex);
-    selectCountry(countryIndex);
+    showCurrentCountry();
+    resetCarouselPositionIfNeeded();
   }
 
   function prevSlide() {
-    currentIndex--;
+    currentIndex -= 1;
     updateCarousel();
-
-    if (currentIndex < 2) {
-      setTimeout(() => {
-        currentIndex = allSlides.length - 3;
-        updateCarousel(false);
-      }, 500);
-    }
-
-    const activeSlide = allSlides[currentIndex];
-    const countryIndex = parseInt(activeSlide.dataset.originalIndex);
-    selectCountry(countryIndex);
+    showCurrentCountry();
+    resetCarouselPositionIfNeeded();
   }
 
   nextButton?.addEventListener("click", nextSlide);
   prevButton?.addEventListener("click", prevSlide);
 
   window.addEventListener("resize", () => {
-    updateCarousel(false);
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => updateCarousel(false), 150);
   });
 });

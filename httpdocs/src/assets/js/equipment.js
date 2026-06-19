@@ -27,7 +27,7 @@ function initScroll(section, items, direction) {
 
   items.forEach((item, index) => {
     if (index !== 0) {
-      direction == "horizontal" ? gsap.set(item, { xPercent: 100 }) : gsap.set(item, { yPercent: 100 });
+      direction === "horizontal" ? gsap.set(item, { xPercent: 100 }) : gsap.set(item, { yPercent: 100 });
     }
   });
 

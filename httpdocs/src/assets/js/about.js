@@ -4,7 +4,10 @@ const scrollSection = document.querySelectorAll(".scroll-section");
 
 scrollSection.forEach((section) => {
   const wrapper = section.querySelector(".wrapper");
+  if (!wrapper) return;
+
   const items = wrapper.querySelectorAll(".item");
+  if (!items.length) return;
 
   let direction = null;
 
@@ -20,7 +23,7 @@ scrollSection.forEach((section) => {
 function initScroll(section, items, direction) {
   items.forEach((item, index) => {
     if (index !== 0) {
-      direction == "horizontal" ? gsap.set(item, { xPercent: 100 }) : gsap.set(item, { yPercent: 100 });
+      direction === "horizontal" ? gsap.set(item, { xPercent: 100 }) : gsap.set(item, { yPercent: 100 });
     }
   });
 
@@ -41,7 +44,9 @@ function initScroll(section, items, direction) {
       borderRadius: "10px",
     });
 
-    direction == "horizontal"
+    if (!items[index + 1]) return;
+
+    direction === "horizontal"
       ? timeline.to(
           items[index + 1],
           {
