@@ -91,7 +91,8 @@
   gap: 1.4rem;
 }
 
-#selected-country-name {
+#selected-country-name,
+h1 {
   grid-column: 1 / -1;
   position: relative;
   width: fit-content;
