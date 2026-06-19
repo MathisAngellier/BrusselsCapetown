@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nextIndex = (nextIndex + 1) % images.length;
       }, 1600);
     }
-    setInterval(changeBackground, 3500);
+    const backgroundInterval = setInterval(changeBackground, 3500);
+    window.addEventListener("beforeunload", () => clearInterval(backgroundInterval));
   }
 
   const trackContainer = document.querySelector(".carousel-track-container");
@@ -142,12 +143,16 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
+    let carouselResizeTimeout;
     window.addEventListener("resize", () => {
-      track.style.transition = "none";
-      updateCarousel();
-      setTimeout(() => {
-        track.style.transition = "transform 0.5s ease";
-      }, 50);
+      clearTimeout(carouselResizeTimeout);
+      carouselResizeTimeout = setTimeout(() => {
+        track.style.transition = "none";
+        updateCarousel();
+        setTimeout(() => {
+          track.style.transition = "transform 0.5s ease";
+        }, 50);
+      }, 150);
     });
 
     updateCarousel();
@@ -168,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".nav-links a").forEach((link) =>
       link.addEventListener("click", () => {
         navLinks.classList.remove("show");
-      })
+      }),
     );
   }
 
@@ -178,8 +183,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const routeLink = document.querySelector(".dropdown a.dropbtn");
       const dropdown = document.querySelector(".dropdown");
       if (countriesLink && routeLink && dropdown) {
+        const dropdownContent = document.querySelector(".dropdown-content");
         routeLink.insertAdjacentElement("afterend", countriesLink);
-        dropdown.removeChild(document.querySelector(".dropdown-content"));
+        dropdownContent?.parentElement?.removeChild(dropdownContent);
       }
     }
   }
@@ -196,7 +202,7 @@ function updateLogo() {
   if (!logoImg) return;
   const pathPrefix = window.location.pathname.includes("/views/") ? "../" : "";
   const mobileSrc = `${pathPrefix}img/Logo-petit-format.png`;
-  const desktopSrc = `${pathPrefix}img/Logo-petit-format+vélo.jpg`;
+  const desktopSrc = `${pathPrefix}img/Logo-petit-format-velo.jpg`;
   if (window.innerWidth <= 767) {
     logoImg.src = mobileSrc;
   } else {
@@ -220,9 +226,17 @@ function setResponsiveVideoSource() {
 }
 
 window.addEventListener("DOMContentLoaded", setResponsiveVideoSource);
-window.addEventListener("resize", setResponsiveVideoSource);
+let responsiveVideoResizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(responsiveVideoResizeTimeout);
+  responsiveVideoResizeTimeout = setTimeout(setResponsiveVideoSource, 150);
+});
 window.addEventListener("load", updateLogo);
-window.addEventListener("resize", updateLogo);
+let logoResizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(logoResizeTimeout);
+  logoResizeTimeout = setTimeout(updateLogo, 150);
+});
 
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(".scroll-animation, .fade-in-animation, .slide-in-left, .slide-in-right");
@@ -236,7 +250,11 @@ function handleScrollAnimations() {
 }
 
 window.addEventListener("scroll", handleScrollAnimations);
-window.addEventListener("resize", handleScrollAnimations);
+let animationResizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(animationResizeTimeout);
+  animationResizeTimeout = setTimeout(handleScrollAnimations, 150);
+});
 
 function closePopup() {
   const popup = document.getElementById("videoPopup");
@@ -247,13 +265,11 @@ function closePopup() {
   }
 }
 
-window.onload = function () {
+window.addEventListener("load", () => {
   const popup = document.getElementById("videoPopup");
-  if (popup) {
-    popup.style.display = "flex";
-    document.body.style.overflow = "hidden";
-    setTimeout(() => {
-      closePopup();
-    }, 9300);
-  }
-};
+  if (!popup) return;
+
+  popup.style.display = "flex";
+  document.body.style.overflow = "hidden";
+  setTimeout(closePopup, 9300);
+});

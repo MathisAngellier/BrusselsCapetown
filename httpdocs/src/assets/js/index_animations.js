@@ -7,54 +7,37 @@ document.addEventListener("DOMContentLoaded", function () {
   const routeSection = document.querySelector(".route-section");
   const sponsorSection = document.querySelector(".sponsor-section");
 
-  // Add animation-ready classes
-  journeyStats.classList.add("scroll-animation");
-  missionSection.classList.add("scroll-animation");
-  routeSection.classList.add("scroll-animation");
-  sponsorSection.classList.add("scroll-animation");
+  [journeyStats, missionSection, routeSection, sponsorSection]
+    .filter(Boolean)
+    .forEach((element) => element.classList.add("scroll-animation"));
 
-  statCards.forEach((card) => {
-    card.classList.add("fade-in-animation");
-  });
+  statCards.forEach((card) => card.classList.add("fade-in-animation"));
+  missionText?.classList.add("slide-in-left");
+  missionImage?.classList.add("zoom-in");
 
-  missionText.classList.add("slide-in-left");
-  // Change from slide-in-right to zoom-in
-  missionImage.classList.add("zoom-in");
-
-  // Intersection Observer for scroll animations
   const observerOptions = {
-    root: null, // use viewport
+    root: null,
     rootMargin: "0px",
-    threshold: 0.2, // trigger when 20% of element is visible
+    threshold: 0.2,
   };
 
   const animateOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Add active class to trigger animation
-        entry.target.classList.add("animate-active");
+      if (!entry.isIntersecting) return;
 
-        // For stat cards, add staggered animations
-        if (entry.target === journeyStats) {
-          statCards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add("animate-active");
-            }, index * 150); // 150ms delay between each card
-          });
-        }
+      entry.target.classList.add("animate-active");
 
-        // Unobserve after animation is triggered
-        observer.unobserve(entry.target);
+      if (entry.target === journeyStats) {
+        statCards.forEach((card, index) => {
+          setTimeout(() => card.classList.add("animate-active"), index * 150);
+        });
       }
+
+      observer.unobserve(entry.target);
     });
   }, observerOptions);
 
-  // Observe all elements with scroll-animation class
-  document.querySelectorAll(".scroll-animation").forEach((element) => {
-    animateOnScroll.observe(element);
-  });
-
-  // Also observe mission text and image separately
-  animateOnScroll.observe(missionText);
-  animateOnScroll.observe(missionImage);
+  document
+    .querySelectorAll(".scroll-animation, .slide-in-left, .zoom-in")
+    .forEach((element) => animateOnScroll.observe(element));
 });
