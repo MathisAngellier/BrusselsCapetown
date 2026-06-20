@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroOverlay = document.querySelector(".hero-overlay");
   if (heroOverlay) {
     const images = [
+      "/img/IMG_20250630_105723_copy.jpg",
       "/img/DJI_0517-min-scaled.jpg",
       "/img/DJI_0558-min-scaled.jpg",
+      "img/PANO_20250704_111746.jpg",
       "/img/IMG_20180128_103822.jpg",
-      "/img/Namibie3.jpg",
+      "/img/IMG_20250630_133051.jpg",
       "/img/IMG_20221109_152708.jpg",
     ];
     let currIndex = 0;

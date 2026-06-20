@@ -95,7 +95,9 @@ header {
   z-index: 1001;
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .dropdown-content a {
@@ -304,7 +306,7 @@ header {
 
 .mission-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1.3fr 0.7fr;
   gap: 3rem;
   align-items: center;
 }
@@ -321,17 +323,35 @@ header {
 .mission-text p {
   line-height: 1.6;
   color: #666;
+  margin-bottom: 1rem;
+}
+
+.mission-text a {
+  text-decoration: none;
+  color: #444;
+}
+
+.mission-text a:visited {
+  text-decoration: underline;
+}
+
+.mission-text a:hover {
+  text-decoration: underline;
+  color: #f59520;
 }
 
 .mission-image {
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mission-image img {
-  max-width: 100%;
-  height: 400px;
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  height: auto;
 }
 
 .route-section h2 {
@@ -574,7 +594,9 @@ footer {
   color: white;
   font-size: 1.5rem;
   text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 .social a:hover {
@@ -610,7 +632,9 @@ footer {
 .dropdown-content {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .dropdown:hover .dropdown-content {
@@ -620,25 +644,33 @@ footer {
 
 .scroll-animation {
   opacity: 0;
-  transition: opacity 1.8s ease-out, transform 1.8s ease-out;
+  transition:
+    opacity 1.8s ease-out,
+    transform 1.8s ease-out;
 }
 
 .fade-in-animation {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .slide-in-left {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .slide-in-right {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .zoom-in img {
@@ -674,7 +706,9 @@ footer {
 .slide-in-right {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 .animate-active {
@@ -902,7 +936,9 @@ footer {
     max-height: 60px;
     opacity: 0.6;
     transform: scale(0.8);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
   }
 
   .carousel-slide.center-slide img {
@@ -1021,11 +1057,20 @@ footer {
   }
 
   .mission-section {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
   }
 
   .mission-image img {
     height: 300px;
+  }
+
+  .logos-section {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logos-section img {
+    height: 50px;
   }
 
   .carousel-container {
@@ -1103,7 +1148,7 @@ footer {
   }
 
   .mission-section {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.3fr 0.7fr;
   }
 
   .mission-image img {
