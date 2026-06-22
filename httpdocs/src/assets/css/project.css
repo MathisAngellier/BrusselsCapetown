@@ -1,0 +1,166 @@
+.project-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.project-section h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.project-section h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.project-section p {
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.photo-section {
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  padding: 0 2rem;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-gallery img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: #f5f5f5;
+}
+
+.project-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.project-split--reverse .project-copy {
+  order: 2;
+}
+
+.project-split--reverse .project-visual {
+  order: 1;
+}
+
+.project-copy {
+  padding-right: 1rem;
+}
+
+.project-visual {
+  width: 100%;
+}
+
+.project-visual-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.project-visual-stack img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.masicorp-section a,
+.songezo-section a {
+  color: rgba(183, 123, 58, 0.85);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.masicorp-section a:hover,
+.songezo-section a:hover {
+  color: #f59520;
+  text-decoration: underline;
+}
+
+.masicorp-logo,
+.songezo-logo {
+  width: 150px;
+  max-width: 100%;
+  margin-top: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.masicorp-logo:hover,
+.songezo-logo:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 900px) {
+  .project-split,
+  .project-split--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .project-split--reverse .project-copy,
+  .project-split--reverse .project-visual {
+    order: initial;
+  }
+
+  .project-copy {
+    padding-right: 0;
+  }
+
+  .project-visual-stack img {
+    height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-section {
+    padding: 0 1rem;
+  }
+
+  .project-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .project-gallery img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-section {
+    padding: 1.5rem;
+  }
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-gallery img {
+    height: 220px;
+  }
+
+  .project-visual-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .project-visual-stack img {
+    height: 240px;
+  }
+}
