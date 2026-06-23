@@ -35,7 +35,7 @@
 
 .project-gallery img {
   width: 100%;
-  height: 260px;
+  height: 220px;
   object-fit: cover;
   display: block;
   border-radius: 10px;
@@ -106,7 +106,6 @@
 .songezo-logo {
   width: 150px;
   max-width: 100%;
-  margin-top: 2rem;
   transition: transform 0.3s ease;
 }
 
@@ -115,16 +114,66 @@
   transform: scale(1.08);
 }
 
-.masicorp-section,
-.songezo-section {
-  margin-bottom: 6rem;
+.gofundme-section {
   margin-top: 2rem;
 }
 
-.gofundme-widget {
-  background: transparent;
-  /* border: none;
-    box-shadow: none; */
+.gofundme-section h2 {
+  text-align: center;
+}
+
+.donation-card {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.donation-card-content h2 {
+  line-height: 1.1;
+  font-weight: 800;
+  color: #1e1e1e;
+  margin-bottom: 1.75rem;
+}
+
+.donation-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.donate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 50px;
+  background: #1f5d38;
+  color: #ccf88e;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.donate-btn:hover {
+  background: #267244;
+  box-shadow: 0 8px 15px rgba(31, 93, 56, 0.25);
+}
+
+.gofundme-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
@@ -145,6 +194,14 @@
   .project-visual-stack img {
     height: 260px;
   }
+
+  .donation-card-actions {
+    flex-direction: column;
+  }
+
+  .donate-btn {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -159,6 +216,14 @@
 
   .project-gallery img {
     height: 180px;
+  }
+
+  .donation-card-actions {
+    flex-direction: column;
+  }
+
+  .donate-btn {
+    width: 100%;
   }
 }
 
@@ -181,5 +246,13 @@
 
   .project-visual-stack img {
     height: 240px;
+  }
+
+  .donation-card-actions {
+    flex-direction: column;
+  }
+
+  .donate-btn {
+    width: 100%;
   }
 }
