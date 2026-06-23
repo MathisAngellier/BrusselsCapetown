@@ -239,29 +239,50 @@
 @media (max-width: 480px) {
   .project-section {
     padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .photo-section {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .project-gallery {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .project-gallery img {
     height: 220px;
+    max-width: 100%;
   }
 
   .project-visual-stack {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .project-visual-stack img {
     height: 240px;
+    max-width: 100%;
+  }
+
+  .project-copy {
+    padding-right: 0;
   }
 
   .donation-card-actions {
     flex-direction: column;
+    gap: 1.5rem;
   }
 
   .donate-btn {
+    width: 100%;
+  }
+
+  .project-split,
+  .project-split--reverse {
     width: 100%;
   }
 }
