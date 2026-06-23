@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  text-align: justify;
 }
 
 .project-section h1 {
@@ -68,7 +69,6 @@
 
 .project-visual {
   width: 100%;
-  padding-top: 3rem;
 }
 
 .project-visual-stack {
@@ -95,7 +95,11 @@
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 2rem;
-  align-items: center;
+  align-items: start;
+}
+
+.project-split--reverse .project-visual {
+  align-self: start;
 }
 
 .masicorp-section a,
@@ -118,6 +122,10 @@
   transition: transform 0.3s ease;
 }
 
+.masicorp-logo {
+  width: 200px;
+}
+
 .masicorp-logo:hover,
 .songezo-logo:hover {
   transform: scale(1.08);
@@ -125,6 +133,13 @@
 
 .gofundme-section {
   margin-top: 2rem;
+  text-align: justify;
+}
+
+.gofundme-section p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  color: #666;
 }
 
 .gofundme-section h2 {
