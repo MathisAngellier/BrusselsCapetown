@@ -47,7 +47,7 @@
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 2rem;
-  align-items: center;
+  align-items: start;
 }
 
 .project-split--reverse .project-copy {
@@ -64,6 +64,7 @@
 
 .project-visual {
   width: 100%;
+  padding-top: 3rem;
 }
 
 .project-visual-stack {
