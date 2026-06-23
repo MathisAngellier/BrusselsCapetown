@@ -21,9 +21,15 @@ nav {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 2000;
+}
+
+main {
+  margin-top: 60px;
 }
 
 .navbar {
@@ -818,7 +824,8 @@ footer {
     object-fit: cover;
     min-width: 100%;
     min-height: 100%;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     top: 50%;
     left: 50%;

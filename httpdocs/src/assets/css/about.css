@@ -9,7 +9,9 @@ body {
   color: #292929;
   font-size: 1rem;
   line-height: 1.5;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
 }
 
 h2 {
@@ -39,7 +41,7 @@ h2 {
 .about-section {
   background-color: #fff;
   padding: 4rem 2rem;
-  margin: 2rem auto;
+  margin-top: 5rem;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
@@ -114,7 +116,9 @@ h2 {
   border-radius: 8px;
   border-left: 4px solid rgba(183, 123, 58, 0.85);
   text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .about-info-card:hover {
