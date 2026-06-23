@@ -62,42 +62,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setupCyclingImages(sectionSelector, folderName, fileList) {
     const images = document.querySelectorAll(`${sectionSelector} .project-visual-stack img`);
+    const activeIndices = new Set();
+
+    const getUniqueStartIndex = () => {
+      let next = Math.floor(Math.random() * fileList.length);
+      while (activeIndices.has(next)) {
+        next = (next + 1) % fileList.length;
+      }
+      activeIndices.add(next);
+      return next;
+    };
 
     images.forEach((img, index) => {
       let currentIndex = fileList.findIndex((filename) => img.src.includes(filename));
-      if (currentIndex === -1) {
-        currentIndex = index % fileList.length;
+      if (currentIndex === -1 || activeIndices.has(currentIndex)) {
+        currentIndex = getUniqueStartIndex();
+      } else {
+        activeIndices.add(currentIndex);
       }
+
+      img.src = buildImagePath(folderName, fileList[currentIndex]);
 
       const intervalMs = 4000 + index * 900 + Math.floor(Math.random() * 800);
       const initialDelay = Math.floor(Math.random() * 1200);
 
+      const getNextIndex = () => {
+        const available = fileList.map((_, i) => i).filter((i) => !activeIndices.has(i));
+        if (!available.length) {
+          return (currentIndex + 1) % fileList.length;
+        }
+        return available[Math.floor(Math.random() * available.length)];
+      };
+
       const nextImage = () => {
-        currentIndex = (currentIndex + 1) % fileList.length;
-        const nextSrc = buildImagePath(folderName, fileList[currentIndex]);
+        const nextIndex = getNextIndex();
+        const nextSrc = buildImagePath(folderName, fileList[nextIndex]);
 
-        const swapImage = () => {
-          img.onload = () => {
+        const preloaded = new Image();
+        preloaded.src = nextSrc;
+        preloaded.onload = () => {
+          img.style.opacity = "0.25";
+
+          const onFadeOut = (event) => {
+            if (event.propertyName !== "opacity") return;
+            img.removeEventListener("transitionend", onFadeOut);
+            activeIndices.delete(currentIndex);
+            currentIndex = nextIndex;
+            activeIndices.add(currentIndex);
+            img.src = nextSrc;
             img.style.opacity = "1";
-            img.onload = null;
           };
-          img.src = nextSrc;
+
+          img.addEventListener("transitionend", onFadeOut, { once: true });
         };
-
-        img.style.opacity = "0";
-        const onFadeOut = (event) => {
-          if (event.propertyName !== "opacity") return;
-          img.removeEventListener("transitionend", onFadeOut);
-          clearTimeout(fallbackTimeout);
-          swapImage();
-        };
-
-        const fallbackTimeout = setTimeout(() => {
-          img.removeEventListener("transitionend", onFadeOut);
-          swapImage();
-        }, 700);
-
-        img.addEventListener("transitionend", onFadeOut);
       };
 
       setTimeout(() => {
