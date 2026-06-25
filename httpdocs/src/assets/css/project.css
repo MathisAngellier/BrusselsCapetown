@@ -147,11 +147,6 @@
   margin-top: 0;
 }
 
-.gofundme-section .gofundme-logo {
-  display: block;
-  margin: 0 auto 1rem;
-}
-
 .donation-card {
   background: #ffffff;
   border: 1px solid #d9d9d9;
@@ -204,6 +199,14 @@
   height: 48px;
   width: auto;
   object-fit: contain;
+}
+
+#gofundme-logo {
+  display: block;
+  margin: 0 auto 1rem;
+  width: auto;
+  object-fit: contain;
+  height: 60px;
 }
 
 @media (max-width: 900px) {
