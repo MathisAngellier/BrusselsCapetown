@@ -144,6 +144,12 @@
 
 .gofundme-section h2 {
   text-align: center;
+  margin-top: 0;
+}
+
+.gofundme-section .gofundme-logo {
+  display: block;
+  margin: 0 auto 1rem;
 }
 
 .donation-card {
