@@ -62,41 +62,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setupCyclingImages(sectionSelector, folderName, fileList) {
     const images = document.querySelectorAll(`${sectionSelector} .project-visual-stack img`);
-    const activeIndices = new Set();
-
-    const getUniqueStartIndex = () => {
-      let next = Math.floor(Math.random() * fileList.length);
-      while (activeIndices.has(next)) {
-        next = (next + 1) % fileList.length;
-      }
-      activeIndices.add(next);
-      return next;
-    };
+    const splitIndex = Math.ceil(fileList.length / 2);
+    const imagePools = [fileList.slice(0, splitIndex), fileList.slice(splitIndex)];
 
     images.forEach((img, index) => {
-      let currentIndex = fileList.findIndex((filename) => img.src.includes(filename));
-      if (currentIndex === -1 || activeIndices.has(currentIndex)) {
-        currentIndex = getUniqueStartIndex();
-      } else {
-        activeIndices.add(currentIndex);
-      }
+      const pool = imagePools[index % imagePools.length] || fileList;
+      let currentIndex = Math.floor(Math.random() * pool.length);
 
-      img.src = buildImagePath(folderName, fileList[currentIndex]);
+      img.src = buildImagePath(folderName, pool[currentIndex]);
 
       const intervalMs = 4000 + index * 900 + Math.floor(Math.random() * 800);
       const initialDelay = Math.floor(Math.random() * 1200);
 
       const getNextIndex = () => {
-        const available = fileList.map((_, i) => i).filter((i) => !activeIndices.has(i));
-        if (!available.length) {
-          return (currentIndex + 1) % fileList.length;
+        if (pool.length <= 1) {
+          return 0;
         }
-        return available[Math.floor(Math.random() * available.length)];
+
+        let nextIndex = currentIndex;
+        while (nextIndex === currentIndex) {
+          nextIndex = Math.floor(Math.random() * pool.length);
+        }
+        return nextIndex;
       };
 
       const nextImage = () => {
         const nextIndex = getNextIndex();
-        const nextSrc = buildImagePath(folderName, fileList[nextIndex]);
+        const nextSrc = buildImagePath(folderName, pool[nextIndex]);
 
         const preloaded = new Image();
         preloaded.src = nextSrc;
@@ -106,9 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const onFadeOut = (event) => {
             if (event.propertyName !== "opacity") return;
             img.removeEventListener("transitionend", onFadeOut);
-            activeIndices.delete(currentIndex);
             currentIndex = nextIndex;
-            activeIndices.add(currentIndex);
             img.src = nextSrc;
             img.style.opacity = "1";
           };
