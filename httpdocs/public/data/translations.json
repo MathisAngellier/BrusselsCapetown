@@ -143,7 +143,9 @@
     "origin_text": "Pommiers, a small village in the Beaujolais region, Rhône department (France)",
     "birthyear": "Year of Birth",
     "quote_text": "“If you can dream it, you can do it”",
-    "quote": "Favorite quote"
+    "quote": "Favorite quote",
+    "donation_title": "Brussels to Cape Town by Bike for Masicorp & Songezo Cycling Academy",
+    "donate_button": "Donate now"
   },
   "fr": {
     "nav_home": "ACCUEIL",
@@ -289,6 +291,8 @@
     "origin_text": "Pommiers, petit village du Beaujolais, département du Rhône (France)",
     "birthyear": "Année de naissance",
     "quote_text": "“Si tu l’as rêvé, tu peux le faire”",
-    "quote": "Maxime favorite"
+    "quote": "Maxime favorite",
+    "donation_title": "De Bruxelles au Cap à vélo pour Masicorp & Songezo Cycling Academy",
+    "donate_button": "Je soutiens"
   }
 }

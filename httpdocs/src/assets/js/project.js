@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     images.forEach((img, index) => {
       const pool = imagePools[index % imagePools.length] || fileList;
-      let currentIndex = Math.floor(Math.random() * pool.length);
+      let currentIndex = 0;
 
       img.src = buildImagePath(folderName, pool[currentIndex]);
 
@@ -79,11 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return 0;
         }
 
-        let nextIndex = currentIndex;
-        while (nextIndex === currentIndex) {
-          nextIndex = Math.floor(Math.random() * pool.length);
-        }
-        return nextIndex;
+        return (currentIndex + 1) % pool.length;
       };
 
       const nextImage = () => {
