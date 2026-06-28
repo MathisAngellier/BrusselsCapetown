@@ -311,26 +311,33 @@
   .project-carousel .carousel-track-container {
     overflow: hidden;
     width: 100%;
+    height: 240px;
+    background-color: #e8e7e7;
   }
 
   .project-carousel .carousel-track {
     display: flex;
     transition: transform 0.35s ease;
     will-change: transform;
+    min-height: 240px;
   }
 
   .project-carousel .carousel-slide {
     min-width: 100%;
     box-sizing: border-box;
+    height: 240px;
+    background-color: #e8e7e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .project-carousel .carousel-slide img {
     width: 100%;
-    height: 240px;
+    height: 100%;
     object-fit: cover;
     display: block;
     border-radius: 12px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
   }
 
   .project-carousel .carousel-button {
