@@ -239,8 +239,8 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimers();
     if (isMobile) {
       // build mobile carousels and hide stacked visuals via CSS
-      createMobileCarousel(".masicorp-section", "masicorp", sampleImages(masicorpImages, 8));
-      createMobileCarousel(".songezo-section", "songezo", sampleImages(songezoImages, 8));
+      createMobileCarousel(".masicorp-section", "masicorp", sampleImages(masicorpImages, 10));
+      createMobileCarousel(".songezo-section", "songezo", sampleImages(songezoImages, 10));
       // ensure stacked images are left as-is but hidden by CSS on mobile
     } else {
       // desktop: run stacked cycling
