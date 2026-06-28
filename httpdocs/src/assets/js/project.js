@@ -31,7 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const songezoImages = [
     "5_Songezo1.jpg",
-    "5_Songezo1.png",
+    "5_Songezo2.jpg",
+    "5_Songezo3.jpg",
+    "5_Songezo4.jpg",
+    "5_Songezo5.jpg",
+    "5_Songezo6.jpg",
+    "5_Songezo7.jpg",
+    "5_Songezo8.jpg",
+    "5_Songezo9.jpg",
     "5_Songezo10.jpg",
     "5_Songezo11.jpg",
     "5_Songezo12.jpg",
@@ -42,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "5_Songezo17.jpg",
     "5_Songezo18.jpg",
     "5_Songezo19.jpg",
-    "5_Songezo2.jpg",
     "5_Songezo20.jpg",
     "5_Songezo21.jpg",
     "5_Songezo22.jpg",
@@ -51,11 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "5_Songezo25.jpg",
     "5_Songezo26.jpg",
     "5_Songezo27.jpg",
-    "5_Songezo3.jpg",
-    "5_Songezo4.jpg",
-    "5_Songezo5.jpg",
-    "5_Songezo6.jpg",
-    "5_Songezo7.jpg",
   ];
 
   const buildImagePath = (folder, filename) => `/img/${folder}/${filename}`;
