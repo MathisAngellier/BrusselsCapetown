@@ -37,8 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "5_Songezo5.jpg",
     "5_Songezo6.jpg",
     "5_Songezo7.jpg",
-    "5_Songezo8.jpg",
-    "5_Songezo9.jpg",
     "5_Songezo10.jpg",
     "5_Songezo11.jpg",
     "5_Songezo12.jpg",
@@ -54,9 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
     "5_Songezo22.jpg",
     "5_Songezo23.jpg",
     "5_Songezo24.jpg",
-    "5_Songezo25.jpg",
     "5_Songezo26.jpg",
     "5_Songezo27.jpg",
+  ];
+
+  const carouselMasicorpImages = [
+    "0_Portrait3.jpg",
+    "1_Children4.jpg",
+    "1_Children3.jpg",
+    "2_Young1.jpg",
+    "2_Young4.jpg",
+    "2_Young7.jpg",
+    "3_Evangeline2.jpg",
+    "3_Evangeline3.jpg",
+    "3_Evangeline7.jpg",
+    "4_Adult2.jpg",
+  ];
+
+  const carouselSongezoImages = [
+    "5_Songezo1.jpg",
+    "5_Songezo16.jpg",
+    "5_Songezo23.jpg",
+    "5_Songezo11.jpg",
+    "5_Songezo13.jpg",
+    "5_Songezo24.jpg",
+    "5_Songezo14.jpg",
+    "5_Songezo6.jpg",
+    "5_Songezo27.jpg",
+    "5_Songezo26.jpg",
   ];
 
   const buildImagePath = (folder, filename) => `/img/${folder}/${filename}`;
@@ -72,22 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTimeout(id);
       } catch (e) {}
     }
-  }
-
-  function sampleImages(fileList, count = 8) {
-    if (!Array.isArray(fileList) || fileList.length <= count) return fileList.slice();
-    const sampled = [];
-    const step = Math.floor(fileList.length / count) || 1;
-    for (let i = 0; sampled.length < count && i < fileList.length; i += step) {
-      sampled.push(fileList[i]);
-    }
-    let idx = 0;
-    while (sampled.length < count && idx < fileList.length) {
-      const v = fileList[idx];
-      if (!sampled.includes(v)) sampled.push(v);
-      idx++;
-    }
-    return sampled;
   }
 
   function setupCyclingImages(sectionSelector, folderName, fileList) {
@@ -239,8 +246,8 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimers();
     if (isMobile) {
       // build mobile carousels and hide stacked visuals via CSS
-      createMobileCarousel(".masicorp-section", "masicorp", sampleImages(masicorpImages, 10));
-      createMobileCarousel(".songezo-section", "songezo", sampleImages(songezoImages, 10));
+      createMobileCarousel(".masicorp-section", "masicorp", carouselMasicorpImages);
+      createMobileCarousel(".songezo-section", "songezo", carouselSongezoImages);
       // ensure stacked images are left as-is but hidden by CSS on mobile
     } else {
       // desktop: run stacked cycling
