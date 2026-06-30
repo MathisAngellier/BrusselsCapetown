@@ -312,6 +312,7 @@
 @media (max-width: 768px) {
   .project-mobile-intro-image {
     display: block;
+    margin-top: -2rem;
   }
 
   .project-visual-stack {
