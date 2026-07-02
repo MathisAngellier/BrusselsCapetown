@@ -312,6 +312,10 @@
 @media (max-width: 768px) {
   .project-mobile-intro-image {
     display: block;
+    margin: -2rem 0 2.5rem 0;
+  }
+
+  .songezo-section {
     margin-top: -2rem;
   }
 
