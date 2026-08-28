@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Gallery | Brussels CapeTown</title>
+
+    <link rel="icon" href="/brusselscapetown.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="../assets/css/normalize.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/gallery.css">
+
+    <script type="module" src="../assets/js/script.js" defer></script>
+    <script type="module" src="../assets/js/language.js" defer></script>
+    <script type="module" src="../assets/js/gallery.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img id="logo-img" src="../img/Logo-petit-format-velo.jpg" alt="Brussels CapeTown Logo">
+                    </a>
+                </div>
+
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="nav-links">
+                    <a href="../index.html" data-translate="nav_home">HOME</a>
+                    <a href="project.html" data-translate="nav_project">PROJECT</a>
+                    <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
+                    <a href="about.html" data-translate="nav_about">ABOUT ME</a>
+
+                    <div class="dropdown">
+                        <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
+                        <div class="dropdown-content">
+                            <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
+                        </div>
+                    </div>
+
+                    <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
+                    <a href="gallery.html" class="gallery-nav-active" data-translate="nav_gallery">GALLERY</a>
+                    <a href="contact.html" data-translate="nav_contact">CONTACT</a>
+                </div>
+
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="gallery-page">
+        <section class="gallery-intro">
+            <span class="gallery-eyebrow" data-gallery-translate="eyebrow">THE JOURNEY</span>
+            <h1 data-gallery-translate="title">Journey Gallery</h1>
+            <p data-gallery-translate="intro">
+                Follow the journey day by day through photos, videos and locations from the road.
+            </p>
+        </section>
+
+        <section class="gallery-map-section">
+            <div class="gallery-section-heading">
+                <div>
+                    <span class="gallery-eyebrow" data-gallery-translate="map_eyebrow">FOLLOW THE ROUTE</span>
+                    <h2 data-gallery-translate="map_title">The journey so far</h2>
+                </div>
+                <div class="location-counter" id="locationCounter">1 / 1</div>
+            </div>
+
+            <div id="journey-map" class="journey-map" aria-label="Interactive journey map"></div>
+        </section>
+
+        <section class="gallery-content" id="galleryContent">
+            <div class="gallery-location-header">
+                <div>
+                    <span class="gallery-eyebrow" data-gallery-translate="location_eyebrow">LOCATION</span>
+                    <h2 id="locationName">Loading...</h2>
+                    <p id="locationDate"></p>
+                </div>
+                <div class="location-number" id="locationNumber">01</div>
+            </div>
+
+            <p class="location-description" id="locationDescription"></p>
+
+            <div class="media-grid" id="mediaGrid"></div>
+
+            <div class="gallery-navigation">
+                <button class="gallery-nav-button" id="previousButton" type="button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span data-gallery-translate="previous">Previous</span>
+                </button>
+
+                <div class="gallery-progress">
+                    <span id="progressCurrent">01</span>
+                    <span class="progress-line"></span>
+                    <span id="progressTotal">01</span>
+                </div>
+
+                <button class="gallery-nav-button" id="nextButton" type="button">
+                    <span data-gallery-translate="next">Next</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div class="media-lightbox" id="mediaLightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous media">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="lightbox-content" id="lightboxContent"></div>
+
+        <button class="lightbox-arrow lightbox-next" id="lightboxNext" type="button" aria-label="Next media">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="newsletter">
+                <h4 data-translate="newsletter_title">Newsletter & social media</h4>
+                <br>
+                <p data-translate="newsletter_description">Subscribe to receive first-hand information and stories.</p>
+                <form action="https://formspree.io/f/meoqbawg" method="POST">
+                    <div class="form_group">
+                        <input required type="email" name="email" data-translate="email_placeholder"
+                            placeholder="Email Address">
+                        <input type="submit" data-translate="subscribe_btn" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+
+            <div class="social">
+                <a href="https://www.tiktok.com/@brussels.capetown?_t=ZN-8uSkNRMWnpu" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/brusselscapetown/" target="_blank" rel="noopener"
+                    aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@BrusselsCapeTown" target="_blank" rel="noopener"
+                    aria-label="Subscribe to our YouTube channel">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://strava.app.link/zqCgbKqGxPb" target="_blank" rel="noopener"
+                    aria-label="Follow us on Strava">
+                    <i class="fa-brands fa-strava"></i>
+                </a>
+                <a href="mailto:info@brusselscapetown.com" aria-label="Send us an email">
+                    <i class="fa-solid fa-square-envelope"></i>
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <p id="designed" data-translate="footer_copyright">
+                    &copy; 2025 - Created by <strong>Mathis Angellier</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</body>
+
+</html>
