@@ -150,15 +150,49 @@
   border-bottom: 1px solid #ddd;
 }
 
+.location-copy {
+  flex: 1;
+}
+
 .gallery-location-header h2 {
   margin-bottom: 0.5rem;
 }
 
-#locationDate,
-#locationDistance {
+#locationDate {
   color: #999;
   font-family: "Roboto", sans-serif;
   font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.location-distance-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: flex-end;
+  margin-top: 0.7rem;
+}
+
+.distance-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.distance-label {
+  color: #999;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#locationDistance,
+#locationTotalDistance {
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 

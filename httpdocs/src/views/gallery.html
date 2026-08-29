@@ -75,11 +75,20 @@
 
         <section class="gallery-content" id="galleryContent">
             <div class="gallery-location-header">
-                <div>
+                <div class="location-copy">
                     <span class="gallery-eyebrow" data-translate="location_eyebrow">LOCATION</span>
                     <h2 id="locationName">Loading...</h2>
                     <p id="locationDate"></p>
-                    <p id="locationDistance"></p>
+                    <div class="location-distance-row">
+                        <div class="distance-metric">
+                            <span class="distance-label">Distance</span>
+                            <span id="locationDistance"></span>
+                        </div>
+                        <div class="distance-metric total-distance-metric">
+                            <span class="distance-label">Total distance</span>
+                            <span id="locationTotalDistance"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="location-number" id="locationNumber">01</div>
             </div>

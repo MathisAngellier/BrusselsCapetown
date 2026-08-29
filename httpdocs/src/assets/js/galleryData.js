@@ -49,5 +49,20 @@ export const galleryLocations = [
     ],
   },
 
-  // Add the next location by copying the object above.
+  {
+    id: 3,
+    date: "30 August 2026",
+    location: "Strasbourg, France",
+    distance: "150km",
+    latitude: 48.58392,
+    longitude: 7.74553,
+    description: "Second example location. Replace this object with the next real location received during the journey.",
+    media: [
+      {
+        type: "image",
+        src: "/img/gallery/paris-example-1.jpg",
+        alt: "Paris example",
+      },
+    ],
+  },
 ];

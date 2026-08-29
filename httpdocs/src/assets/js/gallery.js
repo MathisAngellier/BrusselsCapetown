@@ -103,9 +103,10 @@ function renderLocation(index, scrollToContent = false) {
 
   document.getElementById("locationName").textContent = location.location;
   document.getElementById("locationDate").textContent = location.date;
-  document.getElementById("locationDistance").textContent = location.distance;
+  document.getElementById("locationDistance").textContent = location.distance || "";
   document.getElementById("locationDescription").textContent = location.description || "";
   document.getElementById("locationNumber").textContent = formatNumber(index + 1);
+  document.getElementById("locationTotalDistance").textContent = formatDistance(getTotalDistanceForIndex(index));
 
   document.getElementById("locationCounter").textContent = `${index + 1} / ${galleryLocations.length}`;
 
@@ -293,6 +294,25 @@ function closeLightbox() {
 
 function formatNumber(number) {
   return String(number).padStart(2, "0");
+}
+
+function getTotalDistanceForIndex(index) {
+  return galleryLocations.slice(0, index + 1).reduce((total, item) => total + getDistanceKm(item), 0);
+}
+
+function getDistanceKm(location) {
+  const value = String(location.distance || "");
+
+  if (!value || value.toLowerCase().includes("departure")) {
+    return 0;
+  }
+
+  const match = value.match(/(\d+(?:[.,]\d+)?)/);
+  return match ? Number(match[1].replace(",", ".")) : 0;
+}
+
+function formatDistance(value) {
+  return `${Math.round(value)} km`;
 }
 
 function escapeHtml(value) {
