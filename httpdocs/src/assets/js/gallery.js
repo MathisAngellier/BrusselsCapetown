@@ -101,12 +101,33 @@ function renderLocation(index, scrollToContent = false) {
   const location = galleryLocations[index];
   if (!location) return;
 
+  const isDepartureSlide = isDepartureLocation(location, index);
+  const distanceLabel = document.querySelector(".distance-metric .distance-label");
+  const totalDistanceMetric = document.querySelector(".total-distance-metric");
+  const totalDistanceLabel = document.querySelector(".total-distance-metric .distance-label");
+  const totalDistanceValue = document.getElementById("locationTotalDistance");
+
   document.getElementById("locationName").textContent = location.location;
   document.getElementById("locationDate").textContent = location.date;
-  document.getElementById("locationDistance").textContent = location.distance || "";
+  document.getElementById("locationDistance").textContent = isDepartureSlide ? "Day of departure" : location.distance || "";
   document.getElementById("locationDescription").textContent = location.description || "";
   document.getElementById("locationNumber").textContent = formatNumber(index + 1);
-  document.getElementById("locationTotalDistance").textContent = formatDistance(getTotalDistanceForIndex(index));
+
+  if (distanceLabel) {
+    distanceLabel.style.display = isDepartureSlide ? "none" : "";
+  }
+
+  if (totalDistanceMetric) {
+    totalDistanceMetric.style.display = isDepartureSlide ? "none" : "";
+  }
+
+  if (totalDistanceLabel) {
+    totalDistanceLabel.style.display = isDepartureSlide ? "none" : "";
+  }
+
+  if (totalDistanceValue) {
+    totalDistanceValue.textContent = isDepartureSlide ? "" : formatDistance(getTotalDistanceForIndex(index));
+  }
 
   document.getElementById("locationCounter").textContent = `${index + 1} / ${galleryLocations.length}`;
 
@@ -125,6 +146,11 @@ function renderLocation(index, scrollToContent = false) {
       block: "start",
     });
   }
+}
+
+function isDepartureLocation(location, index) {
+  const distanceValue = String(location.distance || "").trim();
+  return index === 0 || distanceValue.toLowerCase().includes("departure");
 }
 
 function updateMarkerState() {
