@@ -141,11 +141,22 @@ function renderLocation(index, scrollToContent = false) {
   renderMedia(location.media || []);
 
   if (scrollToContent) {
-    document.getElementById("galleryContent").scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    scrollGalleryIntoView();
   }
+}
+
+function scrollGalleryIntoView() {
+  const galleryContent = document.getElementById("galleryContent");
+  if (!galleryContent) return;
+
+  const header = document.querySelector("header");
+  const headerOffset = header ? header.offsetHeight + 10 : 20;
+  const topPosition = galleryContent.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+  window.scrollTo({
+    top: topPosition,
+    behavior: "smooth",
+  });
 }
 
 function isDepartureLocation(location, index) {
