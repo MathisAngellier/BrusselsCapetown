@@ -156,7 +156,8 @@
     "previous": "Previous",
     "next": "Next",
     "no_media": "No photos or videos have been added for this location yet.",
-    "video": "Video"
+    "video": "Video",
+    "total_distance": "Total distance"
   },
   "fr": {
     "nav_home": "ACCUEIL",
@@ -315,6 +316,7 @@
     "previous": "Précédent",
     "next": "Suivant",
     "no_media": "Aucune photo ou vidéo n'a encore été ajoutée pour ce lieu.",
-    "video": "Vidéo"
+    "video": "Vidéo",
+    "total_distance": "Distance totale"
   }
 }
