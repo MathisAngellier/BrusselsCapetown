@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Gallery | Brussels CapeTown</title>
-
+    <title>Follow me</title>
     <link rel="icon" href="/brusselscapetown.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -14,7 +13,6 @@
     <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/gallery.css">
-
     <script type="module" src="../assets/js/script.js" defer></script>
     <script type="module" src="../assets/js/language.js" defer></script>
     <script type="module" src="../assets/js/gallery.js" defer></script>
@@ -29,29 +27,24 @@
                         <img id="logo-img" src="../img/Logo-petit-format-velo.jpg" alt="Brussels CapeTown Logo">
                     </a>
                 </div>
-
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
-
                 <div class="nav-links">
                     <a href="../index.html" data-translate="nav_home">HOME</a>
                     <a href="project.html" data-translate="nav_project">PROJECT</a>
                     <a href="bicycle.html" data-translate="nav_bicycle">WHY CYCLE</a>
                     <a href="about.html" data-translate="nav_about">ABOUT ME</a>
-
                     <div class="dropdown">
-                        <a href="route.html" class="dropbtn" data-translate="nav_route">ROUTE</a>
+                        <a href="gallery.html" class="dropbtn" data-translate="nav_gallery">FOLLOW ME</a>
                         <div class="dropdown-content">
+                            <a href="route.html" class="sub-menu" data-translate="nav_route">ROUTE</a>
                             <a href="countries.html" class="sub-menu" data-translate="nav_countries">COUNTRIES</a>
                         </div>
                     </div>
-
                     <a href="equipment.html" data-translate="nav_equipment">EQUIPMENT</a>
-                    <a href="gallery.html" class="gallery-nav-active" data-translate="nav_gallery">GALLERY</a>
                     <a href="contact.html" data-translate="nav_contact">CONTACT</a>
                 </div>
-
                 <div class="language-switcher">
                     <button class="lang-btn active" data-lang="en">EN</button>
                     <button class="lang-btn" data-lang="fr">FR</button>
@@ -62,9 +55,8 @@
 
     <main class="gallery-page">
         <section class="gallery-intro">
-            <span class="gallery-eyebrow" data-gallery-translate="eyebrow">THE JOURNEY</span>
-            <h1 data-gallery-translate="title">Journey Gallery</h1>
-            <p data-gallery-translate="intro">
+            <h1 data-translate="gallery_title">Journey Gallery</h1>
+            <p data-translate="gallery_intro">
                 Follow the journey day by day through photos, videos and locations from the road.
             </p>
         </section>
@@ -72,8 +64,8 @@
         <section class="gallery-map-section">
             <div class="gallery-section-heading">
                 <div>
-                    <span class="gallery-eyebrow" data-gallery-translate="map_eyebrow">FOLLOW THE ROUTE</span>
-                    <h2 data-gallery-translate="map_title">The journey so far</h2>
+                    <span class="gallery-eyebrow" data-translate="map_eyebrow">FOLLOW THE ROUTE</span>
+                    <h2 data-translate="map_title">The journey day by day</h2>
                 </div>
                 <div class="location-counter" id="locationCounter">1 / 1</div>
             </div>
@@ -84,9 +76,10 @@
         <section class="gallery-content" id="galleryContent">
             <div class="gallery-location-header">
                 <div>
-                    <span class="gallery-eyebrow" data-gallery-translate="location_eyebrow">LOCATION</span>
+                    <span class="gallery-eyebrow" data-translate="location_eyebrow">LOCATION</span>
                     <h2 id="locationName">Loading...</h2>
                     <p id="locationDate"></p>
+                    <p id="locationDistance"></p>
                 </div>
                 <div class="location-number" id="locationNumber">01</div>
             </div>
@@ -98,7 +91,7 @@
             <div class="gallery-navigation">
                 <button class="gallery-nav-button" id="previousButton" type="button">
                     <i class="fa-solid fa-arrow-left"></i>
-                    <span data-gallery-translate="previous">Previous</span>
+                    <span data-translate="previous">Previous</span>
                 </button>
 
                 <div class="gallery-progress">
@@ -108,7 +101,7 @@
                 </div>
 
                 <button class="gallery-nav-button" id="nextButton" type="button">
-                    <span data-gallery-translate="next">Next</span>
+                    <span data-translate="next">Next</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>

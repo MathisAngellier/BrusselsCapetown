@@ -145,7 +145,18 @@
     "quote_text": "“If you can dream it, you can do it”",
     "quote": "Favorite quote",
     "donation_title": "Brussels to Cape Town by Bike for Masicorp & Songezo Cycling Academy",
-    "donate_button": "Donate now"
+    "donate_button": "Donate now",
+    "eyebrow": "THE JOURNEY",
+    "gallery_title": "Journey Gallery",
+    "nav_gallery": "FOLLOW ME",
+    "gallery_intro": "Follow the journey day by day through photos, videos and locations from the road.",
+    "map_eyebrow": "FOLLOW THE ROUTE",
+    "map_title": "The journey day by day",
+    "location_eyebrow": "LOCATION",
+    "previous": "Previous",
+    "next": "Next",
+    "no_media": "No photos or videos have been added for this location yet.",
+    "video": "Video"
   },
   "fr": {
     "nav_home": "ACCUEIL",
@@ -293,6 +304,17 @@
     "quote_text": "“Si tu l’as rêvé, tu peux le faire”",
     "quote": "Maxime favorite",
     "donation_title": "De Bruxelles au Cap à vélo pour Masicorp & Songezo Cycling Academy",
-    "donate_button": "Je soutiens"
+    "donate_button": "Je soutiens",
+    "eyebrow": "LE VOYAGE",
+    "gallery_title": "Album de voyage",
+    "nav_gallery": "ME SUIVRE",
+    "gallery_intro": "Suivez le voyage jour après jour à travers les photos, les vidéos et les lieux parcourus.",
+    "map_eyebrow": "SUIVRE L'ITINÉRAIRE",
+    "map_title": "Le voyage au jour le jour",
+    "location_eyebrow": "LIEU",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "no_media": "Aucune photo ou vidéo n'a encore été ajoutée pour ce lieu.",
+    "video": "Vidéo"
   }
 }

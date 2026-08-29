@@ -1,16 +1,7 @@
-/* =========================================================
-   Brussels CapeTown - Journey Gallery
-   ========================================================= */
-
-.gallery-page {
-  padding-bottom: 5rem;
-  background: #e8e7e7;
-}
-
 .gallery-intro {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 7rem 2rem 4rem;
+  padding: 3rem 2rem 4rem;
   text-align: center;
 }
 
@@ -30,7 +21,6 @@
   color: #222;
   font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 700;
-  text-transform: uppercase;
 }
 
 .gallery-intro p {
@@ -78,6 +68,7 @@
   border: 1px solid #d0cece;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
   z-index: 1;
+  border-radius: 8px;
 }
 
 .leaflet-container {
@@ -147,6 +138,7 @@
   padding: 3rem;
   background: #fff;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
 }
 
 .gallery-location-header {
@@ -162,7 +154,8 @@
   margin-bottom: 0.5rem;
 }
 
-#locationDate {
+#locationDate,
+#locationDistance {
   color: #999;
   font-family: "Roboto", sans-serif;
   font-size: 0.85rem;
@@ -191,16 +184,11 @@
 
 .media-card {
   position: relative;
-  min-height: 250px;
+  aspect-ratio: 16/9;
   overflow: hidden;
   background: #16161e;
   cursor: pointer;
-}
-
-.media-card:first-child {
-  grid-column: span 2;
-  grid-row: span 2;
-  min-height: 520px;
+  border-radius: 8px;
 }
 
 .media-card img,
@@ -461,34 +449,4 @@
   .lightbox-next {
     right: 0.4rem;
   }
-}
-
-/* =========================================================
-   Leaflet compatibility
-   Prevent global site image styles from breaking map tiles
-   ========================================================= */
-
-.journey-map .leaflet-container {
-  width: 100%;
-  height: 100%;
-}
-
-.journey-map .leaflet-container img {
-  max-width: none !important;
-}
-
-.journey-map .leaflet-tile {
-  width: 256px !important;
-  height: 256px !important;
-  max-width: none !important;
-}
-
-.journey-map .leaflet-tile-container {
-  width: 256px;
-  height: 256px;
-}
-
-.journey-map .leaflet-marker-icon,
-.journey-map .leaflet-marker-shadow {
-  max-width: none !important;
 }
