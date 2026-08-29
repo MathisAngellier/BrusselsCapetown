@@ -52,87 +52,87 @@
             </div>
         </nav>
     </header>
+    <main>
+        <section class="gallery-page">
+            <section class="gallery-intro">
+                <h1 data-translate="gallery_title">Journey Gallery</h1>
+                <p data-translate="gallery_intro">
+                    Follow the journey day by day through photos, videos and locations from the road.
+                </p>
+            </section>
 
-    <main class="gallery-page">
-        <section class="gallery-intro">
-            <h1 data-translate="gallery_title">Journey Gallery</h1>
-            <p data-translate="gallery_intro">
-                Follow the journey day by day through photos, videos and locations from the road.
-            </p>
-        </section>
-
-        <section class="gallery-map-section">
-            <div class="gallery-section-heading">
-                <div>
-                    <span class="gallery-eyebrow" data-translate="map_eyebrow">FOLLOW THE ROUTE</span>
-                    <h2 data-translate="map_title">The journey day by day</h2>
+            <section class="gallery-map-section">
+                <div class="gallery-section-heading">
+                    <div>
+                        <span class="gallery-eyebrow" data-translate="map_eyebrow">FOLLOW THE ROUTE</span>
+                        <h2 data-translate="map_title">The journey day by day</h2>
+                    </div>
+                    <div class="location-counter" id="locationCounter">1 / 1</div>
                 </div>
-                <div class="location-counter" id="locationCounter">1 / 1</div>
-            </div>
 
-            <div id="journey-map" class="journey-map" aria-label="Interactive journey map"></div>
-        </section>
+                <div id="journey-map" class="journey-map" aria-label="Interactive journey map"></div>
+            </section>
 
-        <section class="gallery-content" id="galleryContent">
-            <div class="gallery-location-header">
-                <div class="location-copy">
-                    <span class="gallery-eyebrow" data-translate="location_eyebrow">LOCATION</span>
-                    <h2 id="locationName">Loading...</h2>
-                    <p id="locationDate"></p>
-                    <div class="location-distance-row">
-                        <div class="distance-metric">
-                            <span class="distance-label">Distance</span>
-                            <span id="locationDistance"></span>
-                        </div>
-                        <div class="distance-metric total-distance-metric">
-                            <span class="distance-label">Total distance</span>
-                            <span id="locationTotalDistance"></span>
+            <section class="gallery-content" id="galleryContent">
+                <div class="gallery-location-header">
+                    <div class="location-copy">
+                        <span class="gallery-eyebrow" data-translate="location_eyebrow">LOCATION</span>
+                        <h2 id="locationName">Loading...</h2>
+                        <p id="locationDate"></p>
+                        <div class="location-distance-row">
+                            <div class="distance-metric">
+                                <span class="distance-label">Distance</span>
+                                <span id="locationDistance"></span>
+                            </div>
+                            <div class="distance-metric total-distance-metric">
+                                <span class="distance-label">Total distance</span>
+                                <span id="locationTotalDistance"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="location-number" id="locationNumber">01</div>
-            </div>
-
-            <p class="location-description" id="locationDescription"></p>
-
-            <div class="media-grid" id="mediaGrid"></div>
-
-            <div class="gallery-navigation">
-                <button class="gallery-nav-button" id="previousButton" type="button">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span data-translate="previous">Previous</span>
-                </button>
-
-                <div class="gallery-progress">
-                    <span id="progressCurrent">01</span>
-                    <span class="progress-line"></span>
-                    <span id="progressTotal">01</span>
+                    <div class="location-number" id="locationNumber">01</div>
                 </div>
 
-                <button class="gallery-nav-button" id="nextButton" type="button">
-                    <span data-translate="next">Next</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
+                <p class="location-description" id="locationDescription"></p>
+
+                <div class="media-grid" id="mediaGrid"></div>
+
+                <div class="gallery-navigation">
+                    <button class="gallery-nav-button" id="previousButton" type="button">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span data-translate="previous">Previous</span>
+                    </button>
+
+                    <div class="gallery-progress">
+                        <span id="progressCurrent">01</span>
+                        <span class="progress-line"></span>
+                        <span id="progressTotal">01</span>
+                    </div>
+
+                    <button class="gallery-nav-button" id="nextButton" type="button">
+                        <span data-translate="next">Next</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
         </section>
+
+        <div class="media-lightbox" id="mediaLightbox" aria-hidden="true">
+            <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous media">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="lightbox-content" id="lightboxContent"></div>
+
+            <button class="lightbox-arrow lightbox-next" id="lightboxNext" type="button" aria-label="Next media">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
     </main>
-
-    <div class="media-lightbox" id="mediaLightbox" aria-hidden="true">
-        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous media">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-
-        <div class="lightbox-content" id="lightboxContent"></div>
-
-        <button class="lightbox-arrow lightbox-next" id="lightboxNext" type="button" aria-label="Next media">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-    </div>
-
     <footer>
         <div class="footer-content">
             <div class="newsletter">
