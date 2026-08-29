@@ -79,13 +79,7 @@ http://localhost:5173
 npm run build
 ```
 
-The production files can then be previewed with:
-
-```bash
-npm run preview
-```
-
-## 🌐 Languages
+## Languages
 
 The website currently supports:
 
@@ -98,10 +92,12 @@ The language system is implemented with JavaScript and JSON.
 
 **Mathis Angellier**
 
-BrusselsCapeTown is a personal project created to document and share the cycling journey from Brussels to Cape Town.
+This project was created for my father to document his cycling journey from Brussels to Cape Town and support the associated fundraising challenge.
+
+It is also a personal development project created to learn and gain practical experience with modern web development technologies.
 
 ## License
 
-This project is currently a personal project.
+This a personal project.
 
 Unless otherwise specified, the website's original code, text, photography and other original content should not be reused without permission.
