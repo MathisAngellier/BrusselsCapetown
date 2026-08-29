@@ -204,16 +204,18 @@
 }
 
 .location-description {
-  max-width: 850px;
+  max-width: 1104px;
   margin: 1.5rem 0 2rem;
   color: #666;
   line-height: 1.7;
+  text-align: center;
 }
 
 .media-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
+  justify-content: center;
 }
 
 .media-card {
@@ -434,7 +436,7 @@
   }
 
   .media-grid {
-    gap: 0.6rem;
+    gap: 1.5rem;
   }
 
   .media-card {

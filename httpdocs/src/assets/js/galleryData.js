@@ -20,12 +20,6 @@ export const galleryLocations = [
       { type: "image", src: "/img/gallery/Brussels10.jpg", alt: "Brussels photo 10" },
       { type: "image", src: "/img/gallery/Brussels11.jpg", alt: "Brussels photo 11" },
       { type: "image", src: "/img/gallery/Brussels12.jpg", alt: "Brussels photo 12" },
-      {
-        type: "video",
-        src: "/video/gallery/Equipment_Mobile16x9.mp4",
-        poster: "/img/gallery/example-video-poster.jpg",
-        alt: "Brussels journey video",
-      },
       { type: "image", src: "/img/gallery/Brussels13.jpg", alt: "Brussels photo 13" },
       { type: "image", src: "/img/gallery/Brussels14.jpg", alt: "Brussels photo 14" },
       { type: "image", src: "/img/gallery/Brussels15.jpg", alt: "Brussels photo 15" },
