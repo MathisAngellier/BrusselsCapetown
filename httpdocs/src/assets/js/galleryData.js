@@ -2,9 +2,6 @@ export const galleryLocations = [
   {
     id: 1,
 
-    // ISO-formaat:
-    // EN -> 1 September 2026
-    // FR -> 1 septembre 2026
     date: "2026-09-01",
 
     location: {
@@ -190,70 +187,6 @@ export const galleryLocations = [
         alt: {
           en: "Brussels photo 21",
           fr: "Photo de Bruxelles 21",
-        },
-      },
-    ],
-  },
-
-  {
-    id: 2,
-
-    date: "2026-08-30",
-
-    location: {
-      en: "Paris, France",
-      fr: "Paris, France",
-    },
-
-    distance: 120,
-
-    latitude: 48.8566,
-    longitude: 2.3522,
-
-    description: {
-      en: "Second example location. Replace this object with the next real location received during the journey.",
-      fr: "Deuxième lieu d'exemple. Remplacez cet objet par le prochain lieu réel reçu pendant le voyage.",
-    },
-
-    media: [
-      {
-        type: "image",
-        src: "/img/gallery/paris-example-1.jpg",
-        alt: {
-          en: "Paris example",
-          fr: "Exemple de Paris",
-        },
-      },
-    ],
-  },
-
-  {
-    id: 3,
-
-    date: "2026-08-30",
-
-    location: {
-      en: "Strasbourg, France",
-      fr: "Strasbourg, France",
-    },
-
-    distance: 150,
-
-    latitude: 48.58392,
-    longitude: 7.74553,
-
-    description: {
-      en: "Second example location. Replace this object with the next real location received during the journey.",
-      fr: "Deuxième lieu d'exemple. Remplacez cet objet par le prochain lieu réel reçu pendant le voyage.",
-    },
-
-    media: [
-      {
-        type: "image",
-        src: "/img/gallery/paris-example-1.jpg",
-        alt: {
-          en: "Paris example",
-          fr: "Exemple de Paris",
         },
       },
     ],
