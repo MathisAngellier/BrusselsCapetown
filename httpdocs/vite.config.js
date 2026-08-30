@@ -46,6 +46,7 @@ export default defineConfig({
         images: resolve(__dirname, "src/views/images.html"),
         project: resolve(__dirname, "src/views/project.html"),
         route: resolve(__dirname, "src/views/route.html"),
+        gallery: resolve(__dirname, "src/views/gallery.html"),
       },
     },
   },
