@@ -1,6 +1,7 @@
 let currentLanguage = localStorage.getItem("selectedLanguage") || "en";
 let translationsCache = null;
 let loadPromise = null;
+
 const languageChangeCallbacks = new Set();
 
 function getTranslationsPath() {
@@ -8,13 +9,17 @@ function getTranslationsPath() {
 }
 
 async function loadTranslations() {
-  if (translationsCache) return translationsCache;
+  if (translationsCache) {
+    return translationsCache;
+  }
+
   if (!loadPromise) {
     loadPromise = fetch(getTranslationsPath())
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         return response.json();
       })
       .then((data) => {
@@ -23,10 +28,13 @@ async function loadTranslations() {
       })
       .catch((error) => {
         console.error("Error loading translations:", error);
+
         translationsCache = {};
+
         return translationsCache;
       });
   }
+
   return loadPromise;
 }
 
@@ -37,12 +45,18 @@ function updateLanguageButtons() {
 }
 
 function updateStaticTexts() {
-  if (!translationsCache || !translationsCache[currentLanguage]) return;
+  if (!translationsCache || !translationsCache[currentLanguage]) {
+    return;
+  }
 
   document.querySelectorAll("[data-translate]").forEach((element) => {
     const key = element.getAttribute("data-translate");
+
     const text = translationsCache[currentLanguage][key];
-    if (!text) return;
+
+    if (!text) {
+      return;
+    }
 
     if (element.tagName === "INPUT" && element.type === "submit") {
       element.value = text;
@@ -60,12 +74,25 @@ export function getCurrentLanguage() {
   return currentLanguage;
 }
 
+export function getTranslation(key) {
+  if (!key) {
+    return "";
+  }
+
+  return translationsCache?.[currentLanguage]?.[key] ?? translationsCache?.en?.[key] ?? key;
+}
+
 export async function setLanguage(lang) {
-  if (!lang || lang === currentLanguage) return currentLanguage;
+  if (!lang || lang === currentLanguage) {
+    return currentLanguage;
+  }
 
   currentLanguage = lang;
+
   localStorage.setItem("selectedLanguage", lang);
+
   await loadTranslations();
+
   updateStaticTexts();
   updateLanguageButtons();
 
@@ -82,16 +109,22 @@ export async function initializeLanguage(onLanguageChange) {
   }
 
   currentLanguage = localStorage.getItem("selectedLanguage") || "en";
+
   await loadTranslations();
+
   updateStaticTexts();
   updateLanguageButtons();
 
   document.querySelectorAll(".lang-btn").forEach((btn) => {
-    if (btn.dataset.languageListenerAttached === "true") return;
+    if (btn.dataset.languageListenerAttached === "true") {
+      return;
+    }
+
     btn.dataset.languageListenerAttached = "true";
 
     btn.addEventListener("click", async (e) => {
       e.preventDefault();
+
       await setLanguage(btn.dataset.lang);
     });
   });

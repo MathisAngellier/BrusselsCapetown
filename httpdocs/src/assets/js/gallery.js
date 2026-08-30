@@ -1,30 +1,60 @@
 import { galleryLocations } from "./galleryData.js";
+import { getCurrentLanguage, getTranslation, initializeLanguage } from "./language.js";
 
 let map;
 let markers = [];
 let routeLine;
-let currentIndex = 0;
-let lightboxIndex = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("journey-map")) return;
+let currentIndex = 0;
+
+let lightboxIndex = 0;
+let currentLightboxMedia = [];
+
+document.addEventListener("DOMContentLoaded", async () => {
+  if (!document.getElementById("journey-map")) {
+    return;
+  }
+
+  await initializeLanguage(() => {
+    syncDocumentLanguage();
+
+    if (!galleryLocations.length) {
+      return;
+    }
+
+    renderLocation(currentIndex, false);
+    updateMarkerPopups();
+
+    const lightbox = document.getElementById("mediaLightbox");
+
+    if (lightbox?.classList.contains("open")) {
+      showLightboxMedia(lightboxIndex);
+    }
+  });
+
+  syncDocumentLanguage();
 
   initializeGallery();
 });
 
 function initializeGallery() {
   if (!Array.isArray(galleryLocations) || galleryLocations.length === 0) {
-    document.getElementById("locationName").textContent = "No journey data yet";
+    document.getElementById("locationName").textContent = getTranslation("no_journey_data");
+
     return;
   }
 
   const lastIndex = galleryLocations.length - 1;
 
   createMap();
+
   createMarkers();
-  selectLocation(lastIndex, false);
+
   setupNavigation();
+
   setupLightbox();
+
+  selectLocation(lastIndex, false);
 }
 
 function createMap() {
@@ -37,6 +67,7 @@ function createMap() {
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
+
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
   }).addTo(map);
 
@@ -61,19 +92,23 @@ function createMarkers() {
   markers = galleryLocations.map((location, index) => {
     const markerIcon = L.divIcon({
       className: "",
-      html: `<div class="journey-marker" data-marker-index="${index}"></div>`,
+
+      html: `
+              <div
+                class="journey-marker"
+                data-marker-index="${index}">
+              </div>
+            `,
+
       iconSize: [22, 22],
       iconAnchor: [11, 11],
     });
 
-    const marker = L.marker([location.latitude, location.longitude], { icon: markerIcon }).addTo(map);
+    const marker = L.marker([location.latitude, location.longitude], {
+      icon: markerIcon,
+    }).addTo(map);
 
-    marker.bindPopup(`
-            <div class="map-popup">
-                <strong>${escapeHtml(location.location)}</strong>
-                <span>${escapeHtml(location.date)}</span>
-            </div>
-        `);
+    marker.bindPopup(getMarkerPopupHtml(location));
 
     marker.on("click", () => {
       selectLocation(index, true);
@@ -83,39 +118,91 @@ function createMarkers() {
   });
 }
 
+function updateMarkerPopups() {
+  markers.forEach((marker, index) => {
+    const location = galleryLocations[index];
+
+    if (!location) {
+      return;
+    }
+
+    marker.setPopupContent(getMarkerPopupHtml(location));
+  });
+}
+
+function getMarkerPopupHtml(location) {
+  const locationName = getLocalizedValue(location.location);
+
+  const date = formatDate(location.date);
+
+  return `
+    <div class="map-popup">
+
+      <strong>
+        ${escapeHtml(locationName)}
+      </strong>
+
+      <span>
+        ${escapeHtml(date)}
+      </span>
+
+    </div>
+  `;
+}
+
 function selectLocation(index, moveMap = true) {
-  if (index < 0 || index >= galleryLocations.length) return;
+  if (index < 0 || index >= galleryLocations.length) {
+    return;
+  }
 
   currentIndex = index;
+
   renderLocation(index, moveMap);
 
   const selectedMarker = markers[index];
+
   if (selectedMarker) {
     selectedMarker.openPopup();
   }
 
   if (moveMap && map) {
     const location = galleryLocations[index];
-    map.flyTo([location.latitude, location.longitude], Math.max(map.getZoom(), 7), {
-      duration: 0.8,
-    });
+
+    map.flyTo(
+      [location.latitude, location.longitude],
+
+      Math.max(map.getZoom(), 7),
+
+      {
+        duration: 0.8,
+      },
+    );
   }
 }
 
 function renderLocation(index, scrollToContent = false) {
   const location = galleryLocations[index];
-  if (!location) return;
+
+  if (!location) {
+    return;
+  }
 
   const isDepartureSlide = isDepartureLocation(location, index);
+
   const distanceLabel = document.querySelector(".distance-metric .distance-label");
+
   const totalDistanceMetric = document.querySelector(".total-distance-metric");
-  const totalDistanceLabel = document.querySelector(".total-distance-metric .distance-label");
+
   const totalDistanceValue = document.getElementById("locationTotalDistance");
 
-  document.getElementById("locationName").textContent = location.location;
-  document.getElementById("locationDate").textContent = location.date;
-  document.getElementById("locationDistance").textContent = isDepartureSlide ? "Day of departure" : location.distance || "";
-  document.getElementById("locationDescription").textContent = location.description || "";
+  document.getElementById("locationName").textContent = getLocalizedValue(location.location);
+
+  document.getElementById("locationDate").textContent = formatDate(location.date);
+
+  document.getElementById("locationDistance").textContent = isDepartureSlide ? getTranslation("day_of_departure") : formatDistance(location.distance);
+
+  document.getElementById("locationDescription").textContent = getLocalizedValue(location.description);
+
   document.getElementById("locationNumber").textContent = formatNumber(index + 1);
 
   if (distanceLabel) {
@@ -126,10 +213,6 @@ function renderLocation(index, scrollToContent = false) {
     totalDistanceMetric.style.display = isDepartureSlide ? "none" : "";
   }
 
-  if (totalDistanceLabel) {
-    totalDistanceLabel.style.display = isDepartureSlide ? "none" : "";
-  }
-
   if (totalDistanceValue) {
     totalDistanceValue.textContent = isDepartureSlide ? "" : formatDistance(getTotalDistanceForIndex(index));
   }
@@ -137,12 +220,15 @@ function renderLocation(index, scrollToContent = false) {
   document.getElementById("locationCounter").textContent = `${index + 1} / ${galleryLocations.length}`;
 
   document.getElementById("progressCurrent").textContent = formatNumber(index + 1);
+
   document.getElementById("progressTotal").textContent = formatNumber(galleryLocations.length);
 
   document.getElementById("previousButton").disabled = index === 0;
+
   document.getElementById("nextButton").disabled = index === galleryLocations.length - 1;
 
   updateMarkerState();
+
   renderMedia(location.media || []);
 
   if (scrollToContent) {
@@ -152,10 +238,15 @@ function renderLocation(index, scrollToContent = false) {
 
 function scrollGalleryIntoView() {
   const galleryContent = document.getElementById("galleryContent");
-  if (!galleryContent) return;
+
+  if (!galleryContent) {
+    return;
+  }
 
   const header = document.querySelector("header");
+
   const headerOffset = header ? header.offsetHeight + 10 : 20;
+
   const topPosition = galleryContent.getBoundingClientRect().top + window.scrollY - headerOffset;
 
   window.scrollTo({
@@ -165,74 +256,114 @@ function scrollGalleryIntoView() {
 }
 
 function isDepartureLocation(location, index) {
-  const distanceValue = String(location.distance || "").trim();
-  return index === 0 || distanceValue.toLowerCase().includes("departure");
+  return index === 0 || location.isDeparture === true;
 }
 
 function updateMarkerState() {
   markers.forEach((marker, index) => {
     const element = marker.getElement()?.querySelector(".journey-marker");
-    if (!element) return;
+
+    if (!element) {
+      return;
+    }
+
     element.classList.toggle("active", index === currentIndex);
   });
 }
 
 function renderMedia(media) {
   const grid = document.getElementById("mediaGrid");
+
   grid.innerHTML = "";
 
   if (!media.length) {
     const message = document.createElement("p");
+
     message.className = "location-description";
-    message.textContent = "No media available for this location.";
+
+    message.textContent = getTranslation("no_media");
+
     grid.appendChild(message);
+
     return;
   }
 
   media.forEach((item, index) => {
     const card = document.createElement("article");
+
     card.className = "media-card";
+
     card.setAttribute("tabindex", "0");
+
     card.setAttribute("role", "button");
+
+    const altText = getLocalizedValue(item.alt);
 
     if (item.type === "video") {
       card.innerHTML = `
-                <video
-                    src="${escapeAttribute(item.src)}"
-                    ${item.poster ? `poster="${escapeAttribute(item.poster)}"` : ""}
-                    muted
-                    playsinline
-                    preload="metadata"
-                    aria-label="${escapeAttribute(item.alt || "Video")}">
-                </video>
+          <video
+            src="${escapeAttribute(item.src)}"
 
-                <div class="media-overlay">
-                    <span class="media-type">
-                        <span class="video-play-icon"><i class="fa-solid fa-play"></i></span>
-                        Video
-                    </span>
-                </div>
-            `;
+            ${item.poster ? `poster="${escapeAttribute(item.poster)}"` : ""}
+
+            muted
+            playsinline
+            preload="metadata"
+
+            aria-label="${escapeAttribute(altText || getTranslation("video"))}">
+          </video>
+
+
+          <div class="media-overlay">
+
+            <span class="media-type">
+
+              <span class="video-play-icon">
+
+                <i class="fa-solid fa-play"></i>
+
+              </span>
+
+              ${escapeHtml(getTranslation("video"))}
+
+            </span>
+
+          </div>
+        `;
     } else {
       card.innerHTML = `
-                <img
-                    src="${escapeAttribute(item.src)}"
-                    alt="${escapeAttribute(item.alt || "")}"
-                    loading="lazy">
+          <img
+            src="${escapeAttribute(item.src)}"
 
-                <div class="media-overlay">
-                    <span class="media-type">
-                        <i class="fa-solid fa-camera"></i>
-                        <span>Photo</span>
-                    </span>
-                </div>
-            `;
+            alt="${escapeAttribute(altText)}"
+
+            loading="lazy">
+
+
+          <div class="media-overlay">
+
+            <span class="media-type">
+
+              <i class="fa-solid fa-camera"></i>
+
+              <span>
+                ${escapeHtml(getTranslation("photo"))}
+              </span>
+
+            </span>
+
+          </div>
+        `;
     }
 
-    card.addEventListener("click", () => openLightbox(media, index));
+    card.addEventListener("click", () => {
+      openLightbox(media, index);
+    });
+
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
+
         openLightbox(media, index);
       }
     });
@@ -274,91 +405,190 @@ function setupLightbox() {
 
   document.addEventListener("keydown", (event) => {
     const lightbox = document.getElementById("mediaLightbox");
-    if (!lightbox.classList.contains("open")) return;
 
-    if (event.key === "Escape") closeLightbox();
-    if (event.key === "ArrowLeft") showLightboxMedia(lightboxIndex - 1);
-    if (event.key === "ArrowRight") showLightboxMedia(lightboxIndex + 1);
+    if (!lightbox.classList.contains("open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+      showLightboxMedia(lightboxIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      showLightboxMedia(lightboxIndex + 1);
+    }
   });
 }
 
 function openLightbox(media, index) {
-  window.currentLightboxMedia = media;
+  currentLightboxMedia = media;
+
   lightboxIndex = index;
 
-  document.getElementById("mediaLightbox").classList.add("open");
-  document.getElementById("mediaLightbox").setAttribute("aria-hidden", "false");
+  const lightbox = document.getElementById("mediaLightbox");
+
+  lightbox.classList.add("open");
+
+  lightbox.setAttribute("aria-hidden", "false");
+
   document.body.style.overflow = "hidden";
 
   showLightboxMedia(index);
 }
 
 function showLightboxMedia(index) {
-  const media = window.currentLightboxMedia || [];
-  if (!media.length) return;
+  const media = currentLightboxMedia;
 
-  if (index < 0) index = media.length - 1;
-  if (index >= media.length) index = 0;
+  if (!media.length) {
+    return;
+  }
+
+  if (index < 0) {
+    index = media.length - 1;
+  }
+
+  if (index >= media.length) {
+    index = 0;
+  }
 
   lightboxIndex = index;
 
   const item = media[index];
+
   const content = document.getElementById("lightboxContent");
+
+  const altText = getLocalizedValue(item.alt);
 
   if (item.type === "video") {
     content.innerHTML = `
-            <video
-                src="${escapeAttribute(item.src)}"
-                ${item.poster ? `poster="${escapeAttribute(item.poster)}"` : ""}
-                controls
-                autoplay
-                playsinline>
-            </video>
-        `;
+      <video
+
+        src="${escapeAttribute(item.src)}"
+
+        ${item.poster ? `poster="${escapeAttribute(item.poster)}"` : ""}
+
+        controls
+        autoplay
+        playsinline
+
+        aria-label="${escapeAttribute(altText || getTranslation("video"))}">
+
+      </video>
+    `;
   } else {
     content.innerHTML = `
-            <img
-                src="${escapeAttribute(item.src)}"
-                alt="${escapeAttribute(item.alt || "")}">
-        `;
+      <img
+
+        src="${escapeAttribute(item.src)}"
+
+        alt="${escapeAttribute(altText)}">
+
+    `;
   }
 }
 
 function closeLightbox() {
   const lightbox = document.getElementById("mediaLightbox");
+
   const content = document.getElementById("lightboxContent");
 
   lightbox.classList.remove("open");
+
   lightbox.setAttribute("aria-hidden", "true");
+
   document.body.style.overflow = "";
+
   content.innerHTML = "";
+
+  currentLightboxMedia = [];
+}
+
+function getLocalizedValue(value) {
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  if (typeof value !== "object") {
+    return String(value);
+  }
+
+  const language = getCurrentLanguage();
+
+  return value[language] || value.en || "";
+}
+
+function formatDate(isoDate) {
+  if (!isoDate) {
+    return "";
+  }
+
+  const [year, month, day] = String(isoDate).split("-").map(Number);
+
+  if (!year || !month || !day) {
+    return String(isoDate);
+  }
+
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  const locale = getCurrentLanguage() === "fr" ? "fr-FR" : "en-GB";
+
+  return new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+}
+
+function getTotalDistanceForIndex(index) {
+  return galleryLocations.slice(0, index + 1).reduce((total, location) => {
+    return total + getDistanceKm(location);
+  }, 0);
+}
+
+function getDistanceKm(location) {
+  const distance = Number(location.distance);
+
+  if (!Number.isFinite(distance)) {
+    return 0;
+  }
+
+  return distance;
+}
+
+function formatDistance(value) {
+  const distance = Number(value);
+
+  if (!Number.isFinite(distance)) {
+    return "";
+  }
+
+  return `${Math.round(distance)} km`;
 }
 
 function formatNumber(number) {
   return String(number).padStart(2, "0");
 }
 
-function getTotalDistanceForIndex(index) {
-  return galleryLocations.slice(0, index + 1).reduce((total, item) => total + getDistanceKm(item), 0);
-}
-
-function getDistanceKm(location) {
-  const value = String(location.distance || "");
-
-  if (!value || value.toLowerCase().includes("departure")) {
-    return 0;
-  }
-
-  const match = value.match(/(\d+(?:[.,]\d+)?)/);
-  return match ? Number(match[1].replace(",", ".")) : 0;
-}
-
-function formatDistance(value) {
-  return `${Math.round(value)} km`;
+function syncDocumentLanguage() {
+  document.documentElement.lang = getCurrentLanguage() === "fr" ? "fr" : "en";
 }
 
 function escapeHtml(value) {
-  return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+  return String(value)
+    .replaceAll("&", "&amp;")
+
+    .replaceAll("<", "&lt;")
+
+    .replaceAll(">", "&gt;")
+
+    .replaceAll('"', "&quot;")
+
+    .replaceAll("'", "&#039;");
 }
 
 function escapeAttribute(value) {

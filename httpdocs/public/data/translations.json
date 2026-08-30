@@ -157,7 +157,10 @@
     "next": "Next",
     "no_media": "No photos or videos have been added for this location yet.",
     "video": "Video",
-    "total_distance": "Total distance"
+    "total_distance": "Total distance",
+    "photo": "Photo",
+    "day_of_departure": "Day of departure",
+    "no_journey_data": "No journey data yet"
   },
   "fr": {
     "nav_home": "ACCUEIL",
@@ -317,6 +320,9 @@
     "next": "Suivant",
     "no_media": "Aucune photo ou vidéo n'a encore été ajoutée pour ce lieu.",
     "video": "Vidéo",
-    "total_distance": "Distance totale"
+    "total_distance": "Distance totale",
+    "photo": "Photo",
+    "day_of_departure": "Jour du départ",
+    "no_journey_data": "Aucune donnée de voyage pour le moment"
   }
 }
