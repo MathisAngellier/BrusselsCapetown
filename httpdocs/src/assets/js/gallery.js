@@ -18,9 +18,11 @@ function initializeGallery() {
     return;
   }
 
+  const lastIndex = galleryLocations.length - 1;
+
   createMap();
   createMarkers();
-  renderLocation(0, false);
+  selectLocation(lastIndex, false);
   setupNavigation();
   setupLightbox();
 }
@@ -87,13 +89,16 @@ function selectLocation(index, moveMap = true) {
   currentIndex = index;
   renderLocation(index, moveMap);
 
+  const selectedMarker = markers[index];
+  if (selectedMarker) {
+    selectedMarker.openPopup();
+  }
+
   if (moveMap && map) {
     const location = galleryLocations[index];
     map.flyTo([location.latitude, location.longitude], Math.max(map.getZoom(), 7), {
       duration: 0.8,
     });
-
-    markers[index].openPopup();
   }
 }
 
