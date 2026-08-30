@@ -406,7 +406,7 @@
 
 @media (max-width: 767px) {
   .gallery-intro {
-    padding: 5.5rem 1.25rem 3rem;
+    padding-top: 2rem;
   }
 
   .gallery-map-section,

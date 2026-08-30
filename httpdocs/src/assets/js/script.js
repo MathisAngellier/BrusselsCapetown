@@ -179,22 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  function updateMobileMenu() {
-    if (window.innerWidth <= 1024) {
-      const countriesLink = document.querySelector(".dropdown-content a.sub-menu");
-      const routeLink = document.querySelector(".dropdown a.dropbtn");
-      const dropdown = document.querySelector(".dropdown");
-      if (countriesLink && routeLink && dropdown) {
-        const dropdownContent = document.querySelector(".dropdown-content");
-        routeLink.insertAdjacentElement("afterend", countriesLink);
-        dropdownContent?.parentElement?.removeChild(dropdownContent);
-      }
-    }
-  }
-
-  window.addEventListener("load", updateMobileMenu);
-  window.addEventListener("resize", updateMobileMenu);
-
   handleScrollAnimations();
   window.closePopup = closePopup;
 });

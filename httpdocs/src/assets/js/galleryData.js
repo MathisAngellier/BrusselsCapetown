@@ -16,8 +16,8 @@ export const galleryLocations = [
     longitude: 4.3517,
 
     description: {
-      en: "The beginning of the journey. Replace this example with the real story, photos and videos.",
-      fr: "Le début du voyage. Remplacez cet exemple par la véritable histoire, les photos et les vidéos.",
+      en: "After months of preparation and anticipation, the journey can finally begin. The official departure is at 10:00 a.m. on the historic cobblestones of Brussels’ Grand Place.",
+      fr: "Après des mois de préparation et d'attente, le voyage peut enfin commencé. Départ officiel à 10h00 sur les pavés historiques de la Grand' Place de Bruxelles.",
     },
 
     media: [
