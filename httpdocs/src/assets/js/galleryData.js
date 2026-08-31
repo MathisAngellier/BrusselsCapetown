@@ -17,7 +17,7 @@ export const galleryLocations = [
 
     description: {
       en: "After months of preparation and anticipation, the journey can finally begin. The official departure is at 10:00 a.m. on the historic cobblestones of Brussels’ Grand Place.",
-      fr: "Après des mois de préparation et d'attente, le voyage peut enfin commencé. Départ officiel à 10h00 sur les pavés historiques de la Grand' Place de Bruxelles.",
+      fr: "Après des mois de préparation et d'attente, le voyage peut enfin commencer. Départ officiel à 10h00 sur les pavés historiques de la Grand' Place de Bruxelles.",
     },
 
     // media: [
