@@ -45,12 +45,90 @@ function bctIsValidDate(string $value): bool
     return $date !== false && $date->format('Y-m-d') === $value;
 }
 
+function bctTranslateFrenchToEnglish(array $texts, array $config): array
+{
+    $apiKey = trim((string) ($config['deepl_api_key'] ?? ''));
+
+    if ($apiKey === '') {
+        throw new RuntimeException('The DeepL API key is not configured.');
+    }
+
+    if (!function_exists('curl_init')) {
+        throw new RuntimeException('The PHP cURL extension is not available.');
+    }
+
+    $apiUrl = trim((string) (
+        $config['deepl_api_url']
+        ?? 'https://api-free.deepl.com/v2/translate'
+    ));
+
+    $requestBody = json_encode([
+        'text' => array_values($texts),
+        'source_lang' => 'FR',
+        'target_lang' => 'EN-GB',
+    ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+
+    $request = curl_init($apiUrl);
+
+    if ($request === false) {
+        throw new RuntimeException('The translation request could not be initialized.');
+    }
+
+    curl_setopt_array($request, [
+        CURLOPT_POST => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 5,
+        CURLOPT_TIMEOUT => 20,
+        CURLOPT_HTTPHEADER => [
+            'Authorization: DeepL-Auth-Key ' . $apiKey,
+            'Content-Type: application/json',
+        ],
+        CURLOPT_POSTFIELDS => $requestBody,
+    ]);
+
+    $responseBody = curl_exec($request);
+    $curlError = curl_error($request);
+    $statusCode = (int) curl_getinfo($request, CURLINFO_RESPONSE_CODE);
+
+    curl_close($request);
+
+    if ($responseBody === false) {
+        throw new RuntimeException('DeepL request failed: ' . $curlError);
+    }
+
+    if ($statusCode < 200 || $statusCode >= 300) {
+        throw new RuntimeException('DeepL returned HTTP status ' . $statusCode . '.');
+    }
+
+    $response = json_decode($responseBody, true, 512, JSON_THROW_ON_ERROR);
+    $translations = $response['translations'] ?? null;
+
+    if (!is_array($translations) || count($translations) !== count($texts)) {
+        throw new RuntimeException('DeepL returned an unexpected response.');
+    }
+
+    $translatedTexts = [];
+
+    foreach ($translations as $translation) {
+        $translatedText = is_array($translation)
+            ? trim((string) ($translation['text'] ?? ''))
+            : '';
+
+        if ($translatedText === '') {
+            throw new RuntimeException('DeepL returned an empty translation.');
+        }
+
+        $translatedTexts[] = $translatedText;
+    }
+
+    return $translatedTexts;
+}
+
 $journeyDate = bctInput('journey_date');
-$locationEn = bctInput('location_en');
+$locationFr = bctInput('location_fr');
 $distanceInput = bctInput('distance_km');
 $latitudeInput = bctInput('latitude');
 $longitudeInput = bctInput('longitude');
-$descriptionEn = bctInput('description_en');
 $descriptionFr = bctInput('description_fr');
 
 $errors = [];
@@ -62,8 +140,8 @@ if (!bctIsValidDate($journeyDate)) {
     $errors['journey_date'] = 'Enter a valid date.';
 }
 
-if ($locationEn === '' || bctTextLength($locationEn) > 150) {
-    $errors['location_en'] = 'Enter an English location of no more than 150 characters.';
+if ($locationFr === '' || bctTextLength($locationFr) > 150) {
+    $errors['location_fr'] = 'Enter a French location of no more than 150 characters.';
 }
 
 if ($distanceInput === '' || !is_numeric($distanceInput)) {
@@ -96,10 +174,6 @@ if ($longitudeInput === '' || !is_numeric($longitudeInput)) {
     }
 }
 
-if ($descriptionEn === '' || bctTextLength($descriptionEn) > 10000) {
-    $errors['description_en'] = 'Enter an English description of no more than 10000 characters.';
-}
-
 if ($descriptionFr === '' || bctTextLength($descriptionFr) > 10000) {
     $errors['description_fr'] = 'Enter a French description of no more than 10000 characters.';
 }
@@ -112,8 +186,28 @@ if ($errors !== []) {
     ], 422);
 }
 
-// Automatic EN-to-FR location translation will replace this temporary fallback.
-$locationFr = $locationEn;
+try {
+    [$locationEn, $descriptionEn] = bctTranslateFrenchToEnglish([
+        $locationFr,
+        $descriptionFr,
+    ], $config);
+} catch (Throwable $error) {
+    error_log('DeepL translation failed: ' . $error->getMessage());
+
+    bctJsonResponse([
+        'success' => false,
+        'message' => 'The French text could not be translated. Try again later.',
+    ], 502);
+}
+
+if (bctTextLength($locationEn) > 150 || bctTextLength($descriptionEn) > 10000) {
+    error_log('DeepL translation exceeded a database field limit.');
+
+    bctJsonResponse([
+        'success' => false,
+        'message' => 'The English translation is too long to save.',
+    ], 502);
+}
 
 try {
     $pdo->beginTransaction();
@@ -179,6 +273,7 @@ try {
             'journey_order' => $journeyOrder,
             'journey_date' => $journeyDate,
             'location_en' => $locationEn,
+            'location_fr' => $locationFr,
         ],
     ], 201);
 } catch (Throwable $error) {

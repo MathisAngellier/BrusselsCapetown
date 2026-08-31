@@ -217,11 +217,11 @@ $csrfToken = bctCsrfToken();
                 </div>
 
                 <div class="form-field">
-                    <label for="locationEn">Location (EN)</label>
+                    <label for="locationFr">Location (FR)</label>
                     <input
                         type="text"
-                        id="locationEn"
-                        name="location_en"
+                        id="locationFr"
+                        name="location_fr"
                         maxlength="150"
                         autocomplete="off"
                         required>
@@ -267,15 +267,6 @@ $csrfToken = bctCsrfToken();
                 </div>
 
                 <div class="form-field form-field-full">
-                    <label for="descriptionEn">Description (EN)</label>
-                    <textarea
-                        id="descriptionEn"
-                        name="description_en"
-                        maxlength="10000"
-                        required></textarea>
-                </div>
-
-                <div class="form-field form-field-full">
                     <label for="descriptionFr">Description (FR)</label>
                     <textarea
                         id="descriptionFr"
@@ -286,6 +277,7 @@ $csrfToken = bctCsrfToken();
             </div>
 
             <p class="form-note">
+                The location and description are translated automatically from French to English.
                 The journey order is assigned automatically. Photos and videos will be added in the next step.
             </p>
 
@@ -312,7 +304,7 @@ $csrfToken = bctCsrfToken();
             }
 
             submitButton.disabled = true;
-            submitButton.textContent = "Adding...";
+            submitButton.textContent = "Translating and adding...";
             formStatus.textContent = "";
             formStatus.className = "form-status";
 
