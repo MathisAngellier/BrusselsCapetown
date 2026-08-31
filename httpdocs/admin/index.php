@@ -112,6 +112,11 @@ $csrfToken = bctCsrfToken();
             resize: vertical;
         }
 
+        .form-field input[type="file"] {
+            padding: 10px;
+            cursor: pointer;
+        }
+
         .form-field input:focus,
         .form-field textarea:focus {
             outline: 2px solid #b77b3a;
@@ -119,6 +124,12 @@ $csrfToken = bctCsrfToken();
         }
 
         .form-note {
+            margin: 0;
+            color: #5a5752;
+            font-size: 0.92rem;
+        }
+
+        .file-summary {
             margin: 0;
             color: #5a5752;
             font-size: 0.92rem;
@@ -200,11 +211,21 @@ $csrfToken = bctCsrfToken();
     <main class="admin-main">
         <h1>Add journey location</h1>
 
-        <form class="location-form" id="locationForm">
+        <form
+            class="location-form"
+            id="locationForm"
+            action="/api/admin/locations.php"
+            method="post"
+            enctype="multipart/form-data">
             <input
                 type="hidden"
                 name="csrf_token"
                 value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
+            <input
+                type="hidden"
+                id="expectedMediaCount"
+                name="expected_media_count"
+                value="0">
 
             <div class="form-grid">
                 <div class="form-field">
@@ -274,11 +295,27 @@ $csrfToken = bctCsrfToken();
                         maxlength="10000"
                         required></textarea>
                 </div>
+
+                <div class="form-field form-field-full">
+                    <label for="mediaFiles">Photos / videos</label>
+                    <input
+                        type="file"
+                        id="mediaFiles"
+                        name="media_files[]"
+                        accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,video/x-m4v"
+                        multiple
+                        required>
+
+                    <p class="file-summary" id="fileSummary">
+                        JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files.
+                        Maximum 15 MB per image, 200 MB per video and 350 MB total.
+                    </p>
+                </div>
             </div>
 
             <p class="form-note">
                 The location and description are translated automatically from French to English.
-                The journey order is assigned automatically. Photos and videos will be added in the next step.
+                The journey order and media order are assigned automatically.
             </p>
 
             <div class="form-actions">
@@ -295,6 +332,79 @@ $csrfToken = bctCsrfToken();
         const locationForm = document.getElementById("locationForm");
         const formStatus = document.getElementById("formStatus");
         const submitButton = document.getElementById("submitButton");
+        const mediaFiles = document.getElementById("mediaFiles");
+        const fileSummary = document.getElementById("fileSummary");
+        const expectedMediaCount = document.getElementById("expectedMediaCount");
+
+        const maxFiles = 30;
+        const maxImageSize = 15 * 1024 * 1024;
+        const maxVideoSize = 200 * 1024 * 1024;
+        const maxTotalSize = 350 * 1024 * 1024;
+        const allowedImageTypes = new Set([
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "image/gif",
+        ]);
+        const allowedVideoTypes = new Set([
+            "video/mp4",
+            "video/webm",
+            "video/quicktime",
+            "video/x-m4v",
+        ]);
+
+        function validateSelectedMedia() {
+            const files = Array.from(mediaFiles.files || []);
+            const totalSize = files.reduce((total, file) => total + file.size, 0);
+
+            if (files.length === 0) {
+                return "Select at least one photo or video.";
+            }
+
+            if (files.length > maxFiles) {
+                return `Select no more than ${maxFiles} files.`;
+            }
+
+            if (totalSize > maxTotalSize) {
+                return "The selected files are larger than the 350 MB total limit.";
+            }
+
+            for (const file of files) {
+                if (allowedImageTypes.has(file.type)) {
+                    if (file.size > maxImageSize) {
+                        return `${file.name} is larger than 15 MB.`;
+                    }
+
+                    continue;
+                }
+
+                if (allowedVideoTypes.has(file.type)) {
+                    if (file.size > maxVideoSize) {
+                        return `${file.name} is larger than 200 MB.`;
+                    }
+
+                    continue;
+                }
+
+                return `${file.name} is not a supported photo or video.`;
+            }
+
+            return "";
+        }
+
+        mediaFiles.addEventListener("change", () => {
+            const fileCount = mediaFiles.files.length;
+            expectedMediaCount.value = String(fileCount);
+            const totalBytes = Array.from(mediaFiles.files).reduce(
+                (total, file) => total + file.size,
+                0
+            );
+            const totalMegabytes = (totalBytes / 1024 / 1024).toFixed(1);
+
+            fileSummary.textContent = fileCount === 0
+                ? "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files. Maximum 15 MB per image, 200 MB per video and 350 MB total."
+                : `${fileCount} file${fileCount === 1 ? "" : "s"} selected (${totalMegabytes} MB total).`;
+        });
 
         locationForm.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -303,8 +413,18 @@ $csrfToken = bctCsrfToken();
                 return;
             }
 
+            const mediaError = validateSelectedMedia();
+
+            if (mediaError) {
+                formStatus.textContent = mediaError;
+                formStatus.className = "form-status error";
+                return;
+            }
+
+            expectedMediaCount.value = String(mediaFiles.files.length);
+
             submitButton.disabled = true;
-            submitButton.textContent = "Translating and adding...";
+            submitButton.textContent = "Translating and uploading...";
             formStatus.textContent = "";
             formStatus.className = "form-status";
 
@@ -315,7 +435,17 @@ $csrfToken = bctCsrfToken();
                     body: new FormData(locationForm),
                 });
 
-                const result = await response.json();
+                let result;
+
+                try {
+                    result = await response.json();
+                } catch {
+                    throw new Error(
+                        response.status === 413
+                            ? "The selected files are larger than the server upload limit."
+                            : "The server returned an invalid response."
+                    );
+                }
 
                 if (!response.ok) {
                     const validationMessages = Object.values(result.errors || {});
@@ -327,9 +457,11 @@ $csrfToken = bctCsrfToken();
                     );
                 }
 
-                formStatus.textContent = `Location added as journey stop ${result.location.journey_order}.`;
+                formStatus.textContent = `Location added as journey stop ${result.location.journey_order} with ${result.location.media_count} media file${result.location.media_count === 1 ? "" : "s"}.`;
                 formStatus.classList.add("success");
                 locationForm.reset();
+                expectedMediaCount.value = "0";
+                fileSummary.textContent = "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files. Maximum 15 MB per image, 200 MB per video and 350 MB total.";
             } catch (error) {
                 formStatus.textContent = error.message || "The location could not be added.";
                 formStatus.classList.add("error");

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/media-upload.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Allow: POST');
@@ -15,6 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 bctRequireAdminApi();
 
+if (bctPostRequestExceedsServerLimit()) {
+    bctJsonResponse([
+        'success' => false,
+        'message' => 'The selected files are larger than the server upload limit.',
+    ], 413);
+}
+
 if (!bctVerifyCsrfToken($_POST['csrf_token'] ?? null)) {
     bctJsonResponse([
         'success' => false,
@@ -26,7 +34,9 @@ require_once dirname(__DIR__) . '/bootstrap.php';
 
 function bctInput(string $name): string
 {
-    return trim((string) ($_POST[$name] ?? ''));
+    $value = $_POST[$name] ?? '';
+
+    return is_string($value) ? trim($value) : '';
 }
 
 function bctTextLength(string $value): int
@@ -130,11 +140,13 @@ $distanceInput = bctInput('distance_km');
 $latitudeInput = bctInput('latitude');
 $longitudeInput = bctInput('longitude');
 $descriptionFr = bctInput('description_fr');
+$expectedMediaCountInput = bctInput('expected_media_count');
 
 $errors = [];
 $distanceKm = 0.0;
 $latitude = 0.0;
 $longitude = 0.0;
+$expectedMediaCount = 0;
 
 if (!bctIsValidDate($journeyDate)) {
     $errors['journey_date'] = 'Enter a valid date.';
@@ -178,6 +190,34 @@ if ($descriptionFr === '' || bctTextLength($descriptionFr) > 10000) {
     $errors['description_fr'] = 'Enter a French description of no more than 10000 characters.';
 }
 
+if (!ctype_digit($expectedMediaCountInput)) {
+    $errors['media_files'] = 'Select at least one photo or video.';
+} else {
+    $expectedMediaCount = (int) $expectedMediaCountInput;
+
+    if ($expectedMediaCount < 1 || $expectedMediaCount > BCT_MAX_MEDIA_FILES) {
+        $errors['media_files'] = 'Select between 1 and 30 media files.';
+    }
+}
+
+$mediaFiles = [];
+
+try {
+    $mediaFiles = bctValidateMediaUploads(
+        $_FILES['media_files'] ?? null,
+        $expectedMediaCount
+    );
+} catch (InvalidArgumentException $error) {
+    $errors['media_files'] = $error->getMessage();
+} catch (Throwable $error) {
+    error_log('Media validation failed: ' . $error->getMessage());
+
+    bctJsonResponse([
+        'success' => false,
+        'message' => 'The selected media files could not be checked.',
+    ], 500);
+}
+
 if ($errors !== []) {
     bctJsonResponse([
         'success' => false,
@@ -208,6 +248,11 @@ if (bctTextLength($locationEn) > 150 || bctTextLength($descriptionEn) > 10000) {
         'message' => 'The English translation is too long to save.',
     ], 502);
 }
+
+$storedMedia = [
+    'directory' => null,
+    'paths' => [],
+];
 
 try {
     $pdo->beginTransaction();
@@ -262,24 +307,15 @@ try {
     ]);
 
     $locationId = (int) $pdo->lastInsertId();
+    $storedMedia = bctStoreMediaFiles($pdo, $locationId, $mediaFiles);
 
     $pdo->commit();
-
-    bctJsonResponse([
-        'success' => true,
-        'message' => 'Journey location added.',
-        'location' => [
-            'location_id' => $locationId,
-            'journey_order' => $journeyOrder,
-            'journey_date' => $journeyDate,
-            'location_en' => $locationEn,
-            'location_fr' => $locationFr,
-        ],
-    ], 201);
 } catch (Throwable $error) {
     if ($pdo->inTransaction()) {
         $pdo->rollBack();
     }
+
+    bctCleanupStoredMedia($storedMedia);
 
     error_log($error->getMessage());
 
@@ -288,3 +324,16 @@ try {
         'message' => 'The location could not be saved.',
     ], 500);
 }
+
+bctJsonResponse([
+    'success' => true,
+    'message' => 'Journey location added.',
+    'location' => [
+        'location_id' => $locationId,
+        'journey_order' => $journeyOrder,
+        'journey_date' => $journeyDate,
+        'location_en' => $locationEn,
+        'location_fr' => $locationFr,
+        'media_count' => count($mediaFiles),
+    ],
+], 201);
