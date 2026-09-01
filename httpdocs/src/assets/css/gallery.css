@@ -408,8 +408,6 @@
   right: 1.2rem;
 }
 
-/* Mobile */
-
 @media (max-width: 767px) {
   .gallery-intro {
     padding-top: 2rem;
@@ -446,7 +444,7 @@
   }
 
   .media-card {
-    height: 180px; /* shorter rows on small screens */
+    height: 180px;
   }
 
   .gallery-navigation {
@@ -481,5 +479,22 @@
 
   .lightbox-next {
     right: 0.4rem;
+  }
+
+  .media-overlay {
+    padding: 0.5rem;
+  }
+
+  .media-type {
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .video-play-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
   }
 }
