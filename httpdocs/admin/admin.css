@@ -1,0 +1,247 @@
+:root {
+    color: #202020;
+    background: #e8e7e7;
+    font-family: Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px clamp(20px, 5vw, 64px);
+    border-bottom: 1px solid #c8c6c2;
+}
+
+.admin-header p {
+    margin: 0;
+}
+
+.logout-button {
+    padding: 9px 16px;
+    border: 1px solid #202020;
+    background: transparent;
+    cursor: pointer;
+}
+
+.admin-main {
+    width: min(760px, calc(100% - 40px));
+    margin: 48px auto;
+}
+
+.admin-main h1 {
+    margin: 0 0 32px;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1;
+}
+
+.location-form {
+    display: grid;
+    gap: 24px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-field-full {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    font-weight: 700;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #9f9d98;
+    border-radius: 0;
+    background: #f4f3f1;
+}
+
+.form-field textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form-field input[type="file"] {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: 2px solid #b77b3a;
+    outline-offset: 2px;
+}
+
+.form-note {
+    margin: 0;
+    color: #5a5752;
+    font-size: 0.92rem;
+}
+
+.file-summary {
+    margin: 0;
+    color: #5a5752;
+    font-size: 0.92rem;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.form-status {
+    flex: 1 1 280px;
+    margin: 0;
+}
+
+.form-status.success {
+    color: #176b35;
+}
+
+.form-status.error {
+    color: #a00000;
+}
+
+.submit-button {
+    min-width: 190px;
+    padding: 14px 24px;
+    border: 1px solid #202020;
+    background: #202020;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.submit-button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #b77b3a;
+    outline-offset: 3px;
+}
+
+.admin-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    margin-bottom: 28px;
+}
+
+.admin-main-wide {
+    width: min(1080px, calc(100% - 40px));
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.locations-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.locations-table caption {
+    text-align: left;
+    color: #5a5752;
+    margin-bottom: 20px;
+}
+
+.locations-table th,
+.locations-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #c8c6c2;
+}
+
+.locations-table tbody th {
+    min-width: 160px;
+    overflow-wrap: anywhere;
+}
+
+.date-cell {
+    white-space: nowrap;
+}
+
+.edit-link {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #202020;
+    text-decoration: none;
+}
+
+.edit-fields {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+.edit-fields:disabled {
+    opacity: 0.7;
+}
+
+.edit-summary {
+    margin: 0 0 28px;
+    color: #5a5752;
+    line-height: 1.5;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 640px) {
+    .admin-header {
+        align-items: flex-start;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-field-full {
+        grid-column: auto;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
