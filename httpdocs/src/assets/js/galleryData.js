@@ -231,4 +231,155 @@ export const galleryLocations = [
       },
     ],
   },
+  {
+    id: 1,
+
+    date: "2026-09-01",
+
+    location: {
+      en: "Maubeuge, France",
+      fr: "Maubeuge, France",
+    },
+
+    distance: 97,
+
+    latitude: 50.328698,
+    longitude: 4.006422,
+
+    description: {
+      en: "",
+      fr: "",
+    },
+
+    media: [
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge1.jpg",
+        alt: {
+          en: "Maubeuge photo 1",
+          fr: "Photo de Maubeuge 1",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge2.jpg",
+        alt: {
+          en: "Maubeuge photo 2",
+          fr: "Photo de Maubeuge 2",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge3.jpg",
+        alt: {
+          en: "Maubeuge photo 3",
+          fr: "Photo de Maubeuge 3",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge4.jpg",
+        alt: {
+          en: "Maubeuge photo 4",
+          fr: "Photo de Maubeuge 4",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge5.jpg",
+        alt: {
+          en: "Maubeuge photo 5",
+          fr: "Photo de Maubeuge 5",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge6.jpg",
+        alt: {
+          en: "Maubeuge photo 6",
+          fr: "Photo de Maubeuge 6",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge7.jpg",
+        alt: {
+          en: "Maubeuge photo 7",
+          fr: "Photo de Maubeuge 7",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge8.jpg",
+        alt: {
+          en: "Maubeuge photo 8",
+          fr: "Photo de Maubeuge 8",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge12.jpg",
+        alt: {
+          en: "Maubeuge photo 12",
+          fr: "Photo de Maubeuge 12",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge10.jpg",
+        alt: {
+          en: "Maubeuge photo 10",
+          fr: "Photo de Maubeuge 10",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge11.jpg",
+        alt: {
+          en: "Maubeuge photo 11",
+          fr: "Photo de Maubeuge 11",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge13.jpg",
+        alt: {
+          en: "Maubeuge photo 13",
+          fr: "Photo de Maubeuge 13",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge14.jpg",
+        alt: {
+          en: "Maubeuge photo 14",
+          fr: "Photo de Maubeuge 14",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge15.jpg",
+        alt: {
+          en: "Maubeuge photo 15",
+          fr: "Photo de Maubeuge 15",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge16.jpg",
+        alt: {
+          en: "Maubeuge photo 16",
+          fr: "Photo de Maubeuge 16",
+        },
+      },
+      {
+        type: "image",
+        src: "/img/gallery/Maubeuge9.jpg",
+        alt: {
+          en: "Maubeuge photo 9",
+          fr: "Photo de Maubeuge 9",
+        },
+      },
+    ],
+  },
 ];
