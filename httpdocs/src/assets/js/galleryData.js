@@ -247,7 +247,7 @@ export const galleryLocations = [
     longitude: 4.006422,
 
     description: {
-      en: "This first leg of the journey was just as I had imagined: full of emotions. We left Brussels with Sophie and the kids and headed for the French border—the adventure begins…",
+      en: "This first leg of the journey was just as I had imagined: full of emotions. We left Brussels with Sophie and the kids and headed for the French border, the adventure begins…",
       fr: "Cette première étape était comme je l’avais imaginé : remplie d’émotions. Départ de Bruxelles avec Sophie et les enfants et cap sur la frontière française, l’aventure commence…",
     },
 
