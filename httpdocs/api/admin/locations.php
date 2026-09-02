@@ -186,8 +186,8 @@ if ($longitudeInput === '' || !is_numeric($longitudeInput)) {
     }
 }
 
-if ($descriptionFr === '' || bctTextLength($descriptionFr) > 10000) {
-    $errors['description_fr'] = 'Enter a French description of no more than 10000 characters.';
+if (bctTextLength($descriptionFr) > 10000) {
+    $errors['description_fr'] = 'The French description must not exceed 10000 characters.';
 }
 
 if (!ctype_digit($expectedMediaCountInput)) {
@@ -226,11 +226,16 @@ if ($errors !== []) {
     ], 422);
 }
 
+$textsToTranslate = [$locationFr];
+
+if ($descriptionFr !== '') {
+    $textsToTranslate[] = $descriptionFr;
+}
+
 try {
-    [$locationEn, $descriptionEn] = bctTranslateFrenchToEnglish([
-        $locationFr,
-        $descriptionFr,
-    ], $config);
+    $translatedTexts = bctTranslateFrenchToEnglish($textsToTranslate, $config);
+    $locationEn = $translatedTexts[0];
+    $descriptionEn = $descriptionFr === '' ? '' : $translatedTexts[1];
 } catch (Throwable $error) {
     error_log('DeepL translation failed: ' . $error->getMessage());
 

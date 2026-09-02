@@ -288,12 +288,11 @@ $csrfToken = bctCsrfToken();
                 </div>
 
                 <div class="form-field form-field-full">
-                    <label for="descriptionFr">Description (FR)</label>
+                    <label for="descriptionFr">Description (FR) — optional</label>
                     <textarea
                         id="descriptionFr"
                         name="description_fr"
-                        maxlength="10000"
-                        required></textarea>
+                        maxlength="10000"></textarea>
                 </div>
 
                 <div class="form-field form-field-full">
@@ -314,7 +313,7 @@ $csrfToken = bctCsrfToken();
             </div>
 
             <p class="form-note">
-                The location and description are translated automatically from French to English.
+                The location and any description you enter are translated automatically from French to English.
                 The journey order and media order are assigned automatically.
             </p>
 
@@ -401,9 +400,9 @@ $csrfToken = bctCsrfToken();
             );
             const totalMegabytes = (totalBytes / 1024 / 1024).toFixed(1);
 
-            fileSummary.textContent = fileCount === 0
-                ? "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files. Maximum 15 MB per image, 200 MB per video and 350 MB total."
-                : `${fileCount} file${fileCount === 1 ? "" : "s"} selected (${totalMegabytes} MB total).`;
+            fileSummary.textContent = fileCount === 0 ?
+                "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files. Maximum 15 MB per image, 200 MB per video and 350 MB total." :
+                `${fileCount} file${fileCount === 1 ? "" : "s"} selected (${totalMegabytes} MB total).`;
         });
 
         locationForm.addEventListener("submit", async (event) => {
@@ -441,9 +440,9 @@ $csrfToken = bctCsrfToken();
                     result = await response.json();
                 } catch {
                     throw new Error(
-                        response.status === 413
-                            ? "The selected files are larger than the server upload limit."
-                            : "The server returned an invalid response."
+                        response.status === 413 ?
+                        "The selected files are larger than the server upload limit." :
+                        "The server returned an invalid response."
                     );
                 }
 
@@ -451,9 +450,9 @@ $csrfToken = bctCsrfToken();
                     const validationMessages = Object.values(result.errors || {});
 
                     throw new Error(
-                        validationMessages[0]
-                        || result.message
-                        || "The location could not be added."
+                        validationMessages[0] ||
+                        result.message ||
+                        "The location could not be added."
                     );
                 }
 

@@ -64,6 +64,7 @@ npm install
 ### Start the development server
 
 ```bash
+php -S localhost:8000
 npm run dev
 ```
 
