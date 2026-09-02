@@ -196,7 +196,7 @@ if (!ctype_digit($expectedMediaCountInput)) {
     $expectedMediaCount = (int) $expectedMediaCountInput;
 
     if ($expectedMediaCount < 1 || $expectedMediaCount > BCT_MAX_MEDIA_FILES) {
-        $errors['media_files'] = 'Select between 1 and 30 media files.';
+        $errors['media_files'] = 'Select between 1 and 20 media files.';
     }
 }
 

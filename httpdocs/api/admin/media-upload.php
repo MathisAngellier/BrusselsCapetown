@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-const BCT_MAX_MEDIA_FILES = 30;
+const BCT_MAX_MEDIA_FILES = 20;
 const BCT_MAX_IMAGE_BYTES = 15 * 1024 * 1024;
 const BCT_MAX_VIDEO_BYTES = 200 * 1024 * 1024;
 const BCT_MAX_TOTAL_MEDIA_BYTES = 350 * 1024 * 1024;

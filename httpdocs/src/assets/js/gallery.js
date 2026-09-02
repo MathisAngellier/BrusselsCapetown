@@ -1,5 +1,11 @@
-import { galleryLocations } from "./galleryData.js";
+import { galleryLocations as fallbackLocations } from "./galleryData.js";
+import { loadGalleryLocations } from "./gallerySource.js";
 import { getCurrentLanguage, getTranslation, initializeLanguage } from "./language.js";
+
+let galleryLocations = [];
+let galleryReady = false;
+let gallerySource = "loading";
+let galleryStatus;
 
 let map;
 let markers = [];
@@ -15,10 +21,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  const page = document.querySelector(".gallery-page");
+  page.setAttribute("aria-busy", "true");
+  document.getElementById("previousButton").disabled = true;
+  document.getElementById("nextButton").disabled = true;
+
+  galleryStatus = document.createElement("p");
+  galleryStatus.id = "galleryDataStatus";
+  galleryStatus.setAttribute("role", "status");
+  galleryStatus.setAttribute("aria-live", "polite");
+  document.querySelector(".gallery-intro").appendChild(galleryStatus);
+  updateGalleryStatus();
+
+  // Fetch the data while the existing language module loads its translations.
+  const galleryRequest = loadGalleryLocations(fallbackLocations);
+
   await initializeLanguage(() => {
     syncDocumentLanguage();
+    updateGalleryStatus();
+
+    if (!galleryReady) {
+      return;
+    }
 
     if (!galleryLocations.length) {
+      renderEmptyGallery();
       return;
     }
 
@@ -32,15 +59,53 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
+  const result = await galleryRequest;
+  galleryLocations = result.locations;
+  gallerySource = result.source;
+  page.dataset.source = gallerySource;
   syncDocumentLanguage();
+  updateGalleryStatus();
 
   initializeGallery();
+  galleryReady = true;
+  page.setAttribute("aria-busy", "false");
 });
+
+function updateGalleryStatus() {
+  const french = getCurrentLanguage() === "fr";
+  if (gallerySource === "loading") {
+    galleryStatus.textContent = french ? "Chargement du voyage…" : "Loading the journey…";
+    document.getElementById("locationName").textContent = french ? "Chargement…" : "Loading…";
+  } else if (gallerySource === "fallback") {
+    galleryStatus.textContent = french
+      ? "Les dernières étapes sont indisponibles. Affichage de la galerie de secours, qui peut être incomplète."
+      : "The latest stops are unavailable. Showing the backup gallery, which may be incomplete.";
+  } else {
+    galleryStatus.textContent = "";
+  }
+  galleryStatus.hidden = gallerySource === "database";
+}
+
+function renderEmptyGallery() {
+  document.getElementById("journey-map").hidden = true;
+  document.getElementById("locationName").textContent = getTranslation("no_journey_data");
+  document.getElementById("locationDate").textContent = "";
+  document.getElementById("locationNumber").textContent = "";
+  document.getElementById("locationDescription").textContent = "";
+  document.getElementById("locationDescription").hidden = true;
+  document.querySelector(".location-distance-row").hidden = true;
+  document.querySelector(".location-distance-row").style.display = "none";
+  document.getElementById("mediaGrid").replaceChildren();
+  document.getElementById("locationCounter").textContent = "0 / 0";
+  document.getElementById("progressCurrent").textContent = "00";
+  document.getElementById("progressTotal").textContent = "00";
+  document.getElementById("previousButton").disabled = true;
+  document.getElementById("nextButton").disabled = true;
+}
 
 function initializeGallery() {
   if (!Array.isArray(galleryLocations) || galleryLocations.length === 0) {
-    document.getElementById("locationName").textContent = getTranslation("no_journey_data");
-
+    renderEmptyGallery();
     return;
   }
 
@@ -201,7 +266,10 @@ function renderLocation(index, scrollToContent = false) {
 
   document.getElementById("locationDistance").textContent = isDepartureSlide ? getTranslation("day_of_departure") : formatDistance(location.distance);
 
-  document.getElementById("locationDescription").textContent = getLocalizedValue(location.description);
+  const descriptionElement = document.getElementById("locationDescription");
+  const description = getLocalizedValue(location.description);
+  descriptionElement.textContent = description;
+  descriptionElement.hidden = description.trim() === "";
 
   document.getElementById("locationNumber").textContent = formatNumber(index + 1);
 

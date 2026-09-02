@@ -306,7 +306,7 @@ $csrfToken = bctCsrfToken();
                         required>
 
                     <p class="file-summary" id="fileSummary">
-                        JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files.
+                        JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files.
                         Maximum 15 MB per image, 200 MB per video and 350 MB total.
                     </p>
                 </div>
@@ -335,7 +335,7 @@ $csrfToken = bctCsrfToken();
         const fileSummary = document.getElementById("fileSummary");
         const expectedMediaCount = document.getElementById("expectedMediaCount");
 
-        const maxFiles = 30;
+        const maxFiles = 20;
         const maxImageSize = 15 * 1024 * 1024;
         const maxVideoSize = 200 * 1024 * 1024;
         const maxTotalSize = 350 * 1024 * 1024;
@@ -401,7 +401,7 @@ $csrfToken = bctCsrfToken();
             const totalMegabytes = (totalBytes / 1024 / 1024).toFixed(1);
 
             fileSummary.textContent = fileCount === 0 ?
-                "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files. Maximum 15 MB per image, 200 MB per video and 350 MB total." :
+                "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files. Maximum 15 MB per image, 200 MB per video and 350 MB total." :
                 `${fileCount} file${fileCount === 1 ? "" : "s"} selected (${totalMegabytes} MB total).`;
         });
 
@@ -460,7 +460,7 @@ $csrfToken = bctCsrfToken();
                 formStatus.classList.add("success");
                 locationForm.reset();
                 expectedMediaCount.value = "0";
-                fileSummary.textContent = "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 30 files. Maximum 15 MB per image, 200 MB per video and 350 MB total.";
+                fileSummary.textContent = "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files. Maximum 15 MB per image, 200 MB per video and 350 MB total.";
             } catch (error) {
                 formStatus.textContent = error.message || "The location could not be added.";
                 formStatus.classList.add("error");
