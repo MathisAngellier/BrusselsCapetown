@@ -408,7 +408,9 @@
   right: 1.2rem;
 }
 
-/* Mobile */
+#locationDescription[hidden] + .media-grid {
+  margin-top: 2rem;
+}
 
 @media (max-width: 767px) {
   .gallery-intro {
