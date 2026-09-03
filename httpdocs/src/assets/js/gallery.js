@@ -370,14 +370,11 @@ function renderMedia(media) {
     if (item.type === "video") {
       card.innerHTML = `
           <video
-            src="${escapeAttribute(item.src)}"
-
+            src="${escapeAttribute(item.src)}#t=0.001"
             ${item.poster ? `poster="${escapeAttribute(item.poster)}"` : ""}
-
             muted
             playsinline
             preload="metadata"
-
             aria-label="${escapeAttribute(altText || getTranslation("video"))}">
           </video>
 
