@@ -75,7 +75,9 @@ See the admin documentation in the repository root for detailed editing, media-m
 
 ## Author
 
-Created by Mathis Angellier for his father's Brussels-to-Cape-Town cycling journey and fundraising project.
+This project was created for my father to document his cycling journey from Brussels to Cape Town and support the associated fundraising challenge.
+
+It is also a personal development project created to learn and gain practical experience with modern web development technologies.
 
 ## License
 
