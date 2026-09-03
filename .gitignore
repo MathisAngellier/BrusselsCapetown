@@ -6,5 +6,6 @@ src/dist/
 .env.*
 *.log
 /private/config.php
+/private/gallery-trash/
 /httpdocs/uploads/gallery/*
 !/httpdocs/uploads/gallery/.htaccess

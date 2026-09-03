@@ -237,9 +237,14 @@ function bctValidateMediaUploads(?array $files, int $expectedFileCount): array
     return $validatedFiles;
 }
 
-function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles): array
+function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles, int $startSortOrder = 0, bool $append = false): array
 {
     $galleryUploadRoot = dirname(__DIR__, 2) . '/uploads/gallery';
+
+    if ($locationId < 1 || $startSortOrder < 0 || $startSortOrder + count($mediaFiles) > 4294967295
+        || is_link(dirname($galleryUploadRoot)) || is_link($galleryUploadRoot)) {
+        throw new RuntimeException('Invalid gallery upload destination.');
+    }
 
     if (!is_dir($galleryUploadRoot) && !@mkdir($galleryUploadRoot, 0755, true)) {
         throw new RuntimeException('The gallery upload directory could not be created.');
@@ -250,13 +255,19 @@ function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles): array
     }
 
     $locationDirectory = $galleryUploadRoot . '/' . $locationId;
-
-    if (is_dir($locationDirectory) || !@mkdir($locationDirectory, 0755)) {
+    $directoryExists = is_dir($locationDirectory);
+    if (is_link($locationDirectory) || ($directoryExists && !$append)
+        || (!$directoryExists && !@mkdir($locationDirectory, 0755))) {
         throw new RuntimeException('The location upload directory could not be created.');
     }
 
+    if (!is_writable($locationDirectory) || dirname((string) realpath($locationDirectory)) !== realpath($galleryUploadRoot)) {
+        throw new RuntimeException('Invalid location upload directory.');
+    }
+
     $storedMedia = [
-        'directory' => $locationDirectory,
+        // Rollback may remove a newly created directory, never an existing one.
+        'directory' => $directoryExists ? null : $locationDirectory,
         'paths' => [],
     ];
 
@@ -279,7 +290,8 @@ function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles): array
     );
 
     try {
-        foreach ($mediaFiles as $sortOrder => $mediaFile) {
+        foreach (array_values($mediaFiles) as $index => $mediaFile) {
+            $sortOrder = $startSortOrder + $index;
             $fileName = sprintf(
                 '%03d-%s.%s',
                 $sortOrder + 1,
@@ -289,7 +301,8 @@ function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles): array
             $absolutePath = $locationDirectory . '/' . $fileName;
             $publicPath = '/uploads/gallery/' . $locationId . '/' . $fileName;
 
-            if (!@move_uploaded_file($mediaFile['tmp_name'], $absolutePath)) {
+            if (file_exists($absolutePath) || is_link($absolutePath)
+                || !@move_uploaded_file($mediaFile['tmp_name'], $absolutePath)) {
                 throw new RuntimeException('An uploaded file could not be stored.');
             }
 

@@ -48,7 +48,7 @@ bctAdminPageStart('Edit journey location');
         <?php else: ?>
             <p class="edit-summary">
                 Journey stop <?= (int) $location['journey_order'] ?> · <span id="editSummaryLocation"><?= bctAdminEscape($location['location_fr']) ?></span><br>
-                Existing photos, videos and journey order will stay unchanged, even if you change the date.
+                Saving these details keeps your media and journey order unchanged. Manage photos and videos separately below.
             </p>
             <noscript><p>Enable JavaScript to save changes using this form.</p></noscript>
             <form class="location-form" id="editLocationForm" action="/api/admin/update-location.php" method="post">
@@ -140,6 +140,36 @@ bctAdminPageStart('Edit journey location');
             </p>
         </form>
         <script src="/admin/edit-location.js" defer></script>
+        <section class="media-manager" id="mediaManager" aria-labelledby="mediaHeading"
+            data-location-id="<?= (int) $location['location_id'] ?>"
+            data-csrf-token="<?= bctAdminEscape(bctCsrfToken()) ?>">
+            <h2 id="mediaHeading">Photos and videos</h2>
+            <p class="form-note">Add files, remove individual items or change their display order. These actions do not save or reset the location details above.</p>
+            <p id="mediaStatus" class="form-status" role="status" aria-live="polite">Loading media...</p>
+            <div class="media-toolbar">
+                <button type="button" id="reloadMedia" class="logout-button">Reload media list</button>
+                <button type="button" id="saveMediaOrder" class="logout-button" disabled>Save order</button>
+                <button type="button" id="resetMediaOrder" class="logout-button" disabled>Discard order changes</button>
+            </div>
+            <p id="mediaOrderNote" class="form-note" hidden>Order changes are not saved yet. Save or discard them before uploading or deleting.</p>
+            <p id="mediaEmpty" hidden>No photos or videos yet. Add files below.</p>
+            <ol class="admin-media-list" id="adminMediaList" aria-label="Media in display order"></ol>
+            <form id="appendMediaForm" action="/api/admin/media.php" method="post" enctype="multipart/form-data">
+                <fieldset id="mediaUploadFields" class="edit-fields location-form" disabled>
+                    <legend>Add photos or videos</legend>
+                    <div class="form-field">
+                        <label for="additionalMediaFiles">Choose files</label>
+                        <input type="file" id="additionalMediaFiles" name="media_files[]" multiple required
+                            accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,video/x-m4v">
+                        <p class="file-summary" id="additionalMediaSummary">Up to 20 files per upload. 15 MB per image, 200 MB per video, 350 MB total. New files are added at the end.</p>
+                    </div>
+                    <p class="form-note">JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. HEIC is not supported. Some MOV codecs cannot play in every browser.</p>
+                    <button class="submit-button" id="uploadMoreMedia" type="submit">Upload files</button>
+                </fieldset>
+            </form>
+            <noscript><p>Enable JavaScript to manage media.</p></noscript>
+        </section>
+        <script type="module" src="/admin/media-manager.js"></script>
         <?php endif; ?>
     </main>
 </body>
