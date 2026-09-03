@@ -207,6 +207,38 @@ button:focus-visible {
     text-decoration: none;
 }
 
+.location-row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.danger-link {
+    color: #a00000;
+    border-color: #a00000;
+}
+
+.danger-button {
+    background: #a00000;
+    border-color: #a00000;
+}
+
+.delete-location-summary {
+    border-left: 4px solid #a00000;
+    padding: 4px 0 4px 20px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.delete-location-summary p {
+    margin: 0 0 12px;
+}
+
+.delete-location-summary p:last-child {
+    margin-bottom: 0;
+}
+
 .edit-fields {
     border: 0;
     padding: 0;

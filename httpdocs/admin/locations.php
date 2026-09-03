@@ -58,7 +58,12 @@ bctAdminPageStart('Manage journey locations');
                                 <th scope="row"><?= bctAdminEscape($location['location_fr']) ?></th>
                                 <td><?= (int) $location['photo_count'] ?></td>
                                 <td><?= (int) $location['video_count'] ?></td>
-                                <td><a class="edit-link" href="/admin/edit-location.php?id=<?= (int) $location['location_id'] ?>" aria-label="Edit <?= bctAdminEscape($location['location_fr']) ?>">Edit</a></td>
+                                <td>
+                                    <div class="location-row-actions">
+                                        <a class="edit-link" href="/admin/edit-location.php?id=<?= (int) $location['location_id'] ?>" aria-label="Edit <?= bctAdminEscape($location['location_fr']) ?>">Edit</a>
+                                        <a class="edit-link danger-link" href="/admin/delete-location.php?id=<?= (int) $location['location_id'] ?>" aria-label="Delete <?= bctAdminEscape($location['location_fr']) ?>">Delete</a>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
