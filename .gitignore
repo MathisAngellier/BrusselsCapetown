@@ -6,9 +6,6 @@ src/dist/
 .env.*
 *.log
 /private/config.php
-/private/gallery-import.config.php
-/private/gallery-import.manifest.json
-/private/gallery-import-run.jsonl
 /private/gallery-trash/
 /httpdocs/uploads/gallery/*
 !/httpdocs/uploads/gallery/.htaccess

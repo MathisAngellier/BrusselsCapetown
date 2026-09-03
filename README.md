@@ -1,104 +1,82 @@
 # BrusselsCapeTown
 
-BrusselsCapeTown is a website created to document and share a cycling journey from Brussels, Belgium to Cape Town, South Africa.
+BrusselsCapeTown documents a cycling journey from Brussels, Belgium, to Cape Town, South Africa. The website follows the route and shares locations, photos, videos and stories while supporting the journey's fundraising project.
 
-The website was built for my father, who will undertake this journey as a fundraising challenge. It will be used to share his route, locations, photos, videos and experiences throughout the journey.
-
-At the same time, this project is also a learning project for me. It gives me the opportunity to learn and practice different web development technologies by building a real website for a real-world project.
-
-## Project
-
-The project follows a cycling journey from Brussels to Cape Town.
-
-During the trip, my father will regularly send:
-
-- His location
-- Photos
-- Videos
-- Updates and stories
-
-These updates will be added to the website and displayed through the Journey Gallery, allowing visitors to follow the progress of the trip.
-
-The goal is to make it possible for visitors to see where the journey has reached and explore the photos and videos from each location.
-
-## Fundraising
-
-The cycling journey is being undertaken as a fundraising challenge.
-
-The website provides a central place to share the journey and raise awareness for the fundraising initiative.
-
-More information about the fundraising cause and how to support it can be found on the project page.
+The public website is available in English and French. Journey locations and media are managed through a protected admin panel and stored in a MySQL/MariaDB database.
 
 ## Technologies
 
-The current website is intentionally built without a frontend framework.
+- HTML5, CSS3 and JavaScript ES modules
+- Vite
+- PHP with PDO
+- MySQL or MariaDB
+- Leaflet and OpenStreetMap
+- DeepL API for French-to-English admin translations
+- Formspree for contact and newsletter forms
 
-- **HTML5**
-- **CSS3**
-- **JavaScript (ES Modules)**
-- **Vite**
-- **Leaflet**
-- **OpenStreetMap**
-- **Font Awesome**
-- **Formspree** for the contact/newsletter forms
+The frontend intentionally does not use a JavaScript framework.
 
-A framework refactor may be considered in the future.
+## Project structure
 
-## Running the project locally
+- `httpdocs/src` contains the Vite source files.
+- `httpdocs/public` contains static public assets.
+- `httpdocs/admin` contains the protected admin pages.
+- `httpdocs/api` contains the public gallery and protected admin endpoints.
+- `httpdocs/uploads/gallery` is used for uploaded gallery media and is ignored by Git, except for its security `.htaccess` file.
+- `private/config.php` contains local or hosting credentials and must never be committed.
 
-### Requirements
+## Running locally
 
-- Node.js
-- npm
+Requirements:
 
-### Install dependencies
+- Node.js and npm
+- PHP 8.1 or newer with PDO MySQL, fileinfo, mbstring and ctype
+- MySQL or MariaDB
 
-Clone the repository and install the dependencies:
+Install the frontend dependencies:
 
 ```bash
 git clone https://github.com/MathisAngellier/BrusselsCapetown.git
-cd BrusselsCapetown
+cd BrusselsCapetown/httpdocs
 npm install
 ```
 
-### Start the development server
+Create `private/config.php` in the repository root with the local database and DeepL settings. Do not use production credentials locally or commit this file.
+
+Start PHP from the repository root:
 
 ```bash
-php -S localhost:8000
+php -S localhost:8000 -t httpdocs
+```
+
+In another terminal, start Vite from `httpdocs`:
+
+```bash
 npm run dev
 ```
 
-Vite will start a local development server. Open the URL shown in the terminal, normally:
+Open the URL printed by Vite, normally `http://localhost:5173`.
 
-```text
-http://localhost:5173
-```
+## Production build
 
-### Build for production
+From `httpdocs`:
 
 ```bash
 npm run build
 ```
 
-## Languages
+Vite writes the frontend build to `httpdocs/dist`. PHP admin/API files, uploaded media and the private configuration are not part of that build and must be deployed or backed up separately.
 
-The website currently supports:
+## Admin panel
 
-- English
-- French
+The admin panel can add, edit and delete journey locations and manage their photos and videos. French location and description text is translated to English before both languages are stored. Changes made on production are visible in the public gallery immediately; there is no separate publish step.
 
-The language system is implemented with JavaScript and JSON.
+See the admin documentation in the repository root for detailed editing, media-management and deletion behavior.
 
 ## Author
 
-**Mathis Angellier**
-
-This project was created for my father to document his cycling journey from Brussels to Cape Town and support the associated fundraising challenge.
-
-It is also a personal development project created to learn and gain practical experience with modern web development technologies.
+Created by Mathis Angellier for his father's Brussels-to-Cape-Town cycling journey and fundraising project.
 
 ## License
 
-This a personal project.
-
-Unless otherwise specified, the website's original code, text, photography and other original content should not be reused without permission.
+This is a personal project. Unless otherwise specified, its original code, text, photography and other original content may not be reused without permission.

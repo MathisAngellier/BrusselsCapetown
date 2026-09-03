@@ -10,7 +10,7 @@ Open **Manage locations → Edit**, then scroll to **Photos and videos**. The te
 - **Delete** asks for confirmation and removes only the selected media record and file. Deleting the last item is allowed; the journey location itself stays.
 - **Reload media list** refreshes only media, not the location form. After a failed/uncertain request or a stale list, reload before trying another mutation. Selected upload files are only cleared after confirmed success.
 
-No SQL migration, new production dependency, thumbnail generation or public-gallery CSS change is required. The frontend already reads `sort_order` from the database, so reload `/gallery` to see saved changes. There is no draft/publish step: on production, completed actions affect subsequent gallery loads immediately.
+The frontend reads `sort_order` from the database, so reload `/gallery` to see saved changes. There is no draft/publish step: on production, completed actions affect subsequent gallery loads immediately.
 
 ## Endpoint and safety
 
@@ -39,7 +39,7 @@ These are exceptional recovery instructions, not a normal extra step for each de
 
 ## Local acceptance checks
 
-1. Pull `admin-gallery`; run the existing Laragon/PHP and Vite setup. No configuration keys were added.
+1. Pull `main` and run the Laragon/PHP and Vite setup described in `README.md`.
 2. Open a location with both a photo and a video. Verify previews/playback on desktop and the intended mobile browser.
 3. Enter an unsaved text change, then upload an extra file. The text must remain in the form; originals must remain present on disk and in the database.
 4. Move a media item, confirm nothing changes on `/gallery` before **Save order**, then save and reload the gallery.
@@ -48,28 +48,4 @@ These are exceptional recovery instructions, not a normal extra step for each de
 7. Open the same location in two tabs. Save an order or upload in one; a mutation from the older list must report a conflict until reloaded.
 8. Log out and verify media actions are rejected. Recheck adding a completely new location with media.
 
-The shared private directory's permissions and actual MySQL locks must be verified on Laragon/Cloud86. No live database, uploads or deployment were touched while implementing this feature.
-
-## Automated tests
-
-Pure JavaScript controller/validation tests need only Node:
-
-```sh
-node --test tests/admin-media-ui.test.mjs
-```
-
-The PHP integration suite uses a disposable virtual filesystem and real PHP multipart uploads. Only the database bootstrap is replaced with SQLite, and `FOR UPDATE` is simulated. It exercises filesystem rollback, failed/ambiguous commits, upload validation, existing-file preservation, ownership, CSRF and stale-list protection without private configuration or network services.
-
-Install test tooling in a separate temporary directory, outside this repository:
-
-```sh
-npm install --prefix /path/to/test-tools @php-wasm/cli@3.1.52
-```
-
-Then set `BCT_PHP_WASM_MODULES` to that directory's `node_modules` and run:
-
-```sh
-node --test tests/admin-media.test.mjs
-```
-
-Existing text-edit tests and `npm run build` (from `httpdocs`) should continue to pass. The PHP/admin files are served directly and are not included in Vite's `dist`. A later deployment must include the changed `admin` and `api/admin` files; do not deploy test tooling or the `tests` directory into the webroot.
+The shared private directory's permissions and actual MySQL locks must be verified on Laragon and Cloud86. PHP/admin files are served directly and are not included in Vite's `dist`.

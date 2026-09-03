@@ -42,22 +42,4 @@ Once the database deletion is confirmed, private staged files are removed. Clean
 6. Open a confirmation page in one tab and edit/upload/reorder that location in another. The old confirmation must be rejected until reloaded.
 7. Log out and verify the confirmation page and API cannot be used.
 
-Actual MySQL locking, filesystem permissions and browser behavior still require local Laragon/Cloud86 checks. Implementation/testing does not delete live data, merge to `main` or deploy the website.
-
-## Automated tests
-
-From the repository root:
-
-```sh
-node --test tests/admin-delete-location-ui.test.mjs
-```
-
-For PHP integration tests, use the same separate `@php-wasm/cli@3.1.52` tooling and `BCT_PHP_WASM_MODULES` setup documented in [ADMIN_MEDIA_MANAGEMENT.md](ADMIN_MEDIA_MANAGEMENT.md):
-
-```sh
-node --test tests/admin-delete-location.test.mjs
-```
-
-Tests execute the production page, endpoint and filesystem helpers in a disposable virtual filesystem. SQLite has a real cascading foreign key; only the database bootstrap and MySQL locking behavior are simulated. Coverage includes partial staging failure, rollback, missing cascades/files, restoration conflicts, ambiguous commits, unregistered-file preservation, cross-location isolation, stale confirmations, authentication, CSRF, name validation and escaped page output.
-
-Run the existing media and text-edit suites as regression checks. Admin PHP/JS/CSS are served directly, not bundled into Vite's `dist`; include the changed admin/API files in any later deployment and keep test tooling out of the webroot.
+Actual MySQL locking, filesystem permissions and browser behavior should be checked locally before changing production data. Admin PHP/JS/CSS are served directly and are not bundled into Vite's `dist`.
