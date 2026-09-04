@@ -26,8 +26,13 @@ Apply after the backup succeeds:
   php scripts/optimize-existing-gallery-image.php --expect-database=DATABASE --media-id=123 \
     --expect-item=ITEM_SHA256 --backup-manifest=/absolute/path/to/backup-manifest.json --apply
 
+Restore the original after an applied conversion:
+  php scripts/optimize-existing-gallery-image.php --expect-database=DATABASE --media-id=123 \
+    --expect-item=ITEM_SHA256 --backup-manifest=/absolute/path/to/backup-manifest.json --restore
+
 The apply mode refuses multiple media IDs, existing WebP files, changed rows, changed source
-files, missing backups, backups inside httpdocs, and database-name mismatches.
+files, missing backups, backups inside httpdocs, and database-name mismatches. Restore never
+overwrites a file and keeps the optimized WebP as an additional recovery copy.
 TEXT;
 }
 
@@ -314,6 +319,168 @@ function bctOptimizerVerifyBackup(
     }
 }
 
+function bctOptimizerReadCurrentRow(PDO $pdo, int $mediaId, bool $lock = false): ?array
+{
+    $sql = 'SELECT media_id, location_id, media_type, file_path, mime_type, file_size, sort_order
+            FROM gallery_media WHERE media_id = :media_id' . ($lock ? ' FOR UPDATE' : '');
+    $statement = $pdo->prepare($sql);
+    $statement->execute(['media_id' => $mediaId]);
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+    return is_array($row) ? $row : null;
+}
+
+function bctOptimizerLoadRestoreBackup(
+    string $manifestPath,
+    int $mediaId,
+    string $expectedItemHash,
+    string $databaseName,
+    string $webRoot
+): array {
+    if (!bctOptimizerIsAbsolutePath($manifestPath)) {
+        throw new RuntimeException('--backup-manifest must be an absolute path.');
+    }
+    $realManifestPath = realpath($manifestPath);
+    if ($realManifestPath === false || !is_file($realManifestPath)
+        || bctOptimizerPathIsWithin($realManifestPath, $webRoot)) {
+        throw new RuntimeException('The backup manifest is missing or is inside httpdocs.');
+    }
+
+    $manifestBytes = file_get_contents($realManifestPath);
+    $manifest = is_string($manifestBytes)
+        ? json_decode($manifestBytes, true, 64, JSON_THROW_ON_ERROR)
+        : null;
+    $item = is_array($manifest) && is_array($manifest['item'] ?? null)
+        ? $manifest['item']
+        : null;
+    if (!is_array($manifest) || ($manifest['version'] ?? null) !== 1
+        || ($manifest['database'] ?? null) !== $databaseName
+        || !is_array($item)
+        || ($item['media_id'] ?? null) !== $mediaId
+        || ($item['item_sha256'] ?? null) !== $expectedItemHash) {
+        throw new RuntimeException('The backup manifest does not match the requested database item.');
+    }
+
+    $itemForHash = $item;
+    unset($itemForHash['item_sha256']);
+    $calculatedItemHash = hash(
+        'sha256',
+        json_encode($itemForHash, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES)
+    );
+    if (!hash_equals($expectedItemHash, $calculatedItemHash)) {
+        throw new RuntimeException('The backup manifest item failed its integrity check.');
+    }
+
+    $backupFileName = $manifest['backup_file'] ?? null;
+    $backupHash = $manifest['backup_sha256'] ?? null;
+    if (!is_string($backupFileName) || $backupFileName !== basename($backupFileName)
+        || !is_string($backupHash) || !preg_match('/^[a-f0-9]{64}$/D', $backupHash)) {
+        throw new RuntimeException('The backup manifest contains an invalid backup reference.');
+    }
+    $backupPath = dirname($realManifestPath) . '/' . $backupFileName;
+    $realBackupPath = realpath($backupPath);
+    $actualBackupHash = $realBackupPath !== false && is_file($realBackupPath)
+        ? hash_file('sha256', $realBackupPath)
+        : false;
+    if ($realBackupPath === false || dirname($realBackupPath) !== dirname($realManifestPath)
+        || !is_string($actualBackupHash)
+        || !hash_equals($backupHash, $actualBackupHash)
+        || !hash_equals((string) ($item['source_sha256'] ?? ''), $actualBackupHash)) {
+        throw new RuntimeException('The backup file failed its integrity check.');
+    }
+
+    return ['item' => $item, 'backup_path' => $realBackupPath];
+}
+
+function bctOptimizerRestore(PDO $pdo, array $backup, string $uploadRoot): array
+{
+    $item = $backup['item'];
+    $mediaId = (int) $item['media_id'];
+    $locationId = (int) $item['location_id'];
+    $originalPublicPath = (string) $item['file_path'];
+    $expectedOriginalPath = '/uploads/gallery/' . $locationId . '/' . basename($originalPublicPath);
+    if ($mediaId < 1 || $locationId < 1 || $originalPublicPath !== $expectedOriginalPath
+        || preg_match('~\.(?:jpe?g|png|gif)\z~i', $originalPublicPath) !== 1) {
+        throw new RuntimeException('The manifest contains an unsafe original path.');
+    }
+
+    $locationDirectory = realpath($uploadRoot . '/' . $locationId);
+    $realUploadRoot = realpath($uploadRoot);
+    if ($locationDirectory === false || $realUploadRoot === false
+        || dirname($locationDirectory) !== $realUploadRoot || is_link($locationDirectory)) {
+        throw new RuntimeException('The original gallery directory is unsafe or missing.');
+    }
+    $originalPath = $locationDirectory . '/' . basename($originalPublicPath);
+    if (file_exists($originalPath) || is_link($originalPath)) {
+        throw new RuntimeException('Restore refused because the original destination already exists.');
+    }
+
+    $temporaryPath = $originalPath . '.restore-' . bin2hex(random_bytes(8)) . '.tmp';
+    if (!copy($backup['backup_path'], $temporaryPath)) {
+        throw new RuntimeException('The original file could not be copied from the backup.');
+    }
+    @chmod($temporaryPath, 0644);
+    $restoredHash = hash_file('sha256', $temporaryPath);
+    if (!is_string($restoredHash) || !hash_equals((string) $item['source_sha256'], $restoredHash)
+        || !rename($temporaryPath, $originalPath)) {
+        @unlink($temporaryPath);
+        throw new RuntimeException('The restored file failed verification or could not be finalized.');
+    }
+
+    $optimizedPublicPath = null;
+    try {
+        $pdo->beginTransaction();
+        $current = bctOptimizerReadCurrentRow($pdo, $mediaId, true);
+        $optimizedPattern = '~\A/uploads/gallery/' . $locationId . '/[A-Za-z0-9_-]+\.webp\z~i';
+        if (!is_array($current) || (int) $current['location_id'] !== $locationId
+            || ($current['media_type'] ?? '') !== 'image'
+            || ($current['mime_type'] ?? '') !== 'image/webp'
+            || preg_match($optimizedPattern, (string) ($current['file_path'] ?? '')) !== 1) {
+            throw new RuntimeException('The current database row is not the expected optimized image.');
+        }
+        $optimizedPublicPath = (string) $current['file_path'];
+
+        $statement = $pdo->prepare(
+            'UPDATE gallery_media
+             SET file_path = :file_path, mime_type = :mime_type, file_size = :file_size
+             WHERE media_id = :media_id AND location_id = :location_id AND file_path = :current_path'
+        );
+        $statement->execute([
+            'file_path' => $originalPublicPath,
+            'mime_type' => (string) $item['database_mime_type'],
+            'file_size' => (int) $item['database_file_size'],
+            'media_id' => $mediaId,
+            'location_id' => $locationId,
+            'current_path' => $optimizedPublicPath,
+        ]);
+        if ($statement->rowCount() !== 1 || !$pdo->commit()) {
+            throw new RuntimeException('The database refused the guarded restore update.');
+        }
+    } catch (Throwable $error) {
+        if ($pdo->inTransaction()) {
+            try {
+                $pdo->rollBack();
+            } catch (Throwable $rollbackError) {
+                // Verify the authoritative database state below.
+            }
+        }
+        try {
+            $current = bctOptimizerReadCurrentRow($pdo, $mediaId);
+        } catch (Throwable $stateError) {
+            throw new RuntimeException(
+                'The database state is uncertain. The restored original and optimized WebP were both kept.',
+                0,
+                $error
+            );
+        }
+        if (($current['file_path'] ?? null) !== $originalPublicPath) {
+            @unlink($originalPath);
+            throw $error;
+        }
+    }
+
+    return ['file_path' => $originalPublicPath, 'kept_webp' => $optimizedPublicPath];
+}
+
 function bctOptimizerApply(PDO $pdo, array $item, string $uploadRoot): array
 {
     $locationDirectory = dirname($item['source_path']);
@@ -433,6 +600,7 @@ $options = getopt('', [
     'backup:',
     'backup-manifest:',
     'apply',
+    'restore',
 ]);
 if ($options === false) {
     bctOptimizerFail('The command-line options could not be parsed.');
@@ -451,18 +619,26 @@ $expectedItemHash = bctOptimizerOptionString($options, 'expect-item');
 $backupDirectory = bctOptimizerOptionString($options, 'backup');
 $backupManifest = bctOptimizerOptionString($options, 'backup-manifest');
 $apply = isset($options['apply']);
+$restore = isset($options['restore']);
 
-if ($backupDirectory !== null && ($apply || $backupManifest !== null)) {
+if ($apply && $restore) {
+    bctOptimizerFail('--apply and --restore cannot be combined.');
+}
+if ($backupDirectory !== null && ($apply || $restore || $backupManifest !== null)) {
     bctOptimizerFail('--backup cannot be combined with --apply or --backup-manifest.');
 }
 if ($apply && ($mediaId === null || $expectedItemHash === null || $backupManifest === null)) {
     bctOptimizerFail('--apply requires --media-id, --expect-item and --backup-manifest.');
 }
+if ($restore && ($mediaId === null || $expectedItemHash === null || $backupManifest === null)) {
+    bctOptimizerFail('--restore requires --media-id, --expect-item and --backup-manifest.');
+}
 if ($backupDirectory !== null && ($mediaId === null || $expectedItemHash === null)) {
     bctOptimizerFail('--backup requires --media-id and --expect-item.');
 }
-if (!$apply && $backupDirectory === null && ($expectedItemHash !== null || $backupManifest !== null)) {
-    bctOptimizerFail('--expect-item and --backup-manifest are only valid for backup/apply operations.');
+if (!$apply && !$restore && $backupDirectory === null
+    && ($expectedItemHash !== null || $backupManifest !== null)) {
+    bctOptimizerFail('--expect-item and --backup-manifest are only valid for backup, apply or restore operations.');
 }
 if ($expectedItemHash !== null && !preg_match('/^[a-f0-9]{64}$/D', $expectedItemHash)) {
     bctOptimizerFail('--expect-item must be a lowercase SHA-256 value.');
@@ -481,6 +657,21 @@ try {
     $webRoot = realpath(dirname(__DIR__) . '/httpdocs');
     if ($webRoot === false || realpath($uploadRoot) === false) {
         throw new RuntimeException('The gallery upload root is missing.');
+    }
+
+    if ($restore) {
+        $backup = bctOptimizerLoadRestoreBackup(
+            $backupManifest,
+            $mediaId,
+            $expectedItemHash,
+            $databaseName,
+            $webRoot
+        );
+        $result = bctOptimizerRestore($pdo, $backup, $uploadRoot);
+        echo 'Restored media ' . $mediaId . ' to its original file.' . PHP_EOL;
+        echo 'Restored path: ' . $result['file_path'] . PHP_EOL;
+        echo 'Safety copy kept: ' . $result['kept_webp'] . PHP_EOL;
+        exit(0);
     }
 
     $rows = bctOptimizerReadRows($pdo, $mediaId);

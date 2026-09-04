@@ -108,6 +108,19 @@ php scripts/optimize-existing-gallery-image.php \
 
 The new WebP receives a unique filename. The database is updated only after the output file passes verification, and the original is removed only after the database commit succeeds. Changed rows, changed files, missing backups and database-name mismatches are refused.
 
+If an applied conversion must be undone, restore that one media item with the same manifest and item hash:
+
+```bash
+php scripts/optimize-existing-gallery-image.php \
+  --expect-database=brusselscapetown \
+  --media-id=123 \
+  --expect-item=ITEM_SHA256 \
+  --backup-manifest=/absolute/path/gallery-image-123-backup/backup-manifest.json \
+  --restore
+```
+
+Restore verifies the manifest and original file again, refuses to overwrite an existing path, and updates the database inside a guarded transaction. The optimized WebP is deliberately kept after a successful restore, so it can be removed manually only after the restored image has been checked in the admin panel and public gallery.
+
 ## Author
 
 This project was created for my father to document his cycling journey from Brussels to Cape Town and support the associated fundraising challenge.
