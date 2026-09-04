@@ -224,6 +224,33 @@
   justify-content: center;
 }
 
+.media-load-sentinel {
+  display: flex;
+  flex: 0 0 100%;
+  min-height: 1px;
+  justify-content: center;
+}
+
+.gallery-load-more {
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #b77b3a;
+  border-radius: 999px;
+  background: transparent;
+  color: #6f4721;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gallery-load-more:hover,
+.gallery-load-more:focus-visible {
+  background: #b77b3a;
+  color: #fff;
+}
+
 .media-card {
   position: relative;
   height: 280px;

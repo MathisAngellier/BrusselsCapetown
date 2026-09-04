@@ -15,6 +15,9 @@ let currentIndex = 0;
 
 let lightboxIndex = 0;
 let currentLightboxMedia = [];
+const MEDIA_BATCH_SIZE = 6;
+let mediaBatchObserver = null;
+let mediaRenderVersion = 0;
 
 document.addEventListener("DOMContentLoaded", async () => {
   if (!document.getElementById("journey-map")) {
@@ -342,7 +345,15 @@ function updateMarkerState() {
 function renderMedia(media) {
   const grid = document.getElementById("mediaGrid");
 
-  grid.innerHTML = "";
+  mediaRenderVersion += 1;
+  const renderVersion = mediaRenderVersion;
+
+  if (mediaBatchObserver) {
+    mediaBatchObserver.disconnect();
+    mediaBatchObserver = null;
+  }
+
+  grid.replaceChildren();
 
   if (!media.length) {
     const message = document.createElement("p");
@@ -356,19 +367,69 @@ function renderMedia(media) {
     return;
   }
 
-  media.forEach((item, index) => {
-    const card = document.createElement("article");
+  let nextMediaIndex = 0;
+  const loadMore = document.createElement("button");
+  loadMore.type = "button";
+  loadMore.className = "gallery-load-more";
+  loadMore.textContent = getCurrentLanguage() === "fr" ? "Afficher plus" : "Load more";
 
-    card.className = "media-card";
+  const sentinel = document.createElement("div");
+  sentinel.className = "media-load-sentinel";
+  sentinel.appendChild(loadMore);
 
-    card.setAttribute("tabindex", "0");
+  const appendNextBatch = () => {
+    if (renderVersion !== mediaRenderVersion) {
+      return;
+    }
 
-    card.setAttribute("role", "button");
+    mediaBatchObserver?.unobserve(sentinel);
+    sentinel.remove();
 
-    const altText = getLocalizedValue(item.alt);
+    const fragment = document.createDocumentFragment();
+    const batchEnd = Math.min(nextMediaIndex + MEDIA_BATCH_SIZE, media.length);
+    for (let index = nextMediaIndex; index < batchEnd; index += 1) {
+      fragment.appendChild(createMediaCard(media[index], media, index));
+    }
+    nextMediaIndex = batchEnd;
+    grid.appendChild(fragment);
 
-    if (item.type === "video") {
-      card.innerHTML = `
+    if (nextMediaIndex < media.length) {
+      grid.appendChild(sentinel);
+      mediaBatchObserver?.observe(sentinel);
+    } else if (mediaBatchObserver) {
+      mediaBatchObserver.disconnect();
+      mediaBatchObserver = null;
+    }
+  };
+
+  loadMore.addEventListener("click", appendNextBatch);
+
+  if ("IntersectionObserver" in window) {
+    mediaBatchObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        appendNextBatch();
+      }
+    }, {
+      rootMargin: "500px 0px",
+    });
+  }
+
+  appendNextBatch();
+}
+
+function createMediaCard(item, media, index) {
+  const card = document.createElement("article");
+
+  card.className = "media-card";
+
+  card.setAttribute("tabindex", "0");
+
+  card.setAttribute("role", "button");
+
+  const altText = getLocalizedValue(item.alt);
+
+  if (item.type === "video") {
+    card.innerHTML = `
           <video
             src="${escapeAttribute(item.src)}#t=0.001"
             ${item.poster ? `poster="${escapeAttribute(item.poster)}"` : ""}
@@ -395,8 +456,8 @@ function renderMedia(media) {
 
           </div>
         `;
-    } else {
-      card.innerHTML = `
+  } else {
+    card.innerHTML = `
           <img
             src="${escapeAttribute(item.src)}"
 
@@ -419,22 +480,21 @@ function renderMedia(media) {
 
           </div>
         `;
-    }
+  }
 
-    card.addEventListener("click", () => {
-      openLightbox(media, index);
-    });
-
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-
-        openLightbox(media, index);
-      }
-    });
-
-    grid.appendChild(card);
+  card.addEventListener("click", () => {
+    openLightbox(media, index);
   });
+
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+
+      openLightbox(media, index);
+    }
+  });
+
+  return card;
 }
 
 function setupNavigation() {

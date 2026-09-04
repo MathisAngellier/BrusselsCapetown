@@ -4,6 +4,30 @@ Options -Indexes
     Require all denied
 </FilesMatch>
 
+<FilesMatch "\.part$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>
+
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
+
+    <FilesMatch "\.(?:jpe?g|png|webp|gif|mp4|webm|mov|m4v)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
+    ExpiresByType video/webm "access plus 1 year"
+    ExpiresByType video/quicktime "access plus 1 year"
+    ExpiresByType video/x-m4v "access plus 1 year"
 </IfModule>

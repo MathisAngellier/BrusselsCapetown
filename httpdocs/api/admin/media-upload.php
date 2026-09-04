@@ -6,6 +6,9 @@ const BCT_MAX_MEDIA_FILES = 20;
 const BCT_MAX_IMAGE_BYTES = 15 * 1024 * 1024;
 const BCT_MAX_VIDEO_BYTES = 200 * 1024 * 1024;
 const BCT_MAX_TOTAL_MEDIA_BYTES = 350 * 1024 * 1024;
+const BCT_MAX_IMAGE_LONG_EDGE = 2560;
+const BCT_MAX_IMAGE_PIXELS = 60000000;
+const BCT_WEBP_QUALITY = 82;
 
 function bctIniSizeToBytes(string $value): int
 {
@@ -206,6 +209,10 @@ function bctValidateMediaUploads(?array $files, int $expectedFileCount): array
 
         $typeSettings = $allowedTypes[$mimeType];
 
+        if ($typeSettings['media_type'] === 'image') {
+            bctAssertImageOptimizationSupport($mimeType);
+        }
+
         if ($fileSize > $typeSettings['max_bytes']) {
             $maximumMegabytes = (int) ($typeSettings['max_bytes'] / 1024 / 1024);
 
@@ -235,6 +242,215 @@ function bctValidateMediaUploads(?array $files, int $expectedFileCount): array
     }
 
     return $validatedFiles;
+}
+
+function bctAssertImageOptimizationSupport(string $mimeType): void
+{
+    $requiredFunctions = [
+        'getimagesize',
+        'imagecreatefromstring',
+        'imagecreatetruecolor',
+        'imagecopyresampled',
+        'imagewebp',
+        'imageflip',
+        'imagerotate',
+        'imagetypes',
+    ];
+    foreach ($requiredFunctions as $function) {
+        if (!function_exists($function)) {
+            throw new RuntimeException('The PHP GD extension with WebP support is required for image uploads.');
+        }
+    }
+
+    if (!defined('IMG_WEBP') || (imagetypes() & IMG_WEBP) !== IMG_WEBP) {
+        throw new RuntimeException('The PHP GD extension does not support WebP output.');
+    }
+
+    $sourceTypeFlags = [
+        'image/jpeg' => defined('IMG_JPG') ? IMG_JPG : 0,
+        'image/png' => defined('IMG_PNG') ? IMG_PNG : 0,
+        'image/gif' => defined('IMG_GIF') ? IMG_GIF : 0,
+        'image/webp' => IMG_WEBP,
+    ];
+    $sourceTypeFlag = $sourceTypeFlags[$mimeType] ?? 0;
+    if ($sourceTypeFlag === 0 || (imagetypes() & $sourceTypeFlag) !== $sourceTypeFlag) {
+        throw new RuntimeException('The PHP GD extension cannot decode this image type.');
+    }
+
+    if ($mimeType === 'image/jpeg' && !function_exists('exif_read_data')) {
+        throw new RuntimeException('The PHP EXIF extension is required to optimize JPEG uploads safely.');
+    }
+}
+
+function bctReadJpegOrientation(string $path, string $mimeType): int
+{
+    if ($mimeType !== 'image/jpeg') {
+        return 1;
+    }
+
+    if (!function_exists('exif_read_data')) {
+        throw new RuntimeException('The PHP EXIF extension is required to optimize JPEG uploads safely.');
+    }
+
+    $exif = @exif_read_data($path, 'IFD0', true, false);
+    if (!is_array($exif)) {
+        return 1;
+    }
+
+    $orientation = (int) ($exif['IFD0']['Orientation'] ?? $exif['Orientation'] ?? 1);
+    return $orientation >= 1 && $orientation <= 8 ? $orientation : 1;
+}
+
+function bctRotateImage($image, int $angle)
+{
+    $rotated = @imagerotate($image, $angle, 0);
+    if ($rotated === false) {
+        throw new RuntimeException('The uploaded photo orientation could not be applied.');
+    }
+
+    imagealphablending($rotated, false);
+    imagesavealpha($rotated, true);
+    imagedestroy($image);
+    return $rotated;
+}
+
+function bctApplyImageOrientation($image, int $orientation)
+{
+    try {
+        switch ($orientation) {
+            case 2:
+                if (!imageflip($image, IMG_FLIP_HORIZONTAL)) {
+                    throw new RuntimeException('The uploaded photo orientation could not be applied.');
+                }
+                break;
+            case 3:
+                $image = bctRotateImage($image, 180);
+                break;
+            case 4:
+                if (!imageflip($image, IMG_FLIP_VERTICAL)) {
+                    throw new RuntimeException('The uploaded photo orientation could not be applied.');
+                }
+                break;
+            case 5:
+                $image = bctRotateImage($image, -90);
+                if (!imageflip($image, IMG_FLIP_HORIZONTAL)) {
+                    throw new RuntimeException('The uploaded photo orientation could not be applied.');
+                }
+                break;
+            case 6:
+                $image = bctRotateImage($image, -90);
+                break;
+            case 7:
+                $image = bctRotateImage($image, 90);
+                if (!imageflip($image, IMG_FLIP_HORIZONTAL)) {
+                    throw new RuntimeException('The uploaded photo orientation could not be applied.');
+                }
+                break;
+            case 8:
+                $image = bctRotateImage($image, 90);
+                break;
+        }
+    } catch (Throwable $error) {
+        imagedestroy($image);
+        throw $error;
+    }
+
+    return $image;
+}
+
+/** Decode, orient and resize an uploaded image, then atomically store a metadata-free WebP. */
+function bctOptimizeImageUpload(string $sourcePath, string $destinationPath, string $mimeType): array
+{
+    bctAssertImageOptimizationSupport($mimeType);
+
+    $imageInfo = @getimagesize($sourcePath);
+    $sourceWidth = (int) ($imageInfo[0] ?? 0);
+    $sourceHeight = (int) ($imageInfo[1] ?? 0);
+    if ($sourceWidth < 1 || $sourceHeight < 1
+        || $sourceWidth > intdiv(BCT_MAX_IMAGE_PIXELS, $sourceHeight)) {
+        throw new InvalidArgumentException('An uploaded photo has invalid or excessively large dimensions.');
+    }
+
+    $orientation = bctReadJpegOrientation($sourcePath, $mimeType);
+    $sourceBytes = @file_get_contents($sourcePath);
+    if (!is_string($sourceBytes) || $sourceBytes === '') {
+        throw new RuntimeException('An uploaded photo could not be read for optimization.');
+    }
+
+    $sourceImage = @imagecreatefromstring($sourceBytes);
+    unset($sourceBytes);
+    if ($sourceImage === false) {
+        throw new InvalidArgumentException('An uploaded photo could not be decoded.');
+    }
+
+    $scale = min(1, BCT_MAX_IMAGE_LONG_EDGE / max($sourceWidth, $sourceHeight));
+    $targetWidth = max(1, (int) round($sourceWidth * $scale));
+    $targetHeight = max(1, (int) round($sourceHeight * $scale));
+    $optimizedImage = imagecreatetruecolor($targetWidth, $targetHeight);
+    if ($optimizedImage === false) {
+        imagedestroy($sourceImage);
+        throw new RuntimeException('The optimized photo canvas could not be created.');
+    }
+
+    imagealphablending($optimizedImage, false);
+    imagesavealpha($optimizedImage, true);
+    $transparent = imagecolorallocatealpha($optimizedImage, 0, 0, 0, 127);
+    imagefill($optimizedImage, 0, 0, $transparent);
+
+    $resampled = imagecopyresampled(
+        $optimizedImage,
+        $sourceImage,
+        0,
+        0,
+        0,
+        0,
+        $targetWidth,
+        $targetHeight,
+        $sourceWidth,
+        $sourceHeight
+    );
+    imagedestroy($sourceImage);
+    if (!$resampled) {
+        imagedestroy($optimizedImage);
+        throw new RuntimeException('The uploaded photo could not be resized.');
+    }
+
+    $partialPath = $destinationPath . '.part';
+    try {
+        $optimizedImage = bctApplyImageOrientation($optimizedImage, $orientation);
+        try {
+            if (file_exists($partialPath) || is_link($partialPath)
+                || !@imagewebp($optimizedImage, $partialPath, BCT_WEBP_QUALITY)) {
+                throw new RuntimeException('The optimized WebP photo could not be written.');
+            }
+        } finally {
+            imagedestroy($optimizedImage);
+        }
+
+        clearstatcache(true, $partialPath);
+        $fileSize = filesize($partialPath);
+        $storedInfo = @getimagesize($partialPath);
+        $storedMimeType = is_array($storedInfo) ? ($storedInfo['mime'] ?? '') : '';
+        if ($fileSize === false || $fileSize <= 0 || $storedMimeType !== 'image/webp'
+            || max((int) ($storedInfo[0] ?? 0), (int) ($storedInfo[1] ?? 0)) > BCT_MAX_IMAGE_LONG_EDGE) {
+            throw new RuntimeException('The optimized WebP photo failed verification.');
+        }
+
+        @chmod($partialPath, 0644);
+        if (!@rename($partialPath, $destinationPath)) {
+            throw new RuntimeException('The optimized WebP photo could not be stored.');
+        }
+    } catch (Throwable $error) {
+        if (is_file($partialPath)) {
+            @unlink($partialPath);
+        }
+        throw $error;
+    }
+
+    return [
+        'mime_type' => 'image/webp',
+        'file_size' => (int) $fileSize,
+    ];
 }
 
 function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles, int $startSortOrder = 0, bool $append = false): array
@@ -292,28 +508,45 @@ function bctStoreMediaFiles(PDO $pdo, int $locationId, array $mediaFiles, int $s
     try {
         foreach (array_values($mediaFiles) as $index => $mediaFile) {
             $sortOrder = $startSortOrder + $index;
+            $storedExtension = $mediaFile['media_type'] === 'image'
+                ? 'webp'
+                : $mediaFile['extension'];
             $fileName = sprintf(
                 '%03d-%s.%s',
                 $sortOrder + 1,
                 bin2hex(random_bytes(16)),
-                $mediaFile['extension']
+                $storedExtension
             );
             $absolutePath = $locationDirectory . '/' . $fileName;
             $publicPath = '/uploads/gallery/' . $locationId . '/' . $fileName;
+            $storedMedia['paths'][] = $absolutePath;
 
-            if (file_exists($absolutePath) || is_link($absolutePath)
-                || !@move_uploaded_file($mediaFile['tmp_name'], $absolutePath)) {
-                throw new RuntimeException('An uploaded file could not be stored.');
+            if (file_exists($absolutePath) || is_link($absolutePath)) {
+                throw new RuntimeException('The generated media destination already exists.');
             }
 
-            $storedMedia['paths'][] = $absolutePath;
+            if ($mediaFile['media_type'] === 'image') {
+                $storedFile = bctOptimizeImageUpload(
+                    $mediaFile['tmp_name'],
+                    $absolutePath,
+                    $mediaFile['mime_type']
+                );
+            } else {
+                if (!@move_uploaded_file($mediaFile['tmp_name'], $absolutePath)) {
+                    throw new RuntimeException('An uploaded video could not be stored.');
+                }
+                $storedFile = [
+                    'mime_type' => $mediaFile['mime_type'],
+                    'file_size' => $mediaFile['file_size'],
+                ];
+            }
 
             $insertStatement->execute([
                 'location_id' => $locationId,
                 'media_type' => $mediaFile['media_type'],
                 'file_path' => $publicPath,
-                'mime_type' => $mediaFile['mime_type'],
-                'file_size' => $mediaFile['file_size'],
+                'mime_type' => $storedFile['mime_type'],
+                'file_size' => $storedFile['file_size'],
                 'sort_order' => $sortOrder,
             ]);
         }

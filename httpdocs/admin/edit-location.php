@@ -161,7 +161,7 @@ bctAdminPageStart('Edit journey location');
                         <label for="additionalMediaFiles">Choose files</label>
                         <input type="file" id="additionalMediaFiles" name="media_files[]" multiple required
                             accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,video/x-m4v">
-                        <p class="file-summary" id="additionalMediaSummary">Up to 20 files per upload. 15 MB per image, 200 MB per video, 350 MB total. New files are added at the end.</p>
+                        <p class="file-summary" id="additionalMediaSummary">Up to 20 files per upload. 15 MB per image, 200 MB per video, 350 MB total. New files are added at the end. Photos are automatically resized and stored as metadata-free WebP files.</p>
                     </div>
                     <p class="form-note">JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. HEIC is not supported. Some MOV codecs cannot play in every browser.</p>
                     <button class="submit-button" id="uploadMoreMedia" type="submit">Upload files</button>

@@ -144,6 +144,7 @@ $csrfToken = bctCsrfToken();
                     <p class="file-summary" id="fileSummary">
                         JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files.
                         Maximum 15 MB per image, 200 MB per video and 350 MB total.
+                        Photos are automatically resized and stored as metadata-free WebP files.
                     </p>
                 </div>
             </div>
@@ -237,7 +238,7 @@ $csrfToken = bctCsrfToken();
             const totalMegabytes = (totalBytes / 1024 / 1024).toFixed(1);
 
             fileSummary.textContent = fileCount === 0 ?
-                "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files. Maximum 15 MB per image, 200 MB per video and 350 MB total." :
+                "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files. Maximum 15 MB per image, 200 MB per video and 350 MB total. Photos are automatically resized and stored as metadata-free WebP files." :
                 `${fileCount} file${fileCount === 1 ? "" : "s"} selected (${totalMegabytes} MB total).`;
         });
 
@@ -296,7 +297,7 @@ $csrfToken = bctCsrfToken();
                 formStatus.classList.add("success");
                 locationForm.reset();
                 expectedMediaCount.value = "0";
-                fileSummary.textContent = "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files. Maximum 15 MB per image, 200 MB per video and 350 MB total.";
+                fileSummary.textContent = "JPG, PNG, WebP, GIF, MP4, WebM, MOV or M4V. Select 1 to 20 files. Maximum 15 MB per image, 200 MB per video and 350 MB total. Photos are automatically resized and stored as metadata-free WebP files.";
             } catch (error) {
                 formStatus.textContent = error.message || "The location could not be added.";
                 formStatus.classList.add("error");
