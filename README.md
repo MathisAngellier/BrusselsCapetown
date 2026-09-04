@@ -30,7 +30,7 @@ The frontend intentionally does not use a JavaScript framework.
 Requirements:
 
 - Node.js and npm
-- PHP 8.1 or newer with PDO MySQL, fileinfo, mbstring and ctype
+- PHP 8.1 or newer with PDO MySQL, fileinfo, mbstring, ctype, GD with WebP support, and EXIF
 - MySQL or MariaDB
 
 Install the frontend dependencies:
@@ -72,6 +72,41 @@ Vite writes the frontend build to `httpdocs/dist`. PHP admin/API files, uploaded
 The admin panel can add, edit and delete journey locations and manage their photos and videos. French location and description text is translated to English before both languages are stored. Changes made on production are visible in the public gallery immediately; there is no separate publish step.
 
 See the admin documentation in the repository root for detailed editing, media-management and deletion behavior.
+
+## Optimizing existing gallery images
+
+New admin uploads are optimized automatically. Existing JPEG, PNG and GIF gallery files can be converted separately with `scripts/optimize-existing-gallery-image.php`. The script is command-line only and applies exactly one database media ID per run.
+
+First perform a read-only inspection and copy the displayed item hash:
+
+```bash
+php scripts/optimize-existing-gallery-image.php \
+  --expect-database=brusselscapetown \
+  --media-id=123
+```
+
+Create a new backup directory outside `httpdocs`. The directory must not exist yet:
+
+```bash
+php scripts/optimize-existing-gallery-image.php \
+  --expect-database=brusselscapetown \
+  --media-id=123 \
+  --expect-item=ITEM_SHA256 \
+  --backup=/absolute/path/gallery-image-123-backup
+```
+
+Only after the backup and its SHA-256 verification succeed, apply the conversion with the manifest path printed by the backup command:
+
+```bash
+php scripts/optimize-existing-gallery-image.php \
+  --expect-database=brusselscapetown \
+  --media-id=123 \
+  --expect-item=ITEM_SHA256 \
+  --backup-manifest=/absolute/path/gallery-image-123-backup/backup-manifest.json \
+  --apply
+```
+
+The new WebP receives a unique filename. The database is updated only after the output file passes verification, and the original is removed only after the database commit succeeds. Changed rows, changed files, missing backups and database-name mismatches are refused.
 
 ## Author
 

@@ -10,5 +10,6 @@ src/dist/
 /private/gallery-import.manifest.json
 /private/gallery-import-run.jsonl
 /private/gallery-trash/
+/private/gallery-optimization-backups/
 /httpdocs/uploads/gallery/*
 !/httpdocs/uploads/gallery/.htaccess
